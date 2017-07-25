@@ -1,0 +1,162 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ */
+
+//iPhone 2G, 3G, 4, 4S Media Queries
+@media only screen
+and(max-width : 350px)
+and (orientation : portrait) {
+  .login-form .lf-item input{
+    font-size: 1.4rem;
+  }
+}
+
+//iPhone 5 & 5S in portrait & landscape
+@media only screen
+and (min-width : 320px)
+and (orientation : portrait) {
+  
+}
+
+//iPhone 6 in portrait & landscape
+@media only screen
+and (min-width : 375px)
+and (orientation : portrait){
+
+  
+}
+
+//iPhone 6 Plus in portrait & landscape
+@media only screen
+and (min-width : 414px)
+and (orientation : portrait){
+
+  
+}
+
+//6 - 6plus
+@media only screen
+and (min-width : 375px)
+{
+  .show-ticket-list {
+      .stl-item{
+        .tk-header{
+          height: 80px;
+          .code{
+            font-size: 24px;
+          }
+          .name{
+            font-size: 16px;
+          }
+          .tk-checked{
+            width: 80px;
+            height: 80px;
+            &:before{
+              content: '';
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 0;
+              height: 0;
+              display: block;
+              border-bottom: 80px solid $primary;
+              border-right: 80px solid transparent;
+            }
+            &:after{
+              top: 0;
+              right: 0;
+              font-size: 16px;
+              line-height: 50px;
+              @include transform(rotate(45deg));
+            }
+          }
+        }
+        .tk-body{
+            padding: 20px 0 10px;
+            .date{
+              font-size: 36px;
+            }
+          .info{
+            font-size: 18px;
+          }
+        }
+        .tk-footer{
+          padding: 20px 5% 30px;
+          .title{
+            font-size: 18px;
+          }
+          .info{
+            font-size: 18px;
+          }
+        }
+        .tk-gap{
+          height: 40px;
+          margin: 0 20px;
+          &:after,&:before{
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 0;
+          }
+          &:before{
+            left: -38px;
+          }
+          &:after{
+            position: absolute;
+            right: -38px;
+          }
+          .line{
+            width: 90%;
+            top: 20px;
+          }
+        }
+        &.checked{
+          .tk-header,.tk-btn{
+            background-color: $color6;
+          }
+          .tk-checked{
+            display: block;
+            &:before{
+              content: '';
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 0;
+              height: 0;
+              display: block;
+              border-bottom: 80px solid $color6;
+              border-right: 80px solid transparent;
+            }
+          }
+        }
+      }
+    
+  }
+
+  //评价页面
+  .bus-remark-section{
+    margin: 10px;
+    padding: 15px 20px;
+    .brc-item{
+      margin: 15px 0;
+      .brc-title{
+        font-size: 20px;
+        top: -7px;
+        margin-right: 10px;
+      }
+      .hl-star{
+        width: 32px;
+        height: 32px;
+      }
+    }
+    .remark-desc{
+      height: 120px;
+      margin: 20px 0 20px;
+    }
+  }
+
+}
+

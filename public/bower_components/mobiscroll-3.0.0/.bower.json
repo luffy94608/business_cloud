@@ -1,0 +1,14 @@
+{
+  "name": "mobiscroll-3.0.0",
+  "homepage": "https://github.com/luffy94608/mobiscroll-3.0.0",
+  "_release": "5cb00a2bb7",
+  "_resolution": {
+    "type": "branch",
+    "branch": "3.0.0-beta5",
+    "commit": "5cb00a2bb7604c3b3b4b5d272a77aa8b952c08c1"
+  },
+  "_source": "git://github.com/luffy94608/mobiscroll-3.0.0.git",
+  "_target": "3.0.0-beta5",
+  "_originalSource": "luffy94608/mobiscroll-3.0.0",
+  "_direct": true
+}

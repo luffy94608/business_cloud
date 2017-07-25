@@ -1,0 +1,16 @@
+/node_modules
+/public/release
+/public/sass/.*
+/storage/*.key
+/storage/logs/*
+/storage/app/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/vendor
+/.idea
+.sass-cache
+Homestead.json
+Homestead.yaml
+.env
+.composer.lock

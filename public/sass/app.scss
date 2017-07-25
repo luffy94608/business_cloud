@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+// compass 类库
+//-------------------------------------------------
+@import "compass/css3";
+@import "compass/css3/box";
+@import "compass/utilities";
+
+@import "./components/variables";
+
+@import "../bower_components/sheral/sandal/core";
+@import "../bower_components/sheral/sandal/ext/helper";
+@import "../bower_components/sheral/sandal/ext/icons";
+
+// layout
+//-------------------------------------------------
+@import "../bower_components/sheral/components/line-list";
+@import "../bower_components/sheral/components/media-list";
+
+
+
+// overlay
+//-------------------------------------------------
+@import "./components/overlay";
+
+
+// toast
+//-------------------------------------------------
+@import "./components/toast";
+
+// dialog
+//-------------------------------------------------
+@import "./components/dialog";
+// btn
+//-------------------------------------------------
+@import "./components/btn";
+
+//form
+@import "./components/form";
+
+@import "./components/global";
+@import "./components/icons";
+
+// 主要样式
+//-------------------------------------------------
+//@import "./components/main";
+@import "./components/login";
+@import "./components/coupon";
+@import "./components/bus_path";
+@import "./components/shuttle_path";
+
+
+
+
+// 兼容性设置
+//-------------------------------------------------
+@import "./components/screen";
+
+
+
+
+
+
+
+

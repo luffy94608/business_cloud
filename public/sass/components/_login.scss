@@ -1,0 +1,169 @@
+@charset "UTF-8";
+.bg-city{
+  background: $primary url("../../images/city-bg@2x.png") no-repeat center bottom;
+  @include background-size(100% 20%);
+}
+.logo-pic{
+  margin: 4rem auto;
+  width: 84px;
+}
+.account-header{
+  height: 17rem;
+  background: url("../../images/head-bg.png") no-repeat center;
+  @include background-size(100% 17rem);
+  color: $white;
+  text-align: center;
+  .ac-body{
+    margin: 0 auto;
+    &>img{
+      width: 7rem;
+      height: 7rem;
+      @include border-radius(50%);
+      margin: 2rem 0 0;
+    }
+    &>.name{
+      font-size: 1.6rem;
+      height: 4rem;
+      line-height: 4rem;
+      &>input{
+        text-align: center;
+        display: inline-block;
+        border: 0;
+        @include border-radius(0);
+        box-sizing: border-box;
+        background-color: transparent;
+        width: 9rem;
+        &.edit-name{
+          border-bottom: 1px solid $white;
+        }
+      }
+      .save-name{
+        border: 1px solid $white;
+        color: $white;
+        display: none;
+        font-size: 1.4rem;
+        padding: .2rem .6rem;
+        @include border-radius($radiusBase);
+      }
+    }
+    .name-title{
+      position: relative;
+      top: 2px;
+    }
+    .count{
+      display: inline-block;
+      font-size: 1.3rem;
+      color: $colorC;
+      padding: 0.6rem 1.4rem;
+      background-color: darken($primary, 10%);
+      @include border-radius(2rem);
+    }
+  }
+}
+
+.login-form{
+  position: relative;
+  .lf-item{
+    border-bottom: 1px solid $color9;
+    line-height: 4.6rem;
+    input,select{
+      display: block;
+      font-size: 1.6rem;
+      color: $white;
+      padding: 1.6rem 0 1rem 1rem;
+      border: 0;
+      background-color: transparent;
+    }
+    input.blue-placeholder::-webkit-input-placeholder{
+      //color: $colorLink;
+    }
+    .verify-code{
+      color: $yellow;
+      line-height: 44px;
+      width: 90px;
+      text-align: center;
+      &.active{
+        color: $yellow;
+      }
+    }
+  }
+}
+.calc-loading{
+  background-color: $bgColor;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  display: block;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  &.active{
+    display: none;
+  }
+  &>img{
+    width: 50px;
+    margin-top: 20px;
+  }
+}
+
+.lf-fixed-btn{
+  color: $colorLink;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  &.bottom-20{
+    bottom: 30px;
+  }
+}
+
+//account
+.me-a-header{
+    text-align: center;
+    background-color: $primary;
+    padding: 2rem 0;
+  font-size: 1.6rem;
+  .title{
+      color: $yellow;
+      font-weight: bolder;
+      &>span{
+        font-size: 2.4rem;
+      }
+    }
+    .sub-title{
+      color: $white;
+    }
+}
+
+.coupon-exchange-sec{
+  padding: 10px 10px 0;
+  .coupon-exchange{
+    overflow: hidden;
+    background-color: $white;
+    width: 100%;
+    border: 1px solid $borderColor;
+    margin: 0 auto;
+    @include border-radius($radiusBase);
+    &>input{
+      width: 69%;
+      border: none;
+      padding: 12px 10px;
+    }
+    &>button{
+      float: right;
+      font-size: 1.2em;
+      width: 30%;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 20px;
+      @include border-top-left-radius(0);
+      @include border-bottom-left-radius(0);
+      @include border-top-right-radius($radiusBase);
+      @include border-bottom-right-radius($radiusBase)
+    }
+  }
+
+}
+

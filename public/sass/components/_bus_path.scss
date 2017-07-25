@@ -1,0 +1,1958 @@
+@charset "UTF-8";
+//tab
+.tab-nav{
+  background-color: $primary;
+  text-align: center;
+  .tab-items{
+    font-size: 1.8rem;
+    line-height: 4rem;
+    .tab-item{
+      color: $white;
+      display: inline-block;
+      width: 30%;
+      &.active{
+        color: $yellow;
+        border-bottom: 3px solid $yellow;
+      }
+    }
+  }
+}
+.bus-after-v:after{
+  content: "";
+  @include v-arrow(right, 1.4px, 8px);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -1px;
+  transform: rotate(45deg) translate(0, -50%);
+  @include box-sizing(border-box);
+}
+.bus-warning{
+  position: absolute;
+  right: 10px;
+  font-size: 1.4rem;
+  padding-right: 20px;
+  color: #999;
+  line-height: 4rem;
+  &:after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -1px;
+    width: 16px;
+    height: 14px;
+    background: url("../../images/icons/warning@3x.png") no-repeat center;
+    @include background-size(100%);
+    transform: translate(0, -50%);
+    @include box-sizing(border-box);
+  }
+}
+
+.icon-ticket-help{
+  position: absolute;
+  font-size: 1.4rem;
+  padding-left: 24px;
+  color: #333;
+  line-height: 4rem;
+  &:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    background: url("../../images/icons/hint.png") no-repeat center;
+    @include background-size(100%);
+    transform: translate(0, -50%);
+    @include box-sizing(border-box);
+  }
+}
+
+.icon-time{
+  position: absolute;
+  font-size: 1.4rem;
+  padding-left: 25px;
+  color: #333;
+  line-height: 4rem;
+  &:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 49%;
+    width: 18px;
+    height: 18px;
+    background: url("../../images/icons/time.png") no-repeat center;
+    @include background-size(100%);
+    transform: translate(0, -50%);
+    @include box-sizing(border-box);
+  }
+}
+
+.shift-list{
+  width: 100%;
+  text-align: center;
+  padding: 10px 0 10px;
+  .shift-item{
+    display: inline-block;
+    width: 20%;
+    position: relative;
+    float: left;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px 0;
+    padding: 10px 0;
+    border-bottom: $borderStyle;
+    border-top: $borderStyle;
+    &.active{
+      color: white;
+      &:after{
+        display: inline-block;
+        content: '';
+        width: 40px;
+        height: 20px;
+        border: 1px solid $green;
+        background-color: $green;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 12px;
+        border-radius: 5px;
+        z-index: -1;
+        margin: 0 auto;
+        padding: 0 3px;
+      }
+    }
+  }
+}
+
+
+.station-before-circle{
+  &:before{
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    position: relative;
+    right: 7px;
+  }
+  &.green:before{
+    border: 3px solid $green;
+  }
+  &.orange:before{
+    border: 3px solid $orange;
+  }
+}
+
+
+//班车列表
+.bus-list{
+  padding: 10px 10px 0 10px;
+  .bus-item{
+    margin-bottom: 15px;
+    @include border-radius($radiusSmall);
+    @include box-shadow(0px -1px 10px 1px #efefef);
+    background: $white;
+    .bus-body{
+      width: 100%;
+      padding: 10px 70px 15px 20px;
+      position: relative;
+      display: block;
+      min-height: 20px;
+      .item-bd{
+        .bd-tt{
+          font-size: 1.6rem;
+          color: $color3;
+        }
+        .bd-txt{
+          margin-top: 6px;
+          font-size: 1.4rem;
+          color: $color9;
+        }
+      }
+      .item-right{
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        @include translateY(-50%);
+      }
+    }
+    .bus-header{
+      position: relative;
+      border-bottom: $borderStyle;
+      .code{
+        color: $orange;
+        float: left;
+        font-size: 1.6rem;
+        line-height: 4rem;
+        padding: 0 0 0 20px;
+        display: inline-block;
+      }
+      .shifts{
+        line-height: 4rem;
+        float: left;
+        display: inline-block;
+        &>li{
+          display: inline-block;
+          position: relative;
+          float: left;
+          color: $color9;
+          font-size: 1.4rem;
+          padding: 0 10px;
+          &:not(:first-child):before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            @include translateY(-50%);
+            display: inline-block;
+            border-left:$borderStyle;
+            height: 14px;
+            vertical-align: middle;
+          }
+        }
+      }
+      .more{
+        position: absolute;
+        right: 10px;
+        font-size: 1.4rem;
+        padding-right: 15px;
+        color: $color9;
+        line-height: 4rem;
+        height: 4rem;
+      }
+    }
+  }
+}
+
+//班车详情
+.empty-bus{
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  z-index: 0;
+  top: 50%;
+  @include translateY(-50%);
+  .eb-content{
+    color: $colorC;
+    font-size: 18px;
+    margin: 0 auto;
+    &:before{
+      content: '';
+      display: block;
+      width: 71px;
+      height: 65px;
+      background: url("../../images/icons/empty-bus@2x.png") no-repeat center;
+      @include background-size(100%);
+      margin: 0 auto 15px;
+    }
+  }
+}
+
+.bus-detail-header{
+  border-bottom: $borderStyle;
+  background-color: $white;
+  position: relative;
+  z-index: 1;
+  .bdh-content{
+    @include display-box;
+    &>div:first-child{
+      padding: 10px;
+      display: block;
+      p{
+        display: block;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        border: 2px solid $primary;
+        @include border-radius(50%);
+        span{
+          font-size: 14px;
+          display: block;
+          margin: 3px auto;
+          font-weight: 400;
+          width: 60px;
+          height: 60px;
+          line-height: 60px;
+          color: $white;
+          background-color: $primary;
+          border: thin solid $primary;
+          @include border-radius(50%);
+        }
+      }
+    }
+    &>div:last-child{
+      display: block;
+      padding-top: 20px;
+      @include box-flex(1);
+      &>p:first-child{
+        font-size: 17px;
+      }
+      &>p:nth-child(2){
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    }
+  }
+  .bdh-footer{
+    height: 20px;
+    &.arrow{
+      text-align: center;
+      &:before{
+        content: '查看站点';
+        display: inline-block;
+        position: relative;
+        top: 0;
+        font-size: 14px;
+        right: 5px;
+        margin: 0 auto;
+        color: $primary;
+        line-height: 14px;
+      }
+      &:after{
+        content: '';
+        display: inline-block;
+        position: relative;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        margin: 0 auto;
+        background: url("../../images/icons/ar-up.png") no-repeat center;
+        @include background-size(100%);
+        @include transition(all 0.3s);
+      }
+      &.up:after{
+        @include transform(rotate(0deg));
+      }
+      &.down:after{
+        @include transform(rotate(180deg));
+      }
+    }
+  }
+}
+
+//日票日历选择
+.hlm4-calendar{
+  font-size: 15px;
+  width: 100%;
+  text-align: center;
+  margin: 20px 0 15px;
+  th{
+    font-weight: bolder;
+    padding-bottom: 15px;
+  }
+  td{
+    height: 42px;
+    position: relative;
+    width: (100%/7);
+    &:after{
+      content: '';
+      color: $orange;
+      font-size: 12px;
+      display: block;
+      //position: absolute;
+      //top: 30px;
+      left: 0;
+      right: 0;
+      line-height: 20px;
+      height: 20px;
+      text-align: center;
+    }
+    &.now:after{
+      content: '';
+      color: $red;
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: $red;
+      margin: 5px auto;
+      @include border-radius(50px);
+      text-align: center;
+    }
+    &.full{
+      @include opacity(0.4);
+      &:after{
+        content: '满员';
+        color: $orange;
+        font-size: 12px;
+        display: block;
+        width: 100%;
+        height: 20px;
+        background-color: transparent;
+        margin: 0;
+        text-align: center;
+        @include border-radius(0);
+      }
+    }
+    &.checked{
+      color: $white;
+      background-color: $green;
+      @include border-radius(10px);
+      &:after{
+        content: '已选';
+        color: $white;
+        font-size: 12px;
+        display: block;
+        width: 100%;
+        height: 20px;
+        background-color: transparent;
+        margin: 0;
+        text-align: center;
+        @include border-radius(0);
+      }
+    }
+
+    &.reversed{
+      @include opacity(0.4);
+      &:after{
+        content: '已买';
+        color: $green;
+        font-size: 12px;
+        display: block;
+        width: 100%;
+        height: 20px;
+        background-color: transparent;
+        margin: 0;
+        text-align: center;
+        @include border-radius(0);
+      }
+    }
+  }
+}
+
+
+.bus-pick-ticket{
+  margin: 10px 0;
+  border-top: $borderStyle;
+  border-bottom: $borderStyle;
+  background-color: $white;
+  header{
+    margin: 10px 30px;
+    font-size: 16px;
+    line-height: 40px;
+    @include display-box;
+    &>div{
+      display: block;
+      width: 50%;
+      color: $primary;
+      text-align: center;
+      border:1px solid $primary;
+      @include user-select(none);
+      @include box-flex(1);
+      &.active{
+        color: $white;
+        background-color: $primary;
+      }
+      &:first-child{
+        @include border-corner-radius('top','left',$radiusBase);
+        @include border-corner-radius('bottom','left',$radiusBase);
+      }
+      &:last-child{
+        @include border-corner-radius('top','right',$radiusBase);
+        @include border-corner-radius('bottom','right',$radiusBase);
+      }
+      &:only-child{
+        @include border-radius($radiusBase);
+      }
+    }
+  }
+
+
+  @mixin month-ticket($mticket-color,$mticket-bg){
+    margin: 10px;
+    @include display-box;
+    border:thin solid $borderColor;
+    @include box-shadow(0 3px 6px 1px $borderColor);
+    .hml4-pmt-info{
+      display: block;
+      @include box-flex(1);
+      color: $mticket-color;
+      background-color: $mticket-bg;
+      position: relative;
+      overflow-x: hidden;
+
+      .hml4-pmti-date{
+        border-top: 1px solid $mticket-color;
+        border-bottom: 1px solid $mticket-color;
+        margin: 10px 50px 10px 10px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 16px;
+        @include display-box;
+        text-align: center;
+        &>span{
+          display: block;
+          @include box-flex(1);
+          &:nth-child(2){
+            position: relative;
+            color: $mticket-bg;
+            padding: 0 15px;
+            background-color: $mticket-color;
+          }
+          &:nth-child(2):before{
+            position: absolute;
+            left: 0;
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-left: 16px solid $mticket-bg;
+            border-bottom: 16px solid transparent;
+          }
+          &:nth-child(2):after{
+            position: absolute;
+            right: 0;
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-right: 16px solid $mticket-bg;
+            border-bottom: 16px solid transparent;
+          }
+        }
+      }
+
+      .hml4-pmti-price{
+        font-size: 30px;
+        line-height: 45px;
+        position: relative;
+        font-weight: 100;
+        &>span:first-child{
+          sub{
+            font-size: 24px;
+            position: relative;
+            top: 2px;
+            margin-left: 10px;
+          }
+          font-weight: bolder;
+        }
+        &>span:last-child{
+          position: absolute;
+          right: 27px;
+          bottom: 0;
+          font-weight: 100;
+          line-height: 30px;
+          font-size: 13px;
+          text-decoration: line-through;
+        }
+      }
+
+      .hml4-pmti-hint{
+        font-size: 12px;
+        line-height: 16px;
+        margin-left: 10px;
+        padding: 10px 10px 10px 0;
+        border-top: 1px solid $mticket-color;
+      }
+
+      &:after{
+        content: '';
+        display: inline-block;
+        width: 50px;
+        position: absolute;
+        background-color: $mticket-color;
+        top: 0;
+        right: -29px;
+        bottom: 0;
+        @include transform(skew(15deg));
+      }
+
+    }
+    .hml4-pmt-select{
+      display: block;
+      width: 80px;
+      position: relative;
+      color: $mticket-bg;
+      background-color: $mticket-color;
+      &>span:first-child{
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        display: block;
+        height: 70px;
+        width: 70px;
+        line-height: 70px;
+        text-align: center;
+        font-size: 17px;
+        color: $mticket-color;
+        font-weight: bolder;
+        background-color: $mticket-bg;
+        @include border-radius(50%);
+      }
+      &>span:last-child{
+        display: block;
+        position: absolute;
+        top: 100px;
+        color: $mticket-bg;
+        font-size: 12px;
+        height: 16px;
+        line-height: 16px;
+        padding: 10px 0;
+        right: 0;
+        white-space: nowrap;
+        @include transform(scale(0.8));
+      }
+    }
+  }
+
+  //  月票选择
+  .hlm4-pick-m-ticket{
+    @include month-ticket($colorC,$white);
+    //  车票选中状态
+    &.active{
+      @include month-ticket($white, $orange);
+
+    }
+  }
+}
+
+.pick-ticket-info{
+  border-top: $borderStyle;
+  border-bottom: $borderStyle;
+  background-color: $white;
+  margin: 10px 0;
+  padding: 0 10px 0 40px;
+  li{
+    @include display-box;
+    border-bottom: $borderStyle;
+    &:last-child{
+      border-bottom: none;
+    }
+    .icon-ticket-base{
+      &:before{
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 18px;
+        left: -25px;
+        width: 16px;
+        height: 16px;
+      }
+      &.seat:before{
+        background: url("../../images/icons/my-seat@2x.png") no-repeat center;
+        @include background-size(100%);
+      }
+      &.up-station:before{
+        background: url("../../images/icons/up-station@2x.png") no-repeat center;
+        @include background-size(100%);
+      }
+      &.down-station:before{
+        background: url("../../images/icons/up-station@2x.png") no-repeat center;
+        @include background-size(100%);
+        @include transform(rotate(180deg));
+      }
+    }
+    &>div{
+      font-size: 16px;
+      display: block;
+      //padding: 10px 10px 10px 0;
+      height: 50px;
+      line-height: 50px;
+    }
+    &>div:first-child{
+      position: relative;
+      width: 80px;
+      color: $color9;
+      text-align: center;
+
+    }
+    &>div:last-child{
+      color: $color3;
+      @include box-flex(1);
+    }
+    .seat-num{
+      padding-left: 3px;
+    }
+    .seat-num-2{
+      padding-left: 0;
+    }
+    input{
+      width: 100%;
+      border: none;
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+}
+.bus-buy-footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: $white;
+  .bbf-body{
+    width: 100%;
+    padding: 11px 10px 11px 70px ;
+    position: relative;
+    display: block;
+    text-align: right;
+    color: $color3;
+    border-top: $borderStyle;
+    .body-left{
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      @include translateY(-50%);
+    }
+    .body-bd{
+      .count{
+
+      }
+      .price-info{
+        margin-left: 10px;
+        color: $color9;
+        font-size: 13px;
+        .price{
+          color: $orange;
+          font-size: 18px;
+          margin: 0 10px 0 5px;
+        }
+      }
+    }
+  }
+}
+.bus-shift{
+  border-top: $borderStyle;
+  border-bottom: $borderStyle;
+  margin:  10px 0;
+  background-color: $white;
+  padding-left: 100px;
+  //min-height: 48px;
+  .title{
+    position: absolute;
+    left: 10px;
+    color: $color9;
+  }
+  .shifts{
+    line-height: 4rem;
+    float: left;
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    &>li{
+      display: inline-block;
+      position: relative;
+      float: left;
+      color: $color9;
+      font-size: 1.4rem;
+      padding: 0 10px;
+      &:not(:first-child):before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        @include translateY(-50%);
+        display: inline-block;
+        border-left:$borderStyle;
+        height: 14px;
+        vertical-align: middle;
+      }
+      &.active{
+        color: $white;
+        &::after{
+          display: inline-block;
+          content: '';
+          width: 40px;
+          height: 20px;
+          border: 1px solid $green;
+          background-color: $green;
+          position: absolute;
+          left: 0;
+          right: 0;
+          border-radius: 5px;
+          z-index: -1;
+          margin: 0 auto;
+          padding: 0 3px;
+          top: 50%;
+          @include translateY(-50%);
+        }
+      }
+    }
+  }
+  .more{
+    position: absolute;
+    right: 10px;
+    font-size: 1.4rem;
+    padding-right: 15px;
+    color: $color9;
+    line-height: 4rem;
+  }
+}
+//站点列表
+.bus-station-list{
+  background-color: $white;
+  border-bottom: $borderStyle;
+  padding: 10px 0;
+  position: relative;
+  z-index: 1;
+  li{
+    position: relative;
+    color: $color9;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:before{
+      content: '';
+      display: inline-block;
+      height: 100%;
+      position: absolute;
+      left: 26px;
+      width: 1px;
+      background-color: $borderColor;
+    }
+    &:first-child{
+      color: $color3;
+      &:before{
+        height: 50%;
+        bottom: 0;
+      }
+      .item-content:before{
+        border: 3px solid $green;
+      }
+    }
+    &:last-child{
+      color: $color3;
+      &:before{
+        height: 50%;
+        top: 0;
+      }
+      .item-content:before{
+        border: 3px solid $orange;
+      }
+    }
+    .item-content{
+       &:before{
+         content: '';
+         display: inline-block;
+         width: 14px;
+         height: 14px;
+         border: 1px solid $borderColor;
+         border-radius: 50%;
+         box-shadow: 0 0 1px 1px $borderColor;
+         background-color: $white;
+         margin: 0 10px 0 20px;
+         position: relative;
+         top: 1px;
+         @include box-sizing(border-box);
+       }
+    }
+    .item-time{
+      position: absolute;
+      top: 0;
+      right: 10px;
+      height: 40px;
+      padding-right: 25px;
+    }
+  }
+}
+
+//支付方式
+.bus-pay-type{
+  padding: 0 15px;
+  border-top: $borderStyle;
+  &>li{
+    label{
+      display: block;
+    }
+    border-top: $borderStyle;
+    position: relative;
+    line-height: 50px;
+    height: 50px;
+    .py-right{
+      position: absolute;
+      top: 0;
+      right: 0;
+      .js_title{
+        display: inline-block;
+      }
+    }
+    &:first-child{
+      border-top: none;
+    }
+    .hint{
+      color: $color9;
+      margin-left: 6px;
+    }
+    .icon-wechat{
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      vertical-align: middle;
+      margin-right: 8px;
+      background: url("../../images/icons/weixin.png") no-repeat center;
+      @include background-size(100%);
+    }
+    
+  }
+}
+.btn-time-show{
+  position: absolute;
+  right: 15px;
+}
+input.show-pigeon{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  background: url("../../images/icons/check-disabled.png") no-repeat center;
+  @include background-size(100%);
+  @include border-radius(50%);
+  border: none;
+  &:checked{
+    background: url("../../images/icons/checked-active.png") no-repeat center;
+    @include background-size(100%);
+    @include border-radius(50%);
+  }
+}
+//优惠卷
+
+.ar-coupon-modal{
+  z-index: $zIndexOverlay +100;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  @include transform(translate(0%,100%));
+  @include transition(transform .3s $timingFunction);
+  &.active{
+    @include transform(translate(0%,0%));
+  }
+  .arcm-section{
+    overflow: auto;
+    padding-bottom: 80px;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  .coupon-footer{
+    background-color: white;
+    border-top: $borderStyle;
+  }
+}
+
+//车票列表
+.ticket-gap{
+  width: 100%;
+  display: block;
+  height: 17px;
+  background: url("../../images/gap@2x.png") no-repeat center;
+  @include background-size(100% 100%);
+}
+.ticket-line-gap{
+  display: block;
+  height: 1px;
+  margin: 0 10px;
+  border-top: 1px solid #ccc;
+}
+.ticket-map-header{
+  color: $white;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  background-color: $primary;
+  .icon-svg{
+    position: relative;
+    
+    top: 4px;
+    left: 3px;
+  }
+}
+.ticket-map{
+  width: 100%;
+  height: 72px;
+  padding-top: 5px;
+  background-color: $white;
+  li{
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    .day{
+      font-size: 16px;
+      padding-bottom: 2px;
+    }
+    .week{
+      font-size: 13px;
+    }
+    &.now{
+      .day:after{
+        content: '';
+        color: $red;
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: $red;
+        margin: 0 auto;
+        @include border-radius(50px);
+      }
+    }
+    &.active{
+      .day{
+        background-color: $green;
+        color: $white;
+        @include border-radius(50px);
+        &:after{
+          content: '';
+          color: $red;
+          display: block;
+          width: 14px;
+          height: 10px;
+          margin: 0 auto;
+          @include border-radius(0);
+          background: url("../../images/icons/white-right.png") no-repeat center;
+          @include background-size(100%);
+        }
+      }
+    }
+  }
+}
+
+.bus-ticket-list{
+  padding: 10px 10px 0 10px;
+  .bt-item{
+    margin-bottom: 10px;
+    @include border-radius($radiusSmall);
+    @include box-shadow(1px 1px 2px 0px #ccc);
+    .bt-body{
+      background-color: $white;
+      width: 100%;
+      padding: 5px 90px 15px 20px;
+      position: relative;
+      display: block;
+      min-height: 20px;
+      .item-bd{
+        .bd-tt{
+          font-size: 1.6rem;
+          color: $color3;
+          padding: 3px 0;
+        }
+        .bd-txt{
+          font-weight: normal;
+          font-size: 1.4rem;
+          color: $color6;
+          padding: 3px 0;
+        }
+      }
+      .item-right{
+        position: absolute;
+        bottom: 20px;
+        right: 10px;
+        button{
+          min-width: 74px;
+        }
+      }
+    }
+    .bt-detail{
+      background-color: $white;
+      width: 100%;
+      padding: 10px 20px;
+      position: relative;
+      display: block;
+      min-height: 20px;
+      .item-bd{
+        &>span{
+          font-size: 1.6rem;
+          color: $color3;
+          padding: 3px 0;
+          display: inline-block;
+        }
+        .bd-tt{
+          color: $color6;
+          width: 88px;
+        }
+      }
+    }
+
+    .bt-header{
+      position: relative;
+      background-color: $white;
+      .code{
+        color: $color3;
+        font-weight: bold;
+        font-size: 1.6rem;
+        line-height: 4rem;
+        height: 3.4rem;
+        padding: 0 10px 0 20px;
+        display: inline-block;
+      }
+      .name{
+        color: $color3;
+        font-weight: bold;
+        font-size: 1.6rem;
+        line-height: 4rem;
+        height: 3.4rem;
+        display: inline-block;
+      }
+      .hint{
+        color: $orange;
+        font-size: 1.4rem;
+        line-height: 4rem;
+        height: 3.4rem;
+        display: inline-block;
+      }
+      .icon-location{
+        margin-top: 15px;
+        margin-right: 15px;
+      }
+      .icon-location-wrap{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 50px;
+        text-align: right;
+      }
+    }
+    .bt-footer{
+      padding: 20px 10px;
+      background-color: $white;
+      text-align: center;
+      &>p{
+        color: $color6;
+        padding: 2px 0;
+      }
+      .date{
+
+      }
+      .agree{
+        span{
+          margin: 0 3px;
+        }
+      }
+      .month{
+        font-size: 16px;
+        color: $orange;
+      }
+      .bt-btn{
+        margin: 10px 0;
+        border: 1px solid $orange;
+        color: $orange;
+        font-size: 16px;
+        background-color: $white;
+        &.disabled{
+          color: $colorC;
+          border: 1px solid $colorC;
+          @include opacity(1);
+        }
+      }
+    }
+  }
+}
+
+//车票
+.tk-dialog-header{
+  font-size: 16px;
+  .close{
+    position: absolute;
+    right: 0;
+  }
+}
+.show-ticket-list{
+  $tkHeaderColor:$white;
+  $tkBodyBgColor:$white;
+  $tkHeaderBgColor:$primary;
+  $tkTitleColor: $color6;
+  $tkSubTitleColor: $color6;
+  .stl-item{
+    text-align: center;
+    overflow: hidden;
+    @include border-radius($radiusBase);
+    .tk-header{
+      position: relative;
+      color: $tkHeaderColor;
+      background-color: $tkHeaderBgColor;
+      padding: 10px 0 6px;
+      height: 60px;
+      .code{
+        font-size: 18px;
+      }
+      .name{
+        font-size: 13px;
+      }
+      .thh-content{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        z-index: 1;
+        width: 100%;
+        transform: translate(0, -50%);
+        @include box-sizing(border-box);
+      }
+      .tk-checked{
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        &:before{
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 0;
+          height: 0;
+          display: block;
+          border-bottom: 60px solid $tkHeaderBgColor;
+          border-right: 60px solid transparent;
+        }
+        &:after{
+          content: attr(data-title);
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 14px;
+          line-height: 45px;
+          color: $white;
+          @include transform(rotate(45deg));
+        }
+      }
+    }
+    .tk-body{
+      background-color: $tkBodyBgColor;
+      padding-top: 10px;
+      .date{
+        color: $tkTitleColor;
+        font-size: 28px;
+        font-weight: bold;
+        position: relative;
+        display: inline-block;
+        &:after{
+          content: '';
+          display: inline-block;
+          width: 96%;
+          height: 2px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: 0 auto;
+          background-color: $color6;
+          @include border-radius($radiusBase);
+        }
+      }
+      .info{
+        color: $tkSubTitleColor;
+        margin-top: 4px;
+      }
+    }
+    .tk-footer{
+      background-color: $tkBodyBgColor;
+      padding: 10px 5%;
+      .title{
+        color: $tkTitleColor;
+      }
+      .info{
+        color: $tkSubTitleColor;
+        font-size: 13px;
+      }
+      p{
+        padding: 5px 0;
+      }
+      .tkf-content{
+        display: table;
+        width: 100%;
+        margin-bottom: 10px;
+        &>div{
+          width: 50%;
+          display: table-cell;
+          position: relative;
+          &:first-child:after{
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 0;
+            display: inline-block;
+            height: 60%;
+            width: 1px;
+            @include border-radius($radiusBase);
+            background-color: $tkSubTitleColor;
+          }
+        }
+      }
+    }
+    .tk-gap{
+      display: block;
+      height: 20px;
+      position: relative;
+      margin: 0 10px;
+      background-color: $tkBodyBgColor;
+      text-align: center;
+      &:after,&:before{
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        background: -webkit-radial-gradient(circle, transparent, transparent 50%, $tkBodyBgColor 50%, currentColor);
+        background: radial-gradient(circle, transparent, transparent 50%, $tkBodyBgColor 50%, $tkBodyBgColor);
+      }
+      &:before{
+        left: -19px;
+      }
+      &:after{
+        position: absolute;
+        right: -19px;
+      }
+      .line{
+        display: block;
+        width: 94%;
+        border-top: 1px dashed $borderColor;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+    }
+    .tk-btn{
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+    }
+    &.checked{
+      .tk-header,.tk-btn{
+        background-color: $color6;
+      }
+      .tk-checked{
+        display: block;
+        &:before{
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 0;
+          height: 0;
+          display: block;
+          border-bottom: 60px solid $color6;
+          border-right: 60px solid transparent;
+        }
+      }
+    }
+    &.expired{
+      .tk-header,.tk-btn{
+        background-color: $color6;
+      }
+    }
+    &.active{
+      .tk-header{
+        position: relative;
+        color: $white;
+      }
+      .tk-body{
+        .date{
+          color: $white;
+          &:after{
+            background-color: $white;
+          }
+        }
+        .info{
+          color: $white;
+        }
+      }
+      .tk-footer{
+        .title{
+          color: $white;
+        }
+        .info{
+          color: $white;
+          font-size: 13px;
+        }
+        .tkf-content{
+          &>div{
+            &:first-child:after{
+              background-color: $white;
+            }
+          }
+        }
+      }
+    }
+    
+  }
+}
+
+
+//快捷巴士列表
+.shuttle-list{
+  padding: 10px 10px 0 10px;
+  .shuttle-item{
+    margin-bottom: 15px;
+    @include border-radius($radiusSmall);
+    @include box-shadow(0px -1px 10px 1px #efefef);
+    background: $white;
+    .shuttle-body{
+      width: 100%;
+      padding: 10px 70px 15px 20px;
+      position: relative;
+      display: block;
+      min-height: 20px;
+      .item-bd{
+        .bd-tt{
+          font-size: 1.4rem;
+          color: $color6;
+          font-weight: 400;
+        }
+        .bd-txt{
+          margin-top: 6px;
+          font-size: 1.3rem;
+          color: $color6;
+        }
+        .price{
+          font-size: 16px;
+          color: $color3;
+        }
+      }
+      .item-right{
+        position: absolute;
+        right: 10px;
+        bottom: 15px;
+      }
+    }
+    .shuttle-header{
+      position: relative;
+      border-bottom: $borderStyle;
+      line-height: 4rem;
+      height: 4rem;
+      padding: 0 10px 0 70px;
+      .code{
+        color: $orange;
+        position: absolute;
+        left: 20px;
+        font-size: 1.6rem;
+        display: inline-block;
+      }
+      .name{
+        display: inline-block;
+        position: relative;
+        color: $color3;
+        font-size: 1.4rem;
+        padding: 0 10px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+      }
+      .more{
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 1.4rem;
+        padding-right: 15px;
+        color: $color9;
+      }
+    }
+  }
+}
+//快捷巴士线路和地图切换btn
+
+.shuttle-switch-btn{
+  position: fixed;
+  right: 10px;
+  bottom: 25px;
+  z-index: 1000;
+  display: block;
+  width: 38px;
+  height: 42px;
+  font-size: 13px;
+  color: $color3;
+  background-color: $white;
+  border: 0;
+  background: url("../../images/icons/liebiao@2x.png") no-repeat center;
+  @include background-size(100%);
+}
+//快捷巴士支付页面
+.shuttle-buy-section{
+  margin: 15px;
+  .sb-header{
+    text-align: center;
+    padding: 15px 0 5px;
+    line-height: 25px;
+    color: $white;
+    font-size: 16px;
+    .title{
+      font-size: 18px;
+    }
+    background-color: $orange;
+    @include border-top-left-radius($radiusSmall);
+    @include border-top-right-radius($radiusSmall);
+    @include box-shadow(1px 0px 1px 0px $borderColor);
+  }
+  .sb-gap{
+    display: block;
+    width: 100%;
+  }
+  .sb-body{
+    padding: 10px 20px 0;
+    color: $color6;
+    background-color: $white;
+    @include box-shadow(1px 0px 1px 0px $borderColor);
+  }
+  .sb-footer{
+    padding: 20px 25px;
+    background-color: $white;
+    @include border-bottom-right-radius($radiusSmall);
+    @include border-bottom-left-radius($radiusSmall);
+    @include box-shadow(1px 2px 1px 0px $borderColor);
+  }
+  .sb-count{
+    &>a{
+      position: relative;
+      width: 20px;
+      height: 20px;
+      color: $orange;
+      line-height: 16px;
+      border: 1px solid $orange;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      @include border-radius(50%);
+      &:after,&:before{
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        @include translateY(-50%);
+        background-color: $orange;
+        margin: 0 auto;
+      }
+      &.minus:after,&.plus:after{
+        width: 50%;
+        height: 1px;
+      }
+      &.plus:before{
+        width: 1px;
+        height: 50%;
+      }
+      &.disabled{
+        @include opacity(0.5);
+      }
+    }
+    input{
+      border: none;
+      width: 40px;
+      text-align: center;
+    }
+  }
+}
+//验票按钮
+.shuttle-quick-btn{
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -40px;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 16px;
+  color: $white;
+  cursor: pointer;
+  @include border-radius(50%);
+  border: 2px solid white;
+  background-color: $primary;
+  @include box-shadow(0 0 0px 5px $primary);
+  &:before{
+    content: '';
+    display: block;
+    width: 38px;
+    height: 20px;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 16px;
+    background: url("../../images/icons/check-bus@2x.png") no-repeat center;
+    @include background-size(100%);
+  }
+  &.active{
+    background-color: $orange;
+    @include box-shadow(0 0 0px 5px rgba(255, 140, 9, 0.6));
+  }
+}
+
+//快捷巴士地图页面
+.shuttle-buy-wrap{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  .sbw-content{
+    color: $colorText;
+    display: block;
+    width: 100%;
+    min-height: 97px;
+    background-color: $white;
+    @include box-shadow(0px 0px 15px 3px #ccc);
+    @include border-radius($radiusSmall);
+    .sml-body{
+      padding: 15px 100px 5px 15px;
+      border-bottom: $borderStyle;
+      position: relative;
+      .smb-name{
+        font-size: 14px;
+        color: $color3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .smb-hint{
+        margin-top: 4px;
+        font-size: 13px;
+        color: $color9;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .smi-buy-btn{
+        display: inline-block;
+        position: absolute;
+        top: 18px;
+        right: 15px;
+        padding: 3px 5px;
+        border: 1px solid $primary;
+        @include border-radius($radiusSmall);
+        .price-base{
+          position: relative;
+          top: 1px;
+        }
+      }
+    }
+    .sml-footer{
+      height: 33px;
+      line-height: 33px;
+      .smh-code{
+        display: inline-block;
+        color: $color9;
+        font-size: 14px;
+        position: relative;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: center;
+        //@include opacity(0.6);
+        &:before{
+          content: '';
+          display: inline-block;
+          position: relative;
+          top: -2px;
+          width: 10px;
+          height: 16px;
+          vertical-align: middle;
+          margin: 0 5px;
+          background: url("../../images/icons/pos-d@2x.png") no-repeat center;
+          @include background-size(100%);
+        }
+        &.active{
+          color: $green;
+          //@include opacity(1);
+          &:before{
+            background: url("../../images/icons/pos@2x.png") no-repeat center;
+            @include background-size(100%);
+          }
+        }
+      }
+      .bg-slide{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 33%;
+        height: 2px;
+        background-color: $primary;
+        @include border-radius($radiusBase);
+        @include transition(all ease .3s);
+      }
+    }
+  }
+}
+
+  //百度地图样式
+.shuttle-map-infobox{
+  color: $colorText;
+  width: 250px;
+  margin-bottom: 10px;
+  text-align: center;
+  &:after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid rgba(255, 255, 255, 0.9);
+  }
+  &>img:first-child{
+    display: none;
+  }
+  .sm-info-window{
+    @include border-radius($radiusSmall);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px  15px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+  }
+}
+
+.swiper-ticket-container{
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  .swiper-slide{
+    width: 82%;
+    margin: 0 2%;
+    @include scale(1, 0.9);
+    @include transition(all ease .3s);
+    &.swiper-slide-active{
+      @include scale(1);
+    }
+  }
+}
+//下载页面
+
+/*活动介绍*/
+.hd-download{
+  background-color: #43B3E0;
+  &>img{
+    width: 100%;
+    float: left;
+  }
+
+  .hld-text{
+    width: 100%;
+    float: left;
+    background-color: #44B6E4;
+  }
+  .hl-download{
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+    line-height: 35px;
+    margin: 20px auto 40px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #1E7DA6;
+  }
+}
+
+
+/*新用户注册*/
+.hl-activity{
+  /*margin-bottom: 50px;*/
+  &>img{
+    width: 100%;
+  }
+}
+.hl-activity-header{
+  margin: 0px 10px 10px 10px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.43);
+  border: 4px solid #c1defe;
+  opacity: 0.7;
+}
+.hl-activity-header p{
+  margin: 5px 0;
+}
+.hl-activity-desc{
+  margin: 20px 20px 0;
+  font-size: 13px;
+  color: #000;
+}
+.hl-activity-desc .hl-ad-title{
+  color: #f55d2e;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.hl-activity-desc p{
+  margin: 5px 0;
+}
+.hl-acb-tree{
+  width: 100%;
+  bottom: 5px;
+  z-index: 10;
+}
+
+//评价页面
+.bus-remark-section{
+  margin: 10px;
+  padding: 15px 20px;
+  background-color: $white;
+  @include border-radius($radiusSmall);
+  @include box-shadow(1px 1px 2px 0px #ccc);
+
+  .brc-item{
+    position: relative;
+    text-align: center;
+    margin: 10px 0;
+    .brc-title{
+      display: inline-block;
+      font-size: 16px;
+      color: $color6;
+      position: relative;
+      top: -7px;
+      margin-right: 6px;
+    }
+    .remark-star{
+      text-align: center;
+      display: inline-block;
+    }
+  }
+  .remark-desc{
+    display: inline-block;
+    color: $color3;
+    resize: none;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin: 30px 0 10px;
+    border: 1px solid $borderColor;
+    border-radius: $radiusSmall;
+    background-color: #F3F4F5;
+    @include box-shadow(0 0 5px 1px $bgColor);
+  }
+  .remark-text-count{
+    text-align: right;
+    color: $colorC;
+    padding: 0 5px;
+  }
+}
+
+//选座页面
+.bus-seats-wrap{
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  top: 0;
+  //bottom: 45px;
+  position: absolute;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
+.bus-seats-map{
+  position: relative;
+  width: 100%;
+  color: $white;
+  text-align: center;
+  .bsm-header{
+    @include border-radius($radiusSmall);
+    overflow: hidden;
+    background-color: $primary;
+    margin: 10px;
+  }
+  .bsm-body{
+    counter-reset: seatSortNum 0;
+  }
+  .bsmb-item{
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+    counter-increment: seatSortNum;
+    &:last-child{
+      border-bottom: none;
+    }
+    &>div{
+      position: relative;
+      width: 20%;
+      display: table-cell;
+      .seat-pic{
+        width: 48px;
+        height: 44px;
+        margin: 10px auto 34px;
+        background: url("../../images/seat/s-normal.png") no-repeat center;
+        @include background-size(100%);
+        &:before{
+          content: '已售';
+          visibility: hidden;
+          display: block;
+          position: relative;
+          height: 21px;
+          top: 10px;
+          font-size: 14px;
+        }
+        &:after{
+          content: '可选';
+          display: block;
+          background-color: $colorC;
+          position: relative;
+          top: 30px;
+          font-size: 13px;
+          @include border-radius($radiusSmall);
+        }
+      }
+      &.active{
+        .seat-pic{
+          background: url("../../images/seat/seat-active.png") no-repeat center;
+          @include background-size(100%);
+          &:before{
+            visibility: hidden;
+          }
+          &:after{
+            content: '已选';
+            background-color: $green;
+          }
+        }
+      }
+      &.out{
+        .seat-pic{
+          background: url("../../images/seat/seat-out.png") no-repeat center;
+          @include background-size(100%);
+          &:before{
+            visibility: visible;
+          }
+          &:after{
+            content: '不可选';
+          }
+        }
+      }
+      .seat-title{
+        width: 20px;
+        margin: 0 auto;
+        background-color: #efefef;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        &:before{
+          //content: attr(data-index);
+          content: counter(seatSortNum);
+          display: block;
+          background-color: $primary;
+          font-size: 13px;
+          @include border-radius($radiusSmall);
+          position: absolute;
+          top: 50%;
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+

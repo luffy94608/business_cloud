@@ -1,0 +1,113 @@
+﻿@charset "UTF-8";
+
+//---------------------------------------------------
+// form.scss
+//---------------------------------------------------
+
+$formLabelWidth: 80px !default;
+
+$formNoLabelSwitch: true !default;
+
+
+.f-text,
+.f-textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid $colorBorder;
+}
+.f-text{
+    height: $barHeight;
+    padding: 7px 5px;
+    &.f-text--right-icon{
+        padding-right: 30px;
+    }
+}
+.f-textarea {
+    height: 100px;
+    line-height: 1.5;
+    resize: none;
+}
+.form{
+    background: #fff;
+    @extend %border-tb;
+    &.hidden-border-top{
+        &::before {
+            content: "";
+            border-top: none;
+            z-index: 1;
+        }
+    }
+}
+.form-item{
+    align-items: center;
+    position: relative;
+    padding-left: 85px;
+    line-height: $barHeight;
+    overflow: hidden;
+    &:not(:first-of-type)::before {
+        content: "";
+        @include retina-one-px-border;
+    }
+
+    .item-label{
+        width: $formLabelWidth;
+        padding-left: 10px;
+        position: absolute;
+        left: 0;
+    }
+    .item-field{
+        .f-text{
+            display: block;
+            border: 0 none;
+            width: 100%;
+            box-sizing: border-box;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .icon-input-clear{
+            height: $barHeight;
+        }
+    }
+    .item-append{
+        margin-right: 10px;
+        color: $color9;
+        + .icon-v-right{
+            margin-left: -10px;
+        }
+    }
+    .img-captcha{
+        margin-left: 10px;
+    }
+    .icon-v-right{
+        display: block;
+        width: 30px;
+        height: $barHeight;
+        color: #ccc;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+@if $formNoLabelSwitch {
+    .form--no-label{
+        .form-item{
+            padding-left: 0;
+        }
+        .f-text,
+        .f-textarea {
+            border: 0 none;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}
+
+.fixed-to-dialog {
+    position: fixed;
+    z-index: 4002;
+    width: 100%;
+    border-bottom: 1px solid $borderColor;
+    background: white;
+}
+

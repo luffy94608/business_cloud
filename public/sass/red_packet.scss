@@ -1,0 +1,282 @@
+/* Welcome to Compass.
+ * 红包模板
+ */
+@import "compass/css3";
+@import "compass/css3/box";
+@import "compass/utilities";
+
+@import "./components/variables";
+
+.hl-red-packet-body{
+  position: relative;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 5px;
+  .hl-rp-bg-1{
+      margin: 0 auto;
+      text-align: center;
+      width: 400px;
+      height: 365px;
+      background: url("../images/red-packet/gift-1-envelope@2x.png") no-repeat center;
+      @include background-size(120%);
+  }
+  .hl-rp1-title{
+    position: absolute;
+    top: 75px;
+    left: 0;right: 0;
+    color: #f52929;
+    font-size: 15px;
+    font-weight: bold;
+    width: 190px;
+    margin: 0 auto;
+  }
+  .hl-rp1-content{
+    position: absolute;
+    top: 120px;
+    font-weight: 100;
+    left: 0;right: 0;
+    text-align: left;
+    font-size: 14px;
+    color: #f52929;
+    width: 190px;
+    margin: 0 auto;
+  }
+  .hl-rp1-btn{
+      position: absolute;
+      left: 0;right: 0;
+      bottom: 1px;
+      text-align: center;
+      color: $white;
+      font-size: 17px;
+      margin: 0 auto ;
+      width: 290px;
+      height: 48px;
+      line-height: 48px;
+      background: url("../images/red-packet/gift-1-footer@2x.png") no-repeat center;
+      @include background-size(cover);
+  }
+
+  @media screen and (max-width: 375px) {
+    .hl-rp-bg-1{
+      margin: 0 auto;
+      width: 320px;
+      text-align: center;
+      height: 282px;
+      background: url("../images/red-packet/gift-1-envelope@2x.png") no-repeat center;
+      @include background-size(115%);
+      .hl-rp1-title{
+        position: absolute;
+        top: 55px;
+        left: 0;right: 0;
+        color: #f52929;
+        font-size: 13px;
+        font-weight: bold;
+        width: 160px;
+        margin: 0 auto;
+      }
+      .hl-rp1-content{
+        position: absolute;
+        top: 90px;
+        font-weight: 100;
+        left: 0;
+        right: 0;
+        text-align: left;
+        font-size: 14px;
+        color: #f52929;
+        width: 150px;
+        margin: 0 auto;
+      }
+      .hl-rp1-btn{
+        position: absolute;
+        left: 0;right: 0;
+        bottom: 0px;
+        text-align: center;
+        color: $white;
+        font-size: 17px;
+        margin: 0 auto ;
+        width: 250px;
+        height: 42px;
+        line-height: 40px;
+        background: url("../images/red-packet/gift-1-footer@2x.png") no-repeat center;
+        @include background-size(cover);
+      }
+    }
+  }
+
+  .hl-rp-img{
+    margin: 0 auto;
+  }
+  .hl-rp-btn-1{
+    display: block;
+    font-size: 16px;
+    padding: 0 20px;
+    color: #ffffff;
+    margin: 0 5px;
+    border: 1px solid #dd3429;
+    height: 49px;
+    line-height: 49px;
+    @include border-radius(50px);
+    background-color: #dd3429;
+  }
+  .hl-rp-title{
+    color: $white;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 40px;
+    padding: 0 20px;
+  }
+  .hl-rp-sub-title{
+      font-size: 15px;
+      line-height: 1.5em;
+      font-weight: bold;
+      padding: 0 20px;
+  }
+}
+.hl-rp-close-1{
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 25px;
+  height: 24px;
+  background: url("../images/red-packet/gift-1-delete@3x.png") no-repeat center;
+  @include background-size(100%);
+}
+
+.hl-rp-close-2{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 24px;
+  background: url("../images/red-packet/gift-2-delete@3x.png") no-repeat center;
+  @include background-size(100%);
+}
+.hl-rp-close-4{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 46px;
+  background: url("../images/red-packet/gift-4-del@2x.png") no-repeat center;
+  @include background-size(100%);
+}
+
+//车票不弹层红包
+.hl-tr-packet{
+  position: absolute;
+  top: -40px;
+  right: -10px;
+  z-index: 10;
+  width: 75px;
+  height: 75px;
+  background: url("../images/red-packet/icon-ticket-packet-empty.png") no-repeat center;
+  @include background-size(75px 75px);
+  span{
+    position: relative;
+    top: 36px;
+    line-height: 15px;
+    width: 24px;
+    display: inline-block;
+    font-size: 12px;
+    color: #FAE47B;
+    @include transform(rotate(5deg) scale(.7));
+  }
+  @include animation(flip 2s  infinite alternate);
+
+}
+
+/*分享红包*/
+.hl-th-share-packet{
+  position: relative;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.hlthp-img{
+  width: 100%;
+}
+.hlthp-img-title{
+  text-align: center;
+  width: 90%;
+  position: relative;
+  bottom: -6px;
+}
+.hlthp-img-title img{
+  width: 197px;
+  height: 120px;
+  margin: 0 auto;
+}
+.hlthp-title{
+  color: #E95449;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 40px;
+}
+.hlthp-desc{
+  color: #333333;
+  line-height: 25px;
+  font-size: 15px;
+  padding: 0 25px;
+  margin: 30px 0;
+}
+.hlthp-button-list{
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  margin: 42px 10px 10px;
+}
+.hlthp-button{
+  display: block;
+  font-size: 16px;
+  width: 100%;
+  color: #ffffff;
+  border: 1px solid #ff4958;
+  height: 49px;
+  line-height: 49px;
+  border-radius: 2px;
+  background-color: #ff4958;
+}
+
+@include keyframes(animation-red-packet){
+  0%{
+    @include transform(rotate(0deg));
+  }
+  80%{
+    @include transform(rotate(0deg));
+    @include transform(scale(.9));
+  }
+  90%{
+    @include transform(rotate(0deg) scale(1.2));
+  }
+}
+
+@include keyframes(flip){
+    0%{
+      @include transform(perspective(400px) translateZ(0) rotateY(0) scale(1));
+      @include animation-name(ease-out);
+      @include opacity(1);
+    }
+    40%{
+      @include transform(perspective(400px) translateZ(150px) rotateY(170deg) scale(1));
+      @include animation-name(ease-out);
+    }
+    50%{
+      @include transform(perspective(400px) translateZ(150px) rotateY(190deg) scale(1));
+      @include animation-name(ease-in);
+      @include opacity(.7);
+    }
+    80%{
+      @include transform(perspective(400px) translateZ(0) rotateY(360deg) scale(.95));
+      @include animation-name(ease-in);
+
+    }
+    100%{
+      @include transform(perspective(400px) translateZ(0) rotateY(360deg) scale(1));
+      @include animation-name(ease-in);
+    }
+}

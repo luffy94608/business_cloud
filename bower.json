@@ -1,0 +1,37 @@
+{
+  "name": "app",
+  "description": "web",
+  "main": "",
+  "authors": [
+    "xiufei.lu"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zepto": "~1.1.6",
+    "jquery": "~2.2.3",
+    "requirejs": "~2.2.0",
+    "r.js": "~2.2.0",
+    "html5shiv": "~3.7.3",
+    "sheral": "imweb/sheral",
+    "jquery-cookie": "~1.4.1",
+    "datepicker": "luffy94608/datepicker",
+    "iscroll": "v4",
+    "fastclick": "~1.0.6",
+    "jscroll": "pklauzinski/jscroll#~2.3.7",
+    "dropload": "~0.9.1",
+    "swiper": "~3.4.2",
+    "art-template": "~3.1.3"
+  }
+}

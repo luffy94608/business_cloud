@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+//新版哈罗优惠券
+.hl-coupon-list{
+  padding: 10px;
+  &>label{
+    display: block;
+  }
+  li{
+    position: relative;
+    margin: 10px 0;
+    background-color: #fff;
+    @include box-shadow(0 2px 5px #ccc);
+    @include border-radius(2px);
+    overflow: hidden;
+  }
+}
+
+.hl-coupon{
+  $theme-color: #FF8800;
+  .hlc-title{
+    color: $white;
+    font-size: 13px;
+    height: 24px;
+    text-indent: 1em;
+    line-height: 30px;
+    background-color: $theme-color;
+  }
+  .coupon-radio{
+    display: inline-block;
+    border: 1px solid $theme-color;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    right: 14px;
+    bottom: 20px;
+    &:checked{
+      background: #ff8800 url("../../images/white_check@2x.png") no-repeat center;
+      background-size: 80%;
+    }
+  }
+  .hlc-content{
+    background: url("../../images/coupon-gap.png") repeat-x top;
+    @include background-size(14px 10px);
+    @include display-box;
+    padding: 16px 8px;
+    .hlcc-left{
+      position: relative;
+      text-align: center;
+      min-width: 80px;
+      color: $theme-color;
+      font-size: 55px;
+      border-right: 1px dashed $theme-color;
+      span{
+        position: relative;
+        display: block;
+        vertical-align: middle;
+      }
+      sub{
+        color: $theme-color;
+        font-size: 18px;
+        position: absolute;
+        left: -3px;
+        bottom: 10px;
+      }
+    }
+    .hlcc-right{
+      @include box-flex(1);
+      padding-left: 10px;
+      .title{
+        color: $color3;
+        font-size: 14px;
+        line-height: 14px;
+        padding: 5px 0;
+      }
+      .sub-title{
+        color: $color6;
+        font-size: 12px;
+        line-height: 16px;
+        padding: 5px 0;
+      }
+    }
+  }
+  &.expired{
+    .hlc-title{
+      background-color: $color9;
+    }
+    .hlc-content{
+      background: url("../../images/coupon-gap-grey.png") repeat-x top;
+      @include background-size(14px 10px);
+      .hlcc-left{
+        color: $color9;
+        border-right: 1px dashed $color9;
+        sub{
+          color: $color9;
+        }
+      }
+    }
+  }
+}

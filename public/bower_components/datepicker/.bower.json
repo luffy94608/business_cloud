@@ -1,0 +1,14 @@
+{
+  "name": "datepicker",
+  "homepage": "https://github.com/luffy94608/datepicker",
+  "_release": "35ac49734a",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "35ac49734a840451aac7c1a38ed99bb3414778e6"
+  },
+  "_source": "git://github.com/luffy94608/datepicker.git",
+  "_target": "*",
+  "_originalSource": "luffy94608/datepicker",
+  "_direct": true
+}

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+//-----------------------------------------------------
+// overlay scss
+//-----------------------------------------------------
+
+.overlay {
+  display: none;
+  background: $colorOverlay;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  transition: all .2s;
+  @include fixed(all);
+  z-index: -1;
+  .active &,
+  &.active {
+    display: block;
+  }
+  // 全透明
+  &.overlay--transparent {
+    background:rgba(0,0,0,0);
+  }
+}

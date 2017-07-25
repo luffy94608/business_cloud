@@ -1,0 +1,199 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ */
+//@import "compass/utilities/sprites";
+//@import "../images/icons/*.png";
+
+@mixin createIcon($width,$height,$img,$suffix:'png'){
+  display: inline-block;
+  width: $width;
+  height: $height;
+  vertical-align: middle;
+  background: url("../images/icons/#{$img}.#{$suffix}") no-repeat center;
+  background-size: $width $height;
+}
+
+.icon-user{
+  @include createIcon(20px, 25px, 'user@2x');
+}
+.icon-psw{
+  @include createIcon(20px, 25px, 'lock@2x');
+}
+.icon-code{
+  @include createIcon(20px, 25px, 'edit@2x');
+}
+.icon-edit{
+  @include createIcon(18px, 18px, 'edit');
+}
+.icon-tel{
+  fill: $blue;
+  width: 50px;
+  height: 50px;
+  transform-origin: center;
+  @include transform(rotate(245deg));
+  margin-top: -10px;
+}
+.icon-arrow-right{
+  fill: $blue;
+  vertical-align: middle;
+  @include transform(rotate(-90deg));
+}
+.icon-location{
+  @include createIcon(20px, 18px, 'location');
+}
+
+.station-time{
+  position: relative;
+  top: -1px;
+  margin-right: 4px;
+  @include createIcon(10px, 10px, 'time@2x');
+}
+
+//小圆点
+.circle-point{
+  display: inline-block;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 10px;
+  background-color: $color9;
+  opacity: 0.8;
+  &.red{
+    background-color: $red;
+  }
+  &.green{
+    background-color: $green;
+  }
+}
+.read-checkbox{
+  border: 1px solid $color6;
+  @include border-radius(3px);
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  background-color: $white;
+  &:checked{
+    &:after{
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      background: url("../../images/icons/b-right@3x.png") no-repeat center;
+      background-color: $white;
+      @include background-size(100%);
+      @include border-radius(3px);
+    }
+  }
+  &.yellow{
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    @include border-radius(2px);
+    &:checked{
+      &:after{
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: -4px;
+        right: -3px;
+        width: 15px;
+        height: 15px;
+        background: url("../../images/icons/y-right@2x.png") no-repeat center;
+        @include background-size(100%);
+        @include border-radius(2px);
+      }
+    }
+  }
+}
+
+
+//评分
+$starColor : transparent;
+$starActiveColor : $green;
+.ap-star{
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin: 25px 0;
+  position: relative;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom-width: 17.5px;
+  border-bottom-style: solid;
+  border-bottom-color: $borderColor;
+  @include transform(rotate(35deg) scale(0.8));
+  &:before{
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-bottom-width: 20px;
+    border-bottom-style: solid;
+    border-bottom-color: $borderColor;
+    position: absolute;
+    top: -11px;
+    left: -16px;
+    display: block;
+    @include transform(rotate(-35deg));
+
+  }
+  &:after{
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    position: absolute;
+    top: 0.7px;
+    left: -26px;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom-width: 17.5px;
+    border-bottom-style: solid;
+    border-bottom-color: $borderColor;
+    @include transform(rotate(-70deg));
+  }
+  &.active{
+    &,&:before,&:after{
+      border-bottom-color: $starActiveColor;;
+    }
+  }
+}
+
+.hl-star{
+  display: inline-block;
+  margin: 0 2px;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: url("../../images/icons/start.png") no-repeat center;
+  @include background-size(100%);
+  @include transition(all ease .3s);
+  &.active{
+    background: url("../../images/icons/start-active.png") no-repeat center;
+    @include background-size(100%);
+  }
+}
+
+
+.circle-input-checkbox{
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  position: relative;
+  top: -1px;
+  margin-right: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid $borderColor;
+  &:checked{
+    border: 5px solid $green;
+  }
+}
