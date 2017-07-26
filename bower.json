@@ -24,7 +24,6 @@
     "requirejs": "~2.2.0",
     "r.js": "~2.2.0",
     "html5shiv": "~3.7.3",
-    "sheral": "imweb/sheral",
     "jquery-cookie": "~1.4.1",
     "datepicker": "luffy94608/datepicker",
     "iscroll": "v4",

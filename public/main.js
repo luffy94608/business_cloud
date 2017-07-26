@@ -3,7 +3,7 @@
     var configData = document.global_config_data;
     var version = configData.version;
     requirejs.config({
-        baseUrl: configData.resource_root + '/release/',
+        baseUrl: configData.resource_root + '/scripts/',
         urlArgs: 'v=' + version,
         waitSeconds: 0,
         paths: {
@@ -17,6 +17,7 @@
             'dropload': '/bower_components/dropload/dist/dropload.min',
             'art-template': '/bower_components/art-template/dist/template',
             'swiper': '/bower_components/swiper/dist/js/swiper.jquery.min',
+            'bootstrap': '/sass/bootstrap-sass-3.3.7/assets/javascripts/bootstrap.min',
             'widget': 'widget/widget',
             'ticket': 'widget/ticket',
             'new-ticket': 'widget/new_ticket',
@@ -64,10 +65,10 @@
             'lib': ['jquery'],
             'dropload': ['jquery'],
             'swiper': ['jquery'],
-            'widget': ['jquery','string','http','cache','fastclick', 'dropload'],
+            'widget': ['jquery','string','http','cache','fastclick', 'dropload', 'bootstrap'],
 
             'bonus': ['widget', 'art-template'],
-            'base': ['bonus'],
+            'base': ['widget'],
             'ticket': ['base'],
             'new-ticket': ['base'],
             'seat': ['base'],

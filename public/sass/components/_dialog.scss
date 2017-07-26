@@ -133,7 +133,6 @@
         overflow: hidden;
         text-align: center;
         line-height: $barHeight - 10;
-        @include equal-flex('.ft-btn');
         button{
             line-height: normal;
             height: $barHeight;

@@ -1,45 +1,25 @@
 @charset "UTF-8";
+@import "variables";
 
 //全局样式
-html{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size:  62.5%;
-  margin: 0 auto;
-  color: $color3;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-html,body{
-  background-color: $bgColor;
-}
-* {
-  -webkit-appearance:none;
-  -webkit-tap-highlight-color:transparent;
-}
-select{
-  background-color: #fff;
-}
-.wrap{
-  padding: 20px;
-}
+//html{
+//  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+//  font-size:  62.5%;
+//  margin: 0 auto;
+//  color: $color3;
+//  -ms-text-size-adjust: 100%;
+//  -webkit-text-size-adjust: 100%;
+//}
+//html,body{
+//  background-color: $bgColor;
+//}
+//* {
+//  -webkit-appearance:none;
+//  -webkit-tap-highlight-color:transparent;
+//}
 .gone{
   display: none!important;
 }
-.inline-block{
-  display: inline-block;
-}
-.block{
-  display: block;
-}
-
-.font-lighter{
-  font-weight: lighter;
-}
-
-.relative{
-  position: relative;
-}
-
 .v-hidden{
   visibility: hidden;
 }
@@ -47,99 +27,30 @@ select{
   overflow: hidden;
   -webkit-overflow-scrolling: auto;
 }
-.text-underline{
-  text-decoration: underline;
-}
-
-.empty-list{
-  position: fixed;
-  width: 100%;
-  text-align: center;
-  z-index: 0;
-  top: 50%;
-  @include translateY(-50%);
-  &.relative{
-    position: relative;
-    margin-top: 30%;
-    @include translateY(0%);
-  }
-  .eb-content{
-    color: $colorC;
-    font-size: 16px;
-    margin: 0 auto;
-    &:before{
-      content: '';
-      display: block;
-      margin: 0 auto 15px;
-    }
-    &.bus:before{
-      width: 71px;
-      height: 65px;
-      background: url("../../images/icons/empty-bus@2x.png") no-repeat center;
-      @include background-size(100%);
-    }
-    &.coupon:before{
-      width: 61px;
-      height: 42px;
-      background: url("../../images/empty/coupon@2x.png") no-repeat center;
-      @include background-size(100%);
-    }
-    &.ticket:before{
-      width: 62px;
-      height: 39px;
-      background: url("../../images/empty/ticket@2x.png") no-repeat center;
-      @include background-size(100%);
-    }
-    &.cash:before{
-      width: 61px;
-      height: 48px;
-      background: url("../../images/empty/cash@2x.png") no-repeat center;
-      @include background-size(100%);
-    }
-  }
-}
-
-.disabled{
-  opacity: 0.4;
-}
-.clearfix{
-  &:before,&:after{
-    content: "";
-    display: table;
-  }
+.clear-fix{
+  *zoom:1;
   &:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: "";
     clear: both;
+    height: 0;
   }
-}
-.fxWH-25{
-  width: 25px;
-  height: 25px;
-}
-.width-p-100{
-  width: 100%!important;
 }
 .border-none{
   border: none!important;
 }
-.bg-light-blue{background-color: #cde9fe!important;}
-.bg-transparent{background-color: transparent!important;}
 //颜色
 //$colorMap : ( white : thite, red : $red, blue : $blue, link : $colorLink, hint : $color6 );
-$colorMap : (-yellow #ffde00 ) ( -white  $white ) (-red   $red) (-blue  $blue) (-link $colorLink) (-hint $color6 ) (-title $color3 ) (-orange $orange ) (-primary $primary ) (-green $green);
+$colorMap : (-yellow #ffde00 ) ( -white  $white ) (-red   $red) (-pink   $pink) (-blue  $blue) (-dark-blue  $darkBlue)  (-hint $textHint ) (-title $title ) (-sub-title $subTitle ) (-orange $orange ) (-green $green) (-light-green $lightGreen);
 @each $colorKey, $colorValue in $colorMap {
   .color#{$colorKey}{
     color: $colorValue!important;
   }
 }
 
-$colorFillMap : ( -grey  $color9 ) ( -white  $white ) (-red   $red) (-blue  $blue) (-orange $orange) (-green $green);
-@each $colorFillKey, $colorFillValue in $colorFillMap {
-  .fill#{$colorFillKey}{
-    fill: $colorFillValue!important;
-  }
-}
-
-$bgColorMap : ( -white  $white ) (-red   $red) (-blue  $blue) (-orange $orange) (-green $green) (-primary $primary) (-grey $bgColor);
+$bgColorMap : ( -white  $white ) (-red   $red) (-blue  $blue) (-dark-blue  $darkBlue) (-orange $orange) (-green $green) (-light-green $lightGreen) (-grey $bgGrey);
 @each $bgColorKey, $bgColorValue in $bgColorMap {
   .bg#{$bgColorKey}{
     background-color: $bgColorValue!important;
@@ -154,11 +65,25 @@ $textAlignMap : left center right;
   }
 }
 
+$positionMap : absolute relative fixed;
+@each $positionItem in $positionMap {
+  .p-#{$positionItem}{
+    position: $positionItem;
+  }
+}
+
+$displayMap : block inline-block;
+@each $displayItem in $displayMap {
+  .d-#{$displayItem}{
+    position: $displayItem;
+  }
+}
+
 //font
-$fontMap : ( 12  1.2rem ) ( 13  1.3rem ) ( 14  1.4rem )  ( 16  1.6rem )  ( 18  1.8rem ) ( 20  2.0rem ) ( 24  2.4rem ) ( 30  3rem ) ( 36  3.6rem ) ;
+$fontMap : ( 12  12 ) ( 13  13 ) ( 14  14 )  ( 16  16 )  ( 18  18 ) ( 20  20 ) ( 24  24 ) ( 30  30 ) ( 36  36 ) ;
 @each $fontKey,$fontValue in $fontMap {
   .font-#{$fontKey}{
-    font-size: $fontValue!important;
+    font-size: $fontValue*1px!important;
   }
 }
 
@@ -166,7 +91,7 @@ $fontMap : ( 12  1.2rem ) ( 13  1.3rem ) ( 14  1.4rem )  ( 16  1.6rem )  ( 18  1
 $bordersMap : top right bottom left;
 @each $borderItem in $bordersMap {
   .border-#{$borderItem}{
-    border-#{$borderItem}: $borderStyle;
+    border-#{$borderItem}: 1px solid $borderColor;
   }
 }
 
@@ -206,308 +131,7 @@ $bordersMap : top right bottom left;
   }
 }
 
-
-//margin padding
-@for $i from 1 through 100{
-  $key :  $i * 1;
-  $value :  $i * 60ms;
-  .ant-delay-#{$key}{
-    @include animation-delay($value);
-  }
-}
-
-//变色动画
-.bg-color-transition{
-  @include animation(bgColorTransition ease 1.4s infinite);
-}
-
-$bgTranMap :#1d6459 #975000 #844949 #004073 #ac355d #6b0581 #514739 ;
-@include keyframes(bgColorTransition) {
-  $step : 100/(length($bgTranMap));
-  @each $bgValue in $bgTranMap {
-    $key : '#{(index($bgTranMap, $bgValue)-1)*$step}%';
-    #{$key} {
-      background-color: $bgValue;
-    }
-  }
-}
-
-.display-flex{
-  @include display-box;
-  @include box-align(center);
-  @include box-pack(justify);
-  //@include display-flex;
-  //@include flex-flow(row no-wrap);
-  //@include align-items(center);
-}
-.box-flex-1{
-  @include box-flex(1);
-}
-
-.animate-overlay{
-  position: fixed;
-  z-index: 2000;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  top: 0;
-  background-color: $bgColor;
-  @include transition(all .3s cubic-bezier(0.165,.84,.44,1));
-  @include transform(translate(0%,100%));
-  &.show{
-    @include transform(translate(0%,0%));
-  }
-}
-
-.dis-animate-overlay{
-  position: fixed;
-  z-index: 2000;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  top: 0;
-  background-color: $bgColor;
-  display: none;
-  &.show{
-    display: block;
-  }
-}
-label > * {
-  pointer-events: none;
-}
-
-
-//分割线路
-.gap-line{
-  position: relative;
-  font-size: 1.8rem;
-  padding: 10px 0;
-  color: $color3;
-  text-align: center;
-  @include display-box;
-  &:before,&:after{
-    content: '';
-    @include box-flex(1);
-    display: block;
-    height: 1px;
-    border-top: 1px solid $color3;
-    position: relative;
-    top: 12px;
-    @include transform(scaleY(0.5));
-  }
-  &:before{
-    margin-right: 15px;
-  }
-  &:after{
-    margin-left: 15px;
-  }
-}
-
-
-//分享微信modal
-.share-overlay{
-  position: absolute;
-  top: -115px;
-  left: 0;
-  width: 100%;
-  color: $colorLink;
-  padding: 35px 0;
-  text-align: center;
-  background: #fff;
-  border-radius: 0px;
-  overflow: hidden;
-  z-index: 4005;
-  @include transition(all .3s cubic-bezier(0.165,.84,.44,1));
-  &.show{
-    top: 0%;
-  }
-  .share-arrow{
-    position: absolute;
-    width: 40px;
-    top: 10px;
-    right: 30px;
-  }
-}
-
-.loading-more{
-  height: 40px;
-  line-height: 40px;
-  &:before{
-    content: '加载更多';
-  }
-  &.loading:before{
-    content: '';
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: url("../../images/icons/three-dots.svg") no-repeat center;
-    vertical-align: middle;
-    background-size: 30px;
-  }
-}
-
-//地图
-#map-container{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-.fix-map-up{
-  position: relative;
-  z-index: 10;
-  background-color: $white;
-  @include box-shadow(0 0 5px 1px $borderColor);
-  .fm-empty{
-    font-size: 16px;
-    text-align: center;
-    padding: 20px 0;
-  }
-  .fm-item{
-    position: relative;
-    padding-right: 60px;
-    .fmo-left{
-      p{
-        font-size: 16px;
-        padding: 2px 0;
-        color: $color3;
-      }
-      .sub-title{
-        color: $color6;
-      }
-    }
-    .fmo-right{
-      position: absolute;
-      top: 50%;
-      right: 5px;
-      @include translateY(-50%);
-      a{
-        display: block;
-      }
-    }
-  }
-}
-.fx-bus{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  background: url("../../images/icons/bus@2x.png") no-repeat center;
-  @include background-size(100%);
-}
-
-//百度地图样式
-.custom-map-infobox{
-  background-color: rgba(255, 255, 255, 0.9);
-  color: $colorText;
-  width: 220px;
-  padding: 10px;
-  @include border-radius(3px);
-  @include box-shadow(0 0 1px 1px $borderColor);
-  &:after{
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    bottom: -10px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 10px solid rgba(255, 255, 255, 0.9);
-  }
-  &>img:first-child{
-    display: none;
-  }
-}
-
-.BMap_noprint.anchorBL{
-  left: 10px!important;
-}
-.marker-station{
-  display: table;
-  width: 100%;
-  &>div{
-    display: table-cell;
-    vertical-align: middle;
-  }
-  .ms-left{
-    width: 180px;
-    .msl-name{
-      font-size: 14px;
-      color: $color3;
-      //white-space: nowrap;
-      //text-overflow: ellipsis;;
-      margin-bottom: 5px;
-    }
-    .msl-content{
-      position: relative;
-      height: 25px;
-      line-height: 25px;
-      .msl-time{
-        display: inline-block;
-        font-size: 14px;
-        color: $color9;
-      }
-      .msl-btn{
-        font-size: 13px;
-        color: $color6;
-        position: absolute;
-        left: 0;
-        top: 0;
-        cursor: pointer;;
-      }
-    }
-
-  }
-  .ms-right{
-    position: relative;
-    padding: 0 0 0 10px;
-    &:before{
-      content: '';
-      display: inline-block;
-      position: absolute;
-      top: 13%;
-      left: 0;
-      height: 74%;
-      width: 1px;
-      background-color: $borderColor;
-    }
-    &>a{
-      width: 50px;
-      display: block;
-      text-align: center;
-    }
-    .msr-go{
-      display: inline-block;
-      width: 20px;
-      height:28px;
-      background: url("../../images/makers/go.png") no-repeat center;
-      @include background-size(100%);
-    }
-    .msr-txt{
-      font-size: 13px;
-      margin-top: 5px;
-      color: $orange;
-    }
-  }
-    
-}
-
-.BMap_Marker.animation{
-  @include transition(all cubic-bezier(0.165,.84,.44,1) 1s);
-  &.disabled{
-    @include opacity(1);
-    @include transition(none cubic-bezier(0.165,.84,.44,1) 0s);
-  }
-}
-
-//error
+//报错页面
 .error-section{
   position: fixed;
   width: 100%;
@@ -520,7 +144,7 @@ label > * {
     margin: 6px 0;
   }
   .es-content{
-    color: $color9;
+    color: $subTitle;
     margin: 0 auto;
     font-size: 14px;
     &:before{
@@ -533,8 +157,5 @@ label > * {
       margin: 0 auto 15px;
     }
   }
-}
-.animated{
-  animation-duration: .6s!important;
 }
 

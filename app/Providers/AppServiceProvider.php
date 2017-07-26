@@ -27,26 +27,26 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         View::composer('*',function($view){
-            $env = env('APP_ENV');
-            if ($env == 'local') {
-                $jsSdk = \GuzzleHttp\json_encode([]);
-            } else {
-                $wechat = new WechatController();
-                $jsSdk = $wechat->getJsSdk();
-            }
-            $config = \Cache::get('hollo_config');
-            if (empty($config)) {
-                $result  = OtherApi::getConfig();
-                if (isset($result['code']) && $result['code']===0) {
-                    $config = $result['data']['config'];
-                    \Cache::put('hollo_config', $config, 60*60*24);
-                } else {
-                    $config = [];
-                }
-            }
+//            $env = env('APP_ENV');
+//            if ($env == 'local') {
+//                $jsSdk = \GuzzleHttp\json_encode([]);
+//            } else {
+//                $wechat = new WechatController();
+//                $jsSdk = $wechat->getJsSdk();
+//            }
+//            $config = \Cache::get('hollo_config');
+//            if (empty($config)) {
+//                $result  = OtherApi::getConfig();
+//                if (isset($result['code']) && $result['code']===0) {
+//                    $config = $result['data']['config'];
+//                    \Cache::put('hollo_config', $config, 60*60*24);
+//                } else {
+//                    $config = [];
+//                }
+//            }
             $params = [
-                'config'=>$config,
-                'js_api_list'=>$jsSdk
+//                'config'=>$config,
+//                'js_api_list'=>$jsSdk
             ];
             $view->with($params);
         });

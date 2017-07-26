@@ -19,10 +19,7 @@ $(document).ready(function () {
             }
         });
     }
-    /**
-     * 微信分享
-     */
-    $.initWxShareConfigWithData();
+
 
     /**
      * 全局调转事件
@@ -65,67 +62,12 @@ $(document).ready(function () {
     };
 
     /**
-     * 跳转指定项目
-     */
-    setTimeout(function () {
-        var scrollTop = $.getRecordPageScrollTopHeight();
-        var tHeight=$(document).height();
-        if(scrollTop<tHeight){
-            $(window).scrollTop(scrollTop);
-        }
-    }, 500);
-
-    /**
-     * safari 返回不刷新bug
-     */
-    if ($.browser.iPhone) {
-        if(!!window.performance && window.performance.navigation.type === 2)
-        {
-            window.location.reload();
-        } else {
-            window.onpageshow = function(event) {
-                if (event.persisted) {
-                    window.location.reload()
-                }
-            };
-        }
-    }
-
-
-    /**
      * 自定义class 阻止冒泡事件
      */
     $(document).on('click', '.js_disabled_btn', function (e) {
         e.stopPropagation();
     });
 
-    /**
-     * 红包检测
-     */
-    $.checkRedPacketBonusEvent();
 
-    /**
-     * 离线验票有网络处理
-     */
-    var checkOffLineTicketEvent = function () {
-        var cacheData = $.localCache.get($.offLineCheckedTicketKey);
-        if (navigator.onLine && cacheData) {//有网络
-            $.wpost($.httpProtocol.CHECK_OFF_LINE_TICKET,cacheData,function (data) {
-                $.localCache.remove($.offLineCheckedTicketKey);
-                setTimeout(function () {
-                    checkOffLineTicketEvent();
-                },2000);
-            },function () {
-            },true);
-        } else {
-            setTimeout(function () {
-                checkOffLineTicketEvent();
-            },2000);
-        }
-    };
-    checkOffLineTicketEvent();
-
-
-    
 
 });

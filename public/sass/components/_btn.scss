@@ -11,6 +11,63 @@ $btnSize:                         (s: 30px, m: $barHeight) !default; // 默认�
 $btnColor:                        #333 #e6e6e6 !default; // 默认按钮的textColor, bgColor
 
 
+
+// btn
+//----------------------------------------------------
+// btn-basic
+// 按钮基本样式，联合申明
+%btn-basic {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    user-select: none;
+    padding: 0 1em;
+    white-space: nowrap;
+}
+
+// btn-size
+// 按钮大小
+@mixin btn-size($padding: 1em, $height: $barHeight, $radius: 3px) {
+    padding: 0 $padding;
+    line-height: $height - 2px; // 减掉2px的上下高度
+    @if $radius {
+        border-radius: $radius;
+    }
+}
+
+// btn-color
+// 包括按钮背景色，文本色，是否有边框
+@mixin btn-color($colorText: #333, $colorBg: #666, $colorBorder: false) {
+    color: nth($colorText, 1);
+    background-color: nth($colorBg, 1);
+    @if $colorBorder {
+        border-color: nth($colorBorder, 1);
+    }
+    &:hover,
+    &:active {
+        @if length($colorText) == 2 {
+            color: nth($colorText, 2);
+        }
+        @if length($colorBg) == 2 {
+            background-color: nth($colorBg, 2);
+        } @else {
+            @if lightness($colorBg) > 40% {
+                background-color: darken($colorBg, 5%);
+            }
+            @else {
+                background-color: lighten($colorBg, 5%);
+            }
+        }
+        @if $colorBorder and length($colorBorder) == 2 {
+            border-color: nth($colorBorder, 2); // $colorBorder: #dbdbdb #ccc => #ccc
+        }
+    }
+}
+
+
 // style
 //---------------------------------------------------
 .btn {
@@ -59,34 +116,3 @@ $btnColor:                        #333 #e6e6e6 !default; // 默认按钮的textC
     line-height: map-get($btnSize, m) - 2px;
 }
 
-// actions 用于alert/modal的执行按钮等
-.actions {
-    @include equal-table(actions-btn);
-    .actions-btn {
-        color: $blue;
-        // background-color: #fff;
-        height: $barHeight;
-        line-height: $barHeight;
-        text-align: center;
-        border-top: 1px solid $colorBorder;
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        box-sizing: border-box;
-        &:first-of-type {
-            border-left: none;
-        }
-        &:active,
-        &:hover {
-            background: darken(#fff, 10%);
-        }
-    }
-}
-
-.actions--full {
-    display: block;
-    .actions-btn {
-        display: block;
-        width: 100%;
-        border-left: none;
-    }
-}
