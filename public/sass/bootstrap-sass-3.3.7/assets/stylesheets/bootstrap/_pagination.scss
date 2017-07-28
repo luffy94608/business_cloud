@@ -19,19 +19,21 @@
       color: $pagination-color;
       background-color: $pagination-bg;
       border: 1px solid $pagination-border;
-      margin-left: -1px;
+      //margin-left: -1px;
+      margin: auto 5px;
+      @include border-radius(50%);
     }
     &:first-child {
       > a,
       > span {
         margin-left: 0;
-        @include border-left-radius($border-radius-base);
+        @include border-radius($border-radius-base);
       }
     }
     &:last-child {
       > a,
       > span {
-        @include border-right-radius($border-radius-base);
+        @include border-radius($border-radius-base);
       }
     }
   }

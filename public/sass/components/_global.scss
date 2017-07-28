@@ -43,14 +43,14 @@
 }
 //颜色
 //$colorMap : ( white : thite, red : $red, blue : $blue, link : $colorLink, hint : $color6 );
-$colorMap : (-yellow #ffde00 ) ( -white  $white ) (-red   $red) (-pink   $pink) (-blue  $blue) (-dark-blue  $darkBlue)  (-hint $textHint ) (-title $title ) (-sub-title $subTitle ) (-orange $orange ) (-green $green) (-light-green $lightGreen);
+$colorMap : (-yellow #ffde00 ) ( -white  $white ) (-red   $red) (-pink   $pink) (-blue  $blue) (-purple  $purple)  (-hint $textHint ) (-title $title ) (-sub-title $subTitle ) (-orange $orange ) (-green $green) (-light-green $lightGreen);
 @each $colorKey, $colorValue in $colorMap {
   .color#{$colorKey}{
     color: $colorValue!important;
   }
 }
 
-$bgColorMap : ( -white  $white ) (-red   $red) (-blue  $blue) (-dark-blue  $darkBlue) (-orange $orange) (-green $green) (-light-green $lightGreen) (-grey $bgGrey);
+$bgColorMap : ( -white  $white ) (-red   $red) (-blue  $blue) (-purple  $purple) (-orange $orange) (-green $green) (-light-green $lightGreen) (-grey $bgGrey);
 @each $bgColorKey, $bgColorValue in $bgColorMap {
   .bg#{$bgColorKey}{
     background-color: $bgColorValue!important;
@@ -96,7 +96,7 @@ $bordersMap : top right bottom left;
 }
 
 //margin padding
-@for $i from 1 through 20{
+@for $i from 0 through 20{
   $key :  $i * 5;
   $value :  $i * 5px;
   .p-#{$key}{
@@ -157,5 +157,12 @@ $bordersMap : top right bottom left;
       margin: 0 auto 15px;
     }
   }
+}
+
+.box-shadow-1{
+  @include box-shadow(0 0 30px -10px $text-4);
+}
+.box-shadow-2{
+  @include box-shadow(0 0 30px -10px $bg-1);
 }
 

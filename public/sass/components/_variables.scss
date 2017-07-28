@@ -3,33 +3,39 @@
 // variables scss
 //-----------------------------------------------------
 //basic color
-$color-1 : #ffffff;
-$color-2 : #fafafa;
-$color-3 : #e0e0e0;
-$color-4 : #333333;
-$color-5 : #666666;
-$color-6 : #999999;
-$color-7 : #fa427e;
-$color-8 : #f54041;
-$color-9 : #ff9703;
-$color-10 : #1fae10;
-$color-11 : #a9c74e;
-$color-12 : #091e58;
-$color-13 : #3e94fc;
+$text-1 : #333333;
+$text-2 : #666666;
+$text-3 : #999999;
+$text-4 : #cccccc;
+$text-5 : #eeeeee;
+$text-6 : #f8f8f8;
+$text-7 : #ffffff;
+
+$color-1 : #fa427e;
+$color-2 : #f54041;
+$color-3 : #ffb258 ;
+$color-4 : #24ca88;
+$color-5 : #50D2C2;
+$color-6 : #091e58;
+$color-7 : #8c88ff;
+
+$bg-1: #caf1ed;
+$bg-2: #ffe8cd;
+$bg-3:  #e0dfff ;
 
 //色值
-$borderColor : $color-3;
-$bgGrey : $color-2;
-$white : $color-1;
-$red : $color-8;
-$pink : $color-7;
-$orange : $color-9;
-$green : $color-10;
-$lightGreen : $color-11;
-$blue : $color-13;
-$darkBlue : $color-12;
+$borderColor : $text-4;
+$bgGrey : $text-6;
+$white : $text-7;
+$red : $color-2;
+$pink : $color-1;
+$orange : $color-3;
+$green : $color-4;
+$lightGreen : $color-5;
+$blue : $color-6;
+$purple : $color-7;
 
 //文字相关
-$title : $color-4;
-$subTitle : $color-5;
-$textHint : $color-6;
+$title : $text-1;
+$subTitle : $text-2;
+$textHint : $text-4;

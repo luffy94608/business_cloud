@@ -44,15 +44,15 @@
 }
 
 .color-blue {
-  color: #3e94fc !important;
-}
-
-.color-dark-blue {
   color: #091e58 !important;
 }
 
+.color-purple {
+  color: #8c88ff !important;
+}
+
 .color-hint {
-  color: #999999 !important;
+  color: #cccccc !important;
 }
 
 .color-title {
@@ -64,15 +64,15 @@
 }
 
 .color-orange {
-  color: #ff9703 !important;
+  color: #ffb258 !important;
 }
 
 .color-green {
-  color: #1fae10 !important;
+  color: #24ca88 !important;
 }
 
 .color-light-green {
-  color: #a9c74e !important;
+  color: #50D2C2 !important;
 }
 
 .bg-white {
@@ -84,27 +84,27 @@
 }
 
 .bg-blue {
-  background-color: #3e94fc !important;
-}
-
-.bg-dark-blue {
   background-color: #091e58 !important;
 }
 
+.bg-purple {
+  background-color: #8c88ff !important;
+}
+
 .bg-orange {
-  background-color: #ff9703 !important;
+  background-color: #ffb258 !important;
 }
 
 .bg-green {
-  background-color: #1fae10 !important;
+  background-color: #24ca88 !important;
 }
 
 .bg-light-green {
-  background-color: #a9c74e !important;
+  background-color: #50D2C2 !important;
 }
 
 .bg-grey {
-  background-color: #fafafa !important;
+  background-color: #f8f8f8 !important;
 }
 
 .text-left {
@@ -176,19 +176,59 @@
 }
 
 .border-top {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #cccccc;
 }
 
 .border-right {
-  border-right: 1px solid #e0e0e0;
+  border-right: 1px solid #cccccc;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #cccccc;
 }
 
 .border-left {
-  border-left: 1px solid #e0e0e0;
+  border-left: 1px solid #cccccc;
+}
+
+.p-0 {
+  padding: 0px;
+}
+
+.pt-0 {
+  padding-top: 0px;
+}
+
+.pl-0 {
+  padding-left: 0px;
+}
+
+.pr-0 {
+  padding-right: 0px;
+}
+
+.pb-0 {
+  padding-bottom: 0px;
+}
+
+.m-0 {
+  margin: 0px;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.ml-0 {
+  margin-left: 0px;
+}
+
+.mr-0 {
+  margin-right: 0px;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
 }
 
 .p-5 {
@@ -1024,32 +1064,177 @@
   margin: 0 auto 15px;
 }
 
+.box-shadow-1 {
+  -moz-box-shadow: 0 0 30px -10px #cccccc;
+  -webkit-box-shadow: 0 0 30px -10px #cccccc;
+  box-shadow: 0 0 30px -10px #cccccc;
+}
+
+.box-shadow-2 {
+  -moz-box-shadow: 0 0 30px -10px #caf1ed;
+  -webkit-box-shadow: 0 0 30px -10px #caf1ed;
+  box-shadow: 0 0 30px -10px #caf1ed;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  */
-.bc-header {
-  height: 85px;
-  padding: 15px 0;
+.b-icon-login-user {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  background: url("../images/icons/person.png") no-repeat center;
+  background-size: 22px 22px;
 }
-.bc-header .bch-logo {
-  width: 85px;
+
+.b-icon-search {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  background: url("../images/icons/search.png") no-repeat center;
+  background-size: 32px 32px;
 }
-.bc-header .bch-intro {
-  font-size: 14px;
-  color: #333333;
-  margin-top: 2px;
+
+.bc-header .nav.navbar-nav.menu a {
+  font-size: 16px;
 }
-.bc-header .bch-intro > p {
-  margin: 0;
-  height: 26px;
-  line-height: 26px;
+.bc-header .navbar-brand {
+  padding: 10px 15px;
+  margin-right: 40px;
+}
+.bc-header .navbar-brand .bch-logo {
+  height: 50px;
 }
 .bc-header .bch-login {
-  height: 52px;
-  line-height: 52px;
+  padding: 24px 15px;
 }
-.bc-header .bch-login, .bc-header .bch-login > a {
-  font-size: 14px;
-  color: #333333;
+.bc-header .bch-login > a {
+  color: #666666 !important;
+  padding-right: 5px;
+  padding-left: 5px;
+  display: inline;
+}
+.bc-header .bch-login > a:hover {
+  color: #333333 !important;
+  background-color: transparent !important;
+}
+
+.bc-footer {
+  background-color: #333333;
+  text-align: center;
+  padding: 25px 0;
+}
+.bc-footer, .bc-footer a {
+  color: #ffffff;
+}
+
+.bc-banner {
+  position: relative;
+  padding: 0;
+}
+.bc-banner .pic {
+  width: 100%;
+  min-height: 200px;
+}
+.bc-banner .bcb-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+}
+.bc-banner .bcb-content .input-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
+  line-height: 46px;
+  font-size: 18px;
+  color: #ffffff;
+}
+.bc-banner .bcb-content .bcb-search {
+  opacity: 0.7;
+  border: 2px solid #ffffff;
+}
+.bc-banner .bcb-content .bcb-word {
+  font-size: 12px;
+  padding: 10px;
+  text-align: left;
+  color: #eeeeee;
+}
+.bc-banner .bcb-content .bcb-word > a {
+  display: inline-block;
+  padding: 0 8px;
+  color: #eeeeee;
+  cursor: pointer;
+  position: relative;
+}
+.bc-banner .bcb-content .bcb-word > a:after {
+  content: '';
+  height: 70%;
+  width: 1px;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 15%;
+  background-color: #eeeeee;
+}
+.bc-banner .bcb-content .bcb-word > a:last-child:after {
+  display: none;
+}
+
+.bc-section-title {
+  font-size: 20px;
+  color: #cccccc;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+  position: relative;
+  background-color: #ffffff;
+}
+.bc-section-title:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #caf1ed;
+}
+.bc-section-title.orange:before {
+  background-color: #ffe8cd;
+}
+.bc-section-title.purple:before {
+  background-color: #e0dfff;
+}
+
+.bg-grey-bar {
+  position: absolute;
+  left: 0;
+  top: -1%;
+  height: 102%;
+  width: 20px;
+  background-color: #f8f8f8;
+}
+
+.bc-side-list {
+  text-align: center;
+}
+.bc-side-list .bcs-item {
+  padding: 0 20px;
+}
+.bc-side-list .bcs-item > img, .bc-side-list .bcs-item a > img {
+  width: 100%;
+}
+.bc-side-list .bcs-item > p, .bc-side-list .bcs-item a > p {
+  padding: 16px;
+  font-size: 16px;
+  color: #666666;
 }

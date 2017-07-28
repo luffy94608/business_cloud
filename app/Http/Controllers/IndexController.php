@@ -25,7 +25,7 @@ class IndexController extends Controller
     {
 
         $params = [
-            'page' =>'base',
+            'page' =>'page-index',
         ];
         return View::make('index.index',$params);
     }

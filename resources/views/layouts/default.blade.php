@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="@yield('bodyBg','bg-grey')" >
+<html lang="zh-CN" class="@yield('bodyBg','')" >
 {{--<html lang="zh-CN" class="@yield('bodyappBg','')"  manifest="/wechat.appcache">--}}
 <head>
     <meta charset="utf-8" />
@@ -30,6 +30,7 @@
 <body class="@yield('bodyBg','')">
 {{--内容区域--}}
 @section('content')
+    
 @show
 
 {{--模板--}}

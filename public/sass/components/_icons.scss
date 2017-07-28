@@ -6,10 +6,20 @@
 //@import "../images/icons/*.png";
 
 @mixin createIcon($width,$height,$img,$suffix:'png'){
+  position: relative;
+  top: -1px;
   display: inline-block;
   width: $width;
   height: $height;
   vertical-align: middle;
   background: url("../images/icons/#{$img}.#{$suffix}") no-repeat center;
   background-size: $width $height;
+}
+
+.b-icon-login-user{
+  @include createIcon(22px, 22px, 'person');
+}
+
+.b-icon-search{
+  @include createIcon(32px, 32px, 'search');
 }

@@ -1,28 +1,149 @@
 @charset "UTF-8";
-
 //主页样式
+//header
 .bc-header{
-  height: 85px;
-  padding: 15px 0;
-  .bch-logo{
-    width: 85px;
-  }
-  .bch-intro{
-    font-size: 14px;
-    color: $title;
-    margin-top: 2px;
-    &>p{
-      margin: 0;
-      height: 26px;
-      line-height: 26px;
+  .nav.navbar-nav.menu{
+    a{
+      font-size: 16px;
     }
   }
-  .bch-login{
-    height: 52px;
-    line-height: 52px;
-    &,&>a{
-      font-size: 14px;
-      color: $title;
+  .navbar-brand{
+    padding: 10px 15px;
+    margin-right: 40px;
+    .bch-logo{
+      height: 50px;
+    }
+  }
+  .bch-login {
+    padding: 24px 15px;
+    &>a{
+      color: $subTitle!important;
+      padding-right: 5px;
+      padding-left: 5px;
+      display: inline;
+      &:hover{
+        color: $title!important;
+        background-color: transparent!important;
+      }
+    }
+  }
+}
+
+//footer
+.bc-footer{
+  background-color: $text-1;
+  text-align: center;
+  padding: 25px 0;
+  &,a{
+    color: $white;
+  }
+}
+
+//banner
+.bc-banner{
+  position: relative;
+  padding: 0;
+  .pic{
+    width: 100%;
+    min-height: 200px;
+  }
+  .bcb-content{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    .input-mask{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 46px;
+      line-height: 46px;
+      font-size: 18px;
+      color: $white;
+    }
+    .bcb-search{
+      opacity: 0.7;
+      border: 2px solid $white;
+    }
+    .bcb-word{
+      font-size: 12px;
+      padding: 10px;
+      text-align: left;
+      color: $text-5;
+      &>a{
+        display: inline-block;
+        padding: 0 8px;
+        color: $text-5;
+        cursor: pointer;
+        position: relative;
+        &:after{
+          content: '';
+          height: 70%;
+          width: 1px;
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 15%;
+          background-color: $text-5;
+        }
+        &:last-child{
+          &:after{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+//content
+//公共title
+.bc-section-title{
+  font-size: 20px;
+  color: $text-4;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+  position: relative;
+  background-color: $white;
+  &:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: $bg-1;
+  }
+  &.orange:before{
+    background-color: $bg-2;
+  }
+  &.purple:before{
+    background-color: $bg-3;
+  }
+}
+
+//增值业务
+.bg-grey-bar{
+  position: absolute;
+  left: 0;
+  top: -1%;
+  height: 102%;
+  width: 20px;
+  background-color: $text-6;
+}
+.bc-side-list{
+  text-align: center;
+  .bcs-item{
+    padding: 0 20px;
+    &>img,a>img{
+      width: 100%;
+    }
+    &>p,a>p{
+      padding: 16px;
+      font-size: 16px;
+      color: $subTitle;
     }
   }
 }

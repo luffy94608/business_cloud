@@ -5,7 +5,10 @@
  */
 
 // Core variables and mixins
-
+@import "compass/css3";
+@import "compass/css3/box";
+@import "compass/utilities";
+@import "components/variables";
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/variables";
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins";
 
@@ -25,11 +28,11 @@
 
 // Components
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/component-animations";
-//@import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/dropdowns";
+@import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/dropdowns";
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/button-groups";
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/input-groups";
-//@import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/navs";
-//@import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/navbar";
+@import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/navs";
+@import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/navbar";
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/breadcrumbs";
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/pagination";
 @import "bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/pager";
