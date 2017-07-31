@@ -7,6 +7,20 @@
         searchInputMask : $('.input-mask'),
         searchInputNode : '.bcb-search',
         loading :false,
+        /**
+         * 初始化进度条
+         */
+        circleProgressEvent : function () {
+            $('canvas.vie-num').each(function() {
+                // 获取进度数值
+                var $this = $(this);
+                var process = parseInt($this.text());
+                var color = process > 50 ? '#FF7C7C' : '#24ca88';
+                $.drawCircleProcess(this, process, color);
+                var colorClass = process > 50 ? 'color-red' : 'color-green';
+                $this.siblings('.vie-text').removeClass('color-red color-green').addClass(colorClass);
+            });
+        },
 
         initBtnEvent : function () {
 
@@ -27,11 +41,17 @@
                 
             });
 
+            $('select').select2({})
+
         },
         run : function () {
             //
             init.initBtnEvent();
+            init.circleProgressEvent();
         }
     };
     init.run();
+
+
+
 })($);

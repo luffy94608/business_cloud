@@ -27,6 +27,9 @@
   overflow: hidden;
   -webkit-overflow-scrolling: auto;
 }
+.v-align-middle{
+  vertical-align: middle;
+}
 .clear-fix{
   *zoom:1;
   &:after{
@@ -38,12 +41,15 @@
     height: 0;
   }
 }
+.wd-100{
+  width: 100%;
+}
 .border-none{
   border: none!important;
 }
 //颜色
 //$colorMap : ( white : thite, red : $red, blue : $blue, link : $colorLink, hint : $color6 );
-$colorMap : (-yellow #ffde00 ) ( -white  $white ) (-red   $red) (-pink   $pink) (-blue  $blue) (-purple  $purple)  (-hint $textHint ) (-title $title ) (-sub-title $subTitle ) (-orange $orange ) (-green $green) (-light-green $lightGreen);
+$colorMap : (-yellow #ffde00 ) ( -white  $white ) (-red   $red) (-pink   $pink) (-blue  $blue) (-purple  $purple)  (-hint $textHint ) (-title $title ) (-sub-title $subTitle ) (-two-title $text-3 ) (-orange $orange ) (-green $green) (-light-green $lightGreen);
 @each $colorKey, $colorValue in $colorMap {
   .color#{$colorKey}{
     color: $colorValue!important;
@@ -72,10 +78,10 @@ $positionMap : absolute relative fixed;
   }
 }
 
-$displayMap : block inline-block;
+$displayMap : block inline-block table table-cell;
 @each $displayItem in $displayMap {
   .d-#{$displayItem}{
-    position: $displayItem;
+    display: $displayItem;
   }
 }
 
@@ -159,10 +165,18 @@ $bordersMap : top right bottom left;
   }
 }
 
+.text-cut{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .box-shadow-1{
   @include box-shadow(0 0 30px -10px $text-4);
 }
 .box-shadow-2{
   @include box-shadow(0 0 30px -10px $bg-1);
+}
+.box-shadow-3{
+  @include box-shadow(0 0 20px -9px darken($bg-1, 50%));
 }
 

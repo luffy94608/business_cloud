@@ -4,6 +4,8 @@
      */
     var FastClick = require('fastclick');
     FastClick.attach(document.body);
+    $.fn.select2.defaults.set("theme", "classic");
+
 
     /**
      * 对象是否为空
@@ -18,47 +20,6 @@
         return !0
     };
 
-    $.rad  = function (d){
-        return d * Math.PI / 180.0;//经纬度转换成三角函数中度分表形式。
-    };
-    
-    /**
-     * 计算两点间的距离
-     * @param lat1
-     * @param lng1
-     * @param lat2
-     * @param lng2
-     * @returns {number} 米
-     */
-    $.calcDistanceBetweenPoints = function(lat1,lng1,lat2,lng2) {
-        var radLat1 = $.rad(lat1);
-        var radLat2 = $.rad(lat2);
-        var a = radLat1 - radLat2;
-        var  b = $.rad(lng1) - $.rad(lng2);
-        var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) +
-                Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
-        s = s *6378.137 ;// EARTH_RADIUS;
-        // s = (Math.round(s * 10000) / 10000); //输出为公里
-        s = (Math.round(s * 10000) / 10); //输出为公里
-        //s=s.toFixed(4);
-        return s;
-    };
-
-    /**
-     * 格式化距离
-     * @param val
-     * @returns {string}
-     */
-    $.distanceFormat = function (val) {
-        val = parseInt(val);
-        var str = '';
-        if (val>1000) {
-            str  = '{0} km'.format((val/1000).toFixed(1));
-        } else {
-            str  = '{0} m'.format(val);
-        }
-        return str;
-    };
 
     /**
      * 根据 时间获取时间错
@@ -977,6 +938,67 @@
             threshold : 50
         });
         return $this;
+    };
+
+    /**
+     * canvas 圆形进度条
+     * @param canvas
+     * @param process
+     * @param color
+     */
+    $.drawCircleProcess = function(canvas, process, color) {
+
+        if (!color) {
+            color = '#FF7C7C';
+        }
+        // 拿到绘图上下文
+        var ctx = canvas.getContext('2d');
+        var cWidth = canvas.width;
+        var cHeight = canvas.height;
+        var circleX = cWidth/2;
+        var circleY = cHeight/2;
+        var circleR = circleX-2;
+        // 将绘图区域清空
+        ctx.clearRect(0, 0, cWidth, cHeight);
+        //灰色背景
+        ctx.beginPath();
+
+        ctx.moveTo(circleX, circleY);
+
+        ctx.arc(circleX, circleY, circleR, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fillStyle = '#eee';
+        ctx.fill();
+        // 画进度
+        ctx.beginPath();
+
+        ctx.moveTo(circleX, circleY);
+
+        ctx.arc(circleX, circleY, circleR, -Math.PI/2, Math.PI * (2 * (process-.005) / 100-.5), false);
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+
+        // 画内部空白
+        ctx.beginPath();
+        ctx.moveTo(circleX, circleY);
+        ctx.arc(circleX, circleY, circleR-2, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+
+        if(process !== 100){
+            //终端原点
+            // ctx.beginPath();
+            // //移动到终端位置
+            // var x1 = circleX + (circleR-1) * Math.sin(Math.PI * 2 * process / 100);
+            // var y1 = circleY - (circleR-1) * Math.cos(Math.PI * 2 * process / 100);
+            // ctx.moveTo(x1, y1);
+            // ctx.arc(x1, y1, 3, 0, Math.PI * 2, true);
+            // ctx.closePath();
+            // ctx.fillStyle = color;
+            // ctx.fill();
+        }
     };
 
 })($);

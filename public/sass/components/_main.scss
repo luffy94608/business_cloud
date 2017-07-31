@@ -37,6 +37,12 @@
   &,a{
     color: $white;
   }
+  &.white{
+    background-color: transparent;
+    &,a{
+      color: $text-3;
+    }
+  }
 }
 
 //banner
@@ -122,6 +128,9 @@
   &.purple:before{
     background-color: $bg-3;
   }
+  &.color-with-body{
+    color: $bg-1;
+  }
 }
 
 //增值业务
@@ -147,3 +156,143 @@
     }
   }
 }
+.bc-select-section{
+  color: $subTitle;
+  text-align: right;
+}
+//数据统计
+.bc-stat-section{
+  text-align: center;
+  .bcs-item{
+    padding: 0;
+    .title{
+      color: $title;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+    .total{
+      font-size: 50px;
+      margin: 20px 0;
+    }
+    .hint{
+      font-size: 16px;
+      .bcs-block{
+        display: block;
+        margin: 0 auto;
+        width: 16px;
+        height: 16px;
+        background-color: $green;
+      }
+    }
+  }
+  .bcs-progress-section{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    .bcs-progress-bar{
+      height: 16px;
+      background-color: $green;
+    }
+  }
+}
+//最新发布
+.bc-list-item{
+  padding-top: 10px;
+  font-size: 14px;
+  color: $title;
+  &>div, p{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .bcl-right{
+    text-align: right;
+    color: $text-3;
+    font-size: 12px;
+  }
+  .bcl-img{
+    &>img{
+      margin-top: 20px;
+      width: 60px;
+    }
+  }
+}
+.vie-num{
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    //border-radius: 50%;
+    margin-bottom: 5px;
+    //border: 1px solid $text-5;
+    display: inline-block;
+}
+.vie-text{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 36px;
+  line-height: 36px;
+  width: 36px;
+  color: $green;
+  text-align: center;
+}
+
+
+.nav-pills {
+  > li {
+    // Links rendered as pills
+    > a {
+      color: $text-3;
+      padding: 5px 20px;
+    }
+  }
+}
+
+//注册页面
+.bc-form-section{
+  .control-label{
+    font-weight: normal;
+    color: $title;
+  }
+}
+.bc-form-title-section{
+  margin: 20px 0 40px;
+  .title{
+    position: relative;
+    top: 2px;
+    font-size: 18px;
+    padding: 10px 5px;
+    display: inline-block;
+    color: $green;
+    border-bottom: 2px solid $green;
+  }
+  border-bottom: 2px solid $borderColor;
+}
+.bc-keyword-section{
+  padding: 10px;
+  min-height: 100px;
+  border: 1px solid $text-4;
+  @include border-radius(3px);
+  .bck-item{
+    padding: 2px 5px;
+    margin: 4px;
+    display: inline-block;
+    color: $text-4;
+    cursor: pointer;
+    border: 1px solid $text-4;
+    @include border-radius(3px);
+    &.active{
+      color: $green;
+      border: 1px solid $green;
+    }
+  }
+}
+//登录页面
+.bg-login{
+  width: 100%;
+  height: 100%;
+  background: url("../../images/bg/gb.png") no-repeat center;
+  @include background-size(cover);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../../images/bg/gb.png,sizingMethod=scale);
+}
+

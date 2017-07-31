@@ -1,76 +1,95 @@
 @extends('layouts.default')
-@section('title', '首页')
+@section('title', '商情云')
 
 {{--内容区域--}}
 @section('content')
+    {{--header--}}
     @include('layouts.header')
     {{--banner--}}
-    <div class="container-fluid bc-banner">
-        <img class="pic" src="/images/banner/banner.png" width="100%">
-        <div class="container text-center bcb-content">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <div class="col-xs-12">
-                        <div class="input-mask"><span class="b-icon-search"></span>搜一搜</div>
-                        <input type="text" class="form-control input-lg bcb-search" placeholder="" >
-                        <div class="bcb-word">
-                            热门关键字：<a href="#">工程</a><a href="#">工程</a><a href="#">工程</a><a href="#">工程</a><a href="#">工程</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('templates.banner')
+
 
     {{--content--}}
-    <div class="container-fluid mt-20">
+    <div class="container-fluid">
         <div class="container">
+            @include('templates.select')
+            
             <div class="row bg-white box-shadow-1">
                 <div class="col-sm-8 col-xs-12 ">
-                    <div class="row ">
-                        <div class="bc-section-title">数据统计</div>
-                        <div class="col-xs-4">
-                            <p>招标信息</p>
-                            <p>42</p>
-                            <p>今日更新<span>12</span>条信息</p>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>中标信息</p>
-                            <p>42</p>
-                            <p>今日更新<span>12</span>条信息</p>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>竞争对手</p>
-                            <p>42</p>
-                            <p>今日更新<span>12</span>条信息</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 pl-20">
-                    <div class="bg-grey-bar"></div>
-                    <div class="bc-section-title orange">增值业务</div>
-                    <div class="bc-side-list">
-                        <div class="bcs-item">
-                            <a href="#">
-                                <img src="/images/banner/company_data.png">
-                                <p>企业数据分析</p>
-                            </a>
-                        </div>
-                        <div class="bcs-item">
-                            <a href="#">
-                                <img src="/images/banner/business_data.png">
-                                <p>时长数据分析</p>
-                            </a>
+                    <div class="row bc-stat-section">
+                        <div class="bc-section-title text-left">数据统计</div>
+                        <div class="d-table wd-100 mt-30">
+                            <div class="d-table-cell v-align-middle">
+                                <div class="col-xs-4 bcs-item">
+                                    <p class="title">招标信息</p>
+                                    <p class="total border-right color-green">42</p>
+                                    <p class="hint">今日更新<span class="color-green">12</span>条信息</p>
+                                    {{--<p class="hint"><span class="bcs-block"></span></p>--}}
+                                </div>
+                                <div class="col-xs-4 bcs-item">
+                                    <p class="title">中标信息</p>
+                                    <p class="total border-right color-orange">42</p>
+                                    <p class="hint">今日更新<span class="color-orange">12</span>条信息</p>
+                                    {{--<p class="hint"><span class="bcs-block bg-orange"></span></p>--}}
+                                </div>
+                                <div class="col-xs-4 bcs-item">
+                                    <p class="title">竞争对手</p>
+                                    <p class="total color-purple">42</p>
+                                    <p class="hint">今日新增<span class="color-purple">12</span>条数据</p>
+                                    {{--<p class="hint"><span class="bcs-block bg-purple"></span></p>--}}
+                                </div>
+                                <div class="col-md-10 col-xs-12 col-md-offset-1 bcs-progress-section gone">
+                                    <div class="bcs-progress-bar" style="width: 30%"></div>
+                                    <div class="bcs-progress-bar bg-orange" style="width: 60%"></div>
+                                    <div class="bcs-progress-bar bg-purple" style="width: 90%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-4 pl-20 hidden-xs">
+                    @include('templates.side')
+                </div>
+
             </div>
 
             <div class="row  mt-20  bg-white box-shadow-1">
-                <div class="bc-section-title purple">最新发布</div>
+                <div class="bc-section-title purple">最新发布<a href="#" class="color-two-title pull-right font-14 v-align-middle">查看更多</a></div>
                 <div class="col-xs-12">
-
-                    content
+                    <div class="col-sm-6 col-xs-12 mt-10">
+                        <div class="col-xs-12 box-shadow-3 bc-list-item">
+                            <div class="col-xs-9">
+                                <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>
+                                <p class="col-xs-6">招标方式：公开</p>
+                                <p class="col-xs-6">截止时间：2018-11-4</p>
+                                <p class="col-xs-6">招标产品：地产</p>
+                                <p class="col-xs-6">招标地点：北京</p>
+                            </div>
+                            <div class="col-xs-3 bcl-right">
+                                <canvas class="vie-num" width="36" height="36">70</canvas>
+                                <div class="vie-text">70</div>
+                                <p class="mb-0">竞争力</p>
+                                <p>2017-7-10</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 mt-10">
+                        <div class="col-xs-12 box-shadow-3 bc-list-item">
+                            <div class="col-xs-9">
+                                <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>
+                                <p class="col-xs-6">招标方式：公开</p>
+                                <p class="col-xs-6">截止时间：2018-11-4</p>
+                                <p class="col-xs-6">招标产品：地产</p>
+                                <p class="col-xs-6">招标地点：北京</p>
+                            </div>
+                            <div class="col-xs-3 bcl-right">
+                                <canvas class="vie-num" width="36" height="36">20</canvas>
+                                <div class="vie-text">20</div>
+                                <p class="mb-0">竞争力</p>
+                                <p>2017-7-10</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-12 text-center">
                     <ul class="pagination">
@@ -87,11 +106,8 @@
             
         </div>
 
-        <div class="container">
-            <div class="row  mt-20 mb-30  bg-white">
-                <img  src="/images/banner/footer.png" width="100%">
-            </div>
-        </div>
+        @include('templates.ad')
+
     </div>
     
     @include('layouts.footer')

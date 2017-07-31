@@ -17,9 +17,21 @@
 }
 
 .b-icon-login-user{
+  @include createIcon(22px, 22px, 'person_active');
+}
+
+.b-icon-not-login-user{
   @include createIcon(22px, 22px, 'person');
 }
 
 .b-icon-search{
   @include createIcon(32px, 32px, 'search');
+}
+
+.b-icon-down{
+  @include createIcon(16px, 16px, 'arrow_down');
+}
+
+.b-icon-tip{
+  @include createIcon(18px, 18px, 'tips');
 }

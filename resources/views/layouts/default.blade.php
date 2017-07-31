@@ -11,6 +11,9 @@
     <title>@yield('title',\App\Models\Enums\SettingEnum::transform(\App\Models\Enums\SettingEnum::App_Name))</title>
     <link rel="stylesheet" href="/styles/bootstrap.css?v={{Config::get('app')['version']}}"/>
     <link rel="stylesheet" href="/styles/app.css?v={{Config::get('app')['version']}}"/>
+    <link rel="stylesheet" href="/styles/toastr.min.css"/>
+    {{--<link rel="stylesheet" href="/bower_components/select2/dist/css/select2.min.css"/>--}}
+    <link rel="stylesheet" href="/styles/select2.css"/>
     <script type="text/javascript">
         document.global_config_data = {
             version: '{{Config::get('app')['version']}}',
@@ -25,6 +28,9 @@
     <!--[if lt IE 9]>
     <script src="/bower_components/html5shiv/dist/html5shiv.min.js"></script>
     <script src="/scripts/libs/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE]>
+        <script type="text/javascript" src="/scripts/libs/excanvas.min.js"></script>
     <![endif]-->
 </head>
 <body class="@yield('bodyBg','')">

@@ -11,6 +11,10 @@
   -webkit-overflow-scrolling: auto;
 }
 
+.v-align-middle {
+  vertical-align: middle;
+}
+
 .clear-fix {
   *zoom: 1;
 }
@@ -21,6 +25,10 @@
   content: "";
   clear: both;
   height: 0;
+}
+
+.wd-100 {
+  width: 100%;
 }
 
 .border-none {
@@ -36,7 +44,7 @@
 }
 
 .color-red {
-  color: #f54041 !important;
+  color: #FF7C7C !important;
 }
 
 .color-pink {
@@ -63,6 +71,10 @@
   color: #666666 !important;
 }
 
+.color-two-title {
+  color: #999999 !important;
+}
+
 .color-orange {
   color: #ffb258 !important;
 }
@@ -80,7 +92,7 @@
 }
 
 .bg-red {
-  background-color: #f54041 !important;
+  background-color: #FF7C7C !important;
 }
 
 .bg-blue {
@@ -132,11 +144,19 @@
 }
 
 .d-block {
-  position: block;
+  display: block;
 }
 
 .d-inline-block {
-  position: inline-block;
+  display: inline-block;
+}
+
+.d-table {
+  display: table;
+}
+
+.d-table-cell {
+  display: table-cell;
 }
 
 .font-12 {
@@ -1064,6 +1084,12 @@
   margin: 0 auto 15px;
 }
 
+.text-cut {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .box-shadow-1 {
   -moz-box-shadow: 0 0 30px -10px #cccccc;
   -webkit-box-shadow: 0 0 30px -10px #cccccc;
@@ -1076,11 +1102,28 @@
   box-shadow: 0 0 30px -10px #caf1ed;
 }
 
+.box-shadow-3 {
+  -moz-box-shadow: 0 0 20px -9px #279589;
+  -webkit-box-shadow: 0 0 20px -9px #279589;
+  box-shadow: 0 0 20px -9px #279589;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  */
 .b-icon-login-user {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  background: url("../images/icons/person_active.png") no-repeat center;
+  background-size: 22px 22px;
+}
+
+.b-icon-not-login-user {
   position: relative;
   top: -1px;
   display: inline-block;
@@ -1100,6 +1143,28 @@
   vertical-align: middle;
   background: url("../images/icons/search.png") no-repeat center;
   background-size: 32px 32px;
+}
+
+.b-icon-down {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  background: url("../images/icons/arrow_down.png") no-repeat center;
+  background-size: 16px 16px;
+}
+
+.b-icon-tip {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  background: url("../images/icons/tips.png") no-repeat center;
+  background-size: 18px 18px;
 }
 
 .bc-header .nav.navbar-nav.menu a {
@@ -1133,6 +1198,12 @@
 }
 .bc-footer, .bc-footer a {
   color: #ffffff;
+}
+.bc-footer.white {
+  background-color: transparent;
+}
+.bc-footer.white, .bc-footer.white a {
+  color: #999999;
 }
 
 .bc-banner {
@@ -1214,6 +1285,9 @@
 .bc-section-title.purple:before {
   background-color: #e0dfff;
 }
+.bc-section-title.color-with-body {
+  color: #caf1ed;
+}
 
 .bg-grey-bar {
   position: absolute;
@@ -1237,4 +1311,142 @@
   padding: 16px;
   font-size: 16px;
   color: #666666;
+}
+
+.bc-select-section {
+  color: #666666;
+  text-align: right;
+}
+
+.bc-stat-section {
+  text-align: center;
+}
+.bc-stat-section .bcs-item {
+  padding: 0;
+}
+.bc-stat-section .bcs-item .title {
+  color: #333333;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.bc-stat-section .bcs-item .total {
+  font-size: 50px;
+  margin: 20px 0;
+}
+.bc-stat-section .bcs-item .hint {
+  font-size: 16px;
+}
+.bc-stat-section .bcs-item .hint .bcs-block {
+  display: block;
+  margin: 0 auto;
+  width: 16px;
+  height: 16px;
+  background-color: #24ca88;
+}
+.bc-stat-section .bcs-progress-section {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.bc-stat-section .bcs-progress-section .bcs-progress-bar {
+  height: 16px;
+  background-color: #24ca88;
+}
+
+.bc-list-item {
+  padding-top: 10px;
+  font-size: 14px;
+  color: #333333;
+}
+.bc-list-item > div, .bc-list-item p {
+  padding-left: 0;
+  padding-right: 0;
+}
+.bc-list-item .bcl-right {
+  text-align: right;
+  color: #999999;
+  font-size: 12px;
+}
+.bc-list-item .bcl-img > img {
+  margin-top: 20px;
+  width: 60px;
+}
+
+.vie-num {
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.vie-text {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 36px;
+  line-height: 36px;
+  width: 36px;
+  color: #24ca88;
+  text-align: center;
+}
+
+.nav-pills > li > a {
+  color: #999999;
+  padding: 5px 20px;
+}
+
+.bc-form-section .control-label {
+  font-weight: normal;
+  color: #333333;
+}
+
+.bc-form-title-section {
+  margin: 20px 0 40px;
+  border-bottom: 2px solid #cccccc;
+}
+.bc-form-title-section .title {
+  position: relative;
+  top: 2px;
+  font-size: 18px;
+  padding: 10px 5px;
+  display: inline-block;
+  color: #24ca88;
+  border-bottom: 2px solid #24ca88;
+}
+
+.bc-keyword-section {
+  padding: 10px;
+  min-height: 100px;
+  border: 1px solid #cccccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.bc-keyword-section .bck-item {
+  padding: 2px 5px;
+  margin: 4px;
+  display: inline-block;
+  color: #cccccc;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.bc-keyword-section .bck-item.active {
+  color: #24ca88;
+  border: 1px solid #24ca88;
+}
+
+.bg-login {
+  width: 100%;
+  height: 100%;
+  background: url("../../images/bg/gb.png") no-repeat center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../../images/bg/gb.png,sizingMethod=scale);
 }

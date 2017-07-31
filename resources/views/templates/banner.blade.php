@@ -1,0 +1,16 @@
+<div class="container-fluid bc-banner">
+    <img class="pic" src="/images/banner/banner.png" width="100%">
+    <div class="container text-center bcb-content">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="col-xs-12">
+                    <div class="input-mask"><span class="b-icon-search"></span>搜一搜</div>
+                    <input type="text" class="form-control input-lg bcb-search" placeholder="" >
+                    <div class="bcb-word">
+                        热门关键字：<a href="#">工程</a><a href="#">工程</a><a href="#">工程</a><a href="#">工程</a><a href="#">工程</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
