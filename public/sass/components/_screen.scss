@@ -7,9 +7,7 @@
 @media only screen
 and(max-width : 350px)
 and (orientation : portrait) {
-  .login-form .lf-item input{
-    font-size: 1.4rem;
-  }
+  
 }
 
 //iPhone 5 & 5S in portrait & landscape
@@ -41,5 +39,14 @@ and (min-width : 375px)
 {
   
 
+}
+
+@media (min-width: 768px) {
+  .bcl-title{
+    margin-bottom: 30px;
+    &>span:first-child{
+      margin-right: 30px!important;
+    }
+  }
 }
 

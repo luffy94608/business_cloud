@@ -64,8 +64,9 @@
                                     <p class="mb-0">竞争力</p>
                                 </div>
                                 <div class="col-xs-6 p-0">
-                                    <canvas class="vie-num" width="36" height="36">20</canvas>
-                                    <div class="vie-text">20</div>
+                                    <div class="vitality-img">
+                                        <img src="/images/vitality/1.png" >
+                                    </div>
                                     <p class="mb-0">活跃度</p>
                                 </div>
                                 <p>公布时间：2018-11-4</p>
@@ -89,8 +90,9 @@
                                     <p class="mb-0">竞争力</p>
                                 </div>
                                 <div class="col-xs-6 p-0">
-                                    <canvas class="vie-num" width="36" height="36">20</canvas>
-                                    <div class="vie-text">20</div>
+                                    <div class="vitality-img">
+                                        <img src="/images/vitality/1.png" >
+                                    </div>
                                     <p class="mb-0">活跃度</p>
                                 </div>
                                 <p>公布时间：2018-11-4</p>

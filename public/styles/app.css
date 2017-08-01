@@ -1167,6 +1167,28 @@
   background-size: 18px 18px;
 }
 
+.b-icon-user {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  background: url("../images/icons/user.png") no-repeat center;
+  background-size: 18px 18px;
+}
+
+.b-icon-psw {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  background: url("../images/icons/psw.png") no-repeat center;
+  background-size: 18px 18px;
+}
+
 .bc-header .nav.navbar-nav.menu a {
   font-size: 16px;
 }
@@ -1366,6 +1388,13 @@
   color: #999999;
   font-size: 12px;
 }
+.bc-list-item .bcl-right .vitality-img {
+  height: 46px;
+  line-height: 32px;
+}
+.bc-list-item .bcl-right .vitality-img > img {
+  width: 32px;
+}
 .bc-list-item .bcl-img > img {
   margin-top: 20px;
   width: 60px;
@@ -1449,4 +1478,95 @@
   -webkit-background-size: cover;
   background-size: cover;
   filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../../images/bg/gb.png,sizingMethod=scale);
+}
+
+.bc-login-section {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 30px;
+  -moz-box-shadow: 0 0 10px -1px #333;
+  -webkit-box-shadow: 0 0 10px -1px #333;
+  box-shadow: 0 0 10px -1px #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.bc-login-section .bc-login-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+  background-color: white;
+  z-index: 0;
+}
+.bc-login-section .bc-login-content {
+  position: relative;
+  z-index: 2;
+}
+.bc-login-section .bcl-item {
+  margin: 30px 0;
+  position: relative;
+  padding: 0 0 0 44px;
+  background-color: white;
+}
+.bc-login-section .bcl-item > span {
+  position: absolute;
+  left: 12px;
+  top: 9px;
+}
+.bc-login-section .bcl-item > input {
+  font-size: 16px;
+  width: 100%;
+  padding: 6px 0;
+  border: none;
+  outline: none;
+}
+.bc-login-section .btn {
+  box-shadow: none;
+  outline: none;
+  background-color: #24ca88;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.bc-login-section .bcl-footer {
+  margin: 20px 0 15px;
+  text-align: center;
+}
+.bc-login-section .bcl-footer, .bc-login-section .bcl-footer > a {
+  color: white;
+}
+.bc-login-section .bcl-footer > a {
+  margin: 0 6px;
+}
+
+.bc-login-wrap {
+  margin-top: -200px;
+  position: absolute;
+  top: 50%;
+}
+.bc-login-wrap .bcl-title {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  padding: 20px 0;
+}
+.bc-login-wrap .bcl-title > span:first-child {
+  margin-right: 10px;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ */
+@media (min-width: 768px) {
+  .bcl-title {
+    margin-bottom: 30px;
+  }
+  .bcl-title > span:first-child {
+    margin-right: 30px !important;
+  }
 }

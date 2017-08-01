@@ -35,3 +35,11 @@
 .b-icon-tip{
   @include createIcon(18px, 18px, 'tips');
 }
+
+.b-icon-user{
+  @include createIcon(18px, 18px, 'user');
+}
+
+.b-icon-psw{
+  @include createIcon(18px, 18px, 'psw');
+}
