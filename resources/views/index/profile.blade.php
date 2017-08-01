@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '注册')
+@section('title', '个人信息')
 
 {{--内容区域--}}
 @section('content')
@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="container">
             <div class="row  mt-20  bg-white box-shadow-1 bc-form-section">
-                <div class="bc-section-title color-with-body">用户注册</div>
+                <div class="bc-section-title color-with-body">个人信息</div>
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 form-horizontal">
                     {{--帐号相关--}}
                     <div class="bc-form-title-section">
@@ -16,22 +16,7 @@
                     <div class="form-group">
                         <label for="js_input_mobile" class="col-sm-2 col-xs-3 control-label">手机号</label>
                         <div class="col-sm-5 col-xs-7">
-                            <input type="email" name="mobile" class="form-control" id="js_input_mobile" placeholder="请输入手机号">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="js_input_psw" class="col-sm-2 col-xs-3 control-label">密码</label>
-                        <div class="col-sm-5 col-xs-7">
-                            <input type="password" name="psw" class="form-control" id="js_input_psw" placeholder="请输入密码">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="js_input_code" class="col-sm-2 col-xs-3 control-label">验证码</label>
-                        <div class="col-sm-3 col-xs-4">
-                            <input type="text" name="code" class="form-control" id="js_input_code" placeholder="请输入验证码">
-                        </div>
-                        <div class="col-sm-2 col-xs-2">
-                            <button type="button" class="btn btn-default">获取验证码</button>
+                            <p class="form-control-static">email@example.com</p>
                         </div>
                     </div>
 

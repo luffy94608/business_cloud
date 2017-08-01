@@ -56,7 +56,7 @@ $colorMap : (-yellow #ffde00 ) ( -white  $white ) (-red   $red) (-pink   $pink) 
   }
 }
 
-$bgColorMap : ( -white  $white ) (-red   $red) (-blue  $blue) (-purple  $purple) (-orange $orange) (-green $green) (-light-green $lightGreen) (-grey $bgGrey);
+$bgColorMap : ( -white  $white ) (-red   $red) (-transparent   transparent) (-blue  $blue) (-purple  $purple) (-orange $orange) (-green $green) (-light-green $lightGreen) (-grey $bgGrey);
 @each $bgColorKey, $bgColorValue in $bgColorMap {
   .bg#{$bgColorKey}{
     background-color: $bgColorValue!important;

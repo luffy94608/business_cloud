@@ -57,7 +57,8 @@ class Util
      */
     public static function setCacheUserInfo($data)
     {
-        Redis::set(self::userCacheKey(), \GuzzleHttp\json_encode($data));
+        Session::put('account_info', $data);
+//        Redis::set(self::userCacheKey(), \GuzzleHttp\json_encode($data));
     }
 
     /**
@@ -65,9 +66,10 @@ class Util
      */
     public static function clearCacheUserInfo()
     {
-        Redis::del(self::userCacheKey());
-        $uid = self::getUid();
-        Redis::del(self::userCacheTokenKey($uid));
+        Session::forget('account_info');
+//        Redis::del(self::userCacheKey());
+//        $uid = self::getUid();
+//        Redis::del(self::userCacheTokenKey($uid));
     }
 
     /**
@@ -76,9 +78,9 @@ class Util
      */
     public static function getUserInfo()
     {
-//        $account = session('account_info'); // 拿到微信授权用户资料
-        $account = Redis::get(self::userCacheKey()); // 拿到微信授权用户资料
-        return $account ? \GuzzleHttp\json_decode($account, true) : false;
+        $account = session('account_info'); // 拿到微信授权用户资料
+//        $account = Redis::get(self::userCacheKey()); // 拿到微信授权用户资料
+        return $account ? $account : false;
     }
 
     /**
@@ -92,13 +94,6 @@ class Util
         if(!empty($account)) {
             $res = $account['sid'];
         }
-
-        if (empty($res)) {
-            $uid = self::getUid();
-            $res = Redis::get(self::userCacheTokenKey($uid));
-        }
-        
-//        $res = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLmhvbGxvLmNuL2F1dGgvdjIvYWNjZXNzX3Rva2VuL3B3ZCIsImlhdCI6MTQ5OTY1NTAxNiwiZXhwIjoxNTAyMjQ3MDE2LCJuYmYiOjE0OTk2NTUwMTYsImp0aSI6IjNITmhOS1I2QTkzZ3FJcHoiLCJzdWIiOiIxMmVlOTQ1YTA3M2IxMWU1OWZiMTAwMTYzZTAwM2FkYiJ9.S_0j_u-H_gPSrvGbl9SH2RnQQHBG5WUtCQuMqpeEAkc';
         return $res;
     }
 
@@ -113,25 +108,7 @@ class Util
         $account = self::getUserInfo(); // 拿到微信授权用户资料
         if(!empty($account))
         {
-            $res = $account['uid'];
-        }
-
-        if (empty($res)) {
-            $openId = self::getOpenId();
-            $res = Redis::get(self::userCacheUidKey($openId));
-        }
-
-        if (empty($res)) {
-            //数据库获取uid
-            $openId = self::getOpenId();
-            $user = User::where('open_id', $openId)
-                ->orderBy('id', -1)
-                ->first();
-            if (!is_null($user)) {
-                $res = $user->uid;
-                Redis::set(self::userCacheUidKey($openId), $res);
-                Log::info('数据库获取token');
-            }
+            $res = $account['id'];
         }
         return $res;
     }

@@ -95,6 +95,10 @@
   background-color: #FF7C7C !important;
 }
 
+.bg-transparent {
+  background-color: transparent !important;
+}
+
 .bg-blue {
   background-color: #091e58 !important;
 }
@@ -1123,7 +1127,7 @@
   background-size: 22px 22px;
 }
 
-.b-icon-not-login-user {
+.b-icon-logout-user {
   position: relative;
   top: -1px;
   display: inline-block;
@@ -1189,6 +1193,48 @@
   background-size: 18px 18px;
 }
 
+.b-icon-close {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  vertical-align: middle;
+  background: url("../images/icons/close.png") no-repeat center;
+  background-size: 7px 7px;
+}
+
+.b-icon-star {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background: url("../images/icons/star.png") no-repeat center;
+  background-size: 20px 20px;
+}
+.b-icon-star.active {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background: url("../images/icons/star-g.png") no-repeat center;
+  background-size: 20px 20px;
+}
+.b-icon-star.active-2 {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background: url("../images/icons/star-o.png") no-repeat center;
+  background-size: 20px 20px;
+}
+
 .bc-header .nav.navbar-nav.menu a {
   font-size: 16px;
 }
@@ -1212,6 +1258,15 @@
   color: #333333 !important;
   background-color: transparent !important;
 }
+.bc-header .bc-drop-menu {
+  border-top-right-radius: 3px !important;
+  border-top-left-radius: 3px !important;
+  text-align: center;
+  min-width: 100px;
+}
+.bc-header .bc-drop-menu a {
+  padding: 6px 25px;
+}
 
 .bc-footer {
   background-color: #333333;
@@ -1226,6 +1281,13 @@
 }
 .bc-footer.white, .bc-footer.white a {
   color: #999999;
+}
+.bc-footer.fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 0;
 }
 
 .bc-banner {
@@ -1547,6 +1609,9 @@
   margin-top: -200px;
   position: absolute;
   top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 .bc-login-wrap .bcl-title {
   color: white;

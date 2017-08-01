@@ -58,27 +58,25 @@
                 <div class="col-xs-12">
                     <div class="col-sm-6 col-xs-12 mt-10">
                         <div class="col-xs-12 box-shadow-3 bc-list-item">
-                            <div class="col-xs-2 bcl-img">
-                                <img src="/images/default@2x.png" width="60px">
+                            <div class="col-xs-9">
+                                <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>
+                                <p class="col-xs-12">中标企业：网易传媒科技有限公司</p>
+                                <p class="col-xs-12">中标时间：2018-11-4</p>
                             </div>
-                            <div class="col-xs-10">
-                                <p class="text-cut col-xs-12">网易传媒科技有限公司</p>
-                                <p class="col-xs-12 text-cut">中标项目：平顶山市石龙区公安局政法专款装配采购</p>
-                                <p class="col-xs-6">中标产品：地产</p>
-                                <p class="col-xs-6 color-hint text-right">公布时间：2018-11-4</p>
+                            <div class="col-xs-3 bcl-right">
+                                <p class="font-16 mt-35">价格<span class="color-orange"><span class="ml-5 mr-5 font-30">3.0</span> 万</span></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xs-12 mt-10">
                         <div class="col-xs-12 box-shadow-3 bc-list-item">
-                            <div class="col-xs-2 bcl-img">
-                                <img src="/images/default@2x.png" width="60px">
+                            <div class="col-xs-9">
+                                <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>
+                                <p class="col-xs-12">中标企业：网易传媒科技有限公司</p>
+                                <p class="col-xs-12">中标时间：2018-11-4</p>
                             </div>
-                            <div class="col-xs-10">
-                                <p class="text-cut col-xs-12">网易传媒科技有限公司</p>
-                                <p class="col-xs-12 text-cut">中标项目：平顶山市石龙区公安局政法专款装配采购</p>
-                                <p class="col-xs-6">中标产品：地产</p>
-                                <p class="col-xs-6 color-hint text-right">公布时间：2018-11-4</p>
+                            <div class="col-xs-3 bcl-right">
+                                <p class="font-16 mt-35">价格<span class="color-orange"><span class="ml-5 mr-5 font-30">3.0</span> 万</span></p>
                             </div>
                         </div>
                     </div>

@@ -19,8 +19,7 @@
 .b-icon-login-user{
   @include createIcon(22px, 22px, 'person_active');
 }
-
-.b-icon-not-login-user{
+.b-icon-logout-user{
   @include createIcon(22px, 22px, 'person');
 }
 
@@ -42,4 +41,19 @@
 
 .b-icon-psw{
   @include createIcon(18px, 18px, 'psw');
+}
+
+.b-icon-close{
+  @include createIcon(7px, 7px, 'close');
+}
+
+
+.b-icon-star{
+  @include createIcon(20px, 20px, 'star');
+  &.active{
+    @include createIcon(20px, 20px, 'star-g');
+  }
+  &.active-2{
+    @include createIcon(20px, 20px, 'star-o');
+  }
 }

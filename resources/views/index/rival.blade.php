@@ -52,24 +52,26 @@
                             <div class="col-xs-2 bcl-img">
                                 <img src="/images/default@2x.png" width="60px">
                             </div>
-                            <div class="col-xs-7">
+                            <div class="col-xs-6">
                                 <p class="text-cut col-xs-12">网易传媒科技有限公司</p>
-                                <p class="col-xs-12 text-cut">中标项目：平顶山市石龙区公安局政法专款装配采购</p>
-                                <p class="col-xs-6">中标产品：地产</p>
+                                <p class="col-xs-12 text-cut">中标项目数量：12个</p>
+                                <p class="col-xs-12">中标候选人次数：6次</p>
                             </div>
-                            <div class="col-xs-3 bcl-right">
-                                <div class="col-xs-6 p-0">
-                                    <canvas class="vie-num" width="36" height="36">20</canvas>
-                                    <div class="vie-text">20</div>
-                                    <p class="mb-0">竞争力</p>
-                                </div>
-                                <div class="col-xs-6 p-0">
-                                    <div class="vitality-img">
-                                        <img src="/images/vitality/1.png" >
-                                    </div>
-                                    <p class="mb-0">活跃度</p>
-                                </div>
-                                <p>公布时间：2018-11-4</p>
+                            <div class="col-xs-4 bcl-right pt-15">
+                                <p>竞争力：
+                                    <span class="b-icon-star active-2"></span>
+                                    <span class="b-icon-star active-2"></span>
+                                    <span class="b-icon-star active-2"></span>
+                                    <span class="b-icon-star"></span>
+                                    <span class="b-icon-star"></span>
+                                </p>
+                                <p>活跃度：
+                                    <span class="b-icon-star active"></span>
+                                    <span class="b-icon-star active"></span>
+                                    <span class="b-icon-star active"></span>
+                                    <span class="b-icon-star"></span>
+                                    <span class="b-icon-star"></span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -78,24 +80,26 @@
                             <div class="col-xs-2 bcl-img">
                                 <img src="/images/default@2x.png" width="60px">
                             </div>
-                            <div class="col-xs-7">
+                            <div class="col-xs-6">
                                 <p class="text-cut col-xs-12">网易传媒科技有限公司</p>
-                                <p class="col-xs-12 text-cut">中标项目：平顶山市石龙区公安局政法专款装配采购</p>
-                                <p class="col-xs-6">中标产品：地产</p>
+                                <p class="col-xs-12 text-cut">中标项目数量：12个</p>
+                                <p class="col-xs-12">中标候选人次数：6次</p>
                             </div>
-                            <div class="col-xs-3 bcl-right">
-                                <div class="col-xs-6 p-0">
-                                    <canvas class="vie-num" width="36" height="36">20</canvas>
-                                    <div class="vie-text">20</div>
-                                    <p class="mb-0">竞争力</p>
-                                </div>
-                                <div class="col-xs-6 p-0">
-                                    <div class="vitality-img">
-                                        <img src="/images/vitality/1.png" >
-                                    </div>
-                                    <p class="mb-0">活跃度</p>
-                                </div>
-                                <p>公布时间：2018-11-4</p>
+                            <div class="col-xs-4 bcl-right pt-15">
+                                <p>竞争力：
+                                    <span class="b-icon-star active-2"></span>
+                                    <span class="b-icon-star active-2"></span>
+                                    <span class="b-icon-star active-2"></span>
+                                    <span class="b-icon-star"></span>
+                                    <span class="b-icon-star"></span>
+                                </p>
+                                <p>活跃度：
+                                    <span class="b-icon-star active"></span>
+                                    <span class="b-icon-star active"></span>
+                                    <span class="b-icon-star active"></span>
+                                    <span class="b-icon-star"></span>
+                                    <span class="b-icon-star"></span>
+                                </p>
                             </div>
                         </div>
                     </div>

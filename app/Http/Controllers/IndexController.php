@@ -31,6 +31,19 @@ class IndexController extends Controller
     }
 
     /**
+     * 列表页
+     * @return mixed
+     */
+    public function searchList()
+    {
+
+        $params = [
+            'page' =>'page-index',
+        ];
+        return View::make('index.list',$params);
+    }
+
+    /**
      * 招标主页
      * @return mixed
      */
@@ -93,6 +106,19 @@ class IndexController extends Controller
             'page' =>'page-index',
         ];
         return View::make('index.register',$params);
+    }
+
+    /**
+     * 个人信息
+     * @return mixed
+     */
+    public function profile()
+    {
+
+        $params = [
+            'page' =>'page-index',
+        ];
+        return View::make('index.profile',$params);
     }
 
 

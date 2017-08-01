@@ -44,20 +44,15 @@ abstract class Controller extends BaseController
         //TODO Session In The Constructor not work 
         $this->middleware(function ($request, $next) {
 //            Session::forget('account_info');
-            $wechatUser = session('wechat.oauth_user'); // 拿到微信授权用户资料
+//            $wechatUser = session('wechat.oauth_user'); // 拿到微信授权用户资料
 //            Log::info('refreshInitInfo');
 //            Log::info(\GuzzleHttp\json_encode($wechatUser));
-            if($wechatUser)
-            {
-                $this->openId = $wechatUser->id;
-//                Log::info('open_id is:::'.$this->openId);
-            }
-            $env = env('APP_ENV');
-            if ($env == 'local' && empty($this->openId)) {
-                $this->openId ='orwAGsxDRbOTQP0_WtG5iYIje5Zs';
-            }
+//            if($wechatUser)
+//            {
+//                $this->openId = $wechatUser->id;
+////                Log::info('open_id is:::'.$this->openId);
+//            }
             $this->uid = Util::getUid();
-            $this->sid = Util::getUserToken();
             return $next($request);
         });
 

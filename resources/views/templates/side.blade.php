@@ -1,4 +1,3 @@
-<div class="bg-grey-bar"></div>
 <div class="bc-section-title orange">增值业务</div>
 <div class="bc-side-list">
     <div class="bcs-item">

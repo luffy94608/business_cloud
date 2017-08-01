@@ -48,6 +48,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4 pl-20 hidden-xs">
+                    <div class="bg-grey-bar"></div>
                     @include('templates.side')
                 </div>
 

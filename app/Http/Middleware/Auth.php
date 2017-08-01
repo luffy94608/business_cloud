@@ -27,9 +27,9 @@ class Auth
      */
     public function handle($request, Closure $next)
     {
-        $loginUrl = '/auth/login';
-        $sid = Util::getUserToken();
-        if(empty($sid)){
+        $loginUrl = '/login';
+        $uid = Util::getUid();
+        if(empty($uid)){
             if ($request->ajax()) {
                 $data = [
                     'url'=>$loginUrl
