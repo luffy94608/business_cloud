@@ -10,8 +10,10 @@
   .navbar-brand{
     padding: 10px 15px;
     margin-right: 40px;
-    .bch-logo{
-      height: 50px;
+    .bc-log-img{
+      width: 84px;
+      height: 52px;
+      background: url("../../images/logo.png") no-repeat center;
     }
   }
   .bch-login {

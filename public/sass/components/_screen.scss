@@ -41,11 +41,37 @@ and (min-width : 375px)
 
 }
 
+//大屏幕尺寸样式
 @media (min-width: 768px) {
   .bcl-title{
     margin-bottom: 30px;
     &>span:first-child{
       margin-right: 30px!important;
+    }
+  }
+}
+
+
+//小屏幕尺寸样式
+@media (max-width: 768px) {
+  //登录页面手机适配
+  .bcl-title{
+    font-size: 22px!important;
+  }
+  .bg-transparent .navbar-header .navbar-brand .bc-log-img{
+    background: url("../../images/logo-t.png") no-repeat center;
+  }
+
+  .bc-login-screen{
+    background-color: transparent!important;
+    .navbar-header{
+      margin-top: 30px;
+      text-align: center;
+      .navbar-brand{
+        display: inline-block;
+        margin: 0 auto;
+        float: none;
+      }
     }
   }
 }

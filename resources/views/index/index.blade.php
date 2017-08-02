@@ -14,8 +14,8 @@
         <div class="container">
             @include('templates.select')
             
-            <div class="row bg-white box-shadow-1">
-                <div class="col-sm-8 col-xs-12 ">
+            <div class="row ">
+                <div class="col-sm-8 col-xs-12 bg-white box-shadow-1">
                     <div class="row bc-stat-section">
                         <div class="bc-section-title text-left">数据统计</div>
                         <div class="d-table wd-100 mt-30">
@@ -47,9 +47,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 pl-20 hidden-xs">
-                    <div class="bg-grey-bar"></div>
-                    @include('templates.side')
+                <div class="col-sm-4 pl-20 col-xs-12 ">
+                    <div class="col-xs-12 bg-white box-shadow-1">
+                        @include('templates.side')
+                    </div>
                 </div>
 
             </div>

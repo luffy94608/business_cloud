@@ -5,7 +5,7 @@
 {{--内容区域--}}
 @section('content')
     {{--header--}}
-    @include('layouts.header', ['hideContent'=>true, 'bgStyle'=>'bg-transparent'])
+    @include('layouts.header', ['hideContent'=>true, 'bgStyle'=>'bg-transparent bc-login-screen'])
     {{--content--}}
     <div class="bc-login-wrap">
         <div class="container-fluid">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footer', ['style'=>'fixed-bottom'])
+        @include('layouts.footer', ['style'=>'fixed-bottom bc-login-screen'])
     </div>
 @stop
 

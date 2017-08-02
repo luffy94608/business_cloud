@@ -11,7 +11,8 @@
                 </button>
             @endif
             <a class="navbar-brand" href="/">
-                <img src="/images/logo.png" class="bch-logo">
+                <div class="bc-log-img"></div>
+                {{--<img src="/images/logo.png" class="bch-logo">--}}
             </a>
         </div>
         @if(!isset($hideContent))

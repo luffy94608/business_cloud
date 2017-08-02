@@ -1242,8 +1242,10 @@
   padding: 10px 15px;
   margin-right: 40px;
 }
-.bc-header .navbar-brand .bch-logo {
-  height: 50px;
+.bc-header .navbar-brand .bc-log-img {
+  width: 84px;
+  height: 52px;
+  background: url("../../images/logo.png") no-repeat center;
 }
 .bc-header .bch-login {
   padding: 24px 15px;
@@ -1633,5 +1635,27 @@
   }
   .bcl-title > span:first-child {
     margin-right: 30px !important;
+  }
+}
+@media (max-width: 768px) {
+  .bcl-title {
+    font-size: 22px !important;
+  }
+
+  .bg-transparent .navbar-header .navbar-brand .bc-log-img {
+    background: url("../../images/logo-t.png") no-repeat center;
+  }
+
+  .bc-login-screen {
+    background-color: transparent !important;
+  }
+  .bc-login-screen .navbar-header {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .bc-login-screen .navbar-header .navbar-brand {
+    display: inline-block;
+    margin: 0 auto;
+    float: none;
   }
 }

@@ -3,11 +3,15 @@
 
 {{--内容区域--}}
 @section('content')
+
+    <div class="visible-xs">
+        @include('layouts.header', ['hideContent'=>true, 'bgStyle'=>'bc-login-screen'])
+    </div>
     {{--content--}}
     <div class="container-fluid">
         <div class="container">
             <div class="row  mt-20  bg-white box-shadow-1 bc-form-section">
-                <div class="bc-section-title color-with-body">用户注册</div>
+                <div class="bc-section-title color-with-body hidden-xs">用户注册</div>
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 form-horizontal">
                     {{--帐号相关--}}
                     <div class="bc-form-title-section">
