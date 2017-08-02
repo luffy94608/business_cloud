@@ -21,6 +21,31 @@
                 $this.siblings('.vie-text').removeClass('color-red color-green').addClass(colorClass);
             });
         },
+        /**
+         * 首页内容区域和 side 高度一直
+         */
+        fixBodyHeight:function () {
+            if ($(window).width()<768) {
+                return false;
+            }
+            var sideSection = $('.bc-side-section');
+            var bodySection = $('.bc-stat-section');
+            var wrapSection = $('.bc-body-section');
+            var bodyHeadSection = $('.bc-section-title', wrapSection);
+            var bodyContentSection = $('.d-table', wrapSection);
+            var sh = sideSection.height();
+            var bh = bodySection.height();
+            var bhh = bodyHeadSection.height();
+            if (bh < sh) {
+                bodySection.height(sh);
+                bodyContentSection.height(sh-bhh);
+            } else {
+                sideSection.height(bh);
+                bodyContentSection.height(bh-bhh);
+            }
+
+
+        },
 
         initBtnEvent : function () {
 
@@ -48,6 +73,7 @@
             //
             init.initBtnEvent();
             init.circleProgressEvent();
+            init.fixBodyHeight();
         }
     };
     init.run();

@@ -1,4 +1,4 @@
-<div class="row mt-20 mb-20">
+<div class="row mt-20 ">
     <div class="col-sm-4 col-sm-offset-8 bc-select-section">
         <div class="row ">
             <div class="col-xs-6">

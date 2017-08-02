@@ -1001,4 +1001,278 @@
         }
     };
 
+    $.fn.Pager = function(opts) {
+        var st = {
+            url: null,
+            currentPage : 0,
+            protocol: null,
+            listSize: 20,
+            onPageInitialized:null,
+            onCountChanged:null,
+            onListSizeChanged:null,
+            onUpdateSuccess:null,
+            wrapUpdateData:null
+        };
+
+        var $this = $(this);
+        $.extend(st, opts);
+
+        $this.currentIdx = function(){
+            return st.currentPage;
+        };
+
+        $this.initTabPage = function(pageIndex){
+            var count = $this.find("#list_count").html();
+            var pagerCount = parseInt((parseInt(count) + st.listSize-1) / st.listSize);
+            var pi = $this.find("#pager_indicator").PagerIndicator({
+                url: st.url?st.url:null,
+                currentPage: pageIndex,
+                totalCount:count,
+                totalPage: pagerCount,
+                pageSize:  10,
+                onPageChange: function(index){
+                    st.currentPage = index;
+                    //	        			$this.find("#list").html(res.html);
+                    $this.updateList(index);
+                    pi.invalidate(index);
+                }
+            });
+            if($.isFunction(st.onPageInitialized))
+                st.onPageInitialized($this);
+        };
+
+        $this.initDeletePagerUpdate = function(callback){
+            var count = $this.find("#list_count").html();
+            if(count>0){
+                count-=1;
+            }
+            var pagerCount = parseInt((parseInt(count) + st.listSize-2) / st.listSize);
+            if(pagerCount<0){
+                pagerCount = 0;
+            }
+            var pageIndex = st.currentPage;
+            if(pageIndex>pagerCount-1){
+                pageIndex -= 1;
+                if($.isFunction(callback)){
+                    callback(pageIndex)
+                }
+            }
+            var pi = $this.find("#pager_indicator").PagerIndicator({
+                url: st.url?st.url:null,
+                currentPage: pageIndex,
+                totalCount:count,
+                totalPage: pagerCount,
+                pageSize:  10,
+                onPageChange: function(index){
+                    st.currentPage = index;
+                    //	        			$this.find("#list").html(res.html);
+                    $this.updateList(index);
+                    pi.invalidate(index);
+                }
+            });
+            if($.isFunction(st.onPageInitialized))
+                st.onPageInitialized($this);
+        };
+
+        $this.setEmpty = function(html){
+            $this.find("#list").empty().html(html);
+        };
+        $this.updateList = function(pageIndex){
+            var data = {offset:pageIndex*st.listSize,length:st.listSize,page:pageIndex};
+            if($.isFunction(st.wrapUpdateData))
+                data = st.wrapUpdateData(pageIndex,data);
+            $.wpost(st.protocol, data ,function(res){
+                if(pageIndex>0){
+                    if(res.total && res.total > 0){
+                        $this.find("#list_count").html(res.total);
+                    }
+                }else{
+                    $this.find("#list_count").html(res.total);
+                }
+
+                $this.find("#list").html(res.html);
+
+                if($.isFunction(st.onCountChanged))
+                    st.onCountChanged(res.total);
+
+                if($.isFunction(st.onUpdateSuccess))
+                    st.onUpdateSuccess(res);
+
+                if(res.list_size>0){
+                    st.listSize = res.list_size
+                }
+                $this.initTabPage(pageIndex);
+            });
+        };
+
+        $this.initTabPage();
+
+        return $this;
+    };
+
+    $.fn.PagerIndicator = function(opts) {
+        var st = {
+            url: null,
+            totalCount: 0,
+            totalPage : 1,
+            currentPage : 0,
+            pageSize : 3,
+            updateWhenInit: false,
+            showLast: true,
+            onPageChange : null
+        };
+
+        var $this = $(this);
+        var spanClass = '';
+        var numberClass = '';
+        var currentClass = "active";
+        var BTN = $("<li class='paginate_button'><a href='javascript:void(0);'></a></li>");
+        var SPAN = $("<li class='paginate_button' style='padding:0px 5px 0px 0px;'></li>");
+        var firstString = '首页', lastString = '末页';
+        var prevString = '上一页', nextString = '下一页';
+
+        if (opts != st)
+            $.extend(st, opts);
+
+        st.totalPage = Math.max(1,st.totalPage);
+        st.currentPage = Math
+            .min(Math.max(st.currentPage, 0), st.totalPage - 1);
+        if (st.url){
+            if (st.url.indexOf('?') > 0){
+                st.url = st.url + '&';
+            } else {
+                st.url = st.url + '?';
+            }
+        }
+
+        var even = (st.pageSize & 1) ? 0 : 1;
+        var half = (st.pageSize - 1) >> 1;
+
+        var lower = Math.max(0, Math.min(st.currentPage + half,
+                st.totalPage - 1)
+            - st.pageSize + 1);
+        var upper = Math.min(st.totalPage - 1, Math.max(st.currentPage - half,
+                0)
+            + st.pageSize - 1);
+
+        var first = st.currentPage == 0, last = st.currentPage == st.totalPage - 1;
+        var preIdx = Math.max(st.currentPage - 1, 0), nextIdx = Math.min(
+            st.currentPage + 1, st.totalPage - 1);
+
+        var ITEMS = [ {
+            html : firstString,
+            title : firstString,
+            disabled : first,
+            desIdx : 0,
+            style : first ? spanClass: numberClass
+        } ];
+        ITEMS.push({
+            html : prevString,
+            title : prevString,
+            disabled : first,
+            desIdx : preIdx,
+            style : first ? spanClass: numberClass
+        });
+
+        for ( var i = lower; i <= upper; i++) {
+            var focused = i == st.currentPage;
+            var s = focused ? currentClass : numberClass;
+            ITEMS.push({
+                html : i + 1,
+                title : i + 1,
+                style : s,
+                disabled : focused,
+                desIdx : i,
+                isNum : true
+            });
+        }
+
+        ITEMS.push({
+            html : nextString,
+            title : nextString,
+            disabled : last,
+            desIdx : nextIdx,
+            style : last ? spanClass: numberClass
+        });
+        if(st.showLast)
+            ITEMS.push({
+                html : lastString,
+                title : lastString,
+                disabled : last,
+                desIdx : st.totalPage - 1,
+                style : last ? spanClass: numberClass
+            });
+
+        $this.empty();
+
+        if (st.totalCount > 0){
+            var pageInfo = $('<li class="paginate_button"><div class="page_info"></div></li>').find('.page_info').html('总数<span class="number">'+st.totalCount+'</span>,共<span class="number">'+st.totalPage+'</span>页');
+            if (st.totalPage > 1){
+                pageInfo.append('<input type="text" placeholder="GO" class="input_go">');
+                pageInfo.find('input').keypress(function(e){
+                    if (e.keyCode == 13){
+                        var page = parseInt($(this).val(), 10);
+                        if (st.url){
+                            location.href = st.url + "page=" + page;
+                        } else {
+                            if (0 < page && page <= st.totalPage){
+                                if ($.isFunction(st.onPageChange)) {
+                                    st.onPageChange(page-1);
+                                }
+                            }
+                        }
+                    }
+                }) ;
+            }
+            pageInfo.parent().appendTo($this);
+        }
+        if (st.totalPage > 1){
+            $.each(ITEMS, function(i, data) {
+                if (data.disabled && !data.isNum && false) {
+                    SPAN.clone().appendTo($this).html(data.html).attr("title",
+                        data.title).addClass(data.style);
+                } else {
+                    if (st.currentPage == data.desIdx){
+                        var tmp=BTN.clone().appendTo($this);
+                        tmp.addClass(data.style);
+                        tmp.find('a').html(data.html).addClass(data.style);
+                    } else {
+                        if(st.url==null){
+                            BTN.clone().appendTo($this).find('a').html(data.html).attr("title",
+                                data.title).addClass(data.style).wclick(function() {
+//									if (st.currentPage != data.desIdx) {
+                                st.currentPage = data.desIdx;
+                                if ($.isFunction(st.onPageChange)) {
+                                    st.onPageChange(data.desIdx);
+//                                        alert(data.desIdx);
+                                }
+//									}
+                                return false;
+                            });
+                        }else{
+                            BTN.clone().appendTo($this).find('a').html(data.html).attr("title",
+                                data.title).addClass(data.style).attr("href", st.url + "page=" + (data.desIdx+1) ).attr("target", "_top");
+
+                        }
+                    }
+                }
+            });
+        }
+
+        $this.invalidate = function(){
+            $this.PagerIndicator(st);
+        };
+        if (st.updateWhenInit && $.isFunction(st.onPageChange)) {
+            st.onPageChange(st.currentPage);
+            // alert(data.desIdx);
+        }
+
+        $this.currentPage = function(){
+            return st.currentPage;
+        };
+
+
+        return $this;
+    };
+
 })($);

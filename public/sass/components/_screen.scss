@@ -54,14 +54,15 @@ and (min-width : 375px)
 
 //小屏幕尺寸样式
 @media (max-width: 768px) {
-  //登录页面手机适配
-  .bcl-title{
-    font-size: 22px!important;
-  }
+  //header
   .bg-transparent .navbar-header .navbar-brand .bc-log-img{
     background: url("../../images/logo-t.png") no-repeat center;
   }
 
+  //登录页面手机适配
+  .bcl-title{
+    font-size: 22px!important;
+  }
   .bc-login-screen{
     background-color: transparent!important;
     .navbar-header{
@@ -73,6 +74,34 @@ and (min-width : 375px)
         float: none;
       }
     }
+  }
+
+  .bc-side-section{
+    margin-top: 20px;
+    padding-left: 15px;
+  }
+  .bc-section-title{
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .bc-stat-section{
+    .bcs-item{
+      .title{
+        color: $title;
+        font-size: 14px;
+        margin-top: 20px;
+      }
+      .total{
+        font-size: 40px;
+        margin: 20px 0;
+      }
+      .hint{
+        font-size: 12px;
+      }
+    }
+    
   }
 }
 

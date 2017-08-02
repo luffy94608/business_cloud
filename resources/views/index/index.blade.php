@@ -12,13 +12,13 @@
     {{--content--}}
     <div class="container-fluid">
         <div class="container">
-            @include('templates.select')
+            {{--@include('templates.select')--}}
             
-            <div class="row ">
-                <div class="col-sm-8 col-xs-12 bg-white box-shadow-1">
-                    <div class="row bc-stat-section">
+            <div class="row bc-body-section">
+                <div class="col-sm-8 col-xs-12 bg-white box-shadow-1 bc-stat-section">
+                    <div class="row ">
                         <div class="bc-section-title text-left">数据统计</div>
-                        <div class="d-table wd-100 mt-30">
+                        <div class="d-table wd-100">
                             <div class="d-table-cell v-align-middle">
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">招标信息</p>
@@ -47,8 +47,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 pl-20 col-xs-12 ">
-                    <div class="col-xs-12 bg-white box-shadow-1">
+                <div class="col-sm-4 col-xs-12 bc-side-section">
+                    <div class="row bg-white box-shadow-1  ht-100">
                         @include('templates.side')
                     </div>
                 </div>
@@ -58,7 +58,7 @@
             <div class="row  mt-20  bg-white box-shadow-1">
                 <div class="bc-section-title purple">最新发布<a href="#" class="color-two-title pull-right font-14 v-align-middle">查看更多</a></div>
                 <div class="col-xs-12">
-                    <div class="col-sm-6 col-xs-12 mt-10">
+                    <div class="col-sm-6 col-xs-12 mt-10 p-0">
                         <div class="col-xs-12 box-shadow-3 bc-list-item">
                             <div class="col-xs-9">
                                 <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-xs-12 mt-10">
+                    <div class="col-sm-6 col-xs-12 mt-10 p-0">
                         <div class="col-xs-12 box-shadow-3 bc-list-item">
                             <div class="col-xs-9">
                                 <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>

@@ -14,9 +14,9 @@
         <div class="container">
             @include('templates.select')
 
-            <div class="row bg-white box-shadow-1">
-                <div class="col-sm-8 col-xs-12 ">
-                    <div class="row bc-stat-section">
+            <div class="row bc-body-section">
+                <div class="col-sm-8 col-xs-12 bg-white box-shadow-1 bc-stat-section">
+                    <div class="row ">
                         <div class="bc-section-title text-left">数据统计</div>
                         <div class="d-table wd-100 ">
                             <div class="d-table-cell v-align-middle">
@@ -47,8 +47,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 pl-20 hidden-xs">
-                    @include('templates.side')
+                <div class="col-sm-4 col-xs-12 bc-side-section">
+                    <div class="row bg-white box-shadow-1  ht-100">
+                        @include('templates.side')
+                    </div>
                 </div>
 
             </div>
