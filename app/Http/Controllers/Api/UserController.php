@@ -95,7 +95,7 @@ class UserController extends Controller
             'verified' => 1,
             'paid' => 1,
         ];
-        $userId = UserRepositories::addUser($user);
+        $userId = UserRepositories::insertUser($user);
         $profile = [
             'user_id' => $userId,
             'name' => $params['name'],
@@ -109,7 +109,7 @@ class UserController extends Controller
             'follow_industry' => $params['follow_industry'],
             'follow_keyword' => $params['follow_keyword'],
         ];
-        $result = UserRepositories::updateOrInsertProfile($profile);
+        $result = UserRepositories::insertProfile($profile);
 
         if ($result) {
             $user['id'] = $userId;
@@ -135,32 +135,39 @@ class UserController extends Controller
      */
     public function reset(Request $request)
     {
-        $this->validate($request, [
+        $pattern = [
             'mobile' => 'required|digits:11',
+            'psw' => 'required',
             'code' => 'required',
-            'password' => 'required',
-        ]);
+        ];
+        $this->validate($request, $pattern);
+        $params = $request->only(array_keys($pattern));
 
-        $params = $request->only(
-            'mobile', 'code', 'password'
-        );
-        $result = UserApi::reset($params['mobile'], $params['password'], $params['code']);
-        if (isset($result['code']) && $result['code'] === 0) {
-            $data = $result['data'];
-            $cookie = Cookie::forever('user_mobile', $params['mobile']);
-            $cookie2 = Cookie::forever('user_psw', isset($params['password']) ? $params['password'] : '');
-            $this->saveLoginData($this->openId, $data);
-            $data = [
-                'url'=>$this->getReferUrl()
-            ];
-            $heart = isset($data['heart']) ? $data['heart'] : [];
-            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data, $heart))->toJson())
-                ->withCookie($cookie)
-                ->withCookie($cookie2);
+        if ($params['code'] != Util::getVerifyCode()) {
+            $desc = '验证码不正确';
+            return response()->json((new ApiResult(-1, $desc, []))->toJson());
         }
-        $code = isset($result['code']) ? $result['code'] : -1;
-        $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
-        return response()->json((new ApiResult($code, $desc, $result))->toJson());
+        if (!UserRepositories::mobileIsExist($params['mobile'])) {
+            $desc = '手机号不存在';
+            return response()->json((new ApiResult(-1, $desc, []))->toJson());
+        }
+
+        $user = UserRepositories::getUserByMobile($params['mobile']);
+
+        $data = [
+            'username' => $params['mobile'],
+            'password' => md5($params['psw']),
+            'pwd' => $params['psw'],
+        ];
+        $result = UserRepositories::updateUser($user, $data);
+
+        if ($result) {
+            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());
+        } else {
+            $code = isset($result['code']) ? $result['code'] : -1;
+            $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
+            return response()->json((new ApiResult($code, $desc, $result))->toJson());
+        }
     }
 
 
@@ -243,8 +250,9 @@ class UserController extends Controller
         $this->validate($request, $pattern);
         $params = $request->only(array_keys($pattern));
 
-        $profile = [
-            'user_id' => $this->uid,
+        $user = UserRepositories::getProfile($this->uid, true);
+
+        $data = [
             'company_name' => $params['company_name'],
             'company_area' => $params['company_area'],
             'company_industry' => $params['company_industry'],
@@ -252,7 +260,7 @@ class UserController extends Controller
             'follow_industry' => $params['follow_industry'],
             'follow_keyword' => $params['follow_keyword'],
         ];
-        $result = UserRepositories::updateOrInsertProfile($profile);
+        $result = UserRepositories::updateProfile($user, $data);
 
         if ($result) {
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());

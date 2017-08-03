@@ -4,19 +4,28 @@
 
 (function($){
     var init = {
-        verifyCodeBtn : $('.verify-code'),
-        submitBtn : $('#js_reset_btn'),
+        verifyCodeBtn : $('#js_get_code_btn'),
+        submitBtn : $('#js_input_submit'),
+
+        inputMobile: $('#js_input_mobile'),
+        inputPsw: $('#js_input_psw'),
+        inputCode: $('#js_input_code'),
         loading :false,
 
+        /**
+         * 验证码倒计时
+         * @param value
+         * @returns {boolean}
+         */
         initWaitingSecond : function (value) {
             var opts = {
                 target:init.verifyCodeBtn,
                 defaultStr:'获取验证码',
-                initStartTimeKey:'js_verify_code_init_time_reset',
-                waitingSecond :120,
+                initStartTimeKey:'js_verify_code_init_time',
+                waitingSecond :60,
                 interval :'',
                 getRemainSec : function () {
-                    var startTime = $.cache.get(opts.initStartTimeKey);
+                    var startTime = $.cookie(opts.initStartTimeKey);
                     startTime = startTime ? parseInt(startTime) : 0;
                     return Math.floor(parseInt(startTime + opts.waitingSecond - new Date().getTime()/1000));
                 },
@@ -38,10 +47,8 @@
                 if(value == 'status'){
                     return  (opts.getRemainSec() <0) ? false : true;
                 }else{
-                    $.cache.set(opts.initStartTimeKey,value);
+                    $.cookie(opts.initStartTimeKey,value,{ expires: 1, path: '/' });
                 }
-            } else {
-                $.cache.set(opts.initStartTimeKey,-1);
             }
 
             opts.running();
@@ -55,14 +62,30 @@
 
         },
 
+        /**
+         * 表单验证
+         * @returns {*}
+         */
         initParams : function () {
             var params = {
-                mobile:$.trim($("#js_ar_mobile").val()),
-                code:$.trim($("#js_ar_code").val()),
-                password:$.trim($("#js_ar_password").val())
+                mobile:$.trim(init.inputMobile.val()),
+                code:$.trim(init.inputCode.val()),
+                psw:$.trim(init.inputPsw.val())
             };
+
             var status;
             status = $.checkInputVal({val:params.mobile,type:'mobile',onChecked:function(val,state,hint){
+                if(state <= 0){
+                    $.showToast(hint,false);
+                }
+            }
+            });
+            if(status<=0){
+                return false;
+            }
+
+
+            status = $.checkInputVal({val:params.psw,type:'password',onChecked:function(val,state,hint){
                 if(state <= 0){
                     $.showToast(hint,false);
                 }
@@ -77,31 +100,22 @@
                 return false;
             }
 
-            status = $.checkInputVal({val:params.password,type:'password',onChecked:function(val,state,hint){
-                if(state <= 0){
-                    $.showToast(hint,false);
-                }
-            }
-            });
-            if(status<=0){
-                return false;
-            }
-
             return params;
         },
+      
         initBtnEvent : function () {
             /**
              * 验证码倒计时
              */
             init.initWaitingSecond();
-            init.verifyCodeBtn.unbind().bind($.getClickEventName(),function () {
+            init.verifyCodeBtn.unbind().bind('click',function () {
                 if(init.initWaitingSecond('status') || init.loading){
                     return false;
                 }
 
                 var params = {
-                    type:2,
-                    mobile:$.trim($('#js_ar_mobile').val())
+                    type:0,
+                    mobile:$.trim(init.inputMobile.val())
                 };
 
                 var status;
@@ -118,6 +132,7 @@
                 $.wpost($.httpProtocol.GET_VERIFY_CODE,params,function (data) {
                     var startTime = Math.floor(new Date().getTime()/1000);
                     init.initWaitingSecond(startTime);
+                    $.showToast($.string.VERIFY_CODE_SEND_SUCCESS, true);
                     init.loading = false;
                 },function () {
                     init.loading = false;
@@ -126,11 +141,8 @@
 
             });
 
-
-            /**
-             * 注册
-             */
-            init.submitBtn.unbind().bind($.getClickEventName(),function () {
+           
+            init.submitBtn.unbind().bind('click',function () {
                 if(init.loading){
                     return false;
                 }
@@ -140,26 +152,17 @@
                 }
                 init.loading = true;
                 $.wpost($.httpProtocol.RESET,params,function (data) {
-                    var callback = $.getQueryParams('callback');
-                    var url  = ( callback && callback.length) ? callback : '/auth/account';
-                    $.locationUrl(url);
+                    $.showToast($.string.EDIT_SUCCESS, true);
+                    // $.locationUrl('/login');
                     init.loading = false;
                 },function () {
                     init.loading = false;
                 })
             });
-            var inputObj = $('input');
-            var fixBtn = $('.lf-fixed-btn');
-            inputObj.on('focus',function () {
-                fixBtn.hide();
-            });
-            inputObj.on('blur',function () {
-                fixBtn.show();
-            });
+
         },
         run : function () {
             init.initBtnEvent();
-            // $.canvasAntCollision('canvas');
         }
     };
     init.run();

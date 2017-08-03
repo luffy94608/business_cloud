@@ -33,9 +33,8 @@
 
             'base': 'page/base',
             'page-index':'page/page.index',
-            // 'page-edit':'page/page.edit',
-            'page-login':'page/page.login',
-            // 'page-psw':'page/page.psw',
+            'page-edit':'page/page.edit',
+            'page-reset':'page/page.reset',
             'page-register':'page/page.register',
             'page-profile':'page/page.profile',
             // 'page-coupon':'page/page.coupon',
@@ -75,9 +74,8 @@
             'canvas': ['jquery'],
 
             'page-index': ['base','cookie'],
-            // 'page-edit': ['base','cookie'],
+            'page-reset': ['base','cookie'],
             'page-login': ['base', 'cookie'],
-            // 'page-psw': ['base'],
             'page-register': ['base','cookie'],
             'page-profile': ['base','cookie'],
             // 'page-account': ['base'],

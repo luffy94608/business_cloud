@@ -31,15 +31,16 @@
                             <input type="text" name="code" class="form-control" id="js_input_code" placeholder="请输入验证码">
                         </div>
                         <div class="col-sm-2 col-xs-2">
-                            <button type="button" class="btn btn-default">获取验证码</button>
+                            <button type="button" class="btn btn-default" id="js_get_code_btn">获取验证码</button>
                         </div>
                     </div>
 
 
+
                     {{--提交按钮--}}
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-success">确定</button>
+                        <div class="col-sm-offset-2 col-sm-4 col-xs-12">
+                            <button type="submit" class="btn btn-success form-control" id="js_input_submit">提交</button>
                         </div>
                     </div>
                 </div>

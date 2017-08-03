@@ -19,10 +19,32 @@ class UserRepositories
      * @param $data
      * @return bool
      */
-    public static function addUser($data)
+    public static function insertUser($data)
     {
         $user = new User();
         return BaseRepositories::updateOrInsert($user, $data)? $user->id :false;
+    }
+
+    /**
+     * update user
+     * @param $user
+     * @param $data
+     * @return bool
+     */
+    public static function updateUser($user, $data)
+    {
+        return BaseRepositories::updateOrInsert($user, $data);
+    }
+
+    /**
+     * update profile
+     * @param $profile
+     * @param $data
+     * @return bool
+     */
+    public static function updateProfile($profile, $data)
+    {
+        return BaseRepositories::updateOrInsert($profile, $data);
     }
 
     /**
@@ -30,7 +52,7 @@ class UserRepositories
      * @param $data
      * @return bool
      */
-    public static function updateOrInsertProfile($data)
+    public static function insertProfile($data)
     {
         $profile = new Profile();
         return BaseRepositories::updateOrInsert($profile, $data);
@@ -65,15 +87,29 @@ class UserRepositories
 
     /**
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
+     * @param bool $isObject
+     * @return array|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      */
-    public static function getProfile($id)
+    public static function getProfile($id, $isObject = false)
     {
         $user = User::find($id);
         if (!is_null($user)) {
             $user->profile;
-            $user = $user->toArray();
+            if (!$isObject) {
+                $user = $user->toArray();
+            }
         }
+        return $user;
+    }
+
+    /**
+     * @param $mobile
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
+    public static function getUserByMobile($mobile)
+    {
+        $user = User::where('username', $mobile)
+            ->first();
         return $user;
     }
 

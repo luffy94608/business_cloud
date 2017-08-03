@@ -160,8 +160,8 @@
                     return false;
                 }
                 init.loading = true;
-                $.wpost($.httpProtocol.REGISTER,params,function (data) {
-                    $.showToast($.string.REGISTER_SUCCESS, true);
+                $.wpost($.httpProtocol.UPDATE_PROFILE,params,function (data) {
+                    $.showToast($.string.EDIT_SUCCESS, true);
                     $.locationUrl('/login');
                     init.loading = false;
                 },function () {

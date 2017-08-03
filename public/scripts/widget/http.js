@@ -10,11 +10,12 @@
         LOGIN                           : '/api/user/login',
         LOGOUT                          : '/api/user/logout',
         REGISTER                        : '/api/user/register',
+        UPDATE_PROFILE                  : '/api/user/update',
         RESET                           : '/api/user/reset',
+
         EDIT_PSW                        : '/api/user/edit',
         FEEDBACK                        : '/api/user/feedback',
         GET_PROFILE                     : '/api/user/get-profile',
-        UPDATE_PROFILE                  : '/api/user/update',
         GET_BILL_LIST                   : '/api/get-bill-list',
         GET_BONUS_LIST                  : '/api/get-bonus-list',
         GET_BONUS_DETAIL                : '/api/get-bonus-detail',

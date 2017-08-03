@@ -141,9 +141,8 @@ class IndexController extends Controller
      */
     public function reset()
     {
-
         $params = [
-            'page' =>'page-index',
+            'page' =>'page-reset',
         ];
         return View::make('index.reset',$params);
     }
