@@ -209,6 +209,17 @@
             LINE_SHARE_TITLE:'我乘坐这趟 “{0}”{1}上下班。你也快来看看有没有合适的线路吧！',
             LINE_SHARE_URL:'{0}/share/line/{1}',
 
+            //new
+            GENDER_MUST:'请选择性别',
+            KEYWORD_MUST:'请输入关键字',
+            AREA_MUST_ADD:'请添加关注地区',
+            KEYWORD_MUST_ADD:'请添加关键字',
+            KEYWORD_EXISTS:'关键字已存在',
+            AREA_EXISTS:'该地区已存在',
+            VERIFY_CODE_SEND_SUCCESS:'验证码发送成功，请查收',
+
+            REGISTER_SUCCESS : '注册成功',
+            LOGIN_SUCCESS : '登录成功',
             SUBMIT_SUCCESS : '提交成功',
             EDIT_SUCCESS : '修改成功',
             PLEASE_CHECK_NETWORK : '请检查网络连接',

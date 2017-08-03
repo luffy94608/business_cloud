@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Builders\ActivityBuilder;
+use App\Http\Builders\DataBuilder;
 use App\Models\ApiResult;
 use App\Models\Enums\ErrorEnum;
 use App\Models\Enums\PayTypeEnum;
@@ -72,22 +72,22 @@ class ActivityController extends Controller
 
         if(!empty($code))
         {
-            $html = ActivityBuilder::toGetItModalHtml($code);
+            $html = DataBuilder::toGetItModalHtml($code);
         }
         else
         {
-            $html = ActivityBuilder::toNotGetItModalHtml();
+            $html = DataBuilder::toNotGetItModalHtml();
         }
 
         //插入抽奖记录
         ActivityRepositories::insertAwardRecord($params['type'],$code,$this->openId,$info['id']);
 
         $awardList = ActivityRepositories::getAwardList($this->openId);
-        $listHtml = ActivityBuilder::toBuildAwardListHtml($awardList);
+        $listHtml = DataBuilder::toBuildAwardListHtml($awardList);
 
         $data = [
             'listHtml'=>$listHtml,
-            "contentSection"=>ActivityBuilder::toBuildAwardedHtml($params['type']),
+            "contentSection"=>DataBuilder::toBuildAwardedHtml($params['type']),
             "html"=>$html
         ];
         return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data))->toJson());

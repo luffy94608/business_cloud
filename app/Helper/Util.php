@@ -62,6 +62,26 @@ class Util
     }
 
     /**
+     * 设置用户验证码
+     * @param $code
+     */
+    public static function setVerifyCode($code)
+    {
+        Session::put('user_verify_code', $code);
+//        Redis::set(self::userCacheKey(), \GuzzleHttp\json_encode($data));
+    }
+
+    /**
+     * 获取用户验证码
+     * @return mixed
+     */
+    public static function getVerifyCode()
+    {
+       return  Session::get('user_verify_code');
+//        Redis::set(self::userCacheKey(), \GuzzleHttp\json_encode($data));
+    }
+
+    /**
      * 清空缓存的用户信息
      */
     public static function clearCacheUserInfo()

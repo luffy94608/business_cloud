@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Util;
 use App\Http\Requests;
+use App\Repositories\UserRepositories;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
@@ -83,27 +85,37 @@ class IndexController extends Controller
     }
 
     /**
-     * 竞争对手
+     * 登录
      * @return mixed
      */
     public function login()
     {
 
         $params = [
-            'page' =>'page-index',
+            'page' =>'page-login',
         ];
         return View::make('index.login',$params);
     }
 
     /**
-     * 竞争对手
+     * 退出
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        Util::clearCacheUserInfo();
+        return redirect()->to('/login');
+    }
+
+    /**
+     * 注册
      * @return mixed
      */
     public function register()
     {
 
         $params = [
-            'page' =>'page-index',
+            'page' =>'page-register',
         ];
         return View::make('index.register',$params);
     }
@@ -114,9 +126,10 @@ class IndexController extends Controller
      */
     public function profile()
     {
-
+        $user = UserRepositories::getProfile($this->uid);
         $params = [
-            'page' =>'page-index',
+            'user'=>$user,
+            'page' =>'page-profile',
         ];
         return View::make('index.profile',$params);
     }

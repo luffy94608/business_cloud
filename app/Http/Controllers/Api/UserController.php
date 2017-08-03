@@ -9,6 +9,7 @@ use App\Models\Enums\ErrorEnum;
 use App\Models\User;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
@@ -33,16 +34,16 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'mobile' => 'required|digits:11',
-            'type' => 'required|in:0,1,2,3',//注册码类型0-注册, 1-登录, 2-密码重置, 3-绑定手机
+//            'type' => 'required|in:0,1,2,3',//注册码类型0-注册, 1-登录, 2-密码重置, 3-绑定手机
         ]);
 
         $params = $request->only(
-            'mobile', 'type'
+            'mobile'
         );
 
-        $result = UserApi::getVerifyCode($params['mobile'], $params['type']);
-        if ($result['code'] === 0) {
-            $data = $result['data'];
+        $result = UserApi::getVerifyCode($params['mobile']);
+        if (!empty($result)) {
+            $data = $result;
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data))->toJson());
         } else {
             $code = isset($result['code']) ? $result['code'] : -1;
@@ -58,34 +59,67 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        $this->validate($request, [
+        $pattern = [
             'mobile' => 'required|digits:11',
+            'psw' => 'required',
             'code' => 'required',
-            'password' => 'required',
-        ]);
 
-        $params = $request->only(
-            'mobile', 'code', 'password'
-        );
+            'name' => 'required',
+            'gender' => 'required',
+            'job' => 'required',
+            'email' => 'required',
+            'company_name' => 'required',
+            'company_area' => 'required',
+            'company_industry' => 'required',
+            'follow_area' => 'required',
+            'follow_industry' => 'required',
+            'follow_keyword' => 'required',
+        ];
+        $this->validate($request, $pattern);
+        $params = $request->only(array_keys($pattern));
 
-        $result = UserApi::register($this->openId,$params['mobile'], $params['password'], $params['code']);
-        if ($result['code'] === 0) {
-            $data = $result['data'];
+        if ($params['code'] != Util::getVerifyCode()) {
+            $desc = '验证码不正确';
+            return response()->json((new ApiResult(-1, $desc, []))->toJson());
+        }
+        if (UserRepositories::mobileIsExist($params['mobile'])) {
+            $desc = '手机号已存在';
+            return response()->json((new ApiResult(-1, $desc, []))->toJson());
+        }
+        
+
+        $user = [
+            'username' => $params['mobile'],
+            'password' => md5($params['psw']),
+            'pwd' => $params['psw'],
+            'verified' => 1,
+            'paid' => 1,
+        ];
+        $userId = UserRepositories::addUser($user);
+        $profile = [
+            'user_id' => $userId,
+            'name' => $params['name'],
+            'gender' => $params['gender'],
+            'position' => $params['job'],
+            'mail' => $params['email'],
+            'company_name' => $params['company_name'],
+            'company_area' => $params['company_area'],
+            'company_industry' => $params['company_industry'],
+            'follow_area' => $params['follow_area'],
+            'follow_industry' => $params['follow_industry'],
+            'follow_keyword' => $params['follow_keyword'],
+        ];
+        $result = UserRepositories::updateOrInsertProfile($profile);
+
+        if ($result) {
+            $user['id'] = $userId;
+//            $account = array_merge($user, $profile);
             $cookie = Cookie::forever('user_mobile', $params['mobile']);
-            $cookie2 = Cookie::forever('user_psw', isset($params['password']) ? $params['password'] : '');
-            $this->saveLoginData($this->openId, $data);
-
-            $result = UserApi::reset($params['password']);
-            if (isset($result['code']) && $result['code'] === 0) {
-
-                $data = [
-                    'url'=>$this->getReferUrl()
-                ];
-                $heart = isset($data['heart']) ? $data['heart'] : [];
-                return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data, $heart))->toJson())
-                    ->withCookie($cookie)
-                    ->withCookie($cookie2);
-            }
+            $cookie2 = Cookie::forever('user_psw', isset($params['psw']) ? $params['psw'] : '');
+//            $this->saveLoginData($account);
+            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson())
+                ->withCookie($cookie)
+                ->withCookie($cookie2);
         } else {
             $code = isset($result['code']) ? $result['code'] : -1;
             $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
@@ -139,35 +173,30 @@ class UserController extends Controller
     {
         $pattern = [
             'mobile'    => 'required|digits:11',
-            'type'      => 'required|in:1,2',
-            'code'      => 'required_if:type,1',
-            'password'  => 'required_if:type,2',
+            'psw'  => 'required',
         ];
         $this->validate($request, $pattern);
         $params = $request->only(array_keys($pattern));
 
-        if ($params['type'] == 1) {
-            $result = UserApi::loginCode($params['mobile'], $params['code']);
-        } else{
-            $result = UserApi::loginPSW($params['mobile'], $params['password']);
+        
+        if (!UserRepositories::mobileIsExist($params['mobile'])) {
+            $desc = '帐号不存在';
+            return response()->json((new ApiResult(-1, $desc, []))->toJson());
         }
-        if (isset($result['code']) && $result['code'] === 0) {
-            $data = $result['data'];
-            $cookie = Cookie::forever('user_mobile', $params['mobile']);
-            $cookie2 = Cookie::forever('user_psw', isset($params['password']) ? $params['password'] : '');
-            $this->saveLoginData($data);
-            $data = [
-                'url'=>$this->getReferUrl()
-            ];
-            $heart = isset($data['heart']) ? $data['heart'] : [];
-            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data, $heart))->toJson())
-                ->withCookie($cookie)
-                ->withCookie($cookie2);
-        } else {
-            $code = isset($result['code']) ? $result['code'] : -1;
-            $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
-            return response()->json((new ApiResult($code, $desc, $result))->toJson());
+        $user = UserRepositories::login($params['mobile'], $params['psw']);
+        if (is_null($user)) {
+            $desc = '帐号或密码错误';
+            return response()->json((new ApiResult(-1, $desc, []))->toJson());
         }
+        $profile = $user->profile;
+
+        $account = array_merge($user->toArray(), $profile->toArray());
+        $cookie = Cookie::forever('user_mobile', $params['mobile']);
+        $cookie2 = Cookie::forever('user_psw', isset($params['psw']) ? $params['psw'] : '');
+        $this->saveLoginData($account);
+        return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson())
+            ->withCookie($cookie)
+            ->withCookie($cookie2);
     }
 
     /**
@@ -204,21 +233,34 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $pattern = [
-            'name' => 'required',
+            'company_name' => 'required',
+            'company_area' => 'required',
+            'company_industry' => 'required',
+            'follow_area' => 'required',
+            'follow_industry' => 'required',
+            'follow_keyword' => 'required',
         ];
         $this->validate($request, $pattern);
         $params = $request->only(array_keys($pattern));
 
-        $result = UserApi::updateProfile($params['name']);
-        if (isset($result['code']) && $result['code'] === 0) {
-            $data = $result['data'];
-            $heart = isset($data['heart']) ? $data['heart'] : [];
-            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data, $heart))->toJson());
-        }
+        $profile = [
+            'user_id' => $this->uid,
+            'company_name' => $params['company_name'],
+            'company_area' => $params['company_area'],
+            'company_industry' => $params['company_industry'],
+            'follow_area' => $params['follow_area'],
+            'follow_industry' => $params['follow_industry'],
+            'follow_keyword' => $params['follow_keyword'],
+        ];
+        $result = UserRepositories::updateOrInsertProfile($profile);
 
-        $code = isset($result['code']) ? $result['code'] : -1;
-        $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
-        return response()->json((new ApiResult($code, $desc, $result))->toJson());
+        if ($result) {
+            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());
+        } else {
+            $code = isset($result['code']) ? $result['code'] : -1;
+            $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
+            return response()->json((new ApiResult($code, $desc, $result))->toJson());
+        }
     }
 
     

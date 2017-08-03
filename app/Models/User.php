@@ -11,25 +11,32 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+
 /**
  * App\Models\User
  *
- * @property integer $id
- * @property string $uid
- * @property string $open_id
- * @property string $token
- * @property string $expire_time
+ * @property int $id
+ * @property string $username
+ * @property string $password
+ * @property string $pwd
+ * @property string $remember_token
+ * @property int $verified 是否完善个人资料，0未完善，1完善
+ * @property int $paid 是否付费，0未付费，1付费
+ * @property string $paid_time 付款时间
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUid($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereOpenId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereToken($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereExpireTime($value)
+ * @property-read \App\Models\Profile $profile
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User wherePaid($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User wherePaidTime($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User wherePwd($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUsername($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereVerified($value)
  * @mixin \Eloquent
- * @property-read \App\Models\WechatUser $wechatUser
  */
 class User extends Model implements AuthenticatableContract,
     AuthorizableContract,
@@ -49,7 +56,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['uid', 'open_id', 'token','expire_time'];
+    protected $fillable = ['id', 'username', 'password','remember_token', 'verified'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -60,38 +67,9 @@ class User extends Model implements AuthenticatableContract,
 
 //    public $timestamps = false;
 
-    /**
-     * 更新用户和微信openid 绑定关系
-     * @param $openId
-     * @param $uid
-     * @param $token
-     * @return bool
-     */
-    public static function updateUserInfo($openId, $uid, $token)
+
+    public function profile()
     {
-        if(!$openId || !$uid || !$token){
-            return false;
-        }
-        $user = User::where('uid', $uid)
-        ->first();
-        if (!is_null($user)) {
-            $user->open_id = $openId;
-            $user->token = $token;
-            $user->save();
-        } else {
-            $data = [
-                'open_id'=>$openId,
-                'uid'=>$uid,
-                'token'=>$token
-            ];
-            User::insert($data);
-        }
-
-
-    }
-
-    public function wechatUser()
-    {
-        return $this->belongsTo('App\Models\WechatUser','open_id','open_id');
+        return $this->hasOne(Profile::class,'user_id');
     }
 }

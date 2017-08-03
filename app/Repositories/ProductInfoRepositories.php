@@ -8,7 +8,7 @@
 
 namespace App\Repositories;                                  
 
-use App\Models\ProductInfo;
+use App\Models\Website;
 
 class ProductInfoRepositories
 {
@@ -20,7 +20,7 @@ class ProductInfoRepositories
      */
     public static function getProductInfoById($id)
     {
-        $res = ProductInfo::find($id);
+        $res = Website::find($id);
         return $res;
     }
 

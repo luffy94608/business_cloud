@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\ProductInfo;
+use App\Models\Website;
 
 class ProductInfoSeeder extends Seeder
 {
@@ -99,7 +99,7 @@ class ProductInfoSeeder extends Seeder
             ],
         ];
         foreach ($data as $item) {
-            $bannerModel = new ProductInfo();
+            $bannerModel = new Website();
             $bannerModel->id = $item['id'];
             $bannerModel->code = $item['code'];
             $bannerModel->description = $item['description'];

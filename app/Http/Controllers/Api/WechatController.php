@@ -6,7 +6,7 @@ use App\Models\ApiResult;
 use App\Models\Enums\ErrorEnum;
 use App\Models\Enums\WechatClickEnum;
 use App\Models\Enums\WechatMenuEnum;
-use App\Models\Location;
+use App\Models\DataCompetitor;
 use App\Models\WechatAutoReply;
 use App\Models\WechatUser;
 use App\Repositories\WechatAutoReplyRepositories;
@@ -538,7 +538,7 @@ class WechatController extends Controller
             'lng'=>$lng,
             'pre'=>$pre,
         ];
-        Location::updateOrCreate(['open_id'=>$openId],$data);
+        DataCompetitor::updateOrCreate(['open_id'=>$openId],$data);
     }
 
     /**

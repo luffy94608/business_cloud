@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helper\Util;
 use App\Models\Enums\HttpURLEnum;
 use App\Models\Enums\VerifyCodeEnum;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+use Ixudra\Curl\Facades\Curl;
 
 class UserApi extends BaseApi
 {
@@ -13,18 +16,36 @@ class UserApi extends BaseApi
     /**
      * 获取手机验证码
      * @param $mobile
-     * @param $type //Int,1,注册码类型0-注册, 1-登录, 2-密码重置, 3-绑定手机
-     * @param $debug
      * @return mixed
      */
-    public static function getVerifyCode($mobile, $type, $debug = 1)
+    public static function getVerifyCode($mobile)
     {
-        $url = HttpURLEnum::User_Verify_code;
+        $url = 'https://dx.ipyy.net/smsJson.aspx';
+        $account = 'AC00465';
+        $psw = 'AC0046500';
+        $psw = strtoupper(md5($psw));
+        $code = mt_rand(1000, 9999);
+        $content = sprintf('验证码：%s。【商情云】', $code);
         $params = [
-            'phone'=>$mobile,
-            'type'=>(int)$type
+            'account'=>$account,
+            'password'=>$psw,
+            'mobile'=>intval($mobile),
+            'content'=>$content,
+            'action'=>'send',
+            'userid'=>'',
+            'sendTime'=>'',
+            'extno'=>'',
         ];
-        $result = self::postRequestData($url, $params);
+        //TODO 对接
+//        $result = Curl::to($url)
+//            ->withData( $params )
+//            ->asJson( true )
+//            ->post();
+//
+//        Log::info($params);
+//        Log::info($result);
+        $result = $code;
+        Util::setVerifyCode($code);
         return $result;
     }
 

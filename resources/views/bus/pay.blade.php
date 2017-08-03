@@ -39,7 +39,7 @@
                   @endforeach
             </ul>
         @endif
-        @if( $line['status'] != \App\Models\Enums\BusLineStatusEnum::Not_Operation )
+        @if( $line['status'] != \App\Models\Enums\WebsiteEnum::Not_Operation )
             {{--班次--}}
             <div class="bus-shift clearfix">
                 <div class="title icon-time">
@@ -168,7 +168,7 @@
                     <span class="price-info">票价<span class="price "> <span class="js_ticket_price">0</span> 元</span></span>
                 </div>
             </div>
-            <button class="btn btn-primary text-center full--width bbf-btn jd_create_order_btn {{  $line['status']==\App\Models\Enums\BusLineStatusEnum::Not_Operation ? 'disabled' : '' }}" >立即购买</button>
+            <button class="btn btn-primary text-center full--width bbf-btn jd_create_order_btn {{  $line['status']==\App\Models\Enums\WebsiteEnum::Not_Operation ? 'disabled' : '' }}" >立即购买</button>
         </div>
 
         <div id="js_stations_data" data-info="{{ json_encode($stations) }}"></div>

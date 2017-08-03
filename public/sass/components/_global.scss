@@ -175,6 +175,7 @@ $bordersMap : top right bottom left;
 }
 .box-shadow-1{
   @include box-shadow(0 0 30px -10px $text-4);
+  behavior: url(/pie/PIE.htcc);
 }
 .box-shadow-2{
   @include box-shadow(0 0 30px -10px $bg-1);

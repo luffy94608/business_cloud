@@ -19,10 +19,11 @@
     Route::post('/user/register', 'Api\UserController@register');
     Route::post('/user/login', 'Api\UserController@login');
     Route::post('/user/reset', 'Api\UserController@reset');
-    Route::post('/user/update', 'Api\UserController@update');
     Route::post('/other/track-error', 'Api\OtherController@trackError');
 
     Route::group(['middleware' => ['auth']], function () {
+        Route::post('/user/update', 'Api\UserController@update');
+
         Route::post('/profile', 'Api\UserController@getProfile');
         Route::post('/user/edit', 'Api\UserController@edit');
         Route::post('/user/feedback', 'Api\UserController@feedback');

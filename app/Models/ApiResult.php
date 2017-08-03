@@ -38,7 +38,7 @@ class ApiResult
     public function getData()
     {
         $data = $this->data;
-        $data['heart'] = $this->heart;
+//        $data['heart'] = $this->heart;
         if (empty($data))
         {
             $data = json_decode('{}');

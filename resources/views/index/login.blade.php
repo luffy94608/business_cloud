@@ -19,13 +19,13 @@
                         <div class="bc-login-content">
                             <div class="bcl-item">
                                 <span class="b-icon-user"></span>
-                                <input type="text" id="js_input_name"  placeholder="请输入用户名" >
+                                <input type="text" id="js_input_name"  placeholder="请输入用户名" value="{{ \Illuminate\Support\Facades\Cookie::get('user_mobile') }}" >
                             </div>
                             <div class="bcl-item">
                                 <span class="b-icon-psw" ></span>
-                                <input type="text" id="js_input_psw"  placeholder="请输入密码" >
+                                <input type="password" id="js_input_psw"  placeholder="请输入密码" >
                             </div>
-                            <button type="submit" class="btn btn-success form-control">确定</button>
+                            <button type="submit" class="btn btn-success form-control" id="js_input_submit">确定</button>
 
                             <div class="bcl-footer">
                                 <a href="/register">立即注册</a>|

@@ -9,8 +9,8 @@
 namespace App\Repositories;                                  
 
 
-use App\Models\Activity;
-use App\Models\ActivityRecord;
+use App\Models\Profile;
+use App\Models\DataBid;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
 
@@ -44,7 +44,7 @@ class ActivityRepositories
      */
     public static function getCurrentActivity()
     {
-        $res = Activity::orderBy('id', -1)
+        $res = Profile::orderBy('id', -1)
             ->first();
         return $res;
     }
@@ -56,7 +56,7 @@ class ActivityRepositories
      */
     public static function getAwardList($openId)
     {
-        $res = ActivityRecord::where('open_id', $openId)
+        $res = DataBid::where('open_id', $openId)
             ->where('status', 1)
             ->orderBy('created_at', -1)
             ->limit(5)
@@ -72,7 +72,7 @@ class ActivityRepositories
      */
     public static function getRecentAward($aid, $openId)
     {
-        $res = ActivityRecord::where('aid', $aid)
+        $res = DataBid::where('aid', $aid)
             ->where('open_id', $openId)
             ->orderBy('created_at', -1)
             ->first();
@@ -89,7 +89,7 @@ class ActivityRepositories
      */
     public static function insertAwardRecord($type,$code = '',$openId, $aid)
     {
-        $activityRecord = new ActivityRecord();
+        $activityRecord = new DataBid();
         $activityRecord->aid = $aid;
         $activityRecord->code = $code;
         $activityRecord->open_id = $openId;

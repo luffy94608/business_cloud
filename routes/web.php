@@ -35,10 +35,11 @@ Route::get('/error',function(){
  * 路由
  */
 Route::get('/login','IndexController@login');
+Route::get('/logout','IndexController@logout');
 Route::get('/reset','IndexController@reset');
 Route::get('/register','IndexController@register');
 
-Route::group(['middleware' => []], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/','IndexController@index');
     Route::get('/search-list','IndexController@searchList');
     Route::get('/bid-call','IndexController@bidCall');

@@ -6,6 +6,7 @@
     FastClick.attach(document.body);
     $.fn.select2.defaults.set("theme", "classic");
 
+    window.toast = require('toastr');
 
     /**
      * 对象是否为空
@@ -239,35 +240,11 @@
      * @param callback
      */
     $.showToast = function(str,YesOrNo,callback){
-        var opts = {
-            target : '#js_toast_section',
-            success_icon : 'icon-right',
-            error_icon : 'icon-cross',
-            time : 2000
-        };
-
-        var target = $(opts.target);
-        if (target.hasClass('active')) {
-            return;
+        if (YesOrNo) {
+            toast.success(str);
+        }else {
+            toast.error(str);
         }
-
-        if(typeof YesOrNo != 'undefined'){
-            var removeIcon = YesOrNo ? opts.error_icon : opts.success_icon;
-            var addIcon = YesOrNo ? opts.success_icon : opts.error_icon;
-            target.find('.toast-icon').show().removeClass(removeIcon).addClass(addIcon);
-        }else{
-            target.find('.toast-icon').hide();
-        }
-
-        target.find('.toast-txt').html(str);
-        target.addClass('active');
-
-        setTimeout(function(){
-            target.removeClass('active');
-            if($.isFunction(callback)){
-                setTimeout(callback,300);
-            }
-        },opts.time);
     };
 
 
@@ -490,7 +467,7 @@
             min:2,
             max:16,
             banSpecial:true,
-            title:'真实姓名',
+            title:'姓名',
             hasSpecial:function(val){
                 var regular = /^[\u4E00-\u9FA5a-zA-Z0-9\s]+$/;
                 if (regular.test(val)){
@@ -506,7 +483,7 @@
         password:{
             min:6,
             max:60,
-            title:'登录密码',
+            title:'密码',
             test:function(val){
                 return true;
             }
@@ -555,6 +532,22 @@
                 // var regMobile = /^(\+|00)?[0-9\s\-]{3,20}$/;
                 var regMobile = /^1[3|4|5|7|8]\d{9}$/;
                 return regMobile.test(val);
+            }
+        },
+        job:{
+            min:1,
+            max:60,
+            title:'职位',
+            test:function(val){
+                return true;
+            }
+        },
+        company:{
+            min:1,
+            max:60,
+            title:'公司名称',
+            test:function(val){
+                return true;
             }
         },
         remark:{

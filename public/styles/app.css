@@ -1102,6 +1102,7 @@
   -moz-box-shadow: 0 0 30px -10px #cccccc;
   -webkit-box-shadow: 0 0 30px -10px #cccccc;
   box-shadow: 0 0 30px -10px #cccccc;
+  behavior: url(/pie/PIE.htcc);
 }
 
 .box-shadow-2 {
