@@ -15,6 +15,13 @@
   background: url("../images/icons/#{$img}.#{$suffix}") no-repeat center;
   background-size: $width $height;
 }
+.b-icon-menu-user{
+  @include createIcon(19px, 21px, 'user-white');
+}
+
+.b-icon-menu{
+  @include createIcon(19px, 16px, 'menu');
+}
 
 .b-icon-login-user{
   @include createIcon(22px, 22px, 'person_active');

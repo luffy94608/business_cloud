@@ -4,7 +4,7 @@
 {{--内容区域--}}
 @section('content')
     {{--header--}}
-    @include('layouts.header')
+    @include('layouts.header',['bgStyle'=>'bg-transparent bc-header-section'])
     {{--banner--}}
     @include('templates.banner')
 

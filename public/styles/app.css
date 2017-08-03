@@ -1120,6 +1120,28 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  */
+.b-icon-menu-user {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 19px;
+  height: 21px;
+  vertical-align: middle;
+  background: url("../images/icons/user-white.png") no-repeat center;
+  background-size: 19px 21px;
+}
+
+.b-icon-menu {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 19px;
+  height: 16px;
+  vertical-align: middle;
+  background: url("../images/icons/menu.png") no-repeat center;
+  background-size: 19px 16px;
+}
+
 .b-icon-login-user {
   position: relative;
   top: -1px;
@@ -1252,7 +1274,10 @@
   background: url("../../images/logo.png") no-repeat center;
 }
 .bc-header .bch-login {
-  padding: 24px 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 15px;
 }
 .bc-header .bch-login > a {
   color: #666666 !important;
@@ -1321,7 +1346,8 @@
   color: #ffffff;
 }
 .bc-banner .bcb-content .bcb-search {
-  opacity: 0.7;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
   border: 2px solid #ffffff;
 }
 .bc-banner .bcb-content .bcb-word {
@@ -1643,6 +1669,35 @@
   .bcl-title > span:first-child {
     margin-right: 30px !important;
   }
+
+  .bc-menu-content.dropdown-menu {
+    position: static;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    float: left;
+    min-width: inherit;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: 0 0 0 0;
+    -webkit-box-shadow: 0 0 0 0;
+    box-shadow: 0 0 0 0;
+    background-clip: padding-box;
+    overflow-x: visible;
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    *zoom: 1;
+  }
 }
 @media (max-width: 768px) {
   .bg-transparent .navbar-header .navbar-brand .bc-log-img {
@@ -1688,5 +1743,53 @@
   }
   .bc-stat-section .bcs-item .hint {
     font-size: 12px;
+  }
+
+  .bc-header-section {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1030;
+  }
+  .bc-header-section .bch-login {
+    top: 2px;
+    right: 50px;
+  }
+  .bc-header-section .navbar-toggle {
+    background-color: transparent !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .bc-header-section .bc-log-img {
+    margin-top: 8px;
+    width: 52px !important;
+    height: 32px !important;
+    background: url("../../images/logo-ts.png") no-repeat center !important;
+  }
+  .bc-header-section .bc-menu-content.dropdown-menu {
+    text-align: center;
+    right: 0;
+    min-width: inherit;
+    left: auto;
+  }
+  .bc-header-section .bc-menu-content.dropdown-menu a {
+    padding: 10px 30px;
+  }
+  .bc-header-section .bc-menu-content.dropdown-menu .navbar-nav {
+    margin: inherit;
+  }
+  .bc-header-section .dropdown-menu .triangle {
+    display: none;
+  }
+  .bc-header-section .open .dropdown-menu .triangle {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: -7px;
+    width: 19px;
+    height: 10px;
+    background: url("../../images/icons/triangle@2x.png") no-repeat center;
   }
 }
