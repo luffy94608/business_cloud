@@ -25,25 +25,24 @@ class UserApi extends BaseApi
         $psw = 'AC0046500';
         $psw = strtoupper(md5($psw));
         $code = mt_rand(1000, 9999);
-        $content = sprintf('验证码：%s。【商情云】', $code);
+        $content = sprintf('您的验证码：%s【商情云】', $code);
         $params = [
             'account'=>$account,
             'password'=>$psw,
             'mobile'=>intval($mobile),
-            'content'=>$content,
+            'content'=>($content),
             'action'=>'send',
             'userid'=>'',
             'sendTime'=>'',
             'extno'=>'',
         ];
-        //TODO 对接
-//        $result = Curl::to($url)
-//            ->withData( $params )
-//            ->asJson( true )
-//            ->post();
-//
-//        Log::info($params);
-//        Log::info($result);
+        $result = Curl::to($url)
+            ->withData( $params )
+            ->asJsonResponse( true )
+            ->post();
+
+        Log::info($params);
+        Log::info($result);
         $result = $code;
         Util::setVerifyCode($code);
         return $result;

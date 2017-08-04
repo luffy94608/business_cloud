@@ -29,12 +29,11 @@
             'string': 'widget/string',
             'http': 'widget/http',
             'cache': 'widget/cache',
-            // 'canvas': 'widget/canvas',
 
             'base': 'page/base',
             'page-index':'page/page.index',
-            'page-edit':'page/page.edit',
             'page-reset':'page/page.reset',
+            'page-login':'page/page.login',
             'page-register':'page/page.register',
             'page-profile':'page/page.profile',
             // 'page-coupon':'page/page.coupon',
@@ -71,7 +70,6 @@
             'highcharts': ['jquery'],
             'widget': ['jquery','string','http','cache','fastclick', 'bootstrap', 'toastr', 'select-zh-cn'],
             'base': ['widget'],
-            'canvas': ['jquery'],
 
             'page-index': ['base','cookie'],
             'page-reset': ['base','cookie'],

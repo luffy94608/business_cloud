@@ -162,7 +162,10 @@
                 init.loading = true;
                 $.wpost($.httpProtocol.UPDATE_PROFILE,params,function (data) {
                     $.showToast($.string.EDIT_SUCCESS, true);
-                    $.locationUrl('/login');
+                    // $.locationUrl('/login');
+                    setTimeout(function () {
+                       window.location.reload();
+                    });
                     init.loading = false;
                 },function () {
                     init.loading = false;
@@ -214,7 +217,7 @@
         },
         run : function () {
             init.initBtnEvent();
-            $('select').select2()
+            $('select').select2();
         }
     };
     init.run();

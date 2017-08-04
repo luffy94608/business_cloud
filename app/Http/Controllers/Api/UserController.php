@@ -42,6 +42,7 @@ class UserController extends Controller
         );
 
         $result = UserApi::getVerifyCode($params['mobile']);
+
         if (!empty($result)) {
             $data = $result;
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data))->toJson());
@@ -260,7 +261,7 @@ class UserController extends Controller
             'follow_industry' => $params['follow_industry'],
             'follow_keyword' => $params['follow_keyword'],
         ];
-        $result = UserRepositories::updateProfile($user, $data);
+        $result = UserRepositories::updateProfile($user->profile, $data);
 
         if ($result) {
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());

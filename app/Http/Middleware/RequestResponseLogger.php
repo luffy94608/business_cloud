@@ -23,7 +23,7 @@ class RequestResponseLogger
         $response = $next($request);
 
         $responseData = $response->__toString();
-        Log::info(sprintf(" OUTPUT: %s  %s \n%s", $request->ip(), $request->url(), $responseData));
+        Log::info(sprintf(" OUTPUT: %s  %s \n", $request->ip(), $request->url()));
 
         return $response;
     }

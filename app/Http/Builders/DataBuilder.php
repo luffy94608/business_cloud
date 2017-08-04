@@ -26,7 +26,7 @@ class DataBuilder
 
         foreach ($regions as $region) {
             $id = $region['id'];
-            $checked = $id == $checkedId ? 'checked' : '';
+            $checked = $id == $checkedId ? 'selected' : '';
             $html.= "<option {$checked} value='{$region['id']}'>{$region['region_name']}</option>";
         }
         return $html;
@@ -44,7 +44,7 @@ class DataBuilder
 
         foreach ($regions as $region) {
             $id = $region['id'];
-            $checked = $id == $checkedId ? 'checked' : '';
+            $checked = $id == $checkedId ? 'selected' : '';
             $html.= "<option {$checked} value='{$id}'>{$region['name']}</option>";
         }
         return $html;
