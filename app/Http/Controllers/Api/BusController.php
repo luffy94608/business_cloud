@@ -7,7 +7,7 @@ use App\Http\Builders\BusBuilder;
 use App\Models\ApiResult;
 use App\Models\Enums\ErrorEnum;
 use App\Models\Enums\TicketTypeEnum;
-use App\Repositories\TicketRepositories;
+use App\Repositories\AnalysisRepositories;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -88,7 +88,7 @@ class BusController extends Controller
             $res = $result['data'];
             $heart = isset($res['heart']) ? $res['heart'] : [];
             $list = $res['contracts'];
-            $list = TicketRepositories::ticketDateListSort($list);
+            $list = AnalysisRepositories::ticketDateListSort($list);
             $html = BusBuilder::toBuildTicketList($list, $filterTicketType);
             $data = [
                 'html'=>$html,

@@ -37,6 +37,8 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUsername($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereVerified($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BusinessAnalysis[] $businessAnalysis
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CompanyAnalysis[] $companyAnalysis
  */
 class User extends Model implements AuthenticatableContract,
     AuthorizableContract,
@@ -71,5 +73,15 @@ class User extends Model implements AuthenticatableContract,
     public function profile()
     {
         return $this->hasOne(Profile::class,'user_id');
+    }
+
+    public function companyAnalysis()
+    {
+        return $this->hasMany(CompanyAnalysis::class,'user_id');
+    }
+
+    public function businessAnalysis()
+    {
+        return $this->hasMany(BusinessAnalysis::class,'user_id');
     }
 }

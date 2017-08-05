@@ -12,9 +12,9 @@
         REGISTER                        : '/api/user/register',
         UPDATE_PROFILE                  : '/api/user/update',
         RESET                           : '/api/user/reset',
-
-        EDIT_PSW                        : '/api/user/edit',
-        FEEDBACK                        : '/api/user/feedback',
+        USER_COMPANY                    : '/api/user/company',
+        USER_BUSINESS                   : '/api/user/business',
+        
         GET_PROFILE                     : '/api/user/get-profile',
         GET_BILL_LIST                   : '/api/get-bill-list',
         GET_BONUS_LIST                  : '/api/get-bonus-list',

@@ -19,16 +19,13 @@
                         <label for="js_input_area" class="col-sm-2 col-xs-3 control-label">关注地区</label>
                         <div class="col-sm-4 col-xs-7">
                             <div class="bc-keyword-section">
-                                <span class="bck-item">房屋建筑<i class="b-icon-close ml-5"></i></span>
-                                <span class="bck-item active">基础建筑</span>
-                                <span class="bck-item">水利建筑</span>
-                                <span class="bck-item">工程建筑</span>
+                                <div id="js_follow_area_list">
+                                </div>
                                 <div class="row">
                                     <div class="col-xs-8">
-                                        <select id="js_input_area" class="form-control" >
-                                            <option>北京市</option>
-                                            <option>上海市</option>
-                                            <option>重庆市</option>
+                                        <select id="js_follow_area_add_btn" class="form-control" >
+                                            <option value="-1">请选择</option>
+                                            {!!  \App\Http\Builders\DataBuilder::toRegionLevelOneOptionHtml()  !!}
                                         </select>
                                     </div>
                                 </div>
@@ -36,44 +33,37 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="js_input_industry_care" class="col-sm-2 col-xs-3 control-label">关注行业</label>
-                        <div class="col-sm-4 col-xs-7">
-                            <select id="js_input_industry_care" class="form-control">
-                                <option>计算机</option>
-                                <option>游戏</option>
-                                <option>音乐</option>
+                        <label for="js_input_follow_industry" class="col-sm-2 col-xs-3 control-label">关注行业</label>
+                        <div class="col-sm-2 col-xs-7">
+                            <select id="js_input_follow_industry" class="form-control">
+                                {!!  \App\Http\Builders\DataBuilder::toIndustryLevelOneOptionHtml()  !!}
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="js_input_industry_care" class="col-sm-2 col-xs-3 control-label">关注时间</label>
                         <div class="col-sm-4 col-xs-7">
-                            <select id="js_input_industry_care" class="form-control">
-                                <option>最近一月</option>
-                                <option>最近两月</option>
-                                <option>最近三月</option>
+                            <select id="js_input_time" class="form-control">
+                                <option value="1">最近一个月</option>
+                                <option value="3">最近三个月</option>
+                                <option value="6">最近半年</option>
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="js_input_mobile" class="col-sm-2 col-xs-3 control-label">关键词</label>
                         <div class="col-sm-4 col-xs-7">
                             <div class="bc-keyword-section">
-                                <span class="bck-item">房屋建筑</span>
-                                <span class="bck-item active">基础建筑</span>
-                                <span class="bck-item">水利建筑</span>
-                                <span class="bck-item">工程建筑</span>
+                                <div id="js_follow_keyword_list">
+                                </div>
 
                                 <div class="row">
                                     <div class="col-xs-8">
                                         <div class="input-group input-group-sm">
-                                            <input type="text" class="form-control" placeholder="Search for...">
+                                            <input type="text" class="form-control" id="js_keyword_input" placeholder="请输入关键字">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">+</button>
+                                                <button class="btn btn-default color-sub-title" id="js_keyword_add_btn" type="button">+</button>
                                             </span>
                                         </div>
                                     </div>
@@ -86,8 +76,8 @@
 
                     {{--提交按钮--}}
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-2">
-                            <button type="submit" class="btn btn-success form-control">提交</button>
+                        <div class="col-sm-offset-2 col-sm-4 col-xs-12">
+                            <button type="submit" class="btn btn-success form-control" id="js_input_submit">提交</button>
                         </div>
                     </div>
                 </div>

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Helper\Util;
-use App\Http\Builders\OtherBuilder;
 use App\Models\ApiResult;
 use App\Models\Enums\ErrorEnum;
 use App\Models\User;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\AnalysisRepositories;
 use App\Repositories\UserRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -301,6 +301,73 @@ class UserController extends Controller
             $data = $result['data']['profile'];
             $heart = isset($res['heart']) ? $res['heart'] : [];
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data, $heart))->toJson());
+        } else {
+            $code = isset($result['code']) ? $result['code'] : -1;
+            $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
+            return response()->json((new ApiResult($code, $desc, $result))->toJson());
+        }
+    }
+
+    /**
+     * 企业分析
+     * @param Request $request
+     * @return mixed
+     */
+    public function companyAnalysis(Request $request)
+    {
+        $pattern = [
+            'time' => 'required',
+            'follow_area' => 'required',
+            'follow_industry' => 'required',
+            'follow_keyword' => 'required',
+        ];
+        $this->validate($request, $pattern);
+        $params = $request->only(array_keys($pattern));
+
+        $data = [
+            'user_id' => $this->uid,
+            'time' => $params['time'],
+            'area' => $params['follow_area'],
+            'industry' => $params['follow_industry'],
+            'keyword' => $params['follow_keyword'],
+        ];
+        $result = AnalysisRepositories::insertCompanyAlys($data);
+
+        if ($result) {
+            //TODO 发送邮件或短信
+
+            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());
+        } else {
+            $code = isset($result['code']) ? $result['code'] : -1;
+            $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);
+            return response()->json((new ApiResult($code, $desc, $result))->toJson());
+        }
+    }
+
+    /**
+     * 市场分析
+     * @param Request $request
+     * @return mixed
+     */
+    public function businessAnalysis(Request $request)
+    {
+        $pattern = [
+            'company_name' => 'required',
+        ];
+        $this->validate($request, $pattern);
+        $params = $request->only(array_keys($pattern));
+
+        $data = [
+            'user_id' => $this->uid,
+            'name' => $params['company_name'],
+        ];
+        $result = AnalysisRepositories::insertBusinessAlys($data);
+
+        if ($result) {
+            //TODO 发送邮件或短信
+
+
+            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());
         } else {
             $code = isset($result['code']) ? $result['code'] : -1;
             $desc = isset($result['msg']) ? $result['msg'] : ErrorEnum::transform(ErrorEnum::Failed);

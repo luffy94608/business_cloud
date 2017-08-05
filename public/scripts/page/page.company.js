@@ -6,19 +6,13 @@
     var init = {
         section : '#js_register_section',
         submitBtn : $('#js_input_submit'),
-        
-        // inputMobile: $('#js_input_mobile'),
-        // inputPsw: $('#js_input_psw'),
-        // inputCode: $('#js_input_code'),
-        // inputName: $('#js_input_name'),
-        // inputSex: $('#js_input_sex'),
-        // inputJob: $('#js_input_job'),
-        // inputEmail: $('#js_input_email'),
+
+
+        inputTime :$('#js_input_time'),
         inputCompanyName: $('#js_input_company'),
         inputCompanyArea: $('#js_input_company_area'),
         inputCompanyIndustry: $('#js_input_company_industry'),
         inputFollowIndustry: $('#js_input_follow_industry'),
-
         followAreaListSection : $('#js_follow_area_list'),
         keywordListSection : $('#js_follow_keyword_list'),
         followAreaAddBtn : $('#js_follow_area_add_btn'),
@@ -33,92 +27,11 @@
          */
         initParams : function () {
             var params = {
-                // mobile:$.trim(init.inputMobile.val()),
-                // code:$.trim(init.inputCode.val()),
-                // psw:$.trim(init.inputPsw.val()),
-                // name:$.trim(init.inputName.val()),
-                // gender:$.trim(init.inputSex.val()),
-                // job:$.trim(init.inputJob.val()),
-                // email:$.trim(init.inputEmail.val()),
-                company_name:$.trim(init.inputCompanyName.val()),
-                company_area:$.trim(init.inputCompanyArea.val()),
-                company_industry:$.trim(init.inputCompanyIndustry.val()),
+                time:$.trim(init.inputTime.val()),
                 follow_industry:$.trim(init.inputFollowIndustry.val()),
                 follow_area:init.getItemArrById(init.followAreaListSection).join(','),
                 follow_keyword:init.getItemArrById(init.keywordListSection).join(',')
             };
-            
-            var status;
-            // status = $.checkInputVal({val:params.mobile,type:'mobile',onChecked:function(val,state,hint){
-            //         if(state <= 0){
-            //             $.showToast(hint,false);
-            //         }
-            //     }
-            // });
-            // if(status<=0){
-            //     return false;
-            // }
-            //
-            //
-            // status = $.checkInputVal({val:params.psw,type:'password',onChecked:function(val,state,hint){
-            //     if(state <= 0){
-            //         $.showToast(hint,false);
-            //     }
-            // }
-            // });
-            // if(status<=0){
-            //     return false;
-            // }
-            //
-            // if(!params.code.length){
-            //     $.showToast($.string.VERIFY_CODE_NOT_EMPTY,false);
-            //     return false;
-            // }
-            //
-            // status = $.checkInputVal({val:params.name,type:'name',onChecked:function(val,state,hint){
-            //     if(state <= 0){
-            //         $.showToast(hint,false);
-            //     }
-            // }
-            // });
-            // if(status<=0){
-            //     return false;
-            // }
-            //
-            // if (params.gender<1) {
-            //     $.showToast($.string.GENDER_MUST,false);
-            //     return false;
-            // }
-            //
-            // status = $.checkInputVal({val:params.job,type:'job',onChecked:function(val,state,hint){
-            //     if(state <= 0){
-            //         $.showToast(hint,false);
-            //     }
-            // }
-            // });
-            // if(status<=0){
-            //     return false;
-            // }
-            //
-            // status = $.checkInputVal({val:params.email,type:'email',onChecked:function(val,state,hint){
-            //     if(state <= 0){
-            //         $.showToast(hint,false);
-            //     }
-            // }
-            // });
-            // if(status<=0){
-            //     return false;
-            // }
-
-            status = $.checkInputVal({val:params.company_name,type:'company',onChecked:function(val,state,hint){
-                if(state <= 0){
-                    $.showToast(hint,false);
-                }
-            }
-            });
-            if(status<=0){
-                return false;
-            }
 
             if (params.follow_area.length<1) {
                 $.showToast($.string.AREA_MUST_ADD, false);
@@ -145,7 +58,7 @@
             });
             return list;
         },
-        
+
         initBtnEvent : function () {
 
             /**
@@ -160,11 +73,11 @@
                     return false;
                 }
                 init.loading = true;
-                $.wpost($.httpProtocol.UPDATE_PROFILE,params,function (data) {
+                $.wpost($.httpProtocol.USER_COMPANY,params,function (data) {
                     $.showToast($.string.EDIT_SUCCESS, true);
                     // $.locationUrl('/login');
                     setTimeout(function () {
-                       window.location.reload();
+                        window.location.reload();
                         init.loading = false;
                     }, 400);
                 },function () {
@@ -189,7 +102,7 @@
 
                 var html = init.tpl.format(keyword, keyword);
                 init.keywordListSection.append(html)
-                    
+
             });
 
             /**

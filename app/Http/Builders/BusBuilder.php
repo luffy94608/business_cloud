@@ -14,7 +14,7 @@ use App\Models\Enums\ShuttleTicketStatusEnum;
 use App\Models\Enums\TicketStatusEnum;
 use App\Models\Enums\TicketTypeEnum;
 use App\Repositories\SettingRepositories;
-use App\Repositories\TicketRepositories;
+use App\Repositories\AnalysisRepositories;
 use Carbon\Carbon;
 
 class BusBuilder
@@ -356,7 +356,7 @@ class BusBuilder
     private static function toBuildShuttleTicketInfo($item)
     {
         $item['ticket_type'] = TicketTypeEnum::Shuttle;
-        $item['use_status'] = TicketRepositories::shuttleStatusToBusStatus($item['status']);
+        $item['use_status'] = AnalysisRepositories::shuttleStatusToBusStatus($item['status']);
         $item['dept_at'] = Carbon::now()->modify($item['shuttle_line']['business_start'])->timestamp;
         $item['dest_at'] = Carbon::now()->modify($item['shuttle_line']['business_end'])->timestamp;
 //        $item['dept_at'] = Carbon::now()->modify('06:00')->timestamp;

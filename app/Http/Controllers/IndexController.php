@@ -155,7 +155,7 @@ class IndexController extends Controller
     {
 
         $params = [
-            'page' =>'page-index',
+            'page' =>'page-company',
         ];
         return View::make('index.company',$params);
     }
@@ -168,7 +168,7 @@ class IndexController extends Controller
     {
 
         $params = [
-            'page' =>'page-index',
+            'page' =>'page-business',
         ];
         return View::make('index.business',$params);
     }

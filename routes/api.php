@@ -23,6 +23,8 @@
 
     Route::group(['middleware' => ['auth']], function () {
         Route::post('/user/update', 'Api\UserController@update');
+        Route::post('/user/company', 'Api\UserController@companyAnalysis');
+        Route::post('/user/business', 'Api\UserController@businessAnalysis');
 
         Route::post('/profile', 'Api\UserController@getProfile');
         Route::post('/user/edit', 'Api\UserController@edit');
