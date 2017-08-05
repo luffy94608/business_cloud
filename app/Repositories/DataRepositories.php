@@ -9,6 +9,8 @@
 namespace App\Repositories;                                  
 
 
+use App\Models\DataStatistic;
+use App\Models\DataStatisticDetail;
 use App\Models\DicArea;
 use App\Models\DicIndustry;
 use App\Models\DicRegion;
@@ -62,5 +64,16 @@ class DataRepositories
         return $industry;
     }
 
-
+    /**
+     * 获取统计总览
+     * @param $uid
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
+    public static function getSummaryData($uid)
+    {
+        $res = DataStatistic::where('user_id', $uid)
+            ->orderBy('id', -1)
+            ->first();
+        return $res;
+    }
 }

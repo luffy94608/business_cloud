@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/bid-call','IndexController@bidCall');
     Route::get('/bid-winner','IndexController@bidWinner');
     Route::get('/rival','IndexController@rival');
+    Route::get('/rival-detail','IndexController@rivalDetail');
     Route::get('/company','IndexController@companyStat');
     Route::get('/business','IndexController@businessStat');
     Route::get('/profile','IndexController@profile');

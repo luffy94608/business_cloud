@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\Util;
 use App\Http\Requests;
+use App\Repositories\DataRepositories;
 use App\Repositories\UserRepositories;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
@@ -25,8 +26,32 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $tender = 0;
+        $bid = 0;
+        $competitor = 0;
+        $tenderToday = 0;
+        $bidToday = 0;
+        $competitorToday = 0;
+        $summary = DataRepositories::getSummaryData($this->uid);
+        if (!is_null($summary)) {
+            $tender = $summary['tender'];
+            $bid = $summary['bid'];
+            $competitor = $summary['competitor'];
+            $tenderToday = $summary['tender_today'];
+            $bidToday = $summary['bid_today'];
+            $competitorToday = $summary['competitor_today'];
+        }
+        $data = [
+            'tender'=>$tender,
+            'bid'=>$bid,
+            'competitor'=>$competitor,
+            'tender_today'=>$tenderToday,
+            'bid_today'=>$bidToday,
+            'competitor_today'=>$competitorToday,
+        ];
 
         $params = [
+            'data' =>$data,
             'page' =>'page-index',
         ];
         return View::make('index.index',$params);
@@ -79,9 +104,22 @@ class IndexController extends Controller
     {
 
         $params = [
-            'page' =>'page-index',
+            'page' =>'page-rival',
         ];
         return View::make('index.rival',$params);
+    }
+
+    /**
+     * 竞争对手详情x
+     * @return mixed
+     */
+    public function rivalDetail()
+    {
+
+        $params = [
+            'page' =>'page-rival-detail',
+        ];
+        return View::make('index.rival_detail',$params);
     }
 
     /**

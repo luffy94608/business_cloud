@@ -22,20 +22,20 @@
                             <div class="d-table-cell v-align-middle">
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">招标信息</p>
-                                    <p class="total border-right color-green">42</p>
-                                    <p class="hint">今日更新<span class="color-green">12</span>条信息</p>
+                                    <p class="total border-right color-green">{{ $data['tender'] }}</p>
+                                    <p class="hint">今日更新<span class="color-green">{{ $data['tender_today'] }}</span>条信息</p>
                                     {{--<p class="hint"><span class="bcs-block"></span></p>--}}
                                 </div>
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">中标信息</p>
-                                    <p class="total border-right color-orange">42</p>
-                                    <p class="hint">今日更新<span class="color-orange">12</span>条信息</p>
+                                    <p class="total border-right color-orange">{{ $data['bid'] }}</p>
+                                    <p class="hint">今日更新<span class="color-orange">{{ $data['bid_today'] }}</span>条信息</p>
                                     {{--<p class="hint"><span class="bcs-block bg-orange"></span></p>--}}
                                 </div>
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">竞争对手</p>
-                                    <p class="total color-purple">42</p>
-                                    <p class="hint">今日新增<span class="color-purple">12</span>条数据</p>
+                                    <p class="total color-purple">{{ $data['competitor_today'] }}</p>
+                                    <p class="hint">今日新增<span class="color-purple">{{ $data['competitor_today'] }}</span>条数据</p>
                                     {{--<p class="hint"><span class="bcs-block bg-purple"></span></p>--}}
                                 </div>
                                 <div class="col-md-10 col-xs-12 col-md-offset-1 bcs-progress-section gone">
@@ -58,6 +58,9 @@
             <div class="row  mt-20  bg-white box-shadow-1">
                 <div class="bc-section-title purple">最新发布<a href="#" class="color-two-title pull-right font-14 v-align-middle">查看更多</a></div>
                 <div class="col-xs-12">
+                    <div class="col-xs-12 text-center color-hint pt-50 pb-50">
+                        暂无发布信息
+                    </div>
                     <div class="col-sm-6 col-xs-12 mt-10 p-0">
                         <div class="col-xs-12 box-shadow-3 bc-list-item">
                             <div class="col-xs-9">

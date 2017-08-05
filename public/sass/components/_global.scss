@@ -183,4 +183,10 @@ $bordersMap : top right bottom left;
 .box-shadow-3{
   @include box-shadow(0 0 20px -9px darken($bg-1, 50%));
 }
+.bc-item-hover{
+  @include transition(all ease .3s);
+  &:hover{
+    @include box-shadow(0 -1px 8px -1px #a8b3b2);
+  }
+}
 

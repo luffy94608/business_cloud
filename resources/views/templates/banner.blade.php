@@ -7,7 +7,7 @@
                     <div class="input-mask"><span class="b-icon-search"></span>搜一搜</div>
                     <input type="text" class="form-control input-lg bcb-search" placeholder="" >
                     <div class="bcb-word">
-                        热门关键字：<a href="#">工程</a><a href="#">工程</a><a href="#">工程</a><a href="#">工程</a><a href="#">工程</a>
+                        {!! \App\Http\Builders\OtherBuilder::toBuildBannerKeywordHtml() !!}
                     </div>
                 </div>
             </div>

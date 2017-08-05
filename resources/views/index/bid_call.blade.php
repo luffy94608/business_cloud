@@ -4,7 +4,8 @@
 {{--内容区域--}}
 @section('content')
     {{--header--}}
-    @include('layouts.header')
+    @include('layouts.header',['bgStyle'=>'bg-transparent bc-header-section'])
+
     {{--banner--}}
     @include('templates.banner')
 
@@ -12,7 +13,7 @@
     {{--content--}}
     <div class="container-fluid">
         <div class="container">
-            @include('templates.select')
+{{--            @include('templates.select')--}}
 
             <div class="row bc-body-section">
                 <div class="col-sm-8 col-xs-12 bg-white box-shadow-1 bc-stat-section">

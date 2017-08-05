@@ -198,7 +198,7 @@ class UserController extends Controller
         }
         $profile = $user->profile;
 
-        $account = array_merge($user->toArray(), $profile->toArray());
+        $account = array_merge($profile->toArray(), $user->toArray());
         $cookie = Cookie::forever('user_mobile', $params['mobile']);
         $cookie2 = Cookie::forever('user_psw', isset($params['psw']) ? $params['psw'] : '');
         $this->saveLoginData($account);

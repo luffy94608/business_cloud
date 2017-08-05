@@ -4,7 +4,8 @@
 {{--内容区域--}}
 @section('content')
     {{--header--}}
-    @include('layouts.header')
+    @include('layouts.header',['bgStyle'=>'bg-transparent bc-header-section'])
+
     {{--banner--}}
     @include('templates.banner')
 
@@ -12,7 +13,7 @@
     {{--content--}}
     <div class="container-fluid">
         <div class="container">
-            @include('templates.select')
+{{--            @include('templates.select')--}}
 
             <div class="row bc-body-section">
                 <div class="col-sm-8 col-xs-12 bg-white box-shadow-1 bc-stat-section">
@@ -21,18 +22,26 @@
                         <div class="d-table wd-100 ">
                             <div class="d-table-cell v-align-middle">
                                 <div class="col-xs-6 bcs-item">
-                                    <p class="title">今日新增竞标企业</p>
-                                    <p class="total border-right color-green">42</p>
-                                    <p class="hint">
-                                        <img src="/images/banner/rival_new.png" width="100px" class="mt-15">
-                                    </p>
+                                    <p class="title">行业竞标企业</p>
+                                    <p class="total border-right color-hint font-16"><span class=" color-green font-36">102</span>家</p>
+                                    <div id="js_chart_1" style="height:200px;width: 100%"></div>
+                                    {{--<p class="hint">--}}
+                                        {{--<img src="/images/banner/rival_new.png" width="100px" class="mt-15">--}}
+                                    {{--</p>--}}
                                 </div>
                                 <div class="col-xs-6 bcs-item">
-                                    <p class="title">行业竞争企业共</p>
-                                    <p class="total color-orange">42</p>
-                                    <p class="hint">
-                                        <img src="/images/banner/rival_total.png" width="100px">
+                                    <p class="title">我的竞争力</p>
+                                    <p class="total color-orange" style="line-height: 35px;height: 35px;">
+                                        <span class="b-icon-star active-2"></span>
+                                        <span class="b-icon-star active-2"></span>
+                                        <span class="b-icon-star active-2"></span>
+                                        <span class="b-icon-star"></span>
+                                        <span class="b-icon-star"></span>
                                     </p>
+                                    {{--<p class="hint">--}}
+                                        {{--<img src="/images/banner/rival_total.png" width="100px">--}}
+                                    {{--</p>--}}
+                                    <div id="js_chart_2" style="height:200px;width: 100%"></div>
                                 </div>
                             </div>
                         </div>

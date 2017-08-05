@@ -1117,6 +1117,18 @@
   box-shadow: 0 0 20px -9px #279589;
 }
 
+.bc-item-hover {
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.bc-item-hover:hover {
+  -moz-box-shadow: 0 -1px 8px -1px #a8b3b2;
+  -webkit-box-shadow: 0 -1px 8px -1px #a8b3b2;
+  box-shadow: 0 -1px 8px -1px #a8b3b2;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:

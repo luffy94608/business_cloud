@@ -32,7 +32,7 @@
                 <a href="#" class="dropdown-toggle " id="drop_down_profile_menu"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <div class="hidden-xs">
                         <span class="b-icon-login-user"></span>
-                        常先生
+                        {{ \App\Helper\Util::getUserName() }}
                         <span class="caret"></span>
                     </div>
                     <div class="visible-xs">
