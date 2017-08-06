@@ -17,6 +17,7 @@
         GET_BID_LIST                    : '/api/get-bid-list',
         GET_WINNER_LIST                 : '/api/get-winner-list',
         GET_COMPETITOR_LIST             : '/api/get-competitor-list',
+        SEARCH_LIST                     : '/api/search-list',
         ERROR_TRACK                     : '/api/other/track-error',
         TEST : ''
     };

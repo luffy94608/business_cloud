@@ -68,6 +68,39 @@ $(document).ready(function () {
         e.stopPropagation();
     });
 
+    /**
+     * 搜索事件
+     */
+    $('.bcb-search').keypress(function(e) {
+        if (e.which == 13) {
+            var keyword = $.trim($(this).val());
+            if (keyword.length<1) {
+                $.showToast('请输入关键字');
+                return false;
+            }
+            var path = location.pathname;
+            var src = 'publish';
+            switch (path) {
+                case '/':
+                    src = 'publish';
+                    break;
+                case '/bid-call':
+                    src = 'publish';
+                    break;
+                case '/bid-winner':
+                    src = 'bid';
+                    break;
+                case '/rival':
+                    src = 'competitor';
+                    break;
+                case '/rival-detail':
+                    src = 'competitor';
+                    break;
+            }
+            $.locationUrl('/search-list?src={0}&keyword={1}'.format(src, keyword));
+        }
+    });
+
 
 
 });

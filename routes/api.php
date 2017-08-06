@@ -28,6 +28,7 @@
         Route::post('/get-bid-list', 'Api\IndexController@getBidList');
         Route::post('/get-winner-list', 'Api\IndexController@getBidResultList');
         Route::post('/get-competitor-list', 'Api\IndexController@getCompetitorList');
+        Route::post('/search-list', 'Api\IndexController@searchList');
 
     });
 

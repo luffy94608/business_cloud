@@ -124,4 +124,53 @@ class IndexController extends Controller
     }
 
 
+    /**
+     * 企业列表
+     * @param Request $request
+     * @return mixed
+     */
+    public function searchList(Request $request)
+    {
+        $pattern = [
+            'offset' => 'sometimes',
+            'length'=> 'sometimes',
+            'limit'=> 'sometimes',
+            'src'=> 'sometimes',
+            'keyword'=> 'sometimes',
+        ];
+        $this->validate($request, $pattern);
+        $params = $request->only(array_keys($pattern));
+        $params['offset'] = isset($params['offset']) ? $params['offset'] : 0;
+        $params['length'] = isset($params['length']) ? $params['length'] : 0;
+        $params['keyword'] = isset($params['keyword']) ? $params['keyword'] : '';
+        $params['limit'] = isset($params['limit']) ? $params['limit'] : 0;
+        $src = isset($params['src']) ? $params['src'] : 0;
+
+        $result = BidRepositories::search($params['offset'], $params['length'], $params['keyword'], $src);
+        $html = '';
+        $list = $result['list'];
+        switch ($src) {
+            case 'publish':
+                $html = PagerBuilder::toBidListHtml($list, false);
+                break;
+            case 'bid':
+                $html = PagerBuilder::toWinnerListHtml($list, false);
+                break;
+            case 'competitor':
+                $html = PagerBuilder::toCompetitorListHtml($list, false);
+                break;
+        }
+        $total = 0;
+        if ($params['offset'] ==0) {
+            $total = $result['total'];
+        }
+        $limit = $params['length']*$params['limit'];
+        $data = [
+            'html'=>$html,
+            'total'=>$total > $limit && $params['limit']>0 ? $limit : $total
+        ];
+        return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $data, []))->toJson());
+    }
+
+
 }

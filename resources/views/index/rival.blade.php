@@ -51,7 +51,7 @@
             </div>
 
             <div class="row  mt-20  bg-white box-shadow-1" id="wrapperPageList">
-                <div class="bc-section-title purple">竞争企业<a href="/search-list" class="color-two-title pull-right font-14 v-align-middle">更多</a></div>
+                <div class="bc-section-title purple">竞争企业<a href="/search-list?src=competitor" class="color-two-title pull-right font-14 v-align-middle">更多</a></div>
                 <div id="list">
                     <div class="col-xs-12 text-center color-hint pt-50 pb-50">
                         暂无发布信息

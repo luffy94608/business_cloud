@@ -56,7 +56,7 @@
             </div>
 
             <div class="row  mt-20  bg-white box-shadow-1" id="wrapperPageList">
-                <div class="bc-section-title purple">最新发布<a href="/search-list" class="color-two-title pull-right font-14 v-align-middle">查看更多</a></div>
+                <div class="bc-section-title purple">最新发布<a href="/search-list?src=publish" class="color-two-title pull-right font-14 v-align-middle">查看更多</a></div>
                 <div class="col-xs-12" id="list">
                     <div class="col-xs-12 text-center color-hint pt-50 pb-50">
                         暂无发布信息

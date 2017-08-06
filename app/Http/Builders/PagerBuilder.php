@@ -16,15 +16,16 @@ class PagerBuilder
     /**
      * 招标列表
      * @param $list
+     * @param $halfStatus
      * @return string
      */
-    public static function toBidListHtml($list)
+    public static function toBidListHtml($list, $halfStatus = true)
     {
         $html = '';
         if($list->isEmpty()){
             return EmptyBuilder::toEmptyHtml();
         }
-
+        $grid = $halfStatus ? 'col-sm-6' : 'col-sm-12';
         foreach($list as $v){
             $title = $v->title;
             $userName = $v->profile->name;
@@ -32,12 +33,12 @@ class PagerBuilder
             $levelHtml = OtherBuilder::toLevelHtml($v->power);
 
             $html.="
-                    <div class=\"col-sm-6 col-xs-12 cursor-pointer mt-10\">
+                    <div class=\"{$grid} col-xs-12 cursor-pointer mt-10\">
                         <div class=\"col-xs-12 box-shadow-3 bc-list-item\">
                             <div class=\"col-xs-2 bcl-img\">
                                 <img src=\"/images/default@2x.png\" width=\"60px\">
                             </div>
-                            <div class=\"col-xs-6\">
+                            <div class=\"col-xs-6 text-left\">
                                 <p class=\"text-cut col-xs-12\">{$title}</p>
                                 <p class=\"col-xs-12\">招标人：{$userName}</p>
                                 <p class=\"col-xs-12\">截止时间：{$deadline}</p>
@@ -59,25 +60,25 @@ class PagerBuilder
     /**
      * 中标列表
      * @param $list
+     * @param $halfStatus
      * @return string
      */
-    public static function toWinnerListHtml($list)
+    public static function toWinnerListHtml($list, $halfStatus = true)
     {
         $html = '';
         if($list->isEmpty()){
             return EmptyBuilder::toEmptyHtml();
         }
-
+        $grid = $halfStatus ? 'col-sm-6' : 'col-sm-12';
         foreach($list as $v){
             $projectName = $v->project_name;
             $company = $v->company_name;
             $time = Carbon::createFromTimestamp($v->timestamp)->toDateString();
             $price = 10;
-
             $html.="
-                    <div class=\"col-sm-6 col-xs-12 cursor-pointer mt-10\">
+                    <div class=\"{$grid} col-xs-12 cursor-pointer mt-10\">
                         <div class=\"col-xs-12 box-shadow-3 bc-list-item\">
-                            <div class=\"col-xs-9\">
+                            <div class=\"col-xs-9 text-left\">
                                 <p class=\"text-cut\"><span class=\"b-icon-tip mr-10 \"></span>{$projectName}</p>
                                 <p class=\"col-xs-12\">中标企业：{$company}</p>
                                 <p class=\"col-xs-12\">中标时间：{$time}</p>
@@ -96,15 +97,16 @@ class PagerBuilder
     /**
      * 企业列表
      * @param $list
+     * @param $halfStatus
      * @return string
      */
-    public static function toCompetitorListHtml($list)
+    public static function toCompetitorListHtml($list, $halfStatus = true)
     {
         $html = '';
         if($list->isEmpty()){
             return EmptyBuilder::toEmptyHtml();
         }
-
+        $grid = $halfStatus ? 'col-sm-6' : 'col-sm-12';
         foreach($list as $v){
             $id = $v->id;
             $company = $v->company;
@@ -114,12 +116,12 @@ class PagerBuilder
             $liveHtml = OtherBuilder::toLevelHtml($v->liveness, true);
 
             $html.="
-                 <div class=\"col-sm-6 col-xs-12 mt-10 cursor-pointer js_list_item\" data-id='{$id}'>
+                 <div class=\"{$grid} col-xs-12 mt-10 cursor-pointer js_list_item\" data-id='{$id}'>
                     <div class=\"col-xs-12 box-shadow-3 bc-list-item\">
                         <div class=\"col-xs-2 bcl-img\">
                             <img src=\"/images/default@2x.png\" width=\"60px\">
                         </div>
-                        <div class=\"col-xs-6\">
+                        <div class=\"col-xs-6 text-left\">
                             <p class=\"text-cut col-xs-12\">{$company}</p>
                             <p class=\"col-xs-12 text-cut\">中标项目数量：{$bidTotal}个</p>
                             <p class=\"col-xs-12\">中标候选人次数：{$candidateTotal}次</p>

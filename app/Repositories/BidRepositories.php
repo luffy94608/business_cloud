@@ -107,4 +107,34 @@ class BidRepositories
         return $res;
     }
 
+
+    public static function search($offset=0, $length = 10, $keyword = '', $src)
+    {
+        $model = '';
+        switch ($src) {
+            case 'publish':
+                $model = DataPublisher::where('title', 'like', '%'.$keyword.'%');
+                break;
+            case 'bid':
+                $model = DataBid::where('company_name', 'like', '%'.$keyword.'%')
+                    ->orWhere('project_name', 'like', '%'.$keyword.'%');
+
+                break;
+            case 'competitor':
+                $model = DataCompetitor::where('company', 'like', '%'.$keyword.'%');
+
+                break;
+        }
+        $total = $model->count();
+        $list = $model->skip($offset)
+            ->take($length)
+            ->orderBy('id', -1)
+            ->get();
+        $result = [
+            'list'=>$list,
+            'total'=>$total,
+        ];
+        return $result;
+    }
+
 }

@@ -57,7 +57,7 @@
             </div>
 
             <div class="row  mt-20  bg-white box-shadow-1" id="wrapperPageList">
-                <div class="bc-section-title purple">招标信息<a href="/search-list" class="color-two-title pull-right font-14 v-align-middle">更多</a></div>
+                <div class="bc-section-title purple">招标信息<a href="/search-list?src=publish" class="color-two-title pull-right font-14 v-align-middle">更多</a></div>
                 <div class="col-xs-12">
                     <ul class="nav nav-pills">
                         <li role="presentation" data-type="all" class="active js_search_type"><a href="javascript:void(0);">全部信息</a></li>
