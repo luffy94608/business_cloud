@@ -11,23 +11,14 @@ namespace App\Repositories;
 
 class SettingRepositories
 {
-    /**
-     * 获取验票后多久继续显示车票
-     * @return int
-     */
-    public static function showTicketAfterInSeconds()
-    {
-        $result = 60*10;
-        return $result;
-    }
 
     /**
-     * 车票提前多久变色
+     * 免费vip事件
      * @return int
      */
-    public static function showColorAheadInSeconds()
+    public static function freeVipSecond()
     {
-        $result = 60*10;
+        $result = 60*60*24*15;
         return $result;
     }
 

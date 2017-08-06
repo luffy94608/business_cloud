@@ -22,6 +22,7 @@
             platform: '{{Config::get('app')['platform']}}',
             upyun_host: '{{Config::get('app')['upyun_host']}}',
             heart_time: 5000,
+            is_vip: {{ \App\Helper\Util::isVip() ? 1 : 0 }},
             heart_at: 0
         };
     </script>

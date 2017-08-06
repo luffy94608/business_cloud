@@ -10,6 +10,8 @@ namespace App\Helper;
 
 
 use App\Models\User;
+use App\Repositories\SettingRepositories;
+use Carbon\Carbon;
 use EasyWeChat\Support\Log;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redis;
@@ -139,6 +141,27 @@ class Util
         if(!empty($account))
         {
             $res = $account['id'];
+        }
+        return $res;
+    }
+
+    /**
+     * 是否是付费用户
+     * @return bool
+     */
+    public static function isVip()
+    {
+        $res = false;
+        $account = self::getUserInfo(); // 拿到微信授权用户资料
+        if(!empty($account))
+        {
+            $registerTime = strtotime(strtotime($account['created_at']));
+            $now = Carbon::now();
+            $feeTime = SettingRepositories::freeVipSecond();
+
+            if (!empty($account['paid']) ||  $registerTime + $feeTime > $now->timestamp) {
+                $res = true;
+            }
         }
         return $res;
     }

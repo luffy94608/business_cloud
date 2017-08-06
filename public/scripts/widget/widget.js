@@ -1025,10 +1025,15 @@
                 totalPage: pagerCount,
                 pageSize:  5,
                 onPageChange: function(index){
-                    st.currentPage = index;
-                    //	        			$this.find("#list").html(res.html);
-                    $this.updateList(index);
-                    pi.invalidate(index);
+                    //VIP 限制
+                    if (index>0 && document.global_config_data.is_vip) {
+                        st.currentPage = index;
+                        $this.updateList(index);
+                        pi.invalidate(index);
+                    } else {
+                        $.showToast('充值后可以查看所有内容，请先充值', false);
+                    }
+
                 }
             });
             if($.isFunction(st.onPageInitialized))
@@ -1059,7 +1064,6 @@
                 pageSize:  10,
                 onPageChange: function(index){
                     st.currentPage = index;
-                    //	        			$this.find("#list").html(res.html);
                     $this.updateList(index);
                     pi.invalidate(index);
                 }

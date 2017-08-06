@@ -32,6 +32,7 @@ abstract class Controller extends BaseController
      * @var $sid
      */
     protected $sid;
+    protected $isVip;
 
 
     public function __construct()
@@ -44,6 +45,7 @@ abstract class Controller extends BaseController
         //TODO Session In The Constructor not work 
         $this->middleware(function ($request, $next) {
             $this->uid = Util::getUid();
+            $this->isVip = Util::isVip();
             return $next($request);
         });
 
