@@ -129,6 +129,16 @@ class Util
         return $res;
     }
 
+    public static function getUserMobile()
+    {
+        $res = '';
+        $account = self::getUserInfo(); // 拿到微信授权用户资料
+        if(!empty($account)) {
+            $res = $account['username'];
+        }
+        return $res;
+    }
+
 
     /**
      * 获取用户 uid

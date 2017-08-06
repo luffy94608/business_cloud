@@ -324,17 +324,23 @@ class UserController extends Controller
         $this->validate($request, $pattern);
         $params = $request->only(array_keys($pattern));
 
-        $data = [
+        $insert = [
             'user_id' => $this->uid,
             'time' => $params['time'],
             'area' => $params['follow_area'],
             'industry' => $params['follow_industry'],
             'keyword' => $params['follow_keyword'],
         ];
-        $result = AnalysisRepositories::insertCompanyAlys($data);
+        $result = AnalysisRepositories::insertCompanyAlys($insert);
 
         if ($result) {
             //TODO 发送邮件或短信
+            $data = ['email'=>'29620639@qq.com', 'name'=>'luffy'];
+            $data['data'] = $insert;
+            \Mail::send('email.company', $data, function($message) use($data)
+            {
+                $message->to($data['email'], $data['name'])->subject('企业数据分析');
+            });
 
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());
         } else {
@@ -365,7 +371,12 @@ class UserController extends Controller
 
         if ($result) {
             //TODO 发送邮件或短信
-
+            $data = ['email'=>'29620639@qq.com', 'name'=>'luffy'];
+            $data['data'] = $params;
+            \Mail::send('email.business', $data, function($message) use($data)
+            {
+                $message->to($data['email'], $data['name'])->subject('市场数据分析');
+            });
 
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());
         } else {

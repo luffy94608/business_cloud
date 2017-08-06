@@ -19,10 +19,10 @@ class UserBuilder
      * @param $profile
      * @return string
      */
-    public static function toUserFollowKeywordHtml($profile)
+    public static function toUserFollowKeywordHtml($options)
     {
         $html = '';
-        $options = $profile['follow_keyword'];
+//        $options = $profile['follow_keyword'];
         if (!empty($options)) {
             $options = explode(',', $options);
             foreach ($options as $option) {
@@ -38,10 +38,10 @@ class UserBuilder
      * @param $profile
      * @return string
      */
-    public static function toUserFollowAreaHtml($profile)
+    public static function toUserFollowAreaHtml($ids)
     {
         $html = '';
-        $ids = $profile['follow_area'];
+//        $ids = $profile['follow_area'];
         if (!empty($ids)) {
             $ids = explode(',', $ids);
             $options = DataRepositories::getRegionListByIds($ids);

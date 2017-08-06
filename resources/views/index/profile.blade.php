@@ -95,7 +95,7 @@
                         <div class="col-sm-4 col-xs-7">
                             <div class="bc-keyword-section">
                                 <div id="js_follow_area_list">
-                                    {!! \App\Http\Builders\UserBuilder::toUserFollowAreaHtml($user['profile']) !!}
+                                    {!! \App\Http\Builders\UserBuilder::toUserFollowAreaHtml($user['profile']['follow_area']) !!}
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-8">
@@ -123,7 +123,7 @@
                         <div class="col-sm-4 col-xs-7">
                             <div class="bc-keyword-section">
                                 <div id="js_follow_keyword_list">
-                                    {!! \App\Http\Builders\UserBuilder::toUserFollowKeywordHtml($user['profile']) !!}
+                                    {!! \App\Http\Builders\UserBuilder::toUserFollowKeywordHtml($user['profile']['follow_keyword']) !!}
                                 </div>
 
                                 <div class="row">
