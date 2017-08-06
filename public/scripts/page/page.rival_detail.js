@@ -7,6 +7,8 @@
         searchInputMask : $('.input-mask'),
         searchInputNode : '.bcb-search',
         loading :false,
+        data : $('#js_page_data').data('info'),
+
         /**
          * 图表
          */
@@ -66,12 +68,7 @@
                 },
                 series: [{
                     name: '中标',
-                    data: [
-                        {name:'1',   y: 70},
-                        {name:'2',   y: 80},
-                        {name:'3',   y: 90},
-                        {name:'4',   y: 70}
-                        ]
+                    data: init.data.bid
                 }]
             });
 
@@ -121,14 +118,7 @@
                     type: 'spline',
                     // innerSize: '80%',
                     name: '活跃度',
-                    data: [
-                        {name: '7月1日', y: 10},
-                        {name: '7月2日', y: 40},
-                        {name: '7月3日', y: 60},
-                        {name: '7月4日', y: 50},
-                        {name: '7月5日', y: 90},
-                        {name: '7月6日', y: 60}
-                    ]
+                    data: init.data.power
                 }]
             });
 
@@ -173,14 +163,7 @@
                 },
                 series: [{
                     name: '金额',
-                    data: [
-                        {name: '7月1日', y: 10},
-                        {name: '7月2日', y: 40},
-                        {name: '7月3日', y: 60},
-                        {name: '7月4日', y: 50},
-                        {name: '7月5日', y: 90},
-                        {name: '7月6日', y: 60}
-                        ]
+                    data: init.data.money
                 }]
             });
 

@@ -13,9 +13,9 @@
     <div class="container-fluid">
         <div class="container">
 {{--            @include('templates.select')--}}
-            
-            <div class="row ">
-                <div class="col-sm-8 col-xs-12  bg-white box-shadow-1 bc-stat-section">
+
+            <div class="row bc-body-section">
+                <div class="col-sm-8 col-xs-12 bg-white box-shadow-1 bc-stat-section">
                     <div class="row ">
                         <div class="bc-section-title text-left">全部信息</div>
                         <div class=" col-xs-12 mt-10 mb-10">
@@ -93,8 +93,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4  hidden-xs bc-stat-section">
-                    <div class="col-xs-12  bg-white box-shadow-1 pl-0">
+                <div class="col-sm-4 col-xs-12 bc-side-section">
+                    <div class="row bg-white box-shadow-1  ht-100">
                         @include('templates.side')
                     </div>
                 </div>

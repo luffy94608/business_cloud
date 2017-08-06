@@ -55,58 +55,49 @@
 
             </div>
 
-            <div class="row  mt-20  bg-white box-shadow-1">
-                <div class="bc-section-title purple">最新发布<a href="#" class="color-two-title pull-right font-14 v-align-middle">查看更多</a></div>
-                <div class="col-xs-12">
+            <div class="row  mt-20  bg-white box-shadow-1" id="wrapperPageList">
+                <div class="bc-section-title purple">最新发布<a href="/search-list" class="color-two-title pull-right font-14 v-align-middle">查看更多</a></div>
+                <div class="col-xs-12" id="list">
                     <div class="col-xs-12 text-center color-hint pt-50 pb-50">
                         暂无发布信息
                     </div>
-                    <div class="col-sm-6 col-xs-12 mt-10 p-0">
-                        <div class="col-xs-12 box-shadow-3 bc-list-item">
-                            <div class="col-xs-9">
-                                <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>
-                                <p class="col-xs-6">招标方式：公开</p>
-                                <p class="col-xs-6">截止时间：2018-11-4</p>
-                                <p class="col-xs-6">招标产品：地产</p>
-                                <p class="col-xs-6">招标地点：北京</p>
-                            </div>
-                            <div class="col-xs-3 bcl-right">
-                                <canvas class="vie-num" width="36" height="36">70</canvas>
-                                <div class="vie-text">70</div>
-                                <p class="mb-0">竞争力</p>
-                                <p>2017-7-10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xs-12 mt-10 p-0">
-                        <div class="col-xs-12 box-shadow-3 bc-list-item">
-                            <div class="col-xs-9">
-                                <p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>
-                                <p class="col-xs-6">招标方式：公开</p>
-                                <p class="col-xs-6">截止时间：2018-11-4</p>
-                                <p class="col-xs-6">招标产品：地产</p>
-                                <p class="col-xs-6">招标地点：北京</p>
-                            </div>
-                            <div class="col-xs-3 bcl-right">
-                                <canvas class="vie-num" width="36" height="36">20</canvas>
-                                <div class="vie-text">20</div>
-                                <p class="mb-0">竞争力</p>
-                                <p>2017-7-10</p>
-                            </div>
-                        </div>
-                    </div>
+                    {{--<div class="col-sm-6 col-xs-12 mt-10 p-0">--}}
+                        {{--<div class="col-xs-12 box-shadow-3 bc-list-item">--}}
+                            {{--<div class="col-xs-9">--}}
+                                {{--<p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>--}}
+                                {{--<p class="col-xs-6">招标方式：公开</p>--}}
+                                {{--<p class="col-xs-6">截止时间：2018-11-4</p>--}}
+                                {{--<p class="col-xs-6">招标产品：地产</p>--}}
+                                {{--<p class="col-xs-6">招标地点：北京</p>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-xs-3 bcl-right">--}}
+                                {{--<canvas class="vie-num" width="36" height="36">70</canvas>--}}
+                                {{--<div class="vie-text">70</div>--}}
+                                {{--<p class="mb-0">竞争力</p>--}}
+                                {{--<p>2017-7-10</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm-6 col-xs-12 mt-10 p-0">--}}
+                        {{--<div class="col-xs-12 box-shadow-3 bc-list-item">--}}
+                            {{--<div class="col-xs-9">--}}
+                                {{--<p class="text-cut"><span class="b-icon-tip mr-10 "></span>平顶山市石龙公安局政法专款设备招标公告</p>--}}
+                                {{--<p class="col-xs-6">招标方式：公开</p>--}}
+                                {{--<p class="col-xs-6">截止时间：2018-11-4</p>--}}
+                                {{--<p class="col-xs-6">招标产品：地产</p>--}}
+                                {{--<p class="col-xs-6">招标地点：北京</p>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-xs-3 bcl-right">--}}
+                                {{--<canvas class="vie-num" width="36" height="36">20</canvas>--}}
+                                {{--<div class="vie-text">20</div>--}}
+                                {{--<p class="mb-0">竞争力</p>--}}
+                                {{--<p>2017-7-10</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
-                <div class="col-xs-12 text-center">
-                    <ul class="pagination">
-                        <li ><a href="#" aria-label="Previous"><span aria-hidden="true">首页</span></a></li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#" aria-label="Next"><span aria-hidden="true">末页</span></a></li>
-                    </ul>
-                </div>
+                <div id='list_count' class="gone"></div>
+                {!! \App\Http\Builders\OtherBuilder::createPageIndicator() !!}
             </div>
             
         </div>

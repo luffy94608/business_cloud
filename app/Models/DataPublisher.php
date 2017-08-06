@@ -42,4 +42,19 @@ class DataPublisher extends Model
      * @var array
      */
     protected $fillable = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class,'user_id', 'user_id');
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(DicRegion::class,'area_id', 'id');
+    }
 }

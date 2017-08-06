@@ -30,6 +30,35 @@ class OtherBuilder
         return $html;
     }
 
-   
+    /**
+     * 分页区域
+     * @return string
+     */
+    public static function createPageIndicator()
+    {
+        $html = "
+                <div class=\"col-xs-12 text-center\">
+                    <ul class=\"pagination\" id='pager_indicator'>
+                    </ul>
+                </div>";
+        return $html;
+    }
+
+    /**
+     * 竞争力活跃度
+     * @param $level
+     * @param bool $switch  true 活跃度
+     * @return string
+     */
+    public static function toLevelHtml($level, $switch = false)
+    {
+        $html = "";
+        $activeStyle = $switch ? 'active' : 'active-2';
+        for ($i=1; $i<=5; $i++) {
+            $active  = $i<=$level ? $activeStyle : '';
+            $html .= "<span class='b-icon-star {$active}'></span>";
+        }
+        return $html;
+    }
 
 }

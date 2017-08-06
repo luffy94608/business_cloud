@@ -49,7 +49,7 @@
         },
         pageEvent : function () {
             init.pager = $('#wrapperPageList').Pager({
-                protocol:$.httpProtocol.GET_BID_LIST,
+                protocol:$.httpProtocol.GET_WINNER_LIST,
                 listSize:6,
                 onPageInitialized:function(){
                     if (init.pager){
@@ -82,13 +82,6 @@
             });
             $(document).on('blur', init.searchInputNode,function () {
                 init.searchInputMask.fadeIn();
-            });
-
-            /**
-             * tab切换
-             */
-            $(document).on('click', '.tab-item',function () {
-                
             });
 
         },

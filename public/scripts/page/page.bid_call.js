@@ -63,6 +63,7 @@
                 wrapUpdateData:function(idx,data){
                     var param={};
                     param.limit=2;
+                    param.type=$('.js_search_type.active').data('type');
                     if (param){
                         $.extend(data, param);
                     }
@@ -87,8 +88,11 @@
             /**
              * tab切换
              */
-            $(document).on('click', '.tab-item',function () {
-                
+            $(document).on('click', '.nav-pills>li',function () {
+                var $this = $(this);
+                $this.siblings().removeClass('active');
+                $this.addClass('active');
+                init.pager.updateList(0);
             });
 
         },

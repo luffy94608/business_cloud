@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\Util;
 use App\Http\Requests;
+use App\Repositories\BidRepositories;
 use App\Repositories\DataRepositories;
 use App\Repositories\UserRepositories;
 use Illuminate\Support\Facades\Log;
@@ -65,7 +66,7 @@ class IndexController extends Controller
     {
 
         $params = [
-            'page' =>'page-index',
+            'page' =>'page-search-list',
         ];
         return View::make('index.list',$params);
     }
@@ -76,9 +77,28 @@ class IndexController extends Controller
      */
     public function bidCall()
     {
+        $today = 0;
+        $week = 0;
+        $month = 0;
+        $summary = DataRepositories::getSummaryPageData($this->uid);
+        if (!is_null($summary)) {
+            $today = $summary['tender_today_total'];
+            $week = $summary['tender_week_total'];
+            $month = $summary['tender_month_total'];
+        }
+        $total = $today+$week+$month;
+        $data = [
+            'today'=>$today,
+            'week'=>$week,
+            'month'=>$month,
+            'today_percent'=>$total ? ($today/$month)*100 : 0,
+            'week_percent'=>$total ? ($week/$month)*100 : 0,
+            'month_percent'=>$total ? ($month/$month)*100 : 0,
+        ];
 
         $params = [
-            'page' =>'page-index',
+            'data' =>$data,
+            'page' =>'page-bid-call',
         ];
         return View::make('index.bid_call',$params);
     }
@@ -89,9 +109,28 @@ class IndexController extends Controller
      */
     public function bidWinner()
     {
+        $today = 0;
+        $week = 0;
+        $month = 0;
+        $summary = DataRepositories::getSummaryPageData($this->uid);
+        if (!is_null($summary)) {
+            $today = $summary['bid_today_total'];
+            $week = $summary['bid_week_total'];
+            $month = $summary['bid_month_total'];
+        }
+        $total = $today+$week+$month;
+        $data = [
+            'today'=>$today,
+            'week'=>$week,
+            'month'=>$month,
+            'today_percent'=>$total ? ($today/$month)*100 : 0,
+            'week_percent'=>$total ? ($week/$month)*100 : 0,
+            'month_percent'=>$total ? ($month/$month)*100 : 0,
+        ];
 
         $params = [
-            'page' =>'page-index',
+            'data' =>$data,
+            'page' =>'page-bid-winner',
         ];
         return View::make('index.bid_winner',$params);
     }
@@ -102,8 +141,14 @@ class IndexController extends Controller
      */
     public function rival()
     {
-
+        $data = [
+            'total'=>100,
+            'power'=>3,
+            'company_summary'=>DataRepositories::getCompanySummaryChartData(),
+            'category_summary'=>DataRepositories::getCategoryChartData(),
+        ];
         $params = [
+            'data' =>$data,
             'page' =>'page-rival',
         ];
         return View::make('index.rival',$params);
@@ -111,12 +156,20 @@ class IndexController extends Controller
 
     /**
      * 竞争对手详情x
+     * @param $id
      * @return mixed
      */
-    public function rivalDetail()
+    public function rivalDetail($id)
     {
-
+        $data = BidRepositories::getCompetitorDetail($id);
+        $chart = [
+            'bid'=> DataRepositories::bidStatData(),
+            'power'=>DataRepositories::powerStatData(),
+            'money'=>DataRepositories::moneyStatData(),
+        ];
         $params = [
+            'info'=>$data,
+            'chart'=>$chart,
             'page' =>'page-rival-detail',
         ];
         return View::make('index.rival_detail',$params);

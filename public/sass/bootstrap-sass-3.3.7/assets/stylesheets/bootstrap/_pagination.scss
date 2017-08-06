@@ -22,20 +22,11 @@
       //margin-left: -1px;
       margin: auto 5px;
       @include border-radius(50%);
-    }
-    &:first-child {
-      > a,
-      > span {
-        margin-left: 0;
-        @include border-radius($border-radius-base);
+      &.text{
+        @include border-radius($border-radius-small);
       }
     }
-    &:last-child {
-      > a,
-      > span {
-        @include border-radius($border-radius-base);
-      }
-    }
+   
   }
 
   > li > a,

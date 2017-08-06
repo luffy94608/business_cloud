@@ -6,6 +6,7 @@
     var init = {
         searchInputMask : $('.input-mask'),
         searchInputNode : '.bcb-search',
+        data : $('#js_page_data').data('info'),
         loading :false,
         /**
          * 图表
@@ -52,13 +53,7 @@
                     type: 'pie',
                     innerSize: '80%',
                     name: '数量',
-                    data: [
-                        {name:'大型企业',   y: 15},
-                        {name:'中型企业',   y: 25},
-                        {name:'小型企业',   y: 35},
-                        {name:'外资企业',   y: 25},
-                        {name:'国有企业',   y: 45}
-                    ]
+                    data: init.data.company_summary
                 }]
             });
 
@@ -111,27 +106,11 @@
                     headerFormat:'',
                     pointFormat: '<span style="color:{point.color}">竞争力：{point.y}</span>'
                 },
+                colors: ['#61D7C7', '#9898F8', '#FF9191', '#47CAFE'],
                 series: [{
                     name: '',
                     colorByPoint: true,
-                    data:[{
-                        name: '品牌',
-                        color : "#61D7C7",
-                        y: 60
-                    }, {
-                        name: '资源',
-                        color : "#9898F8",
-                        y: 80
-                    }, {
-                        name: '技能',
-                        color : "#FF9191",
-                        y: 40
-                    }, {
-                        name: '注册资本',
-                        color : "#47CAFE",
-                        y: 22
-                    }
-                    ]
+                    data:init.data.category_summary
                 }]
             });
 
@@ -161,7 +140,30 @@
 
 
         },
-
+        pageEvent : function () {
+            init.pager = $('#wrapperPageList').Pager({
+                protocol:$.httpProtocol.GET_COMPETITOR_LIST,
+                listSize:6,
+                onPageInitialized:function(){
+                    if (init.pager){
+                        var top=$(window).scrollTop();
+                        var top =$('#wrapperPageList').offset().top;
+                        if(top>100){
+                            $(window).scrollTop(top)
+                        }
+                    }
+                },
+                wrapUpdateData:function(idx,data){
+                    var param={};
+                    param.limit=2;
+                    if (param){
+                        $.extend(data, param);
+                    }
+                    return data;
+                }
+            });
+            init.pager.updateList(0);
+        },
         initBtnEvent : function () {
 
             /**
@@ -177,8 +179,9 @@
             /**
              * tab切换
              */
-            $(document).on('click', '.tab-item',function () {
-                
+            $(document).on('click', '.js_list_item',function () {
+                var id = $(this).data('id');
+                $.locationUrl('/rival-detail/'+id);
             });
 
 
@@ -188,6 +191,8 @@
             init.initBtnEvent();
             init.createChartEvent();
             init.fixBodyHeight();
+            init.pageEvent();
+            console.log(init.data);
         }
     };
     init.run();

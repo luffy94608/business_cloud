@@ -1021,8 +1021,9 @@
                 url: st.url?st.url:null,
                 currentPage: pageIndex,
                 totalCount:count,
+                showFirstOrLast:false,
                 totalPage: pagerCount,
-                pageSize:  10,
+                pageSize:  5,
                 onPageChange: function(index){
                     st.currentPage = index;
                     //	        			$this.find("#list").html(res.html);
@@ -1111,16 +1112,16 @@
             currentPage : 0,
             pageSize : 3,
             updateWhenInit: false,
-            showLast: true,
+            showFirstOrLast: true,
             onPageChange : null
         };
 
         var $this = $(this);
-        var spanClass = '';
+        var spanClass = 'text';
         var numberClass = '';
         var currentClass = "active";
         var BTN = $("<li class='paginate_button'><a href='javascript:void(0);'></a></li>");
-        var SPAN = $("<li class='paginate_button' style='padding:0px 5px 0px 0px;'></li>");
+        var SPAN = $("<li class='paginate_button'></li>");
         var firstString = '首页', lastString = '末页';
         var prevString = '上一页', nextString = '下一页';
 
@@ -1152,20 +1153,24 @@
         var preIdx = Math.max(st.currentPage - 1, 0), nextIdx = Math.min(
             st.currentPage + 1, st.totalPage - 1);
 
-        var ITEMS = [ {
-            html : firstString,
-            title : firstString,
-            disabled : first,
-            desIdx : 0,
-            style : first ? spanClass: numberClass
-        } ];
-        ITEMS.push({
-            html : prevString,
-            title : prevString,
-            disabled : first,
-            desIdx : preIdx,
-            style : first ? spanClass: numberClass
-        });
+        var ITEMS = [];
+        if (st.showFirstOrLast) {
+            ITEMS.push( {
+                html : firstString,
+                title : firstString,
+                disabled : first,
+                desIdx : 0,
+                style : spanClass
+            } );
+            ITEMS.push({
+                html : prevString,
+                title : prevString,
+                disabled : first,
+                desIdx : preIdx,
+                style : spanClass
+            });
+        }
+
 
         for ( var i = lower; i <= upper; i++) {
             var focused = i == st.currentPage;
@@ -1179,27 +1184,27 @@
                 isNum : true
             });
         }
-
-        ITEMS.push({
-            html : nextString,
-            title : nextString,
-            disabled : last,
-            desIdx : nextIdx,
-            style : last ? spanClass: numberClass
-        });
-        if(st.showLast)
+        
+        if(st.showFirstOrLast) {
+            ITEMS.push({
+                html : nextString,
+                title : nextString,
+                disabled : last,
+                desIdx : nextIdx,
+                style : spanClass
+            });
             ITEMS.push({
                 html : lastString,
                 title : lastString,
                 disabled : last,
                 desIdx : st.totalPage - 1,
-                style : last ? spanClass: numberClass
+                style : spanClass
             });
-
+        }
         $this.empty();
 
         if (st.totalCount > 0){
-            var pageInfo = $('<li class="paginate_button"><div class="page_info"></div></li>').find('.page_info').html('总数<span class="number">'+st.totalCount+'</span>,共<span class="number">'+st.totalPage+'</span>页');
+            var pageInfo = $('<li class="paginate_button gone"><div class="page_info"></div></li>').find('.page_info').html('总数<span class="number">'+st.totalCount+'</span>,共<span class="number">'+st.totalPage+'</span>页');
             if (st.totalPage > 1){
                 pageInfo.append('<input type="text" placeholder="GO" class="input_go">');
                 pageInfo.find('input').keypress(function(e){
@@ -1231,8 +1236,7 @@
                         tmp.find('a').html(data.html).addClass(data.style);
                     } else {
                         if(st.url==null){
-                            BTN.clone().appendTo($this).find('a').html(data.html).attr("title",
-                                data.title).addClass(data.style).wclick(function() {
+                            BTN.clone().appendTo($this).find('a').html(data.html).attr("title", data.title).addClass(data.style).click(function() {
 //									if (st.currentPage != data.desIdx) {
                                 st.currentPage = data.desIdx;
                                 if ($.isFunction(st.onPageChange)) {
@@ -1257,9 +1261,7 @@
         };
         if (st.updateWhenInit && $.isFunction(st.onPageChange)) {
             st.onPageChange(st.currentPage);
-            // alert(data.desIdx);
         }
-
         $this.currentPage = function(){
             return st.currentPage;
         };

@@ -25,15 +25,9 @@
         Route::post('/user/update', 'Api\UserController@update');
         Route::post('/user/company', 'Api\UserController@companyAnalysis');
         Route::post('/user/business', 'Api\UserController@businessAnalysis');
-
-        Route::post('/profile', 'Api\UserController@getProfile');
-        Route::post('/user/edit', 'Api\UserController@edit');
-        Route::post('/user/feedback', 'Api\UserController@feedback');
-        Route::post('get-bill-list', 'Api\UserController@getCashBillList');
-        Route::post('get-bonus-list', 'Api\UserController@getBonusList');
-        Route::post('get-bonus-detail', 'Api\UserController@getBonusDetail');
-        Route::post('get-coupon-list', 'Api\UserController@getCouponList');
-        Route::post('exchange-share-code', 'Api\UserController@exchangeCode');
+        Route::post('/get-bid-list', 'Api\IndexController@getBidList');
+        Route::post('/get-winner-list', 'Api\IndexController@getBidResultList');
+        Route::post('/get-competitor-list', 'Api\IndexController@getCompetitorList');
 
     });
 
