@@ -217,6 +217,7 @@
             KEYWORD_EXISTS:'关键字已存在',
             AREA_EXISTS:'该地区已存在',
             VERIFY_CODE_SEND_SUCCESS:'验证码发送成功，请查收',
+            COMPANY_OR_BUSINESS_SUCCESS:'我们会在3个工作日内，将工作报告发送至您的邮箱',
 
             REGISTER_SUCCESS : '注册成功',
             LOGIN_SUCCESS : '登录成功',

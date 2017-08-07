@@ -19,6 +19,7 @@
         GET_COMPETITOR_LIST             : '/api/get-competitor-list',
         SEARCH_LIST                     : '/api/search-list',
         ERROR_TRACK                     : '/api/other/track-error',
+        USER_TRACK                      : '/api/other/track-user',
         TEST : ''
     };
 })($);

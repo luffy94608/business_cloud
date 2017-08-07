@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\UserLog;
 
 class UserRepositories
 {
@@ -113,5 +114,14 @@ class UserRepositories
         return $user;
     }
 
-
+    /**
+     * 添加user 操作记录
+     * @param $data
+     * @return bool
+     */
+    public static function insertUserLog($data)
+    {
+        $userLog = new UserLog();
+        return BaseRepositories::updateOrInsert($userLog, $data)? $userLog->id :false;
+    }
 }

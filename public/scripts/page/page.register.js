@@ -109,6 +109,10 @@
             if(status<=0){
                 return false;
             }
+            if(!params.code.length){
+                $.showToast($.string.VERIFY_CODE_NOT_EMPTY,false);
+                return false;
+            }
 
 
             status = $.checkInputVal({val:params.psw,type:'password',onChecked:function(val,state,hint){
@@ -121,10 +125,6 @@
                 return false;
             }
 
-            if(!params.code.length){
-                $.showToast($.string.VERIFY_CODE_NOT_EMPTY,false);
-                return false;
-            }
 
             status = $.checkInputVal({val:params.name,type:'name',onChecked:function(val,state,hint){
                 if(state <= 0){
@@ -272,7 +272,8 @@
                 }
 
                 var html = init.tpl.format(keyword, keyword);
-                init.keywordListSection.append(html)
+                init.keywordListSection.append(html);
+                init.keywordInput.val('');
                     
             });
 

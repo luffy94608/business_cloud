@@ -61,7 +61,7 @@
                 <div class="col-xs-12">
                     <ul class="nav nav-pills">
                         <li role="presentation" data-type="all" class="active js_search_type"><a href="javascript:void(0);">全部信息</a></li>
-                        <li role="presentation" data-type="new" class="js_search_type"><a href="javascript:void(0);">最新发布</a></li>
+                        {{--<li role="presentation" data-type="new" class="js_search_type"><a href="javascript:void(0);">最新发布</a></li>--}}
                         {{--<li role="presentation"><a href="#">最热</a></li>--}}
                     </ul>
                 </div>

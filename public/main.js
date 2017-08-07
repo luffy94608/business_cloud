@@ -74,7 +74,7 @@
             'select2': ['jquery'],
             'highcharts': ['jquery'],
             'widget': ['jquery','string','http','cache','fastclick', 'bootstrap', 'toastr', 'select-zh-cn'],
-            'base': ['widget'],
+            'base': ['widget', 'cookie'],
 
             'page-index': ['base','cookie'],
             'page-search-list': ['base','cookie'],

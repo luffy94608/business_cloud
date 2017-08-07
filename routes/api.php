@@ -20,6 +20,7 @@
     Route::post('/user/login', 'Api\UserController@login');
     Route::post('/user/reset', 'Api\UserController@reset');
     Route::post('/other/track-error', 'Api\OtherController@trackError');
+    Route::post('/other/track-user', 'Api\OtherController@trackUser');
 
     Route::group(['middleware' => ['auth']], function () {
         Route::post('/user/update', 'Api\UserController@update');

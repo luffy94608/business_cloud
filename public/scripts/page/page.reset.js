@@ -83,7 +83,10 @@
             if(status<=0){
                 return false;
             }
-
+            if(!params.code.length){
+                $.showToast($.string.VERIFY_CODE_NOT_EMPTY,false);
+                return false;
+            }
 
             status = $.checkInputVal({val:params.psw,type:'password',onChecked:function(val,state,hint){
                 if(state <= 0){
@@ -92,11 +95,6 @@
             }
             });
             if(status<=0){
-                return false;
-            }
-
-            if(!params.code.length){
-                $.showToast($.string.VERIFY_CODE_NOT_EMPTY,false);
                 return false;
             }
 

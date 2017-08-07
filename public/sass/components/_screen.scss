@@ -81,6 +81,17 @@ and (min-width : 375px)
   .bg-transparent .navbar-header .navbar-brand .bc-log-img{
     background: url("../../images/logo-t.png") no-repeat center;
   }
+  .container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .bc-list-item{
+    padding-left: 0;
+    padding-right: 0;
+    .bcl-img>img{
+      width: 100%;
+    }
+  }
 
   //登录页面手机适配
   .bcl-title{
@@ -128,10 +139,13 @@ and (min-width : 375px)
   }
 
   .bc-header-section{
-    position: fixed;
+    position: absolute;
     right: 0;
     left: 0;
     top: 0;
+    &.clear-position{
+      position: relative;
+    }
     z-index: 1030;
     .bch-login{
       top: 2px;

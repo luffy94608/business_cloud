@@ -101,6 +101,43 @@ $(document).ready(function () {
         }
     });
 
+    /**
+     * 停留事件统计
+     * @returns {null}
+     */
+    var second = 0;
+    window.setInterval(function () {
+        second ++;
+    }, 1000);
+    var result = $.localCache.get("jsArr") ? $.localCache.get("jsArr") : [];
+    console.log(result);
+    $.cookie('tjRefer', $.getReferrer() ,{expires:1,path:'/'});
+
+    window.onbeforeunload = function() {
+        if($.cookie('tjRefer') == ''){
+            var tjT = $.localCache.get('jsArr');
+            if(tjT){
+                tjT[tjT.length-1].time += second;
+                $.localCache.set(tjT);
+            }
+        } else {
+            var tjArr = $.localCache.get("jsArr") ? $.localCache.get("jsArr") : [];
+            var currentTime = new Date().getTime();
+            var dataArr = {
+                'url' : location.href,
+                'path' : location.pathname,
+                'stay_second' : second,
+                'refer' : $.getReferrer(),
+                'time_in' : Math.floor(currentTime/1000),
+                'time_out' : Math.floor(currentTime/1000) + second
+            };
+            $.wpost($.httpProtocol.USER_TRACK,{log:dataArr},function (data) {
+            },function () {
+            }, true, true);
+            tjArr.push(dataArr);
+            $.localCache.set('jsArr', tjArr);
+        }
+    };
 
 
 });

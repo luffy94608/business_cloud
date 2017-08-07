@@ -48,7 +48,7 @@
                 }
                 init.loading = true;
                 $.wpost($.httpProtocol.USER_BUSINESS,params,function (data) {
-                    $.showToast($.string.EDIT_SUCCESS, true);
+                    $.showToast($.string.COMPANY_OR_BUSINESS_SUCCESS, true);
                     // $.locationUrl('/login');
                     setTimeout(function () {
                         window.location.reload();
