@@ -8,6 +8,7 @@
         searchInputNode : '.bcb-search',
         pager :'',
         loading :false,
+        first :true,
         /**
          * 初始化进度条
          */
@@ -55,9 +56,10 @@
                     if (init.pager){
                         var top=$(window).scrollTop();
                         var top =$('#wrapperPageList').offset().top;
-                        if(top>100){
+                        if(!init.first){
                             $(window).scrollTop(top)
                         }
+                        init.first = false;
                     }
                 },
                 wrapUpdateData:function(idx,data){

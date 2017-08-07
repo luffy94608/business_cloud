@@ -1026,14 +1026,14 @@
                 pageSize:  5,
                 onPageChange: function(index){
                     //VIP 限制
-                    if (index>0 && document.global_config_data.is_vip) {
-                        st.currentPage = index;
-                        $this.updateList(index);
-                        pi.invalidate(index);
-                    } else {
+                    console.log(index);
+                    if (index>0 && !document.global_config_data.is_vip) {
                         $.showToast('充值后可以查看所有内容，请先充值', false);
+                        return false;
                     }
-
+                    st.currentPage = index;
+                    $this.updateList(index);
+                    pi.invalidate(index);
                 }
             });
             if($.isFunction(st.onPageInitialized))
