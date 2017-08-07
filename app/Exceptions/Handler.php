@@ -51,13 +51,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-//        return parent::render($request, $exception);
+        return parent::render($request, $exception);
 
 //        if ($this->isHttpException($exception))
         Log::info($exception);
         if ($request->ajax())
         {
-            return response()->json((new ApiResult(-1, '未知错误，请稍候再试', []))->toJson());
+            return response()->json((new ApiResult(-1, '操作失败，请稍候再试', []))->toJson());
         }
         else
         {

@@ -27,13 +27,14 @@ class PagerBuilder
         }
         $grid = $halfStatus ? 'col-sm-6' : 'col-sm-12';
         foreach($list as $v){
+            $url = $v->url;
             $title = $v->title;
-            $userName = $v->profile->name;
+            $userName = isset($v->publisher) ? $v->publisher : '未知';
             $deadline = Carbon::createFromTimestamp($v->timestamp)->toDateString();
             $levelHtml = OtherBuilder::toLevelHtml($v->power);
 
             $html.="
-                    <div class=\"{$grid} col-xs-12 cursor-pointer mt-10\">
+                    <div class=\"{$grid} col-xs-12 cursor-pointer mt-10 js_location_url\" data-target='_blank' data-url='{$url}'>
                         <div class=\"col-xs-12 box-shadow-3 bc-list-item\">
                             <div class=\"col-xs-2 bcl-img\">
                                 <img src=\"/images/default@2x.png\" width=\"60px\">
@@ -71,13 +72,14 @@ class PagerBuilder
         }
         $grid = $halfStatus ? 'col-sm-6' : 'col-sm-12';
         foreach($list as $v){
-            $projectName = $v->project_name;
-            $company = $v->company_name;
-            $time = Carbon::createFromTimestamp($v->timestamp)->toDateString();
-            $price = 10;
+            $url = isset($v->url) ? $v->url : '';
+            $projectName = $v->title;
+            $company = $v->bid_company;
+            $time = Carbon::createFromTimestamp($v->bid_time)->toDateString();
+            $price = sprintf('%.2f', $v->bid_price/10000);
             $html.="
                     <div class=\"{$grid} col-xs-12 cursor-pointer mt-10\">
-                        <div class=\"col-xs-12 box-shadow-3 bc-list-item\">
+                        <div class=\"col-xs-12 box-shadow-3 js_location_url bc-list-item\" data-target='_blank' data-url='{$url}'>
                             <div class=\"col-xs-9 text-left\">
                                 <p class=\"text-cut\"><span class=\"b-icon-tip mr-10 \"></span>{$projectName}</p>
                                 <p class=\"col-xs-12\">中标企业：{$company}</p>
@@ -109,6 +111,7 @@ class PagerBuilder
         $grid = $halfStatus ? 'col-sm-6' : 'col-sm-12';
         foreach($list as $v){
             $id = $v->id;
+            $logo = isset($v->logo) ? $v->logo : '/images/default@2x.png';
             $company = $v->company;
             $bidTotal = $v->bid_total;
             $candidateTotal = $v->candidate_total;
@@ -119,7 +122,7 @@ class PagerBuilder
                  <div class=\"{$grid} col-xs-12 mt-10 cursor-pointer js_list_item\" data-id='{$id}'>
                     <div class=\"col-xs-12 box-shadow-3 bc-list-item\">
                         <div class=\"col-xs-2 bcl-img\">
-                            <img src=\"/images/default@2x.png\" width=\"60px\">
+                            <img src=\"{$logo}\" width=\"60px\">
                         </div>
                         <div class=\"col-xs-6 text-left\">
                             <p class=\"text-cut col-xs-12\">{$company}</p>

@@ -194,13 +194,17 @@
      */
     $.ALocationUrlEvent = function () {
         var opts = {
-            target : 'a.js_location_url'
+            target : '.js_location_url'
         };
         $(document).on('click' , opts.target, function (e) {
             e.stopPropagation();
             e.preventDefault();
-            var url = $(this).attr('href');
+            var url = $(this).data('url');
+            if (!url) {
+                return false;
+            }
             var replace = $(this).data('replace');
+            var target = $(this).data('target');
             var pathIndex = url.indexOf('?');
             var paramsStr = pathIndex === -1 ? '' : url.substr(pathIndex);
             var paramsArr = [];
@@ -222,7 +226,11 @@
             if (paramsArr.length) {
                 url = '{0}?{1}'.format(url, paramsArr.join('&'));
             }
-
+            if (target === '_blank')
+            {
+                window.open(url, '_blank');
+                return false;
+            }
             if (replace) {
                 window.location.replace(url);
             } else {

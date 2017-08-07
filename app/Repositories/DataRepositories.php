@@ -9,11 +9,14 @@
 namespace App\Repositories;                                  
 
 
+use App\Models\DataCategoryStat;
+use App\Models\DataCompetitor;
 use App\Models\DataStatistic;
 use App\Models\DataStatisticDetail;
 use App\Models\DicArea;
 use App\Models\DicIndustry;
 use App\Models\DicRegion;
+use Illuminate\Support\Facades\DB;
 
 class DataRepositories
 {
@@ -92,27 +95,52 @@ class DataRepositories
 
     public static function getCompanySummaryChartData()
     {
-       $data = [
-          ['name'=>'大型企业', 'y'=>20],
-          ['name'=>'中型企业', 'y'=>30],
-          ['name'=>'小型企业', 'y'=>60],
-          ['name'=>'民营企业', 'y'=>40],
-          ['name'=>'外资企业', 'y'=>80],
-          ['name'=>'国有企业', 'y'=>50],
-          ['name'=>'股份企业', 'y'=>10],
-          ['name'=>'私营企业', 'y'=>700],
-       ];
+        $result = DataCompetitor::select(DB::raw(' type name,count(*) y '))
+            ->groupBy('type')
+            ->get();
+        $listMap = [];
+        $map = ['大型企业', '中型企业', '小型企业', '民营企业', '外资企业', '国有企业', '股份企业', '私营企业',];
+        if ($result->isNotEmpty()) {
+            $listMap = BaseRepositories::arrayToDictionary($result, 'name');
+        }
+        $data = [];
+        foreach ($map as $v) {
+            $item = [
+                'name'=>$v,
+                'y'=>array_key_exists($v, $listMap) ? $listMap[$v]['y'] : 0
+            ];
+            $data[] = $item;
+        }
+//        $data = [
+//          ['name'=>'大型企业', 'y'=>20],
+//          ['name'=>'中型企业', 'y'=>30],
+//          ['name'=>'小型企业', 'y'=>60],
+//          ['name'=>'民营企业', 'y'=>40],
+//          ['name'=>'外资企业', 'y'=>80],
+//          ['name'=>'国有企业', 'y'=>50],
+//          ['name'=>'股份企业', 'y'=>10],
+//          ['name'=>'私营企业', 'y'=>700],
+//       ];
        return $data;
     }
     
     public static function getCategoryChartData()
     {
-        $data = [
-            ['name'=>'品牌', 'y'=>40],
-            ['name'=>'资源', 'y'=>80],
-            ['name'=>'技能', 'y'=>50],
-            ['name'=>'注册资本', 'y'=>70],
-        ];
+        $result = DataCategoryStat::all();
+        $data = [];
+        foreach ($result as $v) {
+            $item = [
+                'name'=>$v->name,
+                'y'=>$v->value
+            ];
+            $data[] = $item;
+        }
+//        $data = [
+//            ['name'=>'品牌', 'y'=>40],
+//            ['name'=>'资源', 'y'=>80],
+//            ['name'=>'技能', 'y'=>50],
+//            ['name'=>'注册资本', 'y'=>70],
+//        ];
         return $data;
     }
 

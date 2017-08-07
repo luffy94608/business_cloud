@@ -45,15 +45,15 @@
                     <div class="d-table wd-100 ">
                         <div class="d-table-cell v-align-middle">
                             <div class="col-sm-4 col-xs-12 bcs-item">
-                                <p class="font-18">中标数据统计<span class="color-green font-36">{{ isset($info->bid_total) ? $info->bid_total : 0 }}</span><span class="color-hint">分</span></p>
+                                <p class="font-18">中标数据统计<span class="color-green font-36">{{ isset($info->bid_stat) ? $info->bid_stat : 0 }}</span><span class="color-hint">分</span></p>
                                 <div id="js_chart_1" style="height:200px;width: 100%"></div>
                             </div>
                             <div class="col-sm-4 col-xs-12 bcs-item">
-                                <p class="font-18">竞争活跃度<span class="color-orange font-36">{{ isset($info->bid_total) ? $info->bid_total : 0 }}</span><span class="color-hint">分</span></p>
+                                <p class="font-18">竞争活跃度<span class="color-orange font-36">{{ isset($info->bid_liveness) ? $info->bid_liveness : 0 }}</span><span class="color-hint">分</span></p>
                                 <div id="js_chart_2" style="height:200px;width: 100%"></div>
                             </div>
                             <div class="col-sm-4 col-xs-12 bcs-item">
-                                <p class="font-18">企业中标金额<span class="color-red font-36">{{ isset($info->bid_total) ? $info->bid_total : 0 }}</span><span class="color-hint">万</span></p>
+                                <p class="font-18">企业中标金额<span class="color-red font-36">{{ isset($info->bid_money) ? sprintf('%.1f', $info->bid_money/10000) : 0 }}</span><span class="color-hint">万</span></p>
                                 <div id="js_chart_3" style="height:200px;width: 100%"></div>
                             </div>
                         </div>

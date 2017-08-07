@@ -9,6 +9,7 @@
 namespace App\Repositories;                                  
 
 
+use App\Models\DataCompetitor;
 use App\Models\Profile;
 use App\Models\User;
 use App\Models\UserLog;
@@ -123,5 +124,23 @@ class UserRepositories
     {
         $userLog = new UserLog();
         return BaseRepositories::updateOrInsert($userLog, $data)? $userLog->id :false;
+    }
+
+    /**
+     * 获取我的竞争力
+     * @param $uid
+     * @return int|mixed
+     */
+    public static function getMePower($uid)
+    {
+        $power = 1;
+        $detail = self::getProfile($uid, true);
+        $company = DataCompetitor::where('company', $detail->profile->company_name)
+            ->orderBy('id', -1)
+            ->first();
+        if (!is_null($company)) {
+            $power = $company->power;
+        }
+        return $power;
     }
 }

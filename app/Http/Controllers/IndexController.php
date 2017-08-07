@@ -141,9 +141,10 @@ class IndexController extends Controller
      */
     public function rival()
     {
+        
         $data = [
-            'total'=>100,
-            'power'=>3,
+            'total'=>BidRepositories::getCompetitorListTotal(),
+            'power'=>UserRepositories::getMePower($this->uid),
             'company_summary'=>DataRepositories::getCompanySummaryChartData(),
             'category_summary'=>DataRepositories::getCategoryChartData(),
         ];

@@ -114,10 +114,10 @@ class UserController extends Controller
 
         if ($result) {
             $user['id'] = $userId;
-//            $account = array_merge($user, $profile);
+            $account = array_merge($user, $profile);
             $cookie = Cookie::forever('user_mobile', $params['mobile']);
             $cookie2 = Cookie::forever('user_psw', isset($params['psw']) ? $params['psw'] : '');
-//            $this->saveLoginData($account);
+            $this->saveLoginData($account);
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson())
                 ->withCookie($cookie)
                 ->withCookie($cookie2);

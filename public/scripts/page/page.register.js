@@ -249,7 +249,7 @@
                 init.loading = true;
                 $.wpost($.httpProtocol.REGISTER,params,function (data) {
                     $.showToast($.string.REGISTER_SUCCESS, true);
-                    $.locationUrl('/login');
+                    $.locationUrl('/');
                     init.loading = false;
                 },function () {
                     init.loading = false;
