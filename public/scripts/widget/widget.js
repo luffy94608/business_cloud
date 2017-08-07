@@ -2,8 +2,8 @@
     /**
      * 注册fastclick
      */
-    var FastClick = require('fastclick');
-    FastClick.attach(document.body);
+    // var FastClick = require('fastclick');
+    // FastClick.attach(document.body);
     $.fn.select2.defaults.set("theme", "classic");
 
     window.toast = require('toastr');
@@ -44,6 +44,29 @@
             result=true;
         }
         return result;
+    };
+
+    /**
+     * 获取来源
+     * @returns {string}
+     */
+    $.getReferrer = function () {
+        var referrer = '';
+        try {
+            referrer = window.top.document.referrer;
+        } catch(e) {
+            if(window.parent) {
+                try {
+                    referrer = window.parent.document.referrer;
+                } catch(e2) {
+                    referrer = '';
+                }
+            }
+        }
+        if(referrer === '') {
+            referrer = document.referrer;
+        }
+        return referrer;
     };
 
     /**
