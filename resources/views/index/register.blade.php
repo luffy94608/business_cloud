@@ -111,10 +111,6 @@
                         <div class="col-sm-4 col-xs-7">
                             <div class="bc-keyword-section">
                                 <div id="js_follow_area_list">
-                                    <span class="bck-item">房屋建筑<i class="b-icon-close ml-5"></i></span>
-                                    <span class="bck-item active">基础建筑</span>
-                                    <span class="bck-item">水利建筑</span>
-                                    <span class="bck-item">工程建筑</span>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-8">
