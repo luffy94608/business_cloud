@@ -111,10 +111,9 @@ class UserController extends Controller
             'follow_keyword' => $params['follow_keyword'],
         ];
         $result = UserRepositories::insertProfile($profile);
-
         if ($result) {
-            $user['id'] = $userId;
-            $account = array_merge($user, $profile);
+            $data =  UserRepositories::getProfile($this->uid);
+            $account = array_merge($data['profile'], $data);
             $cookie = Cookie::forever('user_mobile', $params['mobile']);
             $cookie2 = Cookie::forever('user_psw', isset($params['psw']) ? $params['psw'] : '');
             $this->saveLoginData($account);

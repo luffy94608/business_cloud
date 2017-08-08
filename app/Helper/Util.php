@@ -165,7 +165,7 @@ class Util
         $account = self::getUserInfo(); // 拿到微信授权用户资料
         if(!empty($account))
         {
-            $registerTime = strtotime(strtotime($account['created_at']));
+            $registerTime = strtotime($account['created_at']);
             $now = Carbon::now();
             $feeTime = SettingRepositories::freeVipSecond();
 

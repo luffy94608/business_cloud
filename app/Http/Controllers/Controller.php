@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\Util;
 use App\Models\Enums\ErrorEnum;
+use App\Repositories\UserRepositories;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
