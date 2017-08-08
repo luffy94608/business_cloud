@@ -5,6 +5,7 @@
 (function($){
     var init = {
         section : '#js_register_section',
+        modal : $('#js_confirm_modal'),
         verifyCodeBtn : $('#js_get_code_btn'),
         submitBtn : $('#js_input_submit'),
         
@@ -196,6 +197,11 @@
             });
             return list;
         },
+        modalEvent : function () {
+            init.modal.find('.js_modal_confirm').unbind().bind('click', function () {
+                $.locationUrl('/');
+            });
+        },
         
         initBtnEvent : function () {
             /**
@@ -248,8 +254,11 @@
                 }
                 init.loading = true;
                 $.wpost($.httpProtocol.REGISTER,params,function (data) {
-                    $.showToast($.string.REGISTER_SUCCESS, true);
-                    $.locationUrl('/');
+                    var companyName = init.inputCompanyArea.find('option:checked').text();
+                    init.modal.find('.js_location_html').html(companyName);
+                    init.modal.modal();
+                    // $.showToast($.string.REGISTER_SUCCESS, true);
+                    // $.locationUrl('/');
                     init.loading = false;
                 },function () {
                     init.loading = false;
@@ -302,6 +311,7 @@
         },
         run : function () {
             init.initBtnEvent();
+            init.modalEvent();
             $('select').select2()
         }
     };

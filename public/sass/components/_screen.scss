@@ -95,6 +95,9 @@ and (min-width : 375px)
       width: 100%;
     }
   }
+  .bg-xs-green{
+    background-color: $green;
+  }
 
   //登录页面手机适配
   .bcl-title{

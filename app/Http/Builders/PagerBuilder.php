@@ -117,7 +117,7 @@ class PagerBuilder
             $candidateTotal = $v->candidate_total;
             $levelHtml = OtherBuilder::toLevelHtml($v->power);
             $liveHtml = OtherBuilder::toLevelHtml($v->liveness, true);
-
+            $url = OtherBuilder::toSearchUrl($company);
             $html.="
                  <div class=\"{$grid} col-xs-12 mt-10 cursor-pointer js_list_item\" data-id='{$id}'>
                     <div class=\"col-xs-12 box-shadow-3 bc-list-item\">
@@ -125,7 +125,7 @@ class PagerBuilder
                             <img src=\"{$logo}\" width=\"60px\">
                         </div>
                         <div class=\"col-xs-6 text-left\">
-                            <p class=\"text-cut col-xs-12\">{$company}</p>
+                            <p class=\"text-cut col-xs-12 js_location_url\" data-url='{$url}' data-target='_blank'>{$company}</p>
                             <p class=\"col-xs-12 text-cut\">中标项目数量：{$bidTotal}个</p>
                             <p class=\"col-xs-12\">中标候选人次数：{$candidateTotal}次</p>
                         </div>

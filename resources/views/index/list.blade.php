@@ -4,7 +4,7 @@
 {{--内容区域--}}
 @section('content')
     {{--header--}}
-    @include('layouts.header',['bgStyle'=>'bg-green bc-header-section clear-position'])
+    @include('layouts.header',['bgStyle'=>'bg-xs-green bc-header-section clear-position'])
 
     {{--banner--}}
     {{--@include('templates.banner')--}}

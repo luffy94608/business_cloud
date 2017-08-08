@@ -61,4 +61,9 @@ class OtherBuilder
         return $html;
     }
 
+    public static function toSearchUrl($name)
+    {
+        return sprintf('https://www.tianyancha.com/search?key=%s&checkFrom=searchBox', $name);
+    }
+
 }

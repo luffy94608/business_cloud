@@ -22,7 +22,7 @@
                             <img src="/images/default@2x.png" width="60px">
                         </div>
                         <div class="col-xs-6 col-sm-5">
-                            <p class="text-cut col-xs-12">{{ $info->company }}</p>
+                            <p class="text-cut col-xs-12 js_location_url" data-url="{{ \App\Http\Builders\OtherBuilder::toSearchUrl($info->name) }}" data-target="_blank"  >{{ $info->company }}</p>
                             <p class="col-xs-12 font-12 text-cut color-sub-title">中标项目数量：{{ isset($info->bid_total) ? $info->bid_total : 0 }}个</p>
                             <p class="col-xs-12 font-12 color-sub-title">中标候选人次数：{{ isset($info->candidate_total) ? $info->candidate_total : 0 }}次</p>
                         </div>
