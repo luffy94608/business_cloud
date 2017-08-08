@@ -1680,6 +1680,10 @@
  * Import this file using the following HTML or equivalent:
  */
 @media (min-width: 768px) {
+  .bc-login-section {
+    padding: 40px 30px;
+  }
+
   .bcl-title {
     margin-bottom: 30px;
   }

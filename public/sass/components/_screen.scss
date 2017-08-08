@@ -43,6 +43,9 @@ and (min-width : 375px)
 
 //大屏幕尺寸样式
 @media (min-width: 768px) {
+  .bc-login-section{
+    padding: 40px 30px;
+  }
   .bcl-title{
     margin-bottom: 30px;
     &>span:first-child{

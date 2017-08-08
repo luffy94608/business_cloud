@@ -13,7 +13,7 @@
         pageEvent : function () {
             init.pager = $('#wrapperPageList').Pager({
                 protocol:$.httpProtocol.SEARCH_LIST,
-                listSize:6,
+                listSize:10,
                 onPageInitialized:function(){
                     if (init.pager){
                         var top =$('#wrapperPageList').offset().top;
