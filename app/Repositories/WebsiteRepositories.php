@@ -43,7 +43,7 @@ class WebsiteRepositories
             ->orderBy('id', -1)
             ->first();
         if (!is_null($result)) {
-            $ad = sprintf('<img class="js_location_url" src="%s" data-target="_blank" data-url="%s"  width="100%">', $result->site_url, $result->img_url);
+            $ad = sprintf('<img class="js_location_url" src="%s" data-target="_blank" data-url="%s"  width="100%%">', $result->img_url, $result->site_url);
         }
         return $ad;
     }
