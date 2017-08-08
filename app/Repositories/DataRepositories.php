@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 use App\Models\DataCategoryStat;
 use App\Models\DataCompetitor;
+use App\Models\DataCompetitorDetailStat;
 use App\Models\DataStatistic;
 use App\Models\DataStatisticDetail;
 use App\Models\DicArea;
@@ -141,6 +142,36 @@ class DataRepositories
 //            ['name'=>'技能', 'y'=>50],
 //            ['name'=>'注册资本', 'y'=>70],
 //        ];
+        return $data;
+    }
+
+    /**
+     *竞争公司统计图表数据
+     * @param $name
+     * @return array
+     */
+    public static function getCompetitorDetailStat($name)
+    {
+        $data = [
+            'bid'=> [],
+            'power'=>[],
+            'money'=>[],
+        ];
+        $result = DataCompetitorDetailStat::where('company_name', $name)
+            ->orderBy('id', -1)
+            ->first();
+        $map = ['bid', 'power', 'money'];
+        for ($i=1;$i<=5;$i++) {
+            foreach ($map as $v) {
+                $key = sprintf('%s_total_%s', $v, $i);
+                $value = is_null($result) ? 0 :$result->{$key};
+                $item = [
+                    'name'=>$i,
+                    'y'=>$value
+                ];
+                $data[$v][] = $item;
+            }
+        }
         return $data;
     }
 

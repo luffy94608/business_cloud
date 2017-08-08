@@ -163,11 +163,12 @@ class IndexController extends Controller
     public function rivalDetail($id)
     {
         $data = BidRepositories::getCompetitorDetail($id);
-        $chart = [
-            'bid'=> DataRepositories::bidStatData(),
-            'power'=>DataRepositories::powerStatData(),
-            'money'=>DataRepositories::moneyStatData(),
-        ];
+        $chart = DataRepositories::getCompetitorDetailStat($data->company);
+//        $chart = [
+//            'bid'=> DataRepositories::bidStatData(),
+//            'power'=>DataRepositories::powerStatData(),
+//            'money'=>DataRepositories::moneyStatData(),
+//        ];
         $params = [
             'info'=>$data,
             'chart'=>$chart,

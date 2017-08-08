@@ -94,7 +94,7 @@ class UserController extends Controller
             'password' => md5($params['psw']),
             'pwd' => $params['psw'],
             'verified' => 1,
-            'paid' => 1,
+            'paid' => 0,
         ];
         $userId = UserRepositories::insertUser($user);
         $profile = [
