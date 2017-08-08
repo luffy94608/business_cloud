@@ -6,16 +6,24 @@ namespace App\Models\Enums;
 class WebsiteEnum
 {
 
-    const IndexTop                     = 0;
-    const IndexBottom                  = 1;
+    const IndexPage                     = 1;
+    const PublishPage                   = 2;
+    const BidPage                       = 3;
+    const CompetitorPage                = 4;
+    const SearchPage                    = 5;
+    const DetailPage                    = 6;
 
 
 
     public static function transform($key)
     {
         $transformMap = array(
-            self::IndexTop                         => "首页顶部",
-            self::IndexBottom                      => "首页底部",
+            self::IndexPage                         => "首页",
+            self::PublishPage                       => "招标信息",
+            self::BidPage                           => "中标信息",
+            self::CompetitorPage                    => "竞争对手",
+            self::SearchPage                        => "搜索页面",
+            self::DetailPage                        => "详情页面",
         );
         return array_key_exists($key, $transformMap) ? $transformMap[$key] : '';
     }
