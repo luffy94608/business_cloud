@@ -334,7 +334,7 @@ class UserController extends Controller
 
         if ($result) {
             //TODO 发送邮件或短信
-            $data = ['email'=>'29620639@qq.com', 'name'=>'luffy'];
+            $data = ['email'=>'elinkdata@qq.com', 'name'=>'商情云'];
             $data['data'] = $insert;
             \Mail::send('email.company', $data, function($message) use($data)
             {
