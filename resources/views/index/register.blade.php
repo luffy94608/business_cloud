@@ -173,14 +173,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
+                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
+                    <h4 class="modal-title">注册成功</h4>
                 </div>
                 <div class="modal-body">
                     <p class="color-blue">您的所在地：<span class="js_location_html">北京</span></p>
                     <p>请联系当地代理商完成付款，付款后您可使用完整功能。</p>
-                    <p>联系方式：18500227320</p>
-                    <p>联系地址：北京科技大厦</p>
+                    <p>联系方式：<span class="js_agent_mobile"></span></p>
+                    <p>联系地址：<span class="js_agent_address"></span></p>
                 </div>
                 <div class="modal-footer">
                     {{--<button type="button" class="btn btn-default js_modal_cancel_btn" data-dismiss="modal">关闭</button>--}}

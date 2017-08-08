@@ -8,6 +8,7 @@
 
 namespace App\Http\Builders;
 
+use App\Repositories\WebsiteRepositories;
 use Carbon\Carbon;
 
 class OtherBuilder
@@ -20,11 +21,12 @@ class OtherBuilder
     public static function toBuildBannerKeywordHtml()
     {
         $html = '';
-        $keywords = ['工程', '医疗', '市政', '物流', '软件', '设计'];
-        if (!empty($keywords)) {
+//        $keywords = ['工程', '医疗', '市政', '物流', '软件', '设计'];
+        $keywords = WebsiteRepositories::hotKeywords();
+        if ($keywords->isNotEmpty()) {
             $html = '热门关键字：';
             foreach ($keywords as $keyword) {
-                $html.= "<a>{$keyword}</a>";
+                $html.= "<a>{$keyword->name}</a>";
             }
         }
         return $html;

@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\AnalysisRepositories;
 use App\Repositories\UserRepositories;
+use App\Repositories\WebsiteRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
@@ -117,7 +118,16 @@ class UserController extends Controller
             $cookie = Cookie::forever('user_mobile', $params['mobile']);
             $cookie2 = Cookie::forever('user_psw', isset($params['psw']) ? $params['psw'] : '');
             $this->saveLoginData($account);
-            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson())
+            $agent = [
+                'mobile'=>'暂无',
+                'address'=>'暂无',
+            ];
+            $agentDetail = WebsiteRepositories::regionAgentDetail($params['company_area']);
+            if (!is_null($agentDetail)) {
+                $agent['mobile'] = $agentDetail->mobile;
+                $agent['address'] = $agentDetail->address;
+            }
+            return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), $agent, []))->toJson())
                 ->withCookie($cookie)
                 ->withCookie($cookie2);
         } else {

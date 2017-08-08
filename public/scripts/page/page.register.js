@@ -256,6 +256,8 @@
                 $.wpost($.httpProtocol.REGISTER,params,function (data) {
                     var companyName = init.inputCompanyArea.find('option:checked').text();
                     init.modal.find('.js_location_html').html(companyName);
+                    init.modal.find('.js_agent_mobile').html(data.mobile);
+                    init.modal.find('.js_agent_address').html(data.address);
                     init.modal.modal();
                     // $.showToast($.string.REGISTER_SUCCESS, true);
                     // $.locationUrl('/');
