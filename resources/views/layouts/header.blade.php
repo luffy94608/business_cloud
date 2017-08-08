@@ -19,11 +19,11 @@
             <div id="navbar" class="dropdown-menu bc-menu-content collapse {{ isset($hideContent) ? 'gone' : ''  }}" aria-expanded="false" >
                 <ul class="nav navbar-nav menu">
                     <li class="triangle"></li>
-                    <li class="{{Request::path() == 'bid-call' ? 'active' : ''}}"><a href="/bid-call">招标信息</a></li>
+                    <li class="{{\App\Helper\Util::headMenuActive(1)}}"><a href="/bid-call">招标信息</a></li>
                     <li role="separator" class="divider"></li>
-                    <li class="{{Request::path() == 'bid-winner' ? 'active' : ''}}"><a href="/bid-winner">中标信息</a></li>
+                    <li class="{{\App\Helper\Util::headMenuActive(2)}}"><a href="/bid-winner">中标信息</a></li>
                     <li role="separator" class="divider"></li>
-                    <li class="{{Request::path() == 'rival' ? 'active' : ''}}"><a href="/rival">竞争对手</a></li>
+                    <li class="{{\App\Helper\Util::headMenuActive(3)}}"><a href="/rival">竞争对手</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
             <div class="bch-login" >

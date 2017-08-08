@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Repositories\SettingRepositories;
 use Carbon\Carbon;
 use EasyWeChat\Support\Log;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
@@ -231,5 +232,34 @@ class Util
             'ticket_id'=>$ticketId,
             'check_time'=>$timestamp,
         ];
+    }
+
+    /**
+     * 菜单是否选中
+     * @param $type
+     * @return string
+     */
+    public static function headMenuActive($type)
+    {
+        $res = '';
+        $map = [];
+        switch ($type) {
+            case 1:
+                $map = ['bid-call', 'src=publish'];
+                break;
+            case 2:
+                $map = ['bid-winner', 'src=bid'];
+                break;
+            case 3:
+                $map = ['rival', 'src=competitor',  'rival-detail/'];
+                break;
+        }
+        $path = \Request::getUri();
+        foreach ($map as $v) {
+            if (stripos($path , $v) !== false) {
+                $res = 'active';
+            }
+        }
+        return $res;
     }
 } 

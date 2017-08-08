@@ -80,22 +80,18 @@ $(document).ready(function () {
             }
             var path = location.pathname;
             var src = 'publish';
-            switch (path) {
-                case '/':
-                    src = 'publish';
-                    break;
-                case '/bid-call':
-                    src = 'publish';
-                    break;
-                case '/bid-winner':
-                    src = 'bid';
-                    break;
-                case '/rival':
-                    src = 'competitor';
-                    break;
-                case '/rival-detail':
-                    src = 'competitor';
-                    break;
+            if (path === '/') {
+
+            } else if(path === '/'){
+                src = 'publish';
+            } else if(path === '/bid-call'){
+                src = 'publish';
+            } else if(path === '/bid-winner'){
+                src = 'bid';
+            } else if(path === '/rival'){
+                src = 'competitor';
+            } else if(path.indexOf('/rival-detail/')!==-1){
+                src = 'competitor';
             }
             $.locationUrl('/search-list?src={0}&keyword={1}'.format(src, keyword));
         }
