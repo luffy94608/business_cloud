@@ -64,6 +64,6 @@
             init.initBtnEvent();
         }
     };
-    init.run();
+    // init.run();
 
 })($);

@@ -25,10 +25,10 @@
                                 <span class="b-icon-psw" ></span>
                                 <input type="password" id="js_input_psw"  placeholder="请输入密码" >
                             </div>
-                            <button type="submit" class="btn btn-success form-control" id="js_input_submit">确定</button>
+                            <button class="btn btn-success form-control" id="js_input_submit">确定</button>
 
                             <div class="bcl-footer">
-                                <a href="/register">立即注册</a>|
+                                <a href="/register" style="display: inline-block;padding: 10px;">立即注册</a>|
                                 <a href="/reset">忘记密码</a>
                             </div>
                         </div>

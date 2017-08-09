@@ -30,9 +30,6 @@
     <script src="/bower_components/html5shiv/dist/html5shiv.min.js"></script>
     <script src="/scripts/libs/respond.min.js"></script>
     <![endif]-->
-    <!--[if IE]>
-        <script type="text/javascript" src="/scripts/libs/excanvas.min.js"></script>
-    <![endif]-->
 </head>
 <body class="@yield('bodyBg','')">
 {{--内容区域--}}
