@@ -186,7 +186,8 @@ $bordersMap : top right bottom left;
 .bc-item-hover{
   @include transition(all ease .3s);
   &:hover{
-    @include box-shadow(0 -1px 8px -1px #a8b3b2);
+    border:1px solid transparent!important;
+    @include box-shadow(0 0px 10px 2px #eee);
   }
 }
 .cursor-pointer{

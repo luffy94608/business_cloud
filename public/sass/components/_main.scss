@@ -228,6 +228,15 @@
   padding-top: 10px;
   font-size: 14px;
   color: $title;
+  &.border{
+    border: 1px solid $text-5;
+    &.bottom{
+      border-left:1px solid transparent;
+      border-top:1px solid transparent;
+      border-right:1px solid transparent;
+      border-bottom: 1px solid $borderColor;
+    }
+  }
   &>div, p{
     padding-left: 0;
     padding-right: 0;
@@ -364,7 +373,7 @@
     &>input{
       font-size: 16px;
       width: 100%;
-      padding: 6px 0;
+      padding: 10px 0;
       border: none;
       outline:none;
     }
@@ -373,6 +382,7 @@
     box-shadow: none;
     //border: none;
     outline: none;
+    height: 42px;
     background-color: $green;
     @include border-radius(0);
   }

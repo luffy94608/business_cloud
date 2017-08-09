@@ -17,7 +17,7 @@
             <div class="row  mt-20  bg-white box-shadow-1">
                 <div class="bc-section-title purple">企业信息</div>
                 <div class="col-xs-12  mt-10 ">
-                    <div class="col-xs-12 p-0 cursor-pointer  bc-list-item border-bottom bc-item-hover">
+                    <div class="col-xs-12 p-0 cursor-pointer  bc-list-item border bottom bc-item-hover">
                         <div class="col-xs-2 col-sm-1 bcl-img">
                             <img src="/images/default@2x.png" width="60px">
                         </div>
