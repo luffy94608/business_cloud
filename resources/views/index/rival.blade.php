@@ -23,7 +23,7 @@
                                 <div class="col-xs-6 bcs-item">
                                     <p class="title">行业竞标企业</p>
                                     <p class="total border-right color-hint font-16"><span class=" color-green font-36">{{$data['total']}}</span>家</p>
-                                    <div id="js_chart_1" style="height:200px;width: 100%"></div>
+                                    <div id="js_chart_1" class="js_chart_item" style="height:200px;width: 100%"></div>
                                     {{--<p class="hint">--}}
                                         {{--<img src="/images/banner/rival_new.png" width="100px" class="mt-15">--}}
                                     {{--</p>--}}
@@ -36,14 +36,14 @@
                                     {{--<p class="hint">--}}
                                         {{--<img src="/images/banner/rival_total.png" width="100px">--}}
                                     {{--</p>--}}
-                                    <div id="js_chart_2" style="height:200px;width: 100%"></div>
+                                    <div id="js_chart_2" class="js_chart_item" style="height:200px;width: 100%"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-12 bc-side-section">
-                    <div class="row bg-white box-shadow-1  ht-100">
+                    <div class="row bg-white box-shadow-1  ht-100 ">
                         @include('templates.side')
                     </div>
                 </div>

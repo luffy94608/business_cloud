@@ -135,5 +135,13 @@ $(document).ready(function () {
         }
     };
 
+    var items =  $('.js_chart_item');
+    if (items.length) {
+        for (var i=0; i<items.length; i++) {
+            var target = $(items[i]);
+            target.css('width', target.parents('div').width());
+        }
+    }
+
 
 });

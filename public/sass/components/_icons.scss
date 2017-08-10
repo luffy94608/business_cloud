@@ -43,11 +43,11 @@
 }
 
 .b-icon-user{
-  @include createIcon(18px, 18px, 'user');
+  @include createIcon(20px, 20px, 'user');
 }
 
 .b-icon-psw{
-  @include createIcon(18px, 18px, 'psw');
+  @include createIcon(19px, 21px, 'psw');
 }
 
 .b-icon-close{

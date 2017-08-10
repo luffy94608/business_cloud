@@ -25,7 +25,7 @@
                                 <span class="b-icon-psw" ></span>
                                 <input type="password" id="js_input_psw"  placeholder="请输入密码" >
                             </div>
-                            <button class="btn btn-success form-control" id="js_input_submit">确定</button>
+                            <button type="submit" class="btn btn-success form-control" id="js_input_submit">确定</button>
 
                             <div class="bcl-footer">
                                 <a href="/register" style="display: inline-block;padding: 10px;">立即注册</a>|
@@ -38,8 +38,8 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footer', ['style'=>'fixed-bottom bc-login-screen'])
     </div>
+    @include('layouts.footer', ['style'=>'fixed-bottom bc-login-screen'])
 @stop
 
 

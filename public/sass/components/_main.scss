@@ -104,18 +104,18 @@
         color: $text-5;
         cursor: pointer;
         position: relative;
-        &:after{
+        &:before{
           content: '';
           height: 70%;
           width: 1px;
           display: block;
           position: absolute;
-          right: 0;
+          left: 0;
           top: 15%;
           background-color: $text-5;
         }
-        &:last-child{
-          &:after{
+        &:first-child{
+          &:before{
             display: none;
           }
         }
@@ -338,7 +338,11 @@
   height: 100%;
   background: url("../../images/bg/gb.png") no-repeat center;
   @include background-size(cover);
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../../images/bg/gb.png,sizingMethod=scale);
+  //filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../images/bg/gb.png', sizingMethod='scale');
+  //-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../images/bg/gb.png', sizingMethod='scale')";
+  /* The url is relative to the document, not to the css file! */
+  /* Prefer absolute urls to avoid confusion. */
+  -ms-behavior: url(/htc/backgroundsize.min.htc);
 }
 .bc-login-section{
   position: relative;

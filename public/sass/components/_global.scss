@@ -187,6 +187,7 @@ $bordersMap : top right bottom left;
   @include transition(all ease .3s);
   &:hover{
     border:1px solid transparent!important;
+    border:1px solid #{$text-4}\9!important;
     @include box-shadow(0 0px 10px 2px #eee);
   }
 }

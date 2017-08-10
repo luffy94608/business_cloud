@@ -37,9 +37,6 @@
     
 @show
 
-{{--模板--}}
-{{--@include('templates.base',[])--}}
-{{--@include('templates.bonus',[])--}}
 
 <script src='/release/libs/require.js' data-main='/main.js' type='text/javascript'></script>
 </body>
