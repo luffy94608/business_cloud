@@ -76,17 +76,22 @@ class PagerBuilder
             $projectName = $v->title;
             $company = $v->bid_company;
             $time = Carbon::createFromTimestamp($v->bid_time)->toDateString();
-            $price = sprintf('%.2f', $v->bid_price/10000);
+            $price = $v->bid_price;
+            if ($price < 10000) {
+                $price = sprintf('%.1f', $price/10000);
+            } else {
+                $price = sprintf('%d', $price/10000);
+            }
             $html.="
                     <div class=\"{$grid} col-xs-12 cursor-pointer mt-10\">
                         <div class=\"col-xs-12 bc-item-hover border js_location_url bc-list-item\" data-target='_blank' data-url='{$url}'>
-                            <div class=\"col-xs-9 text-left\">
+                            <div class=\"col-xs-8 col-sm-9 text-left\">
                                 <p class=\"text-cut\"><span class=\"b-icon-tip mr-10 \"></span>{$projectName}</p>
                                 <p class=\"col-xs-12 font-12 color-sub-title\">中标企业：{$company}</p>
                                 <p class=\"col-xs-12 font-12 color-sub-title\">中标时间：{$time}</p>
                             </div>
-                            <div class=\"col-xs-3 bcl-right\">
-                                <p class=\"font-16 mt-35\">价格<span class=\"color-orange\"><span class=\"ml-5 mr-5 font-30\">{$price}</span> 万</span></p>
+                            <div class=\"col-xs-4 col-sm-3 bcl-right\">
+                                <p class=\"font-16 mt-30\"><span class='hidden-xs'>价格</span><span class=\"color-orange\"><span class=\"ml-5 mr-5 font-30\">{$price}</span> 万</span></p>
                             </div>
                         </div>
                     </div>

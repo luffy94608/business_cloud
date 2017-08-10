@@ -89,8 +89,8 @@ and (min-width : 375px)
     padding-right: 0;
   }
   .bc-list-item{
-    padding-left: 0;
-    padding-right: 0;
+    //padding-left: 0;
+    //padding-right: 0;
     .bcl-img>img{
       width: 100%;
     }
@@ -196,6 +196,31 @@ and (min-width : 375px)
         height: 10px;
         background: url("../../images/icons/triangle@2x.png") no-repeat center;
       }
+    }
+  }
+  #list{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .bcl-img{
+    padding-right: 10px!important;
+    padding-top: 6px!important;
+  }
+}
+
+//最小屏幕
+@media (max-width: 320px) {
+  .bc-list-item{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .b-icon-star{
+    @include createIcon(16px, 16px, 'star');
+    &.active{
+      @include createIcon(16px, 16px, 'star-g');
+    }
+    &.active-2{
+      @include createIcon(16px, 16px, 'star-o');
     }
   }
 }

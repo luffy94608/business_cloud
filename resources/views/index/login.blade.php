@@ -14,25 +14,27 @@
                     <div class="col-xs-12 bcl-title">
                         <span>数据连接市场</span><span>挖掘数据价值</span>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 form-horizontal bc-login-section">
-                        <div class="bc-login-mask"></div>
-                        <div class="bc-login-content">
-                            <div class="bcl-item">
-                                <span class="b-icon-user"></span>
-                                <input type="text" id="js_input_name"  placeholder="请输入用户名" value="{{ \Illuminate\Support\Facades\Cookie::get('user_mobile') }}" >
-                            </div>
-                            <div class="bcl-item">
-                                <span class="b-icon-psw" ></span>
-                                <input type="password" id="js_input_psw"  placeholder="请输入密码" >
-                            </div>
-                            <button type="submit" class="btn btn-success form-control" id="js_input_submit">确定</button>
+                    <div class="col-xs-12">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 form-horizontal bc-login-section">
+                            <div class="bc-login-mask"></div>
+                            <div class="bc-login-content">
+                                <div class="bcl-item">
+                                    <span class="b-icon-user"></span>
+                                    <input type="text" id="js_input_name"  placeholder="请输入用户名" value="{{ \Illuminate\Support\Facades\Cookie::get('user_mobile') }}" >
+                                </div>
+                                <div class="bcl-item">
+                                    <span class="b-icon-psw" ></span>
+                                    <input type="password" id="js_input_psw"  placeholder="请输入密码" >
+                                </div>
+                                <button type="submit" class="btn btn-success form-control" id="js_input_submit">确定</button>
 
-                            <div class="bcl-footer">
-                                <a href="/register" style="display: inline-block;padding: 10px;">立即注册</a>|
-                                <a href="/reset">忘记密码</a>
+                                <div class="bcl-footer">
+                                    <a href="/register" style="display: inline-block;padding: 10px;">立即注册</a>|
+                                    <a href="/reset">忘记密码</a>
+                                </div>
                             </div>
+
                         </div>
-
                     </div>
 
                 </div>
