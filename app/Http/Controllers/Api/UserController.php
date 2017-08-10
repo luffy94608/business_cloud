@@ -113,7 +113,7 @@ class UserController extends Controller
         ];
         $result = UserRepositories::insertProfile($profile);
         if ($result) {
-            $data =  UserRepositories::getProfile($this->uid);
+            $data =  UserRepositories::getProfile($userId);
             $account = array_merge($data['profile'], $data);
             $cookie = Cookie::forever('user_mobile', $params['mobile']);
             $cookie2 = Cookie::forever('user_psw', isset($params['psw']) ? $params['psw'] : '');

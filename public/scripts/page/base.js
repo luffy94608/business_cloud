@@ -131,7 +131,7 @@ $(document).ready(function () {
             },function () {
             }, true, true);
             tjArr.push(dataArr);
-            $.localCache.set('jsArr', tjArr);
+            // $.localCache.set('jsArr', tjArr);
         }
     };
 
