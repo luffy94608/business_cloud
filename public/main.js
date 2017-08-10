@@ -3,7 +3,7 @@
     var configData = document.global_config_data;
     var version = configData.version;
     requirejs.config({
-        baseUrl: configData.resource_root + '/scripts/',
+        baseUrl: configData.resource_root + '/release/',
         urlArgs: 'v=' + version,
         waitSeconds: 0,
         paths: {
@@ -22,10 +22,6 @@
             'highcharts': '/bower_components/highcharts/highcharts',
             'bootstrap': '/sass/bootstrap-sass-3.3.7/assets/javascripts/bootstrap.min',
             'widget': 'widget/widget',
-            // 'ticket': 'widget/ticket',
-            // 'new-ticket': 'widget/new_ticket',
-            // 'seat': 'widget/seat',
-            // 'bonus': 'widget/red_packet',
             'string': 'widget/string',
             'http': 'widget/http',
             'cache': 'widget/cache',

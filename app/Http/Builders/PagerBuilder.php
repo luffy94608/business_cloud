@@ -41,8 +41,8 @@ class PagerBuilder
                             </div>
                             <div class=\"col-xs-6 text-left\">
                                 <p class=\"text-cut col-xs-12\">{$title}</p>
-                                <p class=\"col-xs-12\">招标人：{$userName}</p>
-                                <p class=\"col-xs-12\">截止时间：{$deadline}</p>
+                                <p class=\"col-xs-12 font-12 color-sub-title\">招标人：{$userName}</p>
+                                <p class=\"col-xs-12 font-12 color-sub-title\">开始日期：{$deadline}</p>
                             </div>
                             <div class=\"col-xs-4 bcl-right pt-15 \">
                                 <p class=\"text-center\">
@@ -82,8 +82,8 @@ class PagerBuilder
                         <div class=\"col-xs-12 bc-item-hover border js_location_url bc-list-item\" data-target='_blank' data-url='{$url}'>
                             <div class=\"col-xs-9 text-left\">
                                 <p class=\"text-cut\"><span class=\"b-icon-tip mr-10 \"></span>{$projectName}</p>
-                                <p class=\"col-xs-12\">中标企业：{$company}</p>
-                                <p class=\"col-xs-12\">中标时间：{$time}</p>
+                                <p class=\"col-xs-12 font-12 color-sub-title\">中标企业：{$company}</p>
+                                <p class=\"col-xs-12 font-12 color-sub-title\">中标时间：{$time}</p>
                             </div>
                             <div class=\"col-xs-3 bcl-right\">
                                 <p class=\"font-16 mt-35\">价格<span class=\"color-orange\"><span class=\"ml-5 mr-5 font-30\">{$price}</span> 万</span></p>
@@ -126,8 +126,8 @@ class PagerBuilder
                         </div>
                         <div class=\"col-xs-6 text-left\">
                             <p class=\"text-cut col-xs-12 js_location_url\" data-url='{$url}' data-target='_blank'>{$company}</p>
-                            <p class=\"col-xs-12 text-cut\">中标项目数量：{$bidTotal}个</p>
-                            <p class=\"col-xs-12\">中标候选人次数：{$candidateTotal}次</p>
+                            <p class=\"col-xs-12 font-12 color-sub-title text-cut\">中标项目数量：{$bidTotal}个</p>
+                            <p class=\"col-xs-12 font-12 color-sub-title\">中标候选人次数：{$candidateTotal}次</p>
                         </div>
                         <div class=\"col-xs-4 bcl-right pt-15\">
                             <p>
