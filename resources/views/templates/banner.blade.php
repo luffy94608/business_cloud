@@ -1,5 +1,6 @@
 <div class="container-fluid bc-banner">
-    <img class="pic" src="/images/banner/banner.png" width="100%">
+    <img class="pic hidden-xs" src="/images/banner/banner.png" width="100%">
+    <img class="pic visible-xs" src="/images/banner/banner_mobile.png" width="100%">
     <div class="container text-center bcb-content">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
