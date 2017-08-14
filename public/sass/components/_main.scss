@@ -94,12 +94,13 @@
       border: 2px solid $white;
     }
     .bcb-word{
-      font-size: 12px;
+      font-size: 14px;
       padding: 10px;
       text-align: left;
       color: $text-5;
       &>a{
         display: inline-block;
+        font-size: 14px;
         padding: 0 8px;
         color: $text-5;
         cursor: pointer;

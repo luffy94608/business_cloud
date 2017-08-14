@@ -12,7 +12,7 @@
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 form-horizontal">
                     {{--帐号相关--}}
                     <div class="bc-form-title-section">
-                        <div class="title">帐号密码</div>
+                        <div class="title">帐号</div>
                     </div>
                     <div class="form-group">
                         <label for="js_input_mobile" class="col-sm-2 col-xs-3 control-label">手机号</label>

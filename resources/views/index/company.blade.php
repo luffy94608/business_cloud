@@ -4,14 +4,15 @@
 {{--内容区域--}}
 @section('content')
     {{--header--}}
-    @include('layouts.header')
+    @include('layouts.header',['bgStyle'=>'bg-transparent bc-header-section'])
+
     {{--banner--}}
     @include('templates.banner')
     
     {{--content--}}
     <div class="container-fluid">
         <div class="container ">
-            <div class="row  mt-100 pb-100  bg-white box-shadow-1 bc-form-section">
+            <div class="row  mt-20 pb-100  bg-white box-shadow-1 bc-form-section">
                 <div class="bc-section-title color-with-body">企业数据分析</div>
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 form-horizontal mt-100">
 
