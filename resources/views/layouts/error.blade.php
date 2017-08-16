@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '哈罗同行')
+@section('title', '商情云')
 @section('bodyBg', 'bg-white')
 
 @section('content')

@@ -22,19 +22,19 @@
                             <div class="d-table-cell v-align-middle">
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">招标信息</p>
-                                    <p class="total border-right color-green">{{ $data['tender'] }}</p>
+                                    <p class="total border-right"><a class="color-green" href="/bid-call" >{{ $data['tender'] }}</a></p>
                                     <p class="hint">今日更新<span class="color-green">{{ $data['tender_today'] }}</span>条信息</p>
                                     {{--<p class="hint"><span class="bcs-block"></span></p>--}}
                                 </div>
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">中标信息</p>
-                                    <p class="total border-right color-orange">{{ $data['bid'] }}</p>
+                                    <p class="total border-right color-orange"><a class="color-orange" href="/bid-winner" >{{ $data['bid'] }}</a></p>
                                     <p class="hint">今日更新<span class="color-orange">{{ $data['bid_today'] }}</span>条信息</p>
                                     {{--<p class="hint"><span class="bcs-block bg-orange"></span></p>--}}
                                 </div>
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">竞争对手</p>
-                                    <p class="total color-purple">{{ $data['competitor_today'] }}</p>
+                                    <p class="total color-purple"><a class="color-purple" href="/rival" >{{ $data['competitor_today'] }}</a></p>
                                     <p class="hint">今日新增<span class="color-purple">{{ $data['competitor_today'] }}</span>条数据</p>
                                     {{--<p class="hint"><span class="bcs-block bg-purple"></span></p>--}}
                                 </div>

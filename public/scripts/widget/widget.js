@@ -1060,7 +1060,7 @@
                 url: st.url?st.url:null,
                 currentPage: pageIndex,
                 totalCount:count,
-                showFirstOrLast:false,
+                showFirstOrLast:true,
                 totalPage: pagerCount,
                 pageSize:  5,
                 onPageChange: function(index){
