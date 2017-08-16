@@ -47,7 +47,7 @@ class UserBuilder
             $options = DataRepositories::getRegionListByIds($ids);
             foreach ($options as $option) {
                 $id = $option['id'];
-                $name = $option['region_name'];
+                $name = $option['name'];
                 $html.= sprintf("<span class='bck-item active' data-id='%s'>%s<i class='b-icon-close ml-5\'></i></span>", $id, $name);
             }
         }
