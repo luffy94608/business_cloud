@@ -14,6 +14,7 @@ use App\Console\Commands\HandleInconsistentTicketComment;
 use App\Console\Commands\ImportCoupons;
 use App\Console\Commands\ImportOrders;
 use App\Console\Commands\ImportRechargeOrder;
+use App\Console\Commands\ImportUserInterest;
 use App\Console\Commands\ImportWechatUserData;
 use App\Console\Commands\LaraEloquentMigrate;
 use App\Console\Commands\MoloquentMigrate;
@@ -40,7 +41,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         TempCommand::class,
-        ImportWechatUserData::class
+        ImportWechatUserData::class,
+        ImportUserInterest::class
     ];
 
     /**
