@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label for="js_input_psw" class="col-sm-2 col-xs-3 control-label">密码</label>
                         <div class="col-sm-5 col-xs-7">
-                            <input type="password" name="psw" class="form-control" id="js_input_psw" placeholder="请输入密码">
+                            <input type="password" name="psw" class="form-control" id="js_input_psw" placeholder="必须包含英文字母和数字，密码不少于8位 ">
                         </div>
                     </div>
 

@@ -520,10 +520,24 @@
             }
         },
         password:{
-            min:6,
+            min:8,
             max:60,
             title:'密码',
             test:function(val){
+                if(/^\d+$/.test(val))
+                {
+                    return false;//"全数字"
+                }
+
+                if(/^[a-z]+$/i.test(val))
+                {
+                    return false;//"全字母"
+                }
+
+                if(!/^[A-Za-z0-9]+$/.test(val))
+                {
+                    return false;//"只能含有数字有字母"
+                }
                 return true;
             }
         },

@@ -368,6 +368,7 @@ class UserController extends Controller
     {
         $pattern = [
             'company_name' => 'required',
+            'time' => 'required',
         ];
         $this->validate($request, $pattern);
         $params = $request->only(array_keys($pattern));
@@ -375,6 +376,7 @@ class UserController extends Controller
         $data = [
             'user_id' => $this->uid,
             'name' => $params['company_name'],
+            'time' => $params['time'],
         ];
         $result = AnalysisRepositories::insertBusinessAlys($data);
 

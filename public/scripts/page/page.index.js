@@ -9,6 +9,19 @@
         pager :'',
         first :true,
         loading :false,
+
+        /**
+         * 进度条初始化
+         */
+        progressEvent : function () {
+            var target = $('.progress-bar');
+            target.each(function (i,dom) {
+                var item = $(dom);
+                var percent = item.data('percent');
+                item.css('width', percent);
+            });
+        },
+
         /**
          * 初始化进度条
          */
@@ -45,8 +58,9 @@
                 sideSection.height(bh);
                 bodyContentSection.height(bh-bhh);
             }
-
-
+            setTimeout(function () {
+                init.progressEvent();
+            }, 300);
         },
         pageEvent : function () {
             init.pager = $('#wrapperPageList').Pager({
@@ -87,17 +101,19 @@
             });
 
             /**
-             * tab切换
+             * hover
              */
-            $(document).on('click', '.tab-item',function () {
-                
+            $('.bc-item-hover').hover(function () {
+                $('.js_border_item').toggleClass('border-right');
+            },function () {
+                $('.js_border_item').toggleClass('border-right');
             });
 
         },
         run : function () {
             //
             init.initBtnEvent();
-            init.circleProgressEvent();
+            // init.circleProgressEvent();
             init.fixBodyHeight();
             init.pageEvent();
         }
