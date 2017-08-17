@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="container ">
             <div class="row  mt-20 pb-100  bg-white box-shadow-1 bc-form-section">
-                <div class="bc-section-title color-with-body">企业数据分析</div>
+                <div class="bc-section-title color-green">市场数据分析</div>
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 form-horizontal mt-100">
 
                     <div class="form-group">
@@ -43,12 +43,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="js_input_industry_care" class="col-sm-2 col-xs-3 control-label">关注时间</label>
+                        <label for="js_input_time" class="col-sm-2 col-xs-3 control-label">关注时间</label>
                         <div class="col-sm-4 col-xs-7">
                             <select id="js_input_time" class="form-control">
-                                <option value="1">最近一个月</option>
-                                <option value="3">最近三个月</option>
-                                <option value="6">最近半年</option>
+                                <option value="1">最近1个月</option>
+                                <option value="3">最近3个月</option>
+                                <option value="6">最近6个月</option>
                             </select>
                         </div>
                     </div>

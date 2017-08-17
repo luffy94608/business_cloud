@@ -33,6 +33,7 @@ class IndexController extends Controller
         $tenderToday = 0;
         $bidToday = 0;
         $competitorToday = 0;
+        $total = 0;
         $summary = DataRepositories::getSummaryData($this->uid);
         if (!is_null($summary)) {
             $tender = $summary['tender'];
@@ -41,6 +42,7 @@ class IndexController extends Controller
             $tenderToday = $summary['tender_today'];
             $bidToday = $summary['bid_today'];
             $competitorToday = $summary['competitor_today'];
+            $total = $tenderToday + $bidToday + $competitorToday;
         }
         $data = [
             'tender'=>$tender,
@@ -49,6 +51,9 @@ class IndexController extends Controller
             'tender_today'=>$tenderToday,
             'bid_today'=>$bidToday,
             'competitor_today'=>$competitorToday,
+            'tender_percent'=>$total ? ($tenderToday/$total)*100 : 0,
+            'bid_percent'=>$total ? ($bidToday/$total)*100 : 0,
+            'competitor_percent'=>$total ? ($competitorToday/$total)*100 : 0,
         ];
 
         $params = [

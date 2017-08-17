@@ -7,6 +7,7 @@
         section : '#js_register_section',
         submitBtn : $('#js_input_submit'),
 
+        inputTime :$('#js_input_time'),
         inputCompanyName: $('#js_input_company'),
         loading :false,
         tpl :'<span class="bck-item active" data-id="{0}">{1}<i class="b-icon-close ml-5"></i></span>',
@@ -17,6 +18,7 @@
          */
         initParams : function () {
             var params = {
+                time:$.trim(init.inputTime.val()),
                 company_name:$.trim(init.inputCompanyName.val())
             };
 

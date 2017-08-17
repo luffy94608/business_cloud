@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DicRegion extends Model
 {
-    protected $table = 'dic_region';
+    protected $table = 'dic_district';
 
     /**
      * The attributes that are mass assignable.

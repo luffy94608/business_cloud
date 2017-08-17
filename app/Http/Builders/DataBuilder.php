@@ -21,13 +21,13 @@ class DataBuilder
      */
     public static function toRegionLevelOneOptionHtml($checkedId = -1)
     {
-        $regions = DataRepositories::getRegionListData(1);
+        $regions = DataRepositories::getRegionListData(0);
         $html = '';
 
         foreach ($regions as $region) {
             $id = $region['id'];
             $checked = $id == $checkedId ? 'selected' : '';
-            $html.= "<option {$checked} value='{$region['id']}'>{$region['region_name']}</option>";
+            $html.= "<option {$checked} value='{$region['id']}'>{$region['name']}</option>";
         }
         return $html;
     }
