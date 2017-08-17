@@ -179,10 +179,10 @@ class ImportUserInterest extends Command
             $insertData['area_id'] = $area->id;
             $insertData['area_text'] = $area->name;
         }
-//        if (!empty($industry))
+//        if ($industry)
         {
-            $insertData['industry_id'] = $industry->id;
-            $insertData['industry_text'] = $industry->name;
+            $insertData['industry_id'] = $industry?$industry->id : 0;
+            $insertData['industry_text'] = $industry?$industry->name : '';
         }
 //        if ($data->zhongbiaoren != null)
         {
@@ -219,8 +219,12 @@ class ImportUserInterest extends Command
         $insertData['area_id'] = $area->id;
         $insertData['area_text'] = $area->name;
 
-        $insertData['industry_id'] = $industry->id;
-        $insertData['industry_text'] = $industry->name;
+//        if ($industry)
+        {
+            $insertData['industry_id'] = $industry?$industry->id : 0;
+            $insertData['industry_text'] = $industry?$industry->name : '';
+        }
+
 
         $insertData['type'] = $data->zb_type;
         return $insertData;
