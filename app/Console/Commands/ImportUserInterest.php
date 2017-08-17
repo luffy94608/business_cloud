@@ -46,7 +46,7 @@ class ImportUserInterest extends Command
         {
             foreach ($profile as $p)
             {
-                var_dump($p->user_id);
+                \Log::debug('import user:'.$p->user_id);
                 $this->handleSingleProfile($p);
             }
         }
@@ -173,6 +173,7 @@ class ImportUserInterest extends Command
             'publisher'=> $data->zhaobiaoren!= null ? $data->zhaobiaoren :'',
             'budget'=> $data->tze!= null ? $data->tze :0,
             'bid_time'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy()->timestamp,
+            'created_at'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy(),
         ];
 //        if (!empty($area))
         {
@@ -214,6 +215,7 @@ class ImportUserInterest extends Command
             'publisher'=> $data->zhaobiaoren!= null ? $data->zhaobiaoren :'',
             'budget'=> $data->tze!= null ? $data->tze :0,
 //            'bid_time'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy()->timestamp,
+            'created_at'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy(),
         ];
 
         $insertData['area_id'] = $area->id;
