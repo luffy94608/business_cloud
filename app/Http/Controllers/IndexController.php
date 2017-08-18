@@ -9,6 +9,7 @@ use App\Repositories\DataRepositories;
 use App\Repositories\UserRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 
 class IndexController extends Controller
@@ -204,7 +205,8 @@ class IndexController extends Controller
     {
         Util::clearCacheUserInfo();
         $host = request()->getSchemeAndHttpHost();
-        return redirect()->to($host.'/login');
+        return Response::make()->header( 'Location', $host.'/login');
+//        return redirect()->to($host.'/login');
     }
 
     /**

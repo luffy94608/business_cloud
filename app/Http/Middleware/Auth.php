@@ -6,6 +6,7 @@ use App\Helper\Util;
 use App\Models\ApiResult;
 use Closure;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Response;
 
 class Auth
 {
@@ -39,7 +40,9 @@ class Auth
                 $host = $request->getSchemeAndHttpHost();
                 $refer = sprintf('%s%s', Config::get('app')['url'], $_SERVER['REQUEST_URI']);
                 $url = sprintf('%s?callback=%s', $loginUrl, urlencode($refer));
-                return redirect()->to($host.$url);
+//                return redirect()->to($host.$url);
+                return Response::make()->header( 'Location', $host.$url);
+
             }
 
         }
