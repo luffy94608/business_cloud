@@ -166,7 +166,7 @@ class ImportUserInterest extends Command
     //生成中标插入数据
     private function generateZhongbiaoInsertData($uid,$area,$industry,$data)
     {
-        $date = $data->date? (Carbon::createFromFormat('Y-m-d',trim($data->date))?:null) : null;
+        $date = $data->date? (count(explode('-',$data->date)) == 3?Carbon::createFromFormat('Y-m-d',trim($data->date)):null) : null;
         $insertData = [
             'user_id'=>$uid,
             'title'=> $data->title!= null ? $data->title :'',
@@ -211,7 +211,7 @@ class ImportUserInterest extends Command
     //生成招标插入数据
     private function generateZhaobiaoInsertData($uid,$area,$industry,$data)
     {
-        $date = $data->date? (Carbon::createFromFormat('Y-m-d',trim($data->date))?:null) : null;
+        $date = $data->date? (count(explode('-',$data->date)) == 3?Carbon::createFromFormat('Y-m-d',trim($data->date)):null) : null;
         $insertData = [
             'user_id'=>$uid,
             'title'=> $data->title!= null ? $data->title :'',
