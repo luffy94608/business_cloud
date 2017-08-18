@@ -46,7 +46,7 @@ class ImportUserInterest extends Command
         {
             foreach ($profile as $p)
             {
-                \Log::debug('import user:'.$p->user_id);
+                var_dump('import user:'.$p->user_id);
                 $this->handleSingleProfile($p);
             }
         }
@@ -133,7 +133,7 @@ class ImportUserInterest extends Command
                                 }
                             }
                         }
-                        $step = 300;
+                        $step = 800;
                         if (!empty($zhongbiaoInserts))
                         {
                             $count = count($zhongbiaoInserts);
@@ -141,6 +141,7 @@ class ImportUserInterest extends Command
                             {
                                 $sliceLen = min($step,$count-$i);
                                 $temp = array_slice($zhongbiaoInserts,$i,$sliceLen);
+                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
                                 \DB::table('data_bid')->insert($temp);
                             }
 
@@ -153,6 +154,7 @@ class ImportUserInterest extends Command
                             {
                                 $sliceLen = min($step,$count-$i);
                                 $temp = array_slice($zhaobiaoInserts,$i,$sliceLen);
+                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
                                 \DB::table('data_publisher')->insert($temp);
                             }
                         }
