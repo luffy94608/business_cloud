@@ -204,8 +204,7 @@ class IndexController extends Controller
     public function logout()
     {
         Util::clearCacheUserInfo();
-        $host = request()->getSchemeAndHttpHost();
-        return Response::make()->header( 'Location', $host.'/login');
+        return Response::make()->header( 'Location', env('APP_URL', '').'/login');
 //        return redirect()->to($host.'/login');
     }
 

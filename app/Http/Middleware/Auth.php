@@ -37,11 +37,10 @@ class Auth
                 ];
                 return response()->json((new ApiResult(-10001, '未登录', $data))->toJson());
             } else {
-                $host = $request->getSchemeAndHttpHost();
                 $refer = sprintf('%s%s', Config::get('app')['url'], $_SERVER['REQUEST_URI']);
                 $url = sprintf('%s?callback=%s', $loginUrl, urlencode($refer));
 //                return redirect()->to($host.$url);
-                return Response::make()->header( 'Location', $host.$url);
+                return Response::make()->header( 'Location', env('APP_URL', '').$url);
 
             }
 
