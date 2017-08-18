@@ -239,19 +239,19 @@ class ImportUserInterest extends Command
     {
         $priceW = $price/10000;
         $power = 0;
-        if ($price<5)
+        if ($priceW<5)
         {
             $power = 1;
         }
-        elseif ($price<10)
+        elseif ($priceW<10)
         {
             $power = 2;
         }
-        elseif ($power<20)
+        elseif ($priceW<20)
         {
             $power = 3;
         }
-        elseif ($power<50)
+        elseif ($priceW<50)
         {
             $power = 4;
         }
