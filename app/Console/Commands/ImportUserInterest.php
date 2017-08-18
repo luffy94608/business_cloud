@@ -166,14 +166,15 @@ class ImportUserInterest extends Command
     //生成中标插入数据
     private function generateZhongbiaoInsertData($uid,$area,$industry,$data)
     {
+        $date = $data->date? (Carbon::createFromFormat('Y-m-d',trim($data->date))?:null) : null;
         $insertData = [
             'user_id'=>$uid,
             'title'=> $data->title!= null ? $data->title :'',
             'url'=> $data->url!= null ? $data->url :'',
             'publisher'=> $data->zhaobiaoren!= null ? $data->zhaobiaoren :'',
             'budget'=> $data->tze!= null ? $data->tze :0,
-            'bid_time'=>$data->date?Carbon::createFromFormat('Y-m-d',trim($data->date))->copy()->timestamp:0,
-            'created_at'=>$data->date?Carbon::createFromFormat('Y-m-d',trim($data->date))->copy():null,
+            'bid_time'=>$date?$date->copy()->timestamp:0,
+            'created_at'=>$date?$date->copy():null,
         ];
 //        if (!empty($area))
         {
@@ -210,6 +211,7 @@ class ImportUserInterest extends Command
     //生成招标插入数据
     private function generateZhaobiaoInsertData($uid,$area,$industry,$data)
     {
+        $date = $data->date? (Carbon::createFromFormat('Y-m-d',trim($data->date))?:null) : null;
         $insertData = [
             'user_id'=>$uid,
             'title'=> $data->title!= null ? $data->title :'',
@@ -217,7 +219,7 @@ class ImportUserInterest extends Command
             'publisher'=> $data->zhaobiaoren!= null ? $data->zhaobiaoren :'',
             'budget'=> $data->tze!= null ? $data->tze :0,
 //            'bid_time'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy()->timestamp,
-            'created_at'=>$data->date?Carbon::createFromFormat('Y-m-d',trim($data->date))->copy():null,
+            'created_at'=>$date?$date->copy():null,
         ];
 
         $insertData['area_id'] = $area->id;
