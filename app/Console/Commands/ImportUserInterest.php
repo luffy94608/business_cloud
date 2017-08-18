@@ -222,7 +222,7 @@ class ImportUserInterest extends Command
 
         $insertData['area_id'] = $area->id;
         $insertData['area_text'] = $area->name;
-        $insertData['power'] =  $this->getPower($data->budget);
+        $insertData['power'] =  $this->getPower($data->tze);
 
 //        if ($industry)
         {
