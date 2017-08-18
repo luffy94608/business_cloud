@@ -20,9 +20,9 @@
                         <div class="bc-section-title text-left">数据统计</div>
                         <div class="d-table wd-100">
                             <div class="d-table-cell v-align-middle pl-15 pr-15">
-                                <div class="col-xs-4 bcs-item bc-item-hover">
-                                    <p class="title"><a class="color-title" href="/bid-call" >招标信息</a></p>
-                                    <p class="total js_border_item border-right"><a class="color-green" href="/bid-call" >{{ $data['tender'] }}</a></p>
+                                <div class="col-xs-4 bcs-item bc-item-hover js_location_url cursor-pointer" data-url="/bid-call">
+                                    <p class="title">招标信息</p>
+                                    <p class="total js_border_item border-right color-green">{{ $data['tender'] }}</p>
                                     <div class="pl-15 pr-15 pt-20">
                                         <p class="hint text-left">今日更新<span class="color-green">{{ $data['tender_today'] }}</span>条信息</p>
                                         <div class="progress bid-progress mt-20">
@@ -30,9 +30,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-4 bcs-item bc-item-hover">
-                                    <p class="title"><a class="color-title" href="/bid-winner" >中标信息</a></p>
-                                    <p class="total js_border_item border-right color-orange"><a class="color-orange" href="/bid-winner" >{{ $data['bid'] }}</a></p>
+                                <div class="col-xs-4 bcs-item bc-item-hover js_location_url cursor-pointer"  data-url="/bid-winner">
+                                    <p class="title">中标信息</p>
+                                    <p class="total js_border_item border-right color-orange">{{ $data['bid'] }}</p>
                                     <div class="pl-15 pr-15 pt-20">
                                         <p class="hint text-left">今日更新<span class="color-orange">{{ $data['bid_today'] }}</span>条信息</p>
                                         <div class="progress bid-progress mt-20">
@@ -40,9 +40,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-4 bcs-item bc-item-hover">
-                                    <p class="title"><a class="color-title" href="/rival" >竞争对手</a></p>
-                                    <p class="total color-purple"><a class="color-purple" href="/rival" >{{ $data['competitor_today'] }}</a></p>
+                                <div class="col-xs-4 bcs-item bc-item-hover js_location_url cursor-pointer"  data-url="/rival">
+                                    <p class="title">竞争对手</p>
+                                    <p class="total color-purple">{{ $data['competitor_today'] }}</p>
                                     <div class="pl-15 pr-15 pt-20">
                                         <p class="hint text-left">今日新增<span class="color-purple">{{ $data['competitor_today'] }}</span>条数据</p>
                                         <div class="progress bid-progress mt-20">
