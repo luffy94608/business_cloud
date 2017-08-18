@@ -172,8 +172,8 @@ class ImportUserInterest extends Command
             'url'=> $data->url!= null ? $data->url :'',
             'publisher'=> $data->zhaobiaoren!= null ? $data->zhaobiaoren :'',
             'budget'=> $data->tze!= null ? $data->tze :0,
-            'bid_time'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy()->timestamp,
-            'created_at'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy(),
+            'bid_time'=>$data->date?Carbon::createFromFormat('Y-m-d',trim($data->date))->copy()->timestamp:0,
+            'created_at'=>$data->date?Carbon::createFromFormat('Y-m-d',trim($data->date))->copy():null,
         ];
 //        if (!empty($area))
         {
@@ -184,6 +184,8 @@ class ImportUserInterest extends Command
         {
             $insertData['industry_id'] = $industry?$industry->id : 0;
             $insertData['industry_text'] = $industry?$industry->name : '';
+            
+            
         }
 //        if ($data->zhongbiaoren != null)
         {
@@ -215,11 +217,12 @@ class ImportUserInterest extends Command
             'publisher'=> $data->zhaobiaoren!= null ? $data->zhaobiaoren :'',
             'budget'=> $data->tze!= null ? $data->tze :0,
 //            'bid_time'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy()->timestamp,
-            'created_at'=>Carbon::createFromFormat('Y-m-d',trim($data->date))->copy(),
+            'created_at'=>$data->date?Carbon::createFromFormat('Y-m-d',trim($data->date))->copy():null,
         ];
 
         $insertData['area_id'] = $area->id;
         $insertData['area_text'] = $area->name;
+        $insertData['power'] =  $this->getPower($data->budget);
 
 //        if ($industry)
         {
@@ -230,6 +233,32 @@ class ImportUserInterest extends Command
 
         $insertData['type'] = $data->zb_type;
         return $insertData;
+    }
+
+    private function getPower($price)
+    {
+        $priceW = $price/10000;
+        $power = 0;
+        if ($price<5)
+        {
+            $power = 1;
+        }
+        elseif ($price<10)
+        {
+            $power = 2;
+        }
+        elseif ($power<20)
+        {
+            $power = 3;
+        }
+        elseif ($power<50)
+        {
+            $power = 4;
+        }
+        else{
+            $power = 5;
+        }
+        return $power;
     }
 
 }
