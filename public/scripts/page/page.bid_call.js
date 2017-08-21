@@ -64,7 +64,7 @@
                 },
                 wrapUpdateData:function(idx,data){
                     var param={};
-                    param.limit=2;
+                    param.limit=5;
                     param.type=$('.js_search_type.active').data('type');
                     if (param){
                         $.extend(data, param);

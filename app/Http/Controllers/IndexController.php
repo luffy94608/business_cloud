@@ -7,7 +7,9 @@ use App\Http\Requests;
 use App\Repositories\BidRepositories;
 use App\Repositories\DataRepositories;
 use App\Repositories\UserRepositories;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 
 class IndexController extends Controller
@@ -202,7 +204,8 @@ class IndexController extends Controller
     public function logout()
     {
         Util::clearCacheUserInfo();
-        return redirect()->to('/login');
+        return Response::make()->header( 'Location', env('APP_URL', '').'/login');
+//        return redirect()->to($host.'/login');
     }
 
     /**

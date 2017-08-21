@@ -157,7 +157,7 @@
                 },
                 wrapUpdateData:function(idx,data){
                     var param={};
-                    param.limit=2;
+                    param.limit=5;
                     if (param){
                         $.extend(data, param);
                     }
