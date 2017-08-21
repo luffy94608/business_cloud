@@ -41,7 +41,7 @@ class ImportUserInterest extends Command
     public function handle()
     {
         //
-        $profile = \DB::table('profiles')->where('import_interest','<',Carbon::now()->subWeek(1))->get();
+        $profile = \DB::table('profiles')->where('import_interest','<',Carbon::now()->subWeek(1))->orWhere('import_interest',null)->get();
         var_dump('profile.count: '.count($profile));
         if (!empty($profile))
         {
