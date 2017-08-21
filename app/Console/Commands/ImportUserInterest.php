@@ -42,6 +42,7 @@ class ImportUserInterest extends Command
     {
         //
         $profile = \DB::table('profiles')->where('import_interest','<',Carbon::now()->subWeek(1))->get();
+        var_dump('profile.count: '.count($profile));
         if (!empty($profile))
         {
             foreach ($profile as $p)
@@ -56,6 +57,7 @@ class ImportUserInterest extends Command
                 }
             }
         }
+
     }
 
     private function handleSingleProfile($profile)
