@@ -151,6 +151,12 @@ class Kernel extends ConsoleKernel
 //            ->everyMinute()
 //            ->timezone('Asia/Shanghai')
 //            ->appendOutputTo('./shuttle_position.log');
+
+        $schedule->command('import_user_interest')
+            ->everyMinute()
+            ->timezone('Asia/Shanghai')
+            ->appendOutputTo('./import_user_interest.log');
+
     }
 
     /**

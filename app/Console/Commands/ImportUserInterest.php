@@ -41,13 +41,19 @@ class ImportUserInterest extends Command
     public function handle()
     {
         //
-        $profile = \DB::table('profiles')->get();
+        $profile = \DB::table('profiles')->where('import_interest','<',Carbon::now()->subWeek(1))->get();
         if (!empty($profile))
         {
             foreach ($profile as $p)
             {
-                var_dump('import user:'.$p->user_id);
-                $this->handleSingleProfile($p);
+//                var_dump('import user:'.$p->user_id);
+//                $time = $p->import_interest ? new Carbon($p->import_interest):null;
+//                if ($time == null || $time->timestamp < Carbon::now()->subWeek(1)->timestamp)
+                {
+                    \DB::table('data_bid')->where('user_id',$p->user_id)->delete();
+                    \DB::table('data_publisher')->where('user_id',$p->user_id)->delete();
+                    $this->handleSingleProfile($p);
+                }
             }
         }
     }
@@ -162,6 +168,9 @@ class ImportUserInterest extends Command
                 }
             }
         }
+
+        //更新profile时间戳
+        \DB::table('profiles')->where('user_id',$profile->user_id)->update(['import_interest'=>Carbon::now()]);
 
     }
 
