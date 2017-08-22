@@ -22,6 +22,7 @@ use App\Console\Commands\MonitorScheduleBus;
 use App\Console\Commands\MonitorScheduleShuttle;
 use App\Console\Commands\MonthlyScheduleBusPath;
 use App\Console\Commands\ObjectIdMigration;
+use App\Console\Commands\ScanCompanyInfo;
 use App\Console\Commands\ScanDriverFirstStationNotify;
 use App\Console\Commands\ScanDriverTaskAlarm;
 use App\Console\Commands\ScanOverdueTask;
@@ -42,7 +43,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         TempCommand::class,
         ImportWechatUserData::class,
-        ImportUserInterest::class
+        ImportUserInterest::class,
+        ScanCompanyInfo::class,
     ];
 
     /**
