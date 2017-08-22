@@ -4,6 +4,7 @@
 {{--内容区域--}}
 @section('content')
     {{--content--}}
+    @include('layouts.header',['bgStyle'=>'bg-xs-green bc-header-section clear-position'])
 
     <div class="container-fluid">
         <div class="container">
