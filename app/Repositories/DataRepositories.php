@@ -29,9 +29,9 @@ class DataRepositories
      * @param int $parentId
      * @return array|\Illuminate\Database\Eloquent\Collection|static[]
      */
-    public static function getRegionListData($parentId = 0)
+    public static function getRegionListData($parentId = -1)
     {
-        if ($parentId === 0) {
+        if ($parentId === -1) {
             $regions = DicRegion::all();
         } else {
             $regions = DicRegion::where('parent_id', $parentId)
