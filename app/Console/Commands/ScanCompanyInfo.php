@@ -20,6 +20,8 @@ class ScanCompanyInfo extends Command
      */
     protected $description = '扫描公司信息';
 
+    private  $token = '';
+
     /**
      * Create a new command instance.
      *
@@ -39,6 +41,7 @@ class ScanCompanyInfo extends Command
     {
         //
         $companyNames = \DB::table('tender_zb_guizhou_2')->distinct('zhongbiaoren')->limit(800)->get();
+        $this->token = $this->getToken();
 
         $nameMaps = [];
         foreach ($companyNames as $c)
@@ -79,7 +82,7 @@ class ScanCompanyInfo extends Command
             {
                 foreach ($nameMaps as $k=>$v)
                 {
-                    $res =  $this->queryCompany('dfb3ead313136fc5fd5dfed19e045646',$k);
+                    $res =  $this->queryCompany($k);
                     if (!empty($res))
                     {
                         foreach ($res as $r)
@@ -93,9 +96,11 @@ class ScanCompanyInfo extends Command
         }
     }
     
-    private function queryCompany($token,$name)
+    private function queryCompany($name)
     {
-        if (strlen(trim($name)) == 0 || strlen(trim($name)) > 100)
+        $pos1 = strpos($name,'(');
+        $pos2 = strpos($name,'（');
+        if (strlen(trim($name)) == 0 || strlen(trim($name)) > 100 || $pos1 === 0 || $pos2 === 0)
         {
             return [];
         }
@@ -103,7 +108,7 @@ class ScanCompanyInfo extends Command
         var_dump('query name :'.$name);
         $res = $client->request('GET', 'http://api.qianzhan.com/OpenPlatformService/OrgCompany',[
             'query'=>[
-                'token'=>$token,
+                'token'=>$this->token,
                 'type'=>'JSON',
                 'companyName'=>$name,
                 'areaCode'=>'',
@@ -121,6 +126,12 @@ class ScanCompanyInfo extends Command
             if (!empty($dataList))
             {
                 var_dump('query code,msg :'.$resArray['status'].$resArray['message']);
+                if ($resArray['status'] == 101 || $resArray['status'] == 102)//token过期
+                {
+                    $this->token = $this->getToken();
+                    return $this->queryCompany($name);
+                }
+
                 $idx = 0;
                 foreach ($dataList as $d)
                 {
@@ -165,6 +176,21 @@ class ScanCompanyInfo extends Command
 
     private function getToken()
     {
-
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://api.qianzhan.com/OpenPlatformService/GetToken',[
+            'query'=>[
+                'type'=>'JSON',
+                'appkey'=>'3d0b52c6555d850c',
+                'seckey'=>'4afd7013afff8ecd',
+            ]
+        ]);
+        if ($res->getStatusCode() == 200)//成功
+        {
+            $result= $res->getBody();
+            $resArray = json_decode($result,true);
+            $token = $resArray['result']['token'];
+            return $token;
+        }
+        return '';
     }
 }
