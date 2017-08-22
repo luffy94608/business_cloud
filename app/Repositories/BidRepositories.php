@@ -170,13 +170,15 @@ class BidRepositories
         
         switch ($src) {
             case 'publish':
-                $model = DataPublisher::where('title', 'like', '%'.$keyword.'%');
+                $model = DataPublisher::where('title', 'like', '%'.$keyword.'%')
+                    ->orWhere('publisher', 'like', '%'.$keyword.'%');
                 $model = $model->where('area_id', $areaId);
                 $model = $model->where('industry_id', $industryId);
                 break;
             case 'bid':
-                $model = DataBid::where('company_name', 'like', '%'.$keyword.'%')
-                    ->orWhere('project_name', 'like', '%'.$keyword.'%');
+                $model = DataBid::where('title', 'like', '%'.$keyword.'%')
+                    ->orWhere('publisher', 'like', '%'.$keyword.'%')
+                    ->orWhere('bid_company', 'like', '%'.$keyword.'%');
                 $model = $model->where('area_id', $areaId);
                 $model = $model->where('industry_id', $industryId);
                 break;
