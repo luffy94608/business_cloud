@@ -60,7 +60,9 @@
 
             $('#js_chart_2').highcharts({
                 chart: {
-                    type: 'column'
+                    type: 'column',
+                    spacingRight: 50,
+                    spacingLeft: 50
                 },
                 title: {
                     text: ''
