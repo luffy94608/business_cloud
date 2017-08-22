@@ -9,14 +9,17 @@
 namespace App\Repositories;                                  
 
 
+use App\Helper\Util;
 use App\Models\DataCategoryStat;
 use App\Models\DataCompetitor;
 use App\Models\DataCompetitorDetailStat;
+use App\Models\DataPublisher;
 use App\Models\DataStatistic;
 use App\Models\DataStatisticDetail;
 use App\Models\DicArea;
 use App\Models\DicIndustry;
 use App\Models\DicRegion;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class DataRepositories
@@ -26,9 +29,9 @@ class DataRepositories
      * @param int $parentId
      * @return array|\Illuminate\Database\Eloquent\Collection|static[]
      */
-    public static function getRegionListData($parentId = 0)
+    public static function getRegionListData($parentId = -1)
     {
-        if ($parentId === 0) {
+        if ($parentId === -1) {
             $regions = DicRegion::all();
         } else {
             $regions = DicRegion::where('parent_id', $parentId)
@@ -69,28 +72,56 @@ class DataRepositories
     }
 
     /**
-     * 获取统计总览
+     * 获取首页统计总览
      * @param $uid
      * @return \Illuminate\Database\Eloquent\Model|null|static
      */
     public static function getSummaryData($uid)
     {
-        $res = DataStatistic::where('user_id', $uid)
-            ->orderBy('id', -1)
-            ->first();
+//        $res = DataStatistic::where('user_id', $uid)
+//            ->orderBy('id', -1)
+//            ->first();
+        $now = Carbon::now();
+        $todayAtStr = $now->startOfDay()->toDateTimeString();
+        $todayEndStr = $now->endOfDay()->toDateTimeString();
+        $res = [
+           'tender' =>BidRepositories::getBidListTotal(),
+           'bid' =>BidRepositories::getWinnerListTotal(),
+           'competitor' =>BidRepositories::getCompetitorListTotal(),
+           'tender_today' =>BidRepositories::getBidListTotal($todayAtStr, $todayEndStr),
+           'bid_today' =>BidRepositories::getWinnerListTotal($todayAtStr, $todayEndStr),
+           'competitor_today' =>BidRepositories::getCompetitorListTotal($todayAtStr, $todayEndStr),
+        ];
         return $res;
     }
 
     /**
-     * 获取统计总览
+     * 获取招标统计总览
      * @param $uid
      * @return \Illuminate\Database\Eloquent\Model|null|static
      */
     public static function getSummaryPageData($uid)
     {
-        $res = DataStatisticDetail::where('user_id', $uid)
-            ->orderBy('id', -1)
-            ->first();
+//        $res = DataStatisticDetail::where('user_id', $uid)
+//            ->orderBy('id', -1)
+//            ->first();
+        $now = Carbon::now();
+        $todayAtStr = $now->startOfDay()->toDateTimeString();
+        $todayEndStr = $now->endOfDay()->toDateTimeString();
+        $weekAtStr = $now->startOfWeek()->toDateTimeString();
+        $weekEndStr = $now->endOfWeek()->toDateTimeString();
+        $monthAtStr = $now->startOfMonth()->toDateTimeString();
+        $monthEndStr = $now->endOfMonth()->toDateTimeString();
+        $res = [
+            'tender_today_total' =>BidRepositories::getBidListTotal($todayAtStr, $todayEndStr),
+            'tender_week_total' =>BidRepositories::getBidListTotal($weekAtStr, $weekEndStr),
+            'tender_month_total' =>BidRepositories::getBidListTotal($monthAtStr, $monthEndStr),
+            'bid_today_total' =>BidRepositories::getWinnerListTotal($todayAtStr, $todayEndStr),
+            'bid_week_total' =>BidRepositories::getWinnerListTotal($weekAtStr, $weekEndStr),
+            'bid_month_total' =>BidRepositories::getWinnerListTotal($monthAtStr, $monthEndStr),
+            'competitor_today_total' =>BidRepositories::getCompetitorListTotal($todayAtStr, $todayEndStr),
+            'competitor_total' =>BidRepositories::getCompetitorListTotal(),
+        ];
         return $res;
     }
 

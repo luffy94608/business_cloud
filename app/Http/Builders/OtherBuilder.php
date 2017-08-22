@@ -26,7 +26,8 @@ class OtherBuilder
         if ($keywords->isNotEmpty()) {
             $html = '热门关键字：';
             foreach ($keywords as $keyword) {
-                $html.= "<a>{$keyword->name}</a>";
+
+                $html.= "<a href='javascript:void(0)' class='js_search_hot_keyword' data-keyword='{$keyword->name}'>{$keyword->name}</a>";
             }
         }
         return $html;

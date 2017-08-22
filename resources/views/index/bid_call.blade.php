@@ -16,11 +16,11 @@
 {{--            @include('templates.select')--}}
 
             <div class="row bc-body-section">
-                <div class="col-sm-8 col-xs-12 bg-white box-shadow-1 bc-stat-section">
+                <div class="col-sm-9 col-xs-12 bg-white box-shadow-1 bc-stat-section">
                     <div class="row ">
                         <div class="bc-section-title text-left">数据统计</div>
                         <div class="d-table wd-100 ">
-                            <div class="d-table-cell v-align-middle">
+                            <div class="d-table-cell v-align-top">
                                 <div class="col-xs-4 bcs-item">
                                     <p class="title">今日招标总数</p>
                                     <p class="total border-right color-green">{{ $data['today'] }}</p>
@@ -46,9 +46,10 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <div class="col-sm-4 col-xs-12 bc-side-section">
+                <div class="col-sm-3 col-xs-12 bc-side-section">
                     <div class="row bg-white box-shadow-1  ht-100">
                         @include('templates.side')
                     </div>

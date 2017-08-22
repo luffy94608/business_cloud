@@ -9,6 +9,7 @@
 
         inputTime :$('#js_input_time'),
         inputCompanyName: $('#js_input_company'),
+        inputCompanyArea: $('#js_input_company_area'),
         loading :false,
         tpl :'<span class="bck-item active" data-id="{0}">{1}<i class="b-icon-close ml-5"></i></span>',
 
@@ -19,6 +20,8 @@
         initParams : function () {
             var params = {
                 time:$.trim(init.inputTime.val()),
+                company_area:$.trim(init.inputCompanyArea.val()),
+                area_name:$.trim(init.inputCompanyArea.find('option:checked').text()),
                 company_name:$.trim(init.inputCompanyName.val())
             };
 
@@ -55,7 +58,7 @@
                     setTimeout(function () {
                         window.location.reload();
                         init.loading = false;
-                    });
+                    },500);
                 },function () {
                     init.loading = false;
                 })
@@ -63,6 +66,7 @@
         },
         run : function () {
             init.initBtnEvent();
+            $('select').select2();
         }
     };
     init.run();

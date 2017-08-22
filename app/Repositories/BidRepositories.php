@@ -9,6 +9,7 @@
 namespace App\Repositories;                                  
 
 
+use App\Helper\Util;
 use App\Models\DataBid;
 use App\Models\DataCompetitor;
 use App\Models\DataPublisher;
@@ -26,7 +27,13 @@ class BidRepositories
      */
     public static function getBidListData($offset=0, $length = 10, $type = 'all')
     {
-        $model = DataPublisher::skip($offset)->take($length);
+        $uid = Util::getUid();
+        $areaId = Util::getFollowAreaId();
+        $industryId = Util::getFollowIndustryId();
+        $model = DataPublisher::where('user_id', $uid)
+            ->where('area_id', $areaId)
+            ->where('industry_id', $industryId)
+            ->skip($offset)->take($length);
         switch ($type) {
             case 'new' :
                 $model = $model->orderBy('created_at', -1);
@@ -43,11 +50,25 @@ class BidRepositories
     }
 
     /**
-     * @return array|\Illuminate\Support\Collection
+     * @param $startTimeStr
+     * @param $endTimeStr
+     * @return int
      */
-    public static function getBidListTotal()
+    public static function getBidListTotal($startTimeStr = '', $endTimeStr = '')
     {
-        $total = DataPublisher::count();
+        $uid = Util::getUid();
+        $areaId = Util::getFollowAreaId();
+        $industryId = Util::getFollowIndustryId();
+        $model = DataPublisher::where('user_id', $uid)
+            ->where('area_id', $areaId)
+            ->where('industry_id', $industryId);
+        if (!empty($startTimeStr)) {
+            $model->where('created_at', '>', $startTimeStr);
+        }
+        if (!empty($endTimeStr)) {
+            $model->where('created_at', '<=', $endTimeStr);
+        }
+        $total = $model ->count();
         return $total;
     }
 
@@ -58,7 +79,13 @@ class BidRepositories
      */
     public static function getWinnerListData($offset=0, $length = 10)
     {
-        $list = DataBid::skip($offset)
+        $uid = Util::getUid();
+        $areaId = Util::getFollowAreaId();
+        $industryId = Util::getFollowIndustryId();
+        $list = DataBid::where('user_id', $uid)
+            ->where('area_id', $areaId)
+            ->where('industry_id', $industryId)
+            ->skip($offset)
             ->take($length)
             ->orderBy('created_at', -1)
             ->get();
@@ -66,11 +93,25 @@ class BidRepositories
     }
 
     /**
-     * @return array|\Illuminate\Support\Collection
+     * @param $startTimeStr
+     * @param $endTimeStr
+     * @return int
      */
-    public static function getWinnerListTotal()
+    public static function getWinnerListTotal($startTimeStr = '', $endTimeStr = '')
     {
-        $total = DataBid::count();
+        $uid = Util::getUid();
+        $areaId = Util::getFollowAreaId();
+        $industryId = Util::getFollowIndustryId();
+        $model = DataBid::where('user_id', $uid)
+            ->where('area_id', $areaId)
+            ->where('industry_id', $industryId);
+        if (!empty($startTimeStr)) {
+            $model->where('created_at', '>', $startTimeStr);
+        }
+        if (!empty($endTimeStr)) {
+            $model->where('created_at', '<=', $endTimeStr);
+        }
+        $total = $model ->count();
         return $total;
     }
 
@@ -81,7 +122,9 @@ class BidRepositories
      */
     public static function getCompetitorListData($offset=0, $length = 10)
     {
-        $list = DataCompetitor::skip($offset)
+        $uid = Util::getUid();
+        $list = DataCompetitor::where('user_id', $uid)
+            ->skip($offset)
             ->take($length)
             ->orderBy('created_at', -1)
             ->get();
@@ -89,11 +132,21 @@ class BidRepositories
     }
 
     /**
-     * @return array|\Illuminate\Support\Collection
+     * @param $startTimeStr
+     * @param $endTimeStr
+     * @return int
      */
-    public static function getCompetitorListTotal()
+    public static function getCompetitorListTotal($startTimeStr = '', $endTimeStr = '')
     {
-        $total = DataCompetitor::count();
+        $uid = Util::getUid();
+        $model = DataCompetitor::where('user_id', $uid);
+        if (!empty($startTimeStr)) {
+            $model->where('created_at', '>', $startTimeStr);
+        }
+        if (!empty($endTimeStr)) {
+            $model->where('created_at', '<=', $endTimeStr);
+        }
+        $total = $model ->count();
         return $total;
     }
 
@@ -111,20 +164,30 @@ class BidRepositories
     public static function search($offset=0, $length = 10, $keyword = '', $src)
     {
         $model = '';
+        $uid = Util::getUid();
+        $areaId = Util::getFollowAreaId();
+        $industryId = Util::getFollowIndustryId();
+        
         switch ($src) {
             case 'publish':
-                $model = DataPublisher::where('title', 'like', '%'.$keyword.'%');
+                $model = DataPublisher::where('title', 'like', '%'.$keyword.'%')
+                    ->orWhere('publisher', 'like', '%'.$keyword.'%');
+                $model = $model->where('area_id', $areaId);
+                $model = $model->where('industry_id', $industryId);
                 break;
             case 'bid':
-                $model = DataBid::where('company_name', 'like', '%'.$keyword.'%')
-                    ->orWhere('project_name', 'like', '%'.$keyword.'%');
-
+                $model = DataBid::where('title', 'like', '%'.$keyword.'%')
+                    ->orWhere('publisher', 'like', '%'.$keyword.'%')
+                    ->orWhere('bid_company', 'like', '%'.$keyword.'%');
+                $model = $model->where('area_id', $areaId);
+                $model = $model->where('industry_id', $industryId);
                 break;
             case 'competitor':
                 $model = DataCompetitor::where('company', 'like', '%'.$keyword.'%');
 
                 break;
         }
+        $model = $model->where('user_id', $uid);
         $total = $model->count();
         $list = $model->skip($offset)
             ->take($length)

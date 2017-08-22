@@ -30,7 +30,8 @@ class PagerBuilder
             $url = $v->url;
             $title = $v->title;
             $userName = isset($v->publisher) ? $v->publisher : '未知';
-            $deadline = Carbon::createFromTimestamp($v->deadline)->toDateString();
+//            $deadline = Carbon::createFromTimestamp($v->deadline)->toDateString();
+            $deadline = $v->created_at->toDateString();
             $levelHtml = OtherBuilder::toLevelHtml($v->power);
 
             $html.="
@@ -93,7 +94,7 @@ class PagerBuilder
                                 <p class=\"col-xs-12 font-12 color-sub-title\">中标时间：{$time}</p>
                             </div>
                             <div class=\"col-xs-4 col-sm-3 bcl-right\">
-                                <p class=\"font-16 mt-35\"><span class='hidden-xs'></span><span class=\"color-orange\"><span class=\"ml-5 mr-5 font-24\">{$price}</span> {$priceTitle}</span></p>
+                                <p class=\"font-16 mt-35\"><span class='hidden-xs'></span><span class=\"color-orange\"><span class=\"ml-5 mr-5 font-20\">{$price}</span> {$priceTitle}</span></p>
                             </div>
                         </div>
                     </div>

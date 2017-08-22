@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '市场数据分析')
+@section('title', '企业数据分析')
 
 {{--内容区域--}}
 @section('content')
@@ -20,6 +20,14 @@
                         <label for="js_input_company_name" class="col-sm-2 col-xs-4 control-label">关注企业名称</label>
                         <div class="col-sm-5 col-xs-8">
                             <input type="text" class="form-control" name="company_name" id="js_input_company" placeholder="请输入企业名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="js_input_company_area" class="col-sm-2 col-xs-3 control-label">关注区域</label>
+                        <div class="col-sm-4 col-xs-7">
+                            <select id="js_input_company_area" class="form-control" >
+                                {!!  \App\Http\Builders\DataBuilder::toRegionLevelOneOptionHtml()  !!}
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

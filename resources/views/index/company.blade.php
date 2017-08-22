@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '企业数据分析')
+@section('title', '市场数据分析')
 
 {{--内容区域--}}
 @section('content')

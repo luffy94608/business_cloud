@@ -71,6 +71,24 @@ $(document).ready(function () {
     /**
      * 搜索事件
      */
+    $.getPageSrcTag = function () {
+        var path = location.pathname;
+        var src = 'publish';
+        if (path === '/') {
+
+        } else if(path === '/'){
+            src = 'publish';
+        } else if(path === '/bid-call'){
+            src = 'publish';
+        } else if(path === '/bid-winner'){
+            src = 'bid';
+        } else if(path === '/rival'){
+            src = 'competitor';
+        } else if(path.indexOf('/rival-detail/')!==-1){
+            src = 'competitor';
+        }
+        return src;
+    };
     $('.bcb-search').keypress(function(e) {
         if (e.which == 13) {
             var keyword = $.trim($(this).val());
@@ -78,23 +96,15 @@ $(document).ready(function () {
                 $.showToast('请输入关键字');
                 return false;
             }
-            var path = location.pathname;
-            var src = 'publish';
-            if (path === '/') {
-
-            } else if(path === '/'){
-                src = 'publish';
-            } else if(path === '/bid-call'){
-                src = 'publish';
-            } else if(path === '/bid-winner'){
-                src = 'bid';
-            } else if(path === '/rival'){
-                src = 'competitor';
-            } else if(path.indexOf('/rival-detail/')!==-1){
-                src = 'competitor';
-            }
+            var src = $.getPageSrcTag();
             $.locationUrl('/search-list?src={0}&keyword={1}'.format(src, keyword));
         }
+    });
+    
+    $('.js_search_hot_keyword').unbind().bind('click', function () {
+        var keyword = $.trim($(this).data('keyword'));
+        var src = $.getPageSrcTag();
+        $.locationUrl('/search-list?src={0}&keyword={1}'.format(src, keyword));
     });
 
     /**
