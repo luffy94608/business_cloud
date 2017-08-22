@@ -270,6 +270,11 @@ class UserController extends Controller
             'follow_industry' => $params['follow_industry'],
             'follow_keyword' => $params['follow_keyword'],
         ];
+
+        if (isset($data['follow_area'])||isset($data['follow_industry']))
+        {
+            
+        }
         $result = UserRepositories::updateProfile($user->profile, $data);
 
         if ($result) {
