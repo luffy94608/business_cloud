@@ -55,7 +55,7 @@
                     setTimeout(function () {
                         window.location.reload();
                         init.loading = false;
-                    });
+                    },500);
                 },function () {
                     init.loading = false;
                 })

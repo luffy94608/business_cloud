@@ -30,7 +30,8 @@ class PagerBuilder
             $url = $v->url;
             $title = $v->title;
             $userName = isset($v->publisher) ? $v->publisher : '未知';
-            $deadline = Carbon::createFromTimestamp($v->deadline)->toDateString();
+//            $deadline = Carbon::createFromTimestamp($v->deadline)->toDateString();
+            $deadline = $v->created_at->toDateString();
             $levelHtml = OtherBuilder::toLevelHtml($v->power);
 
             $html.="

@@ -23,7 +23,7 @@
                                 <div class="col-xs-4 bcs-item bc-item-hover js_location_url cursor-pointer" data-url="/bid-call">
                                     <p class="title">招标信息</p>
                                     <p class="total js_border_item border-right color-green">{{ $data['tender'] }}</p>
-                                    <div class="pl-15 pr-15 pt-20">
+                                    <div class="pl-30 pr-30 pt-20">
                                         <p class="hint text-left">今日更新<span class="color-green">{{ $data['tender_today'] }}</span>条信息</p>
                                         <div class="progress bid-progress mt-20">
                                             <div class="progress-bar bg-green" role="progressbar" data-percent="{{$data['tender_percent']}}%" aria-valuemin="0" aria-valuemax="100" ></div>
@@ -33,7 +33,7 @@
                                 <div class="col-xs-4 bcs-item bc-item-hover js_location_url cursor-pointer"  data-url="/bid-winner">
                                     <p class="title">中标信息</p>
                                     <p class="total js_border_item border-right color-orange">{{ $data['bid'] }}</p>
-                                    <div class="pl-15 pr-15 pt-20">
+                                    <div class="pl-30 pr-30 pt-20">
                                         <p class="hint text-left">今日更新<span class="color-orange">{{ $data['bid_today'] }}</span>条信息</p>
                                         <div class="progress bid-progress mt-20">
                                             <div class="progress-bar bg-orange" role="progressbar" data-percent="{{$data['bid_percent']}}%" aria-valuemin="0" aria-valuemax="100" ></div>
@@ -43,7 +43,7 @@
                                 <div class="col-xs-4 bcs-item bc-item-hover js_location_url cursor-pointer"  data-url="/rival">
                                     <p class="title">竞争对手</p>
                                     <p class="total color-purple">{{ $data['competitor_today'] }}</p>
-                                    <div class="pl-15 pr-15 pt-20">
+                                    <div class="pl-30 pr-30 pt-20">
                                         <p class="hint text-left">今日新增<span class="color-purple">{{ $data['competitor_today'] }}</span>条数据</p>
                                         <div class="progress bid-progress mt-20">
                                             <div class="progress-bar bg-purple" role="progressbar" data-percent="{{$data['competitor_percent']}}%" aria-valuemin="0" aria-valuemax="100" ></div>

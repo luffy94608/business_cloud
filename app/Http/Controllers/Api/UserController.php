@@ -348,7 +348,7 @@ class UserController extends Controller
             $data['data'] = $insert;
             \Mail::send('email.company', $data, function($message) use($data)
             {
-                $message->to($data['email'], $data['name'])->subject('企业数据分析');
+                $message->to($data['email'], $data['name'])->subject('市场数据分析');
             });
 
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());
@@ -382,11 +382,11 @@ class UserController extends Controller
 
         if ($result) {
             //TODO 发送邮件或短信
-            $data = ['email'=>'29620639@qq.com', 'name'=>'luffy'];
+            $data = ['email'=>'elinkdata@qq.com', 'name'=>'luffy'];
             $data['data'] = $params;
             \Mail::send('email.business', $data, function($message) use($data)
             {
-                $message->to($data['email'], $data['name'])->subject('市场数据分析');
+                $message->to($data['email'], $data['name'])->subject('企业数据分析');
             });
 
             return response()->json((new ApiResult(0, ErrorEnum::transform(ErrorEnum::Success), [], []))->toJson());

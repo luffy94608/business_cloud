@@ -157,6 +157,36 @@ class Util
     }
 
     /**
+     * 关注区域id
+     * @return string
+     */
+    public static function getFollowAreaId()
+    {
+        $res = '';
+        $account = self::getUserInfo(); // 拿到微信授权用户资料
+        if(!empty($account))
+        {
+            $res = $account['follow_area'];
+        }
+        return $res;
+    }
+
+    /**
+     * 关注行业id
+     * @return string
+     */
+    public static function getFollowIndustryId()
+    {
+        $res = '';
+        $account = self::getUserInfo(); // 拿到微信授权用户资料
+        if(!empty($account))
+        {
+            $res = $account['follow_industry'];
+        }
+        return $res;
+    }
+
+    /**
      * 是否是付费用户
      * @return bool
      */
