@@ -318,7 +318,7 @@ class UserController extends Controller
     }
 
     /**
-     * 企业分析
+     * 市场分析
      * @param Request $request
      * @return mixed
      */
@@ -360,7 +360,7 @@ class UserController extends Controller
     }
 
     /**
-     * 市场分析
+     * 企业分析
      * @param Request $request
      * @return mixed
      */
@@ -368,6 +368,8 @@ class UserController extends Controller
     {
         $pattern = [
             'company_name' => 'required',
+            'company_area' => 'required',
+            'area_name' => 'required',
             'time' => 'required',
         ];
         $this->validate($request, $pattern);
@@ -376,9 +378,11 @@ class UserController extends Controller
         $data = [
             'user_id' => $this->uid,
             'name' => $params['company_name'],
+            'area_id' => $params['company_area'],
             'time' => $params['time'],
         ];
         $result = AnalysisRepositories::insertBusinessAlys($data);
+        $data ['area_name'] = $params['area_name'];
 
         if ($result) {
             //TODO 发送邮件或短信

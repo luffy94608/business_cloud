@@ -162,9 +162,10 @@
                 init.loading = true;
                 $.wpost($.httpProtocol.UPDATE_PROFILE,params,function (data) {
                     $.showToast($.string.EDIT_SUCCESS, true);
-                    // $.locationUrl('/login');
+
                     setTimeout(function () {
-                       window.location.reload();
+                       // window.location.reload();
+                        $.locationUrl('/');
                         init.loading = false;
                     }, 400);
                 },function () {
