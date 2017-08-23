@@ -90,10 +90,6 @@ class IndustryFilter
                             'from_table'=>$this->table,
                             'from_id'=>$v->id,
                             'industry_value'=>$v->hangye,
-                            'type_id'=>$v->type_id,
-                            'title'=>$title,
-                            'zhaobiaoren'=>$zhaobiaoren,
-                            'zhongbiaoren'=>$zhongbiaoren,
                         ]);
                     }
                 }
