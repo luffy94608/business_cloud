@@ -8,6 +8,7 @@ use App\Console\Commands\AutoScheduleBusPath;
 use App\Console\Commands\AutoScheduleShuttlePath;
 use App\Console\Commands\CarbonTimestampMigrate;
 use App\Console\Commands\CheckTimeMigrate;
+use App\Console\Commands\ClusterZBData;
 use App\Console\Commands\DecodeJWTToken;
 use App\Console\Commands\HandleInconsistentOrder;
 use App\Console\Commands\HandleInconsistentTicketComment;
@@ -45,6 +46,7 @@ class Kernel extends ConsoleKernel
         ImportWechatUserData::class,
         ImportUserInterest::class,
         ScanCompanyInfo::class,
+        ClusterZBData::class,
     ];
 
     /**
