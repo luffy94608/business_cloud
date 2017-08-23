@@ -70,9 +70,9 @@ class IndustryFilter
                 }
                 $industryId = $this->matchKeyWord($keyword);
                 var_dump($industryId);
-                $title = strlen($v->title) > 200 ? substr($v->title,0,200) : $v->title ;
+                $title = $v->title;//strlen($v->title) > 200 ? substr($v->title,0,200) : $v->title ;
                 $zhaobiaoren = $v->zhaobiaoren;//strlen($v->zhaobiaoren) > 100 ? substr($v->zhaobiaoren,0,100) : $v->zhaobiaoren;
-                $zhongbiaoren = strlen($v->zhongbiaoren) > 200 ? substr($v->zhongbiaoren,0,200) : $v->zhongbiaoren ;
+                $zhongbiaoren = $v->zhongbiaoren;//strlen($v->zhongbiaoren) > 200 ? substr($v->zhongbiaoren,0,200) : $v->zhongbiaoren ;
                 if ($industryId > 0 ){
                     \DB::table('cluster_result')
                         ->where('from_table',$this->table)
