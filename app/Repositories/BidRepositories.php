@@ -31,7 +31,7 @@ class BidRepositories
         $areaId = Util::getFollowAreaId();
         $industryId = Util::getFollowIndustryId();
         $model = DataPublisher::where('user_id', $uid)
-            ->where('area_id', $areaId)
+            ->whereIn('area_id', $areaId)
             ->where('industry_id', $industryId)
             ->skip($offset)->take($length);
         switch ($type) {
@@ -60,7 +60,7 @@ class BidRepositories
         $areaId = Util::getFollowAreaId();
         $industryId = Util::getFollowIndustryId();
         $model = DataPublisher::where('user_id', $uid)
-            ->where('area_id', $areaId)
+            ->whereIn('area_id', $areaId)
             ->where('industry_id', $industryId);
         if (!empty($startTimeStr)) {
             $model->where('created_at', '>', $startTimeStr);
@@ -83,7 +83,7 @@ class BidRepositories
         $areaId = Util::getFollowAreaId();
         $industryId = Util::getFollowIndustryId();
         $list = DataBid::where('user_id', $uid)
-            ->where('area_id', $areaId)
+            ->whereIn('area_id', $areaId)
             ->where('industry_id', $industryId)
             ->skip($offset)
             ->take($length)
@@ -103,7 +103,7 @@ class BidRepositories
         $areaId = Util::getFollowAreaId();
         $industryId = Util::getFollowIndustryId();
         $model = DataBid::where('user_id', $uid)
-            ->where('area_id', $areaId)
+            ->whereIn('area_id', $areaId)
             ->where('industry_id', $industryId);
         if (!empty($startTimeStr)) {
             $model->where('created_at', '>', $startTimeStr);
@@ -172,14 +172,14 @@ class BidRepositories
             case 'publish':
                 $model = DataPublisher::where('title', 'like', '%'.$keyword.'%')
                     ->orWhere('publisher', 'like', '%'.$keyword.'%');
-                $model = $model->where('area_id', $areaId);
+                $model = $model->whereIn('area_id', $areaId);
                 $model = $model->where('industry_id', $industryId);
                 break;
             case 'bid':
                 $model = DataBid::where('title', 'like', '%'.$keyword.'%')
                     ->orWhere('publisher', 'like', '%'.$keyword.'%')
                     ->orWhere('bid_company', 'like', '%'.$keyword.'%');
-                $model = $model->where('area_id', $areaId);
+                $model = $model->whereIn('area_id', $areaId);
                 $model = $model->where('industry_id', $industryId);
                 break;
             case 'competitor':
