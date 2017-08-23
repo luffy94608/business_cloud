@@ -14,7 +14,7 @@ class ClusterZBData extends Command
      *
      * @var string
      */
-    protected $signature = 'cluster_data';
+    protected $signature = 'cluster_data {table} {type} {area}';
 
     /**
      * The console command description.
@@ -40,17 +40,38 @@ class ClusterZBData extends Command
      */
     public function handle()
     {
+        $table = $this->argument('table');
+        $type = $this->argument('type');
+        $area = $this->argument('area');
+        switch ($type)
+        {
+            case 'area':
+            {
+                $areaFilter =  new AreaFilter();
+                $areaFilter->resetAll($table);
+                $areaFilter->filterArea($table,$area);
+                break;
+            }
+            case 'industry':
+            {
+                $industryFilter = new IndustryFilter();
+                $industryFilter->resetAll($table);
+                $industryFilter->filterIndustry($table);
+                break;
+            }
+            case 'company':
+            {
+                $industryFilter = new CompanyFilter();
+                $industryFilter->resetAll($table);
+                $industryFilter->filterCompany($table);
+                break;
+            }
+        }
         //
-//        $areaFilter =  new AreaFilter();
-//        $areaFilter->resetAll('tender_zb_guizhou_2');
-//        $areaFilter->filterArea('tender_zb_guizhou_2',24);
-//
-//        $industryFilter = new IndustryFilter();
-//        $industryFilter->resetAll('tender_zb_guizhou_2');
-//        $industryFilter->filterIndustry('tender_zb_guizhou_2');
 
-        $industryFilter = new CompanyFilter();
-        $industryFilter->resetAll('tender_zb_guizhou_2');
-        $industryFilter->filterCompany('tender_zb_guizhou_2');
+//
+
+
+
     }
 }
