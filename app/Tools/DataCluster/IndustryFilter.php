@@ -81,8 +81,8 @@ class IndustryFilter
                             'industry_id'=>$industryId,
                             'type_id'=>$v->type_id,
                             'title'=>$title,
-                            'zhaobiaoren'=>$zhaobiaoren,
-                            'zhongbiaoren'=>$zhongbiaoren,
+                            'zhaobiaoren'=>trim($zhaobiaoren),
+                            'zhongbiaoren'=>trim($zhongbiaoren),
                         ]);
                 }else{
                     if (!empty($v->hangye)){
