@@ -31,7 +31,7 @@
                                 <div class="col-xs-6 bcs-item">
                                     <p class="title">我的竞争力</p>
                                     <p class="total color-orange" style="line-height: 35px;height: 35px;">
-                                        {!! \App\Http\Builders\OtherBuilder::toLevelHtml($data['power']) !!}
+                                        {!! \App\Http\Builders\OtherBuilder::toLevelHtml($data['power'], false, true) !!}
                                     </p>
                                     {{--<p class="hint">--}}
                                         {{--<img src="/images/banner/rival_total.png" width="100px">--}}

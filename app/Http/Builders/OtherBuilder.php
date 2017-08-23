@@ -51,15 +51,17 @@ class OtherBuilder
      * 竞争力活跃度
      * @param $level
      * @param bool $switch  true 活跃度
+     * @param bool $isBig  true 大小
      * @return string
      */
-    public static function toLevelHtml($level, $switch = false)
+    public static function toLevelHtml($level, $switch = false ,$isBig = false)
     {
         $html = "";
         $activeStyle = $switch ? 'active' : 'active-2';
         for ($i=1; $i<=5; $i++) {
             $active  = $i<=$level ? $activeStyle : '';
-            $html .= "<span class='b-icon-star {$active}'></span>";
+            $bigStyle = $isBig ? 'big'  : '';
+            $html .= "<span class='b-icon-star {$active} {$bigStyle}'></span>";
         }
         return $html;
     }
