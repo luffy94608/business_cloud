@@ -141,45 +141,32 @@ class ImportUserInterest extends Command
                                 }
                             }
                         }
+                        $zhongbiaoInserts = $this->filterZhongbiaoData($zhongbiaoInserts);
+                        $zhaobiaoInserts = $this->filterZhaobiaoData($zhaobiaoInserts);
                         $step = 800;
                         if (!empty($zhongbiaoInserts))
                         {
-//                            $count = count($zhongbiaoInserts);
-//                            for ($i = 0 ;$i<$count ; $i += $step)
-//                            {
-//                                $sliceLen = min($step,$count-$i);
-//                                $temp = array_slice($zhongbiaoInserts,$i,$sliceLen);
-//                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
-                                foreach ($zhongbiaoInserts as $i)
-                                {
-                                    \DB::table('data_bid')->updateOrInsert([
-                                        'title'=>$i['title'],
-                                        'bid_company'=>$i['bid_company'],
-                                    ],$i);
-                                }
-
-//                            }
+                            $count = count($zhongbiaoInserts);
+                            for ($i = 0 ;$i<$count ; $i += $step)
+                            {
+                                $sliceLen = min($step,$count-$i);
+                                $temp = array_slice($zhongbiaoInserts,$i,$sliceLen);
+                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
+                                \DB::table('data_bid')->insert($temp);
+                            }
 
                         }
                         if (!empty($zhaobiaoInserts))
                         {
 
-//                            $count = count($zhaobiaoInserts);
-//                            for ($i = 0 ;$i<$count ; $i += $step)
-//                            {
-//                                $sliceLen = min($step,$count-$i);
-//                                $temp = array_slice($zhaobiaoInserts,$i,$sliceLen);
-//                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
-                                foreach ($zhaobiaoInserts as $i)
-                                {
-                                    \DB::table('data_publisher')->updateOrInsert([
-                                        'title'=>$i['title'],
-                                        'publisher'=>$i['publisher']
-                                    ],$i);
-                                }
-
-
-//                            }
+                            $count = count($zhaobiaoInserts);
+                            for ($i = 0 ;$i<$count ; $i += $step)
+                            {
+                                $sliceLen = min($step,$count-$i);
+                                $temp = array_slice($zhaobiaoInserts,$i,$sliceLen);
+                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
+                                \DB::table('data_publisher')->insert($temp);
+                            }
                         }
                     }
                 }
@@ -289,6 +276,50 @@ class ImportUserInterest extends Command
             $power = 5;
         }
         return $power;
+    }
+
+    private function filterZhongbiaoData($data)
+    {
+        if (!empty($data))
+        {
+            $map = [];
+            foreach ($data as $d)
+            {
+                if (isset($map[$d['title'].$d['bid_company']]))
+                {
+                    $temp = $map[$d['title'].$d['bid_company']];
+                    if ($temp['bid_price'] > 0)
+                    {
+                        continue;
+                    }
+                }
+                $map[$d['title'].$d['bid_company']] = $d;
+            }
+            return array_values($map);
+        }
+        return $data;
+    }
+
+    private function filterZhaobiaoData($data)
+    {
+        if (!empty($data))
+        {
+            $map = [];
+            foreach ($data as $d)
+            {
+                if (isset($map[$d['title'].$d['publisher']]))
+                {
+                    $temp = $map[$d['title'].$d['publisher']];
+                    if ($temp['budget'] > 0)
+                    {
+                        continue;
+                    }
+                }
+                $map[$d['title'].$d['publisher']] = $d;
+            }
+            return array_values($map);
+        }
+        return $data;
     }
 
 }
