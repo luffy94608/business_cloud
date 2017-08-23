@@ -150,7 +150,10 @@ class ImportUserInterest extends Command
                                 $sliceLen = min($step,$count-$i);
                                 $temp = array_slice($zhongbiaoInserts,$i,$sliceLen);
                                 var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
-                                \DB::table('data_bid')->insert($temp);
+                                \DB::table('data_bid')->updateOrInsert([
+                                    'title'=>$temp['title'],
+                                    'bid_company'=>$temp['bid_company'],
+                                ],$temp);
                             }
 
                         }
@@ -163,7 +166,10 @@ class ImportUserInterest extends Command
                                 $sliceLen = min($step,$count-$i);
                                 $temp = array_slice($zhaobiaoInserts,$i,$sliceLen);
                                 var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
-                                \DB::table('data_publisher')->insert($temp);
+                                \DB::table('data_publisher')->updateOrInsert([
+                                    'title'=>$temp['title'],
+                                    'publisher'=>$temp['publisher']
+                                ],$temp);
                             }
                         }
                     }
