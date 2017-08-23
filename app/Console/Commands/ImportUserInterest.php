@@ -116,8 +116,8 @@ class ImportUserInterest extends Command
 
                     if (!empty($zbData))
                     {
-                        $zhongbiaoInserts=[];
-                        $zhaobiaoInserts=[];
+                        $zhongbiaoInsertsDul=[];
+                        $zhaobiaoInsertsDul=[];
                         
                         foreach ($zbData as $zbInfo)
                         {
@@ -133,16 +133,16 @@ class ImportUserInterest extends Command
                             {
                                 if ($zbInfo->type_id == 1)//中标
                                 {
-                                    $zhongbiaoInserts[] = $this->generateZhongbiaoInsertData($profile->user_id,$oneArea,$zbIndustry,$zbInfo);
+                                    $zhongbiaoInsertsDul[] = $this->generateZhongbiaoInsertData($profile->user_id,$oneArea,$zbIndustry,$zbInfo);
                                 }
                                 else
                                 {
-                                    $zhaobiaoInserts[] = $this->generateZhaobiaoInsertData($profile->user_id,$oneArea,$zbIndustry,$zbInfo);
+                                    $zhaobiaoInsertsDul[] = $this->generateZhaobiaoInsertData($profile->user_id,$oneArea,$zbIndustry,$zbInfo);
                                 }
                             }
                         }
-                        $zhongbiaoInserts = $this->filterZhongbiaoData($zhongbiaoInserts);
-                        $zhaobiaoInserts = $this->filterZhaobiaoData($zhaobiaoInserts);
+                        $zhongbiaoInserts = $this->filterZhongbiaoData($zhongbiaoInsertsDul);
+                        $zhaobiaoInserts = $this->filterZhaobiaoData($zhaobiaoInsertsDul);
                         $step = 800;
                         if (!empty($zhongbiaoInserts))
                         {
