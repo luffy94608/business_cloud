@@ -166,7 +166,7 @@ class Util
         $account = self::getUserInfo(); // 拿到微信授权用户资料
         if(!empty($account))
         {
-            $res = $account['follow_area'];
+            $res = explode(',', $account['follow_area']);
         }
         return $res;
     }
