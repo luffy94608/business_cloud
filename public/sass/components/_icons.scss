@@ -63,4 +63,13 @@
   &.active-2{
     @include createIcon(20px, 20px, 'star-o');
   }
+  &.big{
+    @include createIcon(40px, 40px, 'star-b');
+    &.active{
+      @include createIcon(40px, 40px, 'star-g-b');
+    }
+    &.active-2{
+      @include createIcon(40px, 40px, 'star-o-b');
+    }
+  }
 }

@@ -232,7 +232,7 @@
                 paramsArr.push('callback=' + encodeURIComponent(callback));
             }
             if (paramsArr.length) {
-                url = '{0}?{1}'.format(url, paramsArr.join('&'));
+                url = '{0}?{1}'.format(url.substr(0, pathIndex), paramsArr.join('&'));
             }
             if (target === '_blank')
             {
