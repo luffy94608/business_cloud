@@ -144,33 +144,42 @@ class ImportUserInterest extends Command
                         $step = 800;
                         if (!empty($zhongbiaoInserts))
                         {
-                            $count = count($zhongbiaoInserts);
-                            for ($i = 0 ;$i<$count ; $i += $step)
-                            {
-                                $sliceLen = min($step,$count-$i);
-                                $temp = array_slice($zhongbiaoInserts,$i,$sliceLen);
-                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
-                                \DB::table('data_bid')->updateOrInsert([
-                                    'title'=>$temp['title'],
-                                    'bid_company'=>$temp['bid_company'],
-                                ],$temp);
-                            }
+//                            $count = count($zhongbiaoInserts);
+//                            for ($i = 0 ;$i<$count ; $i += $step)
+//                            {
+//                                $sliceLen = min($step,$count-$i);
+//                                $temp = array_slice($zhongbiaoInserts,$i,$sliceLen);
+//                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
+                                foreach ($zhongbiaoInserts as $i)
+                                {
+                                    \DB::table('data_bid')->updateOrInsert([
+                                        'title'=>$i['title'],
+                                        'bid_company'=>$i['bid_company'],
+                                    ],$i);
+                                }
+
+//                            }
 
                         }
                         if (!empty($zhaobiaoInserts))
                         {
 
-                            $count = count($zhaobiaoInserts);
-                            for ($i = 0 ;$i<$count ; $i += $step)
-                            {
-                                $sliceLen = min($step,$count-$i);
-                                $temp = array_slice($zhaobiaoInserts,$i,$sliceLen);
-                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
-                                \DB::table('data_publisher')->updateOrInsert([
-                                    'title'=>$temp['title'],
-                                    'publisher'=>$temp['publisher']
-                                ],$temp);
-                            }
+//                            $count = count($zhaobiaoInserts);
+//                            for ($i = 0 ;$i<$count ; $i += $step)
+//                            {
+//                                $sliceLen = min($step,$count-$i);
+//                                $temp = array_slice($zhaobiaoInserts,$i,$sliceLen);
+//                                var_dump(sprintf('import zhaobiao start:%f, len %f:',$i*$step,$sliceLen));
+                                foreach ($zhaobiaoInserts as $i)
+                                {
+                                    \DB::table('data_publisher')->updateOrInsert([
+                                        'title'=>$i['title'],
+                                        'publisher'=>$i['publisher']
+                                    ],$i);
+                                }
+
+
+//                            }
                         }
                     }
                 }
