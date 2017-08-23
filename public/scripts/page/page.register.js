@@ -293,15 +293,18 @@
              */
             init.followAreaAddBtn.bind('change', function () {
                 var val = parseInt($.trim($(this).val()));
+                if (val == -1) {
+                    return false;
+                }
                 var text = $.trim($(this).find('option:checked').text());
                 var arr = init.getItemArrById(init.followAreaListSection);
+                init.followAreaAddBtn.select2('val', -1);
                 if (arr.indexOf(val)!==-1) {
                     $.showToast($.string.AREA_EXISTS,false);
                     return false;
                 }
                 var html = init.tpl.format(val, text);
-                init.followAreaListSection.append(html)
-
+                init.followAreaListSection.append(html);
             });
 
             /**
