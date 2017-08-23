@@ -44,7 +44,7 @@ class IndustryFilter
 
     public function filterIndustry($table){
         $this->table = $table;
-        $condition = "id,hangye,title";
+        $condition = "id,hangye,title,type_id";
         $this->totalRows = \DB::table($table)->count();
 
         while (($this->page * $this->pageNum) < $this->totalRows){
@@ -74,13 +74,14 @@ class IndustryFilter
                     \DB::table('cluster_result')
                         ->where('from_table',$this->table)
                         ->where('from_id',$v->id)
-                        ->update(['industry_id'=>$industryId]);
+                        ->update(['industry_id'=>$industryId,'type_id'=>$v->type_id]);
                 }else{
                     if (!empty($v->hangye)){
                         \DB::table('cluster_industry_no_match')->insert([
                             'from_table'=>$this->table,
                             'from_id'=>$v->id,
-                            'industry_value'=>$v->hangye
+                            'industry_value'=>$v->hangye,
+                            'type_id'=>$v->type_id,
                         ]);
                     }
                 }
