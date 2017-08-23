@@ -44,7 +44,7 @@ class IndustryFilter
 
     public function filterIndustry($table){
         $this->table = $table;
-        $condition = "id,hangye,title";
+        $condition = "id,hangye,title,type_id,title,zhaobiaoren,zhongbiaoren";
         $this->totalRows = \DB::table($table)->count();
 
         while (($this->page * $this->pageNum) < $this->totalRows){
@@ -70,17 +70,30 @@ class IndustryFilter
                 }
                 $industryId = $this->matchKeyWord($keyword);
                 var_dump($industryId);
+                $title = strlen($v->title) > 200 ? substr($v->title,0,200) : $v->title ;
+                $zhaobiaoren = strlen($v->zhaobiaoren) > 100 ? substr($v->zhaobiaoren,0,100) : $v->zhaobiaoren;
+                $zhongbiaoren = strlen($v->zhongbiaoren) > 200 ? substr($v->zhongbiaoren,0,200) : $v->zhongbiaoren ;
                 if ($industryId > 0 ){
                     \DB::table('cluster_result')
                         ->where('from_table',$this->table)
                         ->where('from_id',$v->id)
-                        ->update(['industry_id'=>$industryId]);
+                        ->update([
+                            'industry_id'=>$industryId,
+                            'type_id'=>$v->type_id,
+                            'title'=>$title,
+                            'zhaobiaoren'=>$zhaobiaoren,
+                            'zhongbiaoren'=>$zhongbiaoren,
+                        ]);
                 }else{
                     if (!empty($v->hangye)){
                         \DB::table('cluster_industry_no_match')->insert([
                             'from_table'=>$this->table,
                             'from_id'=>$v->id,
-                            'industry_value'=>$v->hangye
+                            'industry_value'=>$v->hangye,
+                            'type_id'=>$v->type_id,
+                            'title'=>$title,
+                            'zhaobiaoren'=>$zhaobiaoren,
+                            'zhongbiaoren'=>$zhongbiaoren,
                         ]);
                     }
                 }
